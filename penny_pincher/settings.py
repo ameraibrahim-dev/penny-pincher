@@ -12,9 +12,9 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 from django.urls import reverse_lazy
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -28,10 +28,11 @@ DEBUG = True
 ALLOWED_HOSTS = []
 AUTH_USER_MODEL = 'user.User'
 LOGIN_REDIRECT_URL = '/admin'
+LOGIN_URL = reverse_lazy('users:login')
 # Application definition
 
 INSTALLED_APPS = [
-    #3rd party apps
+    # 3rd party apps
     'captcha',
     'django_registration',
     # apps
@@ -76,7 +77,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'penny_pincher.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
@@ -86,7 +86,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -106,7 +105,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -119,7 +117,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
@@ -146,4 +143,4 @@ REGISTRATION_OPEN = True  # A bool indicating whether registration of new accoun
 # Recaptcha
 RECAPTCHA_PUBLIC_KEY = '6LfFpuYUAAAAAOP39B8IWF8klTFB8hdBJnz378_a'
 RECAPTCHA_PRIVATE_KEY = '6LfFpuYUAAAAAMgRTMYKJNbdi71_OyiI9T8skyqM'
-#RECAPTCHA_PROXY = {'http': 'http://127.0.0.1:8000', 'https': 'https://127.0.0.1:8000'
+# RECAPTCHA_PROXY = {'http': 'http://127.0.0.1:8000', 'https': 'https://127.0.0.1:8000'
