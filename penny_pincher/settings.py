@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'djmoney',
     # apps
     'user',
+    'wallet',
     # build-in
     'django.contrib.admin',
     'django.contrib.auth',
