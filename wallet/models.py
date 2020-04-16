@@ -20,16 +20,23 @@ class Wallet(models.Model):
 
 class Category(models.Model):
     EXPENSES_ICON_CHOICES = [
-        ('CH', 'Health'),
-        ('EM', 'E-Money'),
-        ('CC', 'Credit Card'),
-        ('DC', 'Debit Card'),
+        ('food.png', 'Food & Drinks'),
+        ('shopping.png', 'Shopping'),
+        ('transport.png', 'Transport'),
+        ('home.png', 'Home'),
+        ('bills.png', 'Bills & Fees'),
+        ('groceries.png', 'Groceries'),
+        ('health.png', 'Health'),
+        ('entertainment.png', 'Entertainment'),
     ]
     EARNINGS_ICON_CHOICES = [
-        ('CH', 'Cash'),
-        ('EM', 'E-Money'),
-        ('CC', 'Credit Card'),
-        ('DC', 'Debit Card'),
+        ('salary.png', 'Salary'),
+        ('business.png', 'Business'),
+        ('gifts.png', 'Gifts'),
+        ('extra-income.png', 'Extra Income'),
+        ('loan.png', 'Loan'),
+        ('parental-leave.png', 'Parental Leave'),
+        ('insurance.png', 'Insurance'),
     ]
     IS_EXPENSE_CHOICES = [
         (True, 'Expenses'),
