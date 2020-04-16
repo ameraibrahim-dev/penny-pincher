@@ -1,7 +1,5 @@
-from django.contrib.auth import authenticate
 from django_registration.backends.activation.views import RegistrationView
 from .forms import UserRegistrationForm
-from django_registration import signals
 from django.urls import reverse_lazy
 from django.contrib.auth.views import PasswordChangeView, PasswordResetView,PasswordResetConfirmView
 
