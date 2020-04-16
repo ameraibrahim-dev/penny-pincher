@@ -1,14 +1,13 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, TemplateView
 
+from wallet.forms import CategoryForm
 from wallet.models import Category
 from wallet.utils import get_predefined_expenses_categories, get_predefined_earnings_categories
 
 
 class CustomCategoryListView(LoginRequiredMixin, ListView):
-    paginate_by = 30
 
     def get_queryset(self):
         return Category.objects.filter(owner=self.request.user, is_custom=True)
@@ -16,6 +15,7 @@ class CustomCategoryListView(LoginRequiredMixin, ListView):
 
 class CreateCustomCategoryView(LoginRequiredMixin, CreateView):
     model = Category
+    form_class = CategoryForm
     success_url = reverse_lazy('wallet:custom_categories_list')
 
     def form_valid(self, form):
@@ -26,13 +26,13 @@ class CreateCustomCategoryView(LoginRequiredMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         ctx = super(CreateCustomCategoryView, self).get_context_data(**kwargs)
-        ctx['title'] = 'Create Store'
+        ctx['title'] = 'Create Category'
         return ctx
 
 
 class UpdateCustomCategoryView(LoginRequiredMixin, UpdateView):
     model = Category
-    fields = ['name']
+    form_class = CategoryForm
     success_url = reverse_lazy('wallet:custom_categories_list')
 
     def form_valid(self, form):
@@ -43,7 +43,7 @@ class UpdateCustomCategoryView(LoginRequiredMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         ctx = super(UpdateCustomCategoryView, self).get_context_data(**kwargs)
-        ctx['title'] = 'Update Store'
+        ctx['title'] = 'Update Category'
         return ctx
 
     def get_queryset(self):
@@ -66,15 +66,19 @@ class DeleteCustomCategoryView(LoginRequiredMixin, DeleteView):
         return self.post(request, *args, **kwargs)
 
 
-class DefinedExpensesCategories(LoginRequiredMixin, ListView):
-    paginate_by = 30
+class DefinedExpensesCategories(LoginRequiredMixin, TemplateView):
+    template_name = "wallet/predefined_expenses_category_list.html"
 
-    def get_queryset(self):
-        return get_predefined_expenses_categories(self.request.user)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['object_list'] = get_predefined_expenses_categories(self.request.user)
+        return context
 
 
-class DefinedEarningsCategories(LoginRequiredMixin, ListView):
-    paginate_by = 30
+class DefinedEarningsCategories(LoginRequiredMixin, TemplateView):
+    template_name = "wallet/predefined_earnings_category_list.html"
 
-    def get_queryset(self):
-        return get_predefined_earnings_categories(self.request.user)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['object_list'] = get_predefined_earnings_categories(self.request.user)
+        return context
