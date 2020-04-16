@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<p>{% trans "An Email Activation has sent" %}</p>
+    <a href="{% url 'users:login' %}">Login Now</a>
+{% endblock %}

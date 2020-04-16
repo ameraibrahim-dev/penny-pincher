@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head-meta %}{% endblock %}
+    <title>{% block title %}Title{% endblock %}</title>
+    {% block head-css %}
+    {% endblock %}
+    {% block head-javascript %}
+    {% endblock %}
+    {% block head-extension %}
+    {% endblock %}
+</head>
+<body>
+{% block content %}Content{% endblock %}
+{% block body-javascript %}{% endblock %}
+{% block body-javascript-extension %}{% endblock %}
+</body>
+</html>
