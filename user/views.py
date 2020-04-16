@@ -1,3 +1,5 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import UpdateView
 from django_registration.backends.activation.views import RegistrationView
 from .forms import UserRegistrationForm
 from django.urls import reverse_lazy
