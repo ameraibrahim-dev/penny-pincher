@@ -20,7 +20,7 @@ class Wallet(models.Model):
 
 class Category(models.Model):
     EXPENSES_ICON_CHOICES = [
-        ('CH', 'Cash'),
+        ('CH', 'Health'),
         ('EM', 'E-Money'),
         ('CC', 'Credit Card'),
         ('DC', 'Debit Card'),
@@ -31,10 +31,14 @@ class Category(models.Model):
         ('CC', 'Credit Card'),
         ('DC', 'Debit Card'),
     ]
+    IS_EXPENSE_CHOICES = [
+        (True, 'Expenses'),
+        (False, 'Earnings'),
+    ]
     name = models.CharField(max_length=500, null=False, blank=False)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     is_custom = models.BooleanField(null=False, blank=False)
-    is_Expense = models.BooleanField(null=False, blank=False)
+    is_Expense = models.BooleanField(null=False, blank=False,choices=IS_EXPENSE_CHOICES)
     icon = models.CharField(max_length=500, null=False, blank=False,
                             choices=EARNINGS_ICON_CHOICES + EXPENSES_ICON_CHOICES)
 
