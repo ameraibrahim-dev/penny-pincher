@@ -26,11 +26,17 @@ SECRET_KEY = '0_0m71zsq(b%ys$!%6#*^8&5ixqgz9k&0#pb*0s9(j!$3(dw1x'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+AUTH_USER_MODEL = 'user.User'
 
 # Application definition
 
 INSTALLED_APPS = [
+    #3rd party apps
+    'captcha',
+    'django_registration',
+    # apps
+    'user',
+    # build-in
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -119,3 +125,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# email
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = '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'
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'Penny Pincher<noreply@example.com>'
+
+# registration
+ACCOUNT_ACTIVATION_DAYS = 7  # One-week activation window
+REGISTRATION_OPEN = True  # A bool indicating whether registration of new accounts is currently permitted.
+# Recaptcha
+RECAPTCHA_PUBLIC_KEY = '6LfFpuYUAAAAAOP39B8IWF8klTFB8hdBJnz378_a'
+RECAPTCHA_PRIVATE_KEY = '6LfFpuYUAAAAAMgRTMYKJNbdi71_OyiI9T8skyqM'
+#RECAPTCHA_PROXY = {'http': 'http://127.0.0.1:8000', 'https': 'https://127.0.0.1:8000'
