@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 from wallet.models import Category
 from wallet.utils import get_predefined_expenses_categories, get_predefined_earnings_categories
@@ -20,7 +20,7 @@ class CreateCustomCategoryView(LoginRequiredMixin,CreateView):
     success_url = reverse_lazy('wallet:custom_categories_list')
 
 
-class UpdateCustomCategoryView(LoginRequiredMixin,ListView):
+class UpdateCustomCategoryView(LoginRequiredMixin,UpdateView):
     model = Category
     fields = ['name']
     success_url = reverse_lazy('wallet:custom_categories_list')
@@ -39,11 +39,14 @@ class UpdateCustomCategoryView(LoginRequiredMixin,ListView):
         return Category.objects.filter(owner=self.request.user,is_custom=True)
 
 
-class DeleteCustomCategoryView(LoginRequiredMixin,ListView):
+class DeleteCustomCategoryView(LoginRequiredMixin,DeleteView):
     success_url = reverse_lazy('wallet:custom_categories_list')
 
     def get_queryset(self):
         return Category.objects.filter(owner=self.request.user, is_custom=True)
+
+    def get(self, request, *args, **kwargs):
+        return self.post(request, *args, **kwargs)
 
 
 class DefinedExpensesCategories(LoginRequiredMixin,ListView):
