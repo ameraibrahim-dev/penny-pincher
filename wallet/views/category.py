@@ -7,20 +7,30 @@ from wallet.models import Category
 from wallet.utils import get_predefined_expenses_categories, get_predefined_earnings_categories
 
 
-class CustomCategoryListView(LoginRequiredMixin,ListView):
+class CustomCategoryListView(LoginRequiredMixin, ListView):
     paginate_by = 30
 
     def get_queryset(self):
         return Category.objects.filter(owner=self.request.user, is_custom=True)
 
 
-class CreateCustomCategoryView(LoginRequiredMixin,CreateView):
+class CreateCustomCategoryView(LoginRequiredMixin, CreateView):
     model = Category
-    fields = ['name']
     success_url = reverse_lazy('wallet:custom_categories_list')
 
+    def form_valid(self, form):
+        instance = form.save(commit=False)
+        instance.owner = self.request.user
+        instance.is_custom = True
+        return super(CreateCustomCategoryView, self).form_valid(form)
 
-class UpdateCustomCategoryView(LoginRequiredMixin,UpdateView):
+    def get_context_data(self, **kwargs):
+        ctx = super(CreateCustomCategoryView, self).get_context_data(**kwargs)
+        ctx['title'] = 'Create Store'
+        return ctx
+
+
+class UpdateCustomCategoryView(LoginRequiredMixin, UpdateView):
     model = Category
     fields = ['name']
     success_url = reverse_lazy('wallet:custom_categories_list')
@@ -28,6 +38,7 @@ class UpdateCustomCategoryView(LoginRequiredMixin,UpdateView):
     def form_valid(self, form):
         instance = form.save(commit=False)
         instance.owner = self.request.user
+        instance.is_custom = True
         return super(UpdateCustomCategoryView, self).form_valid(form)
 
     def get_context_data(self, **kwargs):
@@ -36,11 +47,17 @@ class UpdateCustomCategoryView(LoginRequiredMixin,UpdateView):
         return ctx
 
     def get_queryset(self):
-        return Category.objects.filter(owner=self.request.user,is_custom=True)
+        return Category.objects.filter(owner=self.request.user, is_custom=True)
 
 
-class DeleteCustomCategoryView(LoginRequiredMixin,DeleteView):
+class DeleteCustomCategoryView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('wallet:custom_categories_list')
+
+    def form_valid(self, form):
+        instance = form.save(commit=False)
+        instance.owner = self.request.user
+        instance.is_custom = True
+        return super(DeleteCustomCategoryView, self).form_valid(form)
 
     def get_queryset(self):
         return Category.objects.filter(owner=self.request.user, is_custom=True)
@@ -49,14 +66,14 @@ class DeleteCustomCategoryView(LoginRequiredMixin,DeleteView):
         return self.post(request, *args, **kwargs)
 
 
-class DefinedExpensesCategories(LoginRequiredMixin,ListView):
+class DefinedExpensesCategories(LoginRequiredMixin, ListView):
     paginate_by = 30
 
     def get_queryset(self):
         return get_predefined_expenses_categories(self.request.user)
 
 
-class DefinedEarningsCategories(LoginRequiredMixin,ListView):
+class DefinedEarningsCategories(LoginRequiredMixin, ListView):
     paginate_by = 30
 
     def get_queryset(self):
