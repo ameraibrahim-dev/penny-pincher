@@ -45,7 +45,7 @@ class Category(models.Model):
     name = models.CharField(max_length=500, null=False, blank=False)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     is_custom = models.BooleanField(null=False, blank=False)
-    is_Expense = models.BooleanField(null=False, blank=False,choices=IS_EXPENSE_CHOICES)
+    is_expense = models.BooleanField(null=False, blank=False, choices=IS_EXPENSE_CHOICES)
     icon = models.CharField(max_length=500, null=False, blank=False,
                             choices=EARNINGS_ICON_CHOICES + EXPENSES_ICON_CHOICES)
 
@@ -53,3 +53,4 @@ class Category(models.Model):
 class WalletTransaction(AbstractTransaction):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     wallet = models.ForeignKey(Wallet, on_delete=models.CASCADE)
+
