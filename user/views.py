@@ -15,16 +15,16 @@ class RegistrationView(RegistrationView):
 
 
 class PasswordChangeView(PasswordChangeView):
-    template_name = 'accounts_auth/password_change_form.html'
+    template_name = 'user_auth/password_change_form.html'
     success_url = reverse_lazy('accounts:password_change_done')
 
 
 class PasswordResetView(PasswordResetView):
-    email_template_name = 'accounts_auth/password_reset_email.html'
-    subject_template_name = 'accounts_auth/password_reset_subject.txt'
+    email_template_name = 'user_auth/password_reset_email.html'
+    subject_template_name = 'user_auth/password_reset_subject.txt'
     success_url = reverse_lazy('accounts:password_reset_done')
-    template_name = 'accounts_auth/password_reset_form.html'
+    template_name = 'user_auth/password_reset_form.html'
 
 class PasswordResetConfirmView(PasswordResetConfirmView):
     success_url = reverse_lazy('accounts:password_reset_complete')
-    template_name = 'accounts_auth/password_reset_confirm.html'
+    template_name = 'user_auth/password_reset_confirm.html'

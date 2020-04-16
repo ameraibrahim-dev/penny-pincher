@@ -1,7 +1,7 @@
 from django.urls import path, include, reverse_lazy
 from django.views.generic import TemplateView
 
-from accounts.views import PasswordResetConfirmView, PasswordChangeView, PasswordResetView, RegistrationView
+from user.views import PasswordResetConfirmView, PasswordChangeView, PasswordResetView, RegistrationView
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeDoneView, PasswordResetDoneView, \
     PasswordResetCompleteView
 from django_registration.backends.activation.views import ActivationView
@@ -10,22 +10,22 @@ app_name = "users"
 
 urlpatterns = [
     # login,logout
-    path('login/', LoginView.as_view(template_name='accounts_auth/login.html'), name='login'),
-    path('logout/', LogoutView.as_view(template_name='accounts_auth/logout.html'), name='logout'),
+    path('login/', LoginView.as_view(template_name='user_auth/login.html'), name='login'),
+    path('logout/', LogoutView.as_view(template_name='user_auth/logout.html'), name='logout'),
     # password change
     path('password_change/', PasswordChangeView.as_view(), name='password_change'),
     path('password_change/done/',
-         PasswordChangeDoneView.as_view(template_name='accounts_auth/password_change_done.html'),
+         PasswordChangeDoneView.as_view(template_name='user_auth/password_change_done.html'),
          name='password_change_done'),
     # password reset
     path('password_reset/', PasswordResetView.as_view(), name='password_reset'),
     path('password_reset/done/',
-         PasswordResetDoneView.as_view(template_name='accounts_auth/password_reset_done.html'),
+         PasswordResetDoneView.as_view(template_name='user_auth/password_reset_done.html'),
          name='password_reset_done'),
 
     path('reset/<uidb64>/<token>/', PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     path('reset/done/',
-         PasswordResetCompleteView.as_view(template_name='accounts_auth/password_reset_complete.html'),
+         PasswordResetCompleteView.as_view(template_name='user_auth/password_reset_complete.html'),
          name='password_reset_complete'),
 
     # register
