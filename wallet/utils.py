@@ -26,7 +26,7 @@ def get_predefined_expenses_categories(user):
 
 def get_predefined_earnings_categories(user):
     out = []
-    params = {'is_custom': False, 'is_expense': True, 'owner': user}
+    params = {'is_custom': False, 'is_expense': False, 'owner': user}
     PREDEFINED_EARNINGS_CATEGORIES = [
         ('salary.png', 'Salary'),
         ('business.png', 'Business'),
