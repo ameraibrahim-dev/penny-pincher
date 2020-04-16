@@ -2,7 +2,7 @@
 {% load i18n %}
 
 {% block content %}
-<form method="post" action="{% url 'users:login' %}">
+<form method="post" action="{% url 'user:login' %}">
   {% csrf_token %}
   {{ form.as_p }}
 
@@ -10,6 +10,6 @@
   <input type="hidden" name="next" value="{{ next }}" />
 </form>
 
-<p>{% trans "Forgot password" %}? <a href="{% url 'users:password_reset' %}">{% trans "Reset it" %}</a>!</p>
-<p>{% trans "Not member" %}? <a href="{% url 'users:django_registration_register' %}">{% trans "Register" %}</a>!</p>
+<p>{% trans "Forgot password" %}? <a href="{% url 'user:password_reset' %}">{% trans "Reset it" %}</a>!</p>
+<p>{% trans "Not member" %}? <a href="{% url 'user:django_registration_register' %}">{% trans "Register" %}</a>!</p>
 {% endblock %}
