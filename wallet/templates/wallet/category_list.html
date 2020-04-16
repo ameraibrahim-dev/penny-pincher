@@ -1,0 +1,14 @@
+<h1>category</h1>
+<ul>
+    {% for category in object_list %}
+        <li>{{ category.name }} {{ category.wallettransaction_set|length }} Transactions
+            {% if category.is_expense %}Expense{% else %}Earnings{% endif %} <a
+                    href="{% url 'wallet:update_custom_categories' category.pk %}">Update</a>
+            <a
+                    href="{% url 'wallet:delete_custom_categories_list' category.pk %}">Delete</a>
+        </li>
+    {% empty %}
+        <li>No category yet.</li>
+    {% endfor %}
+
+</ul>
