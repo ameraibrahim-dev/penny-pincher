@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     # 3rd party apps
     'captcha',
     'django_registration',
+    'djmoney',
     # apps
     'user',
     # build-in
