@@ -35,8 +35,10 @@ INSTALLED_APPS = [
     # 3rd party apps
     'captcha',
     'django_registration',
+    'djmoney',
     # apps
     'user',
+    'wallet',
     # build-in
     'django.contrib.admin',
     'django.contrib.auth',
