@@ -1,4 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import ProtectedError
+from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, TemplateView
 
@@ -80,9 +82,17 @@ class DeleteCustomCategoryView(LoginRequiredMixin, DeleteView):
     def get(self, request, *args, **kwargs):
         return self.post(request, *args, **kwargs)
 
+    def post(self, request, *args, **kwargs):
+        try:
+            return self.delete(request, *args, **kwargs)
+        except ProtectedError:
+            template = 'category/custom_category_delete_error.html'
+            context = {'error': 'This category is in used, Can not be delete'}
+            return render(request, template, context)
+
 
 class DefinedExpensesCategories(LoginRequiredMixin, TemplateView):
-    template_name = 'ategory/predefined_expenses_category_list.html'
+    template_name = 'category/predefined_expenses_category_list.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
