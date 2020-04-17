@@ -17,6 +17,12 @@ class Wallet(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     balance = MoneyField(max_digits=14, decimal_places=2, default_currency='PHP')
 
+    class Meta:
+        unique_together = ('name', 'type', 'owner')
+
+    def __str__(self):
+        return '{}({})'.format(self.name, self.pk)
+
 
 class Category(models.Model):
     EXPENSES_ICON_CHOICES = [
@@ -49,8 +55,16 @@ class Category(models.Model):
     icon = models.CharField(max_length=500, null=False, blank=False,
                             choices=EARNINGS_ICON_CHOICES + EXPENSES_ICON_CHOICES)
 
+    class Meta:
+        unique_together = ('name', 'owner')
+
+    def __str__(self):
+        return '{}({})'.format(self.name, self.pk)
+
 
 class WalletTransaction(AbstractTransaction):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     wallet = models.ForeignKey(Wallet, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return 'WalletTransaction({})'.format(self.pk)
