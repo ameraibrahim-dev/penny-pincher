@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'captcha',
     'django_registration',
     'djmoney',
+    'rest_framework',
     # apps
     'user',
     'wallet',
