@@ -19,6 +19,7 @@ def get_predefined_expenses_categories(user):
     ]
     for icon, name in PREDEFINED_EXPENSES_CATEGORIES:
         category = Category.objects.filter(**params, icon=icon, name=name).first()
+        print(category)
         if category:
             out.append(category)
         else:

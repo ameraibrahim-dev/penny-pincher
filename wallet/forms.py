@@ -3,6 +3,8 @@ from django.forms import ModelForm
 from django import forms
 from djmoney.forms import MoneyField
 
+from category.models import Category
+from category.utils import get_predefined_earnings_categories, get_predefined_expenses_categories
 from penny_pincher.fields import StrippedCharField
 from wallet.models import Wallet, WalletTransaction
 
@@ -31,7 +33,8 @@ class WalletTransactionForm(ModelForm):
     date = forms.DateField(widget=forms.DateInput)
     note = forms.CharField(widget=forms.Textarea, required=False)
     amount = MoneyField()
-    category=forms.ChoiceField()
+    category = forms.CharField(required=False, widget=forms.Select(choices=[]))
+
     class Meta:
         model = WalletTransaction
         fields = ['amount', 'date', 'note', 'is_expense']
@@ -44,3 +47,4 @@ class WalletTransactionForm(ModelForm):
         if amount.amount < 0:
             raise forms.ValidationError('Amount must be 0 or grater')
         return amount
+
