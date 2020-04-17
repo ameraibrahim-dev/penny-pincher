@@ -1,7 +1,5 @@
-from msilib.schema import ListView
-
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
+from django.views.generic import CreateView, DetailView, UpdateView, DeleteView, ListView
 
 from wallet.models import Wallet
 
@@ -70,3 +68,5 @@ class DeleteWalletView(LoginRequiredMixin, DeleteView):
         instance = form.save(commit=False)
         instance.store.owner = self.request.user
         return super(DeleteWalletView, self).form_valid(form)
+    def get(self, request, *args, **kwargs):
+        return self.post(request, *args, **kwargs)

@@ -1,10 +1,16 @@
 from django.urls import path, include, reverse_lazy
-from .views import CustomCategoryListView, DefinedExpensesCategories, DefinedEarningsCategories, \
-    DeleteCustomCategoryView, UpdateCustomCategoryView, CreateCustomCategoryView
+from .views import *
 
 app_name = "wallet"
 
 urlpatterns = [
+    #wallets
+    path('wallet/overview/', WalletOverview.as_view(), name='wallet_overview'),
+    path('wallet/settings/', WalletSettingsView.as_view(), name='wallet_settings'),
+    path('wallet/transactions/', WalletTransactionsView.as_view(), name='wallet_transactions'),
+    path('wallet/create/', CreateWalletView.as_view(), name='create_wallet'),
+    path('wallet/update/', UpdateWalletView.as_view(), name='update_wallet'),
+    path('wallet/delete/', DeleteWalletView.as_view(), name='delete_wallet'),
     # categories
     path('custom/category/list/', CustomCategoryListView.as_view(), name='custom_categories_list'),
     path('custom/category/create/', CreateCustomCategoryView.as_view(), name='create_custom_categories'),
