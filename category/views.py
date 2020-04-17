@@ -61,7 +61,7 @@ class UpdateCustomCategoryView(LoginRequiredMixin, UpdateView):
         return Category.objects.filter(owner=self.request.user, is_custom=True)
 
     def get_form_kwargs(self):
-        kwargs = super(CreateCustomCategoryView, self).get_form_kwargs()
+        kwargs = super(UpdateCustomCategoryView, self).get_form_kwargs()
         kwargs['user'] = self.request.user
         kwargs.update(self.kwargs)
         return kwargs

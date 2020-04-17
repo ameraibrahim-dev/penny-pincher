@@ -16,7 +16,7 @@ class CategoryForm(ModelForm):
             'is_expense': 'Type',
         }
 
-    def __init__(self, user=None, *args, **kwargs):
+    def __init__(self, user=None,pk=None, *args, **kwargs):
         super(CategoryForm, self).__init__(*args, **kwargs)
         self.fields['user_pk'].initial = user.pk
 
