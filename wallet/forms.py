@@ -4,7 +4,7 @@ from django import forms
 from djmoney.forms import MoneyField
 
 from user.models import User
-from wallet.models import Wallet
+from wallet.models import Wallet, WalletTransaction
 
 
 class WalletCreateForm(ModelForm):

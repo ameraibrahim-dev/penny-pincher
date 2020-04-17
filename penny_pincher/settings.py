@@ -28,7 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 AUTH_USER_MODEL = 'user.User'
 LOGIN_REDIRECT_URL = '/admin'
-LOGIN_URL = reverse_lazy('users:login')
+LOGIN_URL = reverse_lazy('user:login')
 CURRENCIES = ('PHP', )
 # Application definition
 
