@@ -60,7 +60,6 @@ class WalletTransactionForm(ModelForm):
     wallet_pk = forms.IntegerField(widget=forms.HiddenInput(), required=True)
     date = forms.DateField(widget=forms.DateInput)
     note = forms.CharField(widget=forms.Textarea,required=False)
-    amount = forms.FloatField(validators=[MinValueValidator(limit_value=0)])
     class Meta:
         model = WalletTransaction
         fields = ['amount', 'date', 'note', 'category', 'is_expense']
@@ -71,4 +70,8 @@ class WalletTransactionForm(ModelForm):
     def __init__(self, user=None, pk=None, *args, **kwargs):
         super(WalletTransactionForm, self).__init__(*args, **kwargs)
         self.fields['wallet_pk'].initial = pk
-        self.fields['category'].choices = []
+        #uncomment later
+        #self.fields['category'].choices = []
+
+
+

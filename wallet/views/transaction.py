@@ -16,6 +16,8 @@ class CreateTransactionView(LoginRequiredMixin, CreateView):
         wallet_pk = self.kwargs.get('pk')
         wallet = Wallet.objects.get(owner=self.request.user, pk=wallet_pk)
         instance.wallet = wallet
+        if instance.is_expense:
+            instance.amount.amount = -instance.amount.amount
         return super(CreateTransactionView, self).form_valid(form)
 
     def get_form_kwargs(self):
