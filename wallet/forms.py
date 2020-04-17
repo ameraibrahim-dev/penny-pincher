@@ -9,7 +9,7 @@ from wallet.models import Wallet, WalletTransaction
 
 class WalletCreateForm(ModelForm):
     user_pk = forms.IntegerField(widget=forms.HiddenInput(), required=True)
-    balance = MoneyField(label='Initial Balance',validators=[MinValueValidator(limit_value=0)])
+    balance = MoneyField(label='Initial Balance', validators=[MinValueValidator(limit_value=0)])
 
     class Meta:
         model = Wallet
@@ -54,3 +54,21 @@ class WalletUpdateForm(ModelForm):
         user = User.objects.get(pk=user_pk)
         if Wallet.objects.filter(owner=user, type=type, name=name):
             raise forms.ValidationError('This wallet is duplicated')
+
+
+class WalletTransactionForm(ModelForm):
+    wallet_pk = forms.IntegerField(widget=forms.HiddenInput(), required=True)
+    date = forms.DateField(widget=forms.DateInput)
+    note = forms.CharField(widget=forms.Textarea,required=False)
+    amount = forms.FloatField(validators=[MinValueValidator(limit_value=0)])
+    class Meta:
+        model = WalletTransaction
+        fields = ['amount', 'date', 'note', 'category', 'is_expense']
+        labels = {
+            'is_expense': 'Type',
+        }
+
+    def __init__(self, user=None, pk=None, *args, **kwargs):
+        super(WalletTransactionForm, self).__init__(*args, **kwargs)
+        self.fields['wallet_pk'].initial = pk
+        self.fields['category'].choices = []
