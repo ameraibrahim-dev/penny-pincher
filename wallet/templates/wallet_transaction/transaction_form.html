@@ -1,7 +1,9 @@
+<title>{{ title }}</title>
 <form method="post">{% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Save">
 </form>
+{{ object }}
 <div id="expenses">
 
 </div>
@@ -39,7 +41,6 @@
             expense_options += option_html;
         });
         return expense_options;
-
     }
 
 

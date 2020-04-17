@@ -6,6 +6,8 @@
 
     {{ transaction.category.name }}
     {{ transaction.amount }}
+    <a href="{% url 'wallet:wallet_transactions_update_transaction' transaction.pk %}">Update</a>
+     <a href="{% url 'wallet:wallet_transactions_update_transaction' transaction.pk %}">Delete</a>
     </li>
 {% endfor %}
 

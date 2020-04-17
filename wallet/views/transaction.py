@@ -46,6 +46,10 @@ class CreateTransactionView(LoginRequiredMixin, CreateView):
         # assign
         instance.category = category
         return super(CreateTransactionView, self).form_valid(form)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Add Transaction'
+        return context
 
 
 class UpdateTransactionView(LoginRequiredMixin, UpdateView):
@@ -85,6 +89,11 @@ class UpdateTransactionView(LoginRequiredMixin, UpdateView):
         # assign
         instance.category = category
         return super(UpdateTransactionView, self).form_valid(form)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Update Transaction'
+        return context
+
 
 
 class OverviewPageCreateTransaction(CreateTransactionView):
