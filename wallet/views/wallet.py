@@ -11,43 +11,28 @@ class WalletListView(LoginRequiredMixin, ListView):
         return Wallet.objects.filter(owner=self.request.user)
 
 
-class WalletOverview(LoginRequiredMixin, DetailView):
+class WalletDetailView(LoginRequiredMixin, DetailView):
+    model = Wallet
+
+    def get_queryset(self):
+        return Wallet.objects.filter(owner=self.request.user)
+
+    def form_valid(self, form):
+        instance = form.save(commit=False)
+        instance.owner = self.request.user
+        return super(WalletOverview, self).form_valid(form)
+
+
+class WalletOverview(WalletDetailView):
     template_name = 'wallet/overview.html'
-    model = Wallet
-
-    def get_queryset(self):
-        return Wallet.objects.filter(owner=self.request.user)
-
-    def form_valid(self, form):
-        instance = form.save(commit=False)
-        instance.owner = self.request.user
-        return super(WalletOverview, self).form_valid(form)
 
 
-class WalletSettingsView(LoginRequiredMixin, DetailView):
+class WalletSettingsView(WalletDetailView):
     template_name = 'wallet/settings.html'
-    model = Wallet
-
-    def get_queryset(self):
-        return Wallet.objects.filter(owner=self.request.user)
-
-    def form_valid(self, form):
-        instance = form.save(commit=False)
-        instance.owner = self.request.user
-        return super(WalletOverview, self).form_valid(form)
 
 
-class WalletTransactionsView(LoginRequiredMixin, DetailView):
+class WalletTransactionsView(WalletDetailView):
     template_name = 'wallet/transactions.html'
-    model = Wallet
-
-    def get_queryset(self):
-        return Wallet.objects.filter(owner=self.request.user)
-
-    def form_valid(self, form):
-        instance = form.save(commit=False)
-        instance.owner = self.request.user
-        return super(WalletOverview, self).form_valid(form)
 
 
 class CreateWalletView(LoginRequiredMixin, CreateView):
