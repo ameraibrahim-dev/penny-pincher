@@ -1,12 +1,18 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import ProtectedError
+from django.http import JsonResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
+from django.views import View
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, TemplateView
+from django.core import serializers
+from rest_framework import generics
+from rest_framework.permissions import IsAuthenticated
 
 from .forms import CategoryForm
 from wallet.models import Category
 from category.utils import get_predefined_expenses_categories, get_predefined_earnings_categories
+from .serializers import CategorySerializer
 
 
 class CustomCategoryListView(LoginRequiredMixin, ListView):
@@ -107,3 +113,25 @@ class DefinedEarningsCategories(LoginRequiredMixin, TemplateView):
         context = super().get_context_data(**kwargs)
         context['object_list'] = get_predefined_earnings_categories(self.request.user)
         return context
+
+class AllExpenseCategoryJsonList(generics.ListAPIView):
+    serializer_class = CategorySerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        expense=[]
+        expense.extend(Category.objects.filter(owner=self.request.user,is_custom=True,is_expense=True))
+        expense.extend(get_predefined_expenses_categories(self.request.user))
+        return expense
+
+class AllEarningsCategoryJsonList(generics.ListAPIView):
+    serializer_class = CategorySerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        expense=[]
+        expense.extend(Category.objects.filter(owner=self.request.user,is_custom=True,is_expense=False))
+        print('1',expense)
+        expense.extend(get_predefined_earnings_categories(self.request.user))
+        print(expense)
+        return expense

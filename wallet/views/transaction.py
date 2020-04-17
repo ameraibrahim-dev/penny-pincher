@@ -4,8 +4,6 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import View
 
-from category.models import Category
-from category.utils import get_predefined_expenses_categories
 from wallet.models import WalletTransaction, Wallet
 
 
