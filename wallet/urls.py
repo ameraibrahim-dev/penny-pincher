@@ -17,8 +17,12 @@ urlpatterns = [
          name='wallet_transactions_create_transaction'),
     path('transactions/update/<int:pk>/', TransactionPageUpdateTransaction.as_view(),
          name='wallet_transactions_update_transaction'),
+    path('transactions/delete/<int:pk>/', TransactionPageDeleteTransaction.as_view(),
+         name='wallet_transactions_delete_transaction'),
     path('overview/create/<int:pk>/', OverviewPageCreateTransaction.as_view(),
          name='wallet_overview_create_transaction'),
     path('overview/update/<int:pk>/', OverviewPageUpdateTransaction.as_view(),
          name='wallet_overview_update_transaction'),
+    path('overview/delete/<int:pk>/', OverviewPageDeleteTransaction.as_view(),
+         name='wallet_overview_delete_transaction'),
 ]

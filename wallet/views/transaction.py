@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import Http404
 from django.urls import reverse_lazy
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from category.models import Category
 from category.utils import get_predefined_earnings_categories, get_predefined_expenses_categories
@@ -46,6 +46,7 @@ class CreateTransactionView(LoginRequiredMixin, CreateView):
         # assign
         instance.category = category
         return super(CreateTransactionView, self).form_valid(form)
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Add Transaction'
@@ -89,11 +90,24 @@ class UpdateTransactionView(LoginRequiredMixin, UpdateView):
         # assign
         instance.category = category
         return super(UpdateTransactionView, self).form_valid(form)
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Update Transaction'
         return context
 
+
+class DeleteTransactionView(LoginRequiredMixin, DeleteView):
+    def get_queryset(self):
+        return WalletTransaction.objects.filter(wallet__owner=self.request.user)
+
+    def form_valid(self, form):
+        instance = form.save(commit=False)
+        instance.wallet.owner = self.request.user
+        return super(DeleteTransactionView, self).form_valid(form)
+
+    def get(self, request, *args, **kwargs):
+        return self.post(request, *args, **kwargs)
 
 
 class OverviewPageCreateTransaction(CreateTransactionView):
@@ -108,11 +122,22 @@ class OverviewPageUpdateTransaction(UpdateTransactionView):
         return reverse_lazy('wallet:wallet_overview', kwargs={'pk': self.get_object().wallet.pk})
 
 
+class OverviewPageDeleteTransaction(DeleteTransactionView):
+
+    def get_success_url(self):
+        return reverse_lazy('wallet:wallet_overview', kwargs={'pk': self.get_object().wallet.pk})
+
+
 class TransactionPageCreateTransaction(CreateTransactionView):
     def get_success_url(self):
         return reverse_lazy('wallet:wallet_transactions', kwargs={'pk': self.kwargs.get('pk')})
 
 
 class TransactionPageUpdateTransaction(UpdateTransactionView):
+    def get_success_url(self):
+        return reverse_lazy('wallet:wallet_transactions', kwargs={'pk': self.get_object().wallet.pk})
+
+
+class TransactionPageDeleteTransaction(DeleteTransactionView):
     def get_success_url(self):
         return reverse_lazy('wallet:wallet_transactions', kwargs={'pk': self.get_object().wallet.pk})
