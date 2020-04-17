@@ -63,7 +63,7 @@ class Category(models.Model):
 
 
 class WalletTransaction(AbstractTransaction):
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.PROTECT)
     wallet = models.ForeignKey(Wallet, on_delete=models.CASCADE)
 
     def __str__(self):
