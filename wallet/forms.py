@@ -1,5 +1,6 @@
 from django.forms import ModelForm, HiddenInput
 from django import forms
+from djmoney.money import Money
 
 from user.models import User
 from wallet.models import Category, Wallet
@@ -38,6 +39,8 @@ class CategoryForm(ModelForm):
 
 
 class WalletCreateForm(ModelForm):
+    user_pk = forms.IntegerField(widget=forms.HiddenInput(), required=True)
+
     class Meta:
         model = Wallet
         fields = ['name', 'type', 'balance']
@@ -45,8 +48,23 @@ class WalletCreateForm(ModelForm):
             'balance': 'Initial Balance',
         }
 
+    def __init__(self, user=None, *args, **kwargs):
+        super(WalletCreateForm, self).__init__(*args, **kwargs)
+        self.fields['user_pk'].initial = user.pk
+
     def clean_balance(self):
         balance = self.cleaned_data.get('balance')
-        if balance < 0:
+        if balance.amount < 0:
             raise forms.ValidationError('Initial balance must be 0 or grater')
         return balance
+
+    def clean(self):
+        cleaned_data = super().clean()
+        name = cleaned_data.get('name')
+        type = cleaned_data.get('type')
+        user_pk = cleaned_data.get('user_pk')
+        user = User.objects.get(pk=user_pk)
+        if Wallet.objects.filter(owner=user,type=type,name=name):
+            raise forms.ValidationError('This wallet is duplicated')
+
+
