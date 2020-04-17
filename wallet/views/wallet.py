@@ -12,6 +12,7 @@ class WalletListView(LoginRequiredMixin, ListView):
 
 
 class WalletOverview(LoginRequiredMixin, DetailView):
+    template_name = 'wallet/overview.html'
     def get_queryset(self):
         return Wallet.objects.filter(owner=self.request.user)
 
@@ -22,6 +23,7 @@ class WalletOverview(LoginRequiredMixin, DetailView):
 
 
 class WalletSettingsView(LoginRequiredMixin, DetailView):
+    template_name = 'wallet/settings.html'
     def get_queryset(self):
         return Wallet.objects.filter(owner=self.request.user)
 
@@ -32,6 +34,7 @@ class WalletSettingsView(LoginRequiredMixin, DetailView):
 
 
 class WalletTransactionsView(LoginRequiredMixin, DetailView):
+    template_name = 'wallet/transactions.html'
     def get_queryset(self):
         return Wallet.objects.filter(owner=self.request.user)
 
