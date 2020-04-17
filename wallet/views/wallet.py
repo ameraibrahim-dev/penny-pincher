@@ -54,11 +54,6 @@ class CreateWalletView(LoginRequiredMixin, CreateView):
             return self.form_invalid(form)
         return super(CreateWalletView, self).form_valid(form)
 
-    def get_form_kwargs(self):
-        kwargs = super(CreateWalletView, self).get_form_kwargs()
-        kwargs.update(self.kwargs)
-        return kwargs
-
 
 class UpdateWalletView(LoginRequiredMixin, UpdateView):
     form_class = WalletUpdateForm
@@ -66,12 +61,6 @@ class UpdateWalletView(LoginRequiredMixin, UpdateView):
 
     def get_queryset(self):
         return Wallet.objects.filter(owner=self.request.user)
-
-    def get_form_kwargs(self):
-        kwargs = super(UpdateWalletView, self).get_form_kwargs()
-        kwargs['user'] = self.request.user
-        kwargs.update(self.kwargs)
-        return kwargs
 
     def form_valid(self, form):
         instance = form.save(commit=False)
