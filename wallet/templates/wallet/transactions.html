@@ -1,8 +1,9 @@
 <h1>{{ object }}</h1>
-{{ object.wallettransaction_set.all}}
+
 <ol>
 {% for transaction in object.wallettransaction_set.all%}
     <li>
+
     {{ transaction.category.name }}
     {{ transaction.amount }}
     </li>

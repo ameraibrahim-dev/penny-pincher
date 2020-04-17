@@ -14,7 +14,9 @@ class CreateTransactionView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         instance = form.save(commit=False)
         wallet_pk = self.kwargs.get('pk')
-        wallet = Wallet.objects.get(owner=self.request.user, pk=wallet_pk)
+        wallet = Wallet.objects.filter(owner=self.request.user, pk=wallet_pk).first()
+        if not wallet:
+            raise Http404('wallet not found')
         instance.wallet = wallet
         #modify amount
         if instance.is_expense:
