@@ -1,12 +1,12 @@
 <h1>category</h1>
-<a href="{% url 'wallet:create_custom_categories' %}">Create</a>
+<a href="{% url 'category:create_custom_categories' %}">Create</a>
 <ul>
     {% for category in object_list %}
         <li>{{ category.name }} {{ category.wallettransaction_set.all|length }} Transactions
             {% if category.is_expense %}Expense{% else %}Earnings{% endif %} <a
-                    href="{% url 'wallet:update_custom_categories' category.pk %}">Update</a>
+                    href="{% url 'category:update_custom_categories' category.pk %}">Update</a>
             <a
-                    href="{% url 'wallet:delete_custom_categories_list' category.pk %}">Delete</a>
+                    href="{% url 'category:delete_custom_categories_list' category.pk %}">Delete</a>
         </li>
     {% empty %}
         <li>No category yet.</li>

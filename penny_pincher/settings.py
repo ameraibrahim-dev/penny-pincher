@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     # apps
     'user',
     'wallet',
+    'category',
     # build-in
     'django.contrib.admin',
     'django.contrib.auth',
