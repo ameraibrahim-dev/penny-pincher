@@ -13,6 +13,6 @@ urlpatterns = [
     path('update/<int:pk>/', UpdateWalletView.as_view(), name='update_wallet'),
     path('delete/<int:pk>/', DeleteWalletView.as_view(), name='delete_wallet'),
     #wallet wallet_transaction
-    path('wallet_transaction/create/<int:wallet_pk>', CreateTransaction.as_view(), name='wallet_overview'),
+    path('wallet_transaction/create/<int:wallet_pk>/', CreateTransaction.as_view(), name='wallet_overview'),
 
 ]
