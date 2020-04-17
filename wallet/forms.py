@@ -1,18 +1,19 @@
+from django.core.validators import MinValueValidator
 from django.forms import ModelForm
 from django import forms
+from djmoney.forms import MoneyField
 
 from user.models import User
 from wallet.models import Wallet
 
+
 class WalletCreateForm(ModelForm):
     user_pk = forms.IntegerField(widget=forms.HiddenInput(), required=True)
+    balance = MoneyField(label='Initial Balance',validators=[MinValueValidator(limit_value=0)])
 
     class Meta:
         model = Wallet
         fields = ['name', 'type', 'balance']
-        labels = {
-            'balance': 'Initial Balance',
-        }
 
     def __init__(self, user=None, *args, **kwargs):
         super(WalletCreateForm, self).__init__(*args, **kwargs)
@@ -41,7 +42,7 @@ class WalletUpdateForm(ModelForm):
         model = Wallet
         fields = ['name', 'type']
 
-    def __init__(self, user=None,pk=None, *args, **kwargs):
+    def __init__(self, user=None, pk=None, *args, **kwargs):
         super(WalletUpdateForm, self).__init__(*args, **kwargs)
         self.fields['user_pk'].initial = user.pk
 
