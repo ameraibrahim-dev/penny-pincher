@@ -47,11 +47,15 @@ class CreateWalletView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         instance = form.save(commit=False)
         instance.owner = self.request.user
+        name = form.cleaned_data.get('name')
+        wallet_type = form.cleaned_data.get('type')
+        if Wallet.objects.filter(owner=self.request.user, type=wallet_type, name=name):
+            form.add_error('name', 'This wallet is duplicated')
+            return self.form_invalid(form)
         return super(CreateWalletView, self).form_valid(form)
 
     def get_form_kwargs(self):
         kwargs = super(CreateWalletView, self).get_form_kwargs()
-        kwargs['user'] = self.request.user
         kwargs.update(self.kwargs)
         return kwargs
 
@@ -72,6 +76,11 @@ class UpdateWalletView(LoginRequiredMixin, UpdateView):
     def form_valid(self, form):
         instance = form.save(commit=False)
         instance.owner = self.request.user
+        name = form.cleaned_data.get('name')
+        wallet_type = form.cleaned_data.get('type')
+        if Wallet.objects.filter(owner=self.request.user, type=wallet_type, name=name):
+            form.add_error('name', 'This wallet is duplicated')
+            return self.form_invalid(form)
         return super(UpdateWalletView, self).form_valid(form)
 
     def get_success_url(self):
