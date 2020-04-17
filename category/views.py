@@ -4,9 +4,9 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, TemplateView
 
-from wallet.forms import CategoryForm
+from .forms import CategoryForm
 from wallet.models import Category
-from wallet.utils import get_predefined_expenses_categories, get_predefined_earnings_categories
+from category.utils import get_predefined_expenses_categories, get_predefined_earnings_categories
 
 
 class CustomCategoryListView(LoginRequiredMixin, ListView):
