@@ -23,8 +23,6 @@ class CreateTransactionView(LoginRequiredMixin, CreateView):
             instance.amount.amount = -instance.amount.amount
         #assign category
         
-
-
         return super(CreateTransactionView, self).form_valid(form)
 
 

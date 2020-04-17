@@ -16,5 +16,5 @@ urlpatterns = [
     path('expenses/list/json/', AllExpenseCategoryJsonList.as_view(),
          name='all_expenses_json'),
     path('earnings/list/json/', AllEarningsCategoryJsonList.as_view(),
-         name='all_expenses_json'),
+         name='all_earnings_json'),
 ]

@@ -3,6 +3,7 @@ from django.forms import ModelForm
 from django import forms
 from djmoney.forms import MoneyField
 
+from penny_pincher.fields import StrippedCharField
 from wallet.models import Wallet, WalletTransaction
 
 
@@ -30,10 +31,10 @@ class WalletTransactionForm(ModelForm):
     date = forms.DateField(widget=forms.DateInput)
     note = forms.CharField(widget=forms.Textarea, required=False)
     amount = MoneyField()
-
+    category=forms.ChoiceField()
     class Meta:
         model = WalletTransaction
-        fields = ['amount', 'date', 'note', 'category', 'is_expense']
+        fields = ['amount', 'date', 'note', 'is_expense']
         labels = {
             'is_expense': 'Type',
         }

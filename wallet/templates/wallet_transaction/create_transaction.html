@@ -2,18 +2,45 @@
     {{ form.as_p }}
     <input type="submit" value="Save">
 </form>
+<div id="expenses">
+
+</div>
+<script src="https://code.jquery.com/jquery-3.5.0.min.js"
+        integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
 <script>
+    let expenses_categories = [];
+    let earning_categories = [];
 
+    $.ajax({
+        url: "{% url 'category:all_expenses_json' %}", success: function (result) {
+            expenses_categories = eval(result);
+            let options = generateHtml();
+            $("#id_category").html(options);
+        }
+    });
+       $.ajax({
+        url: "{% url 'category:all_earnings_json' %}", success: function (result) {
+            earning_categories = eval(result);
+        }
+    });
+    String.prototype.format = function () {
+        var str = this;
+        for (var i = 0; i < arguments.length; i++) {
+            str = str.replace('{' + i + '}', arguments[i]);
+        }
+        return str;
+    };
 
+    function generateHtml() {
+        let expense_options = "";
+        expense_options += "<option value='' selected>---------</option>";
+        expenses_categories.forEach(function (item) {
+            let option_html = "<option value='{0}'>{1}</option>".format(item.name, item.name);
+            expense_options += option_html;
+        });
+        return expense_options;
 
-
-
-
-
-
-
-
-
+    }
 
 
 </script>
