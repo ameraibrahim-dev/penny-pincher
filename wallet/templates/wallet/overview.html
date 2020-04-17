@@ -1,3 +1,6 @@
 <h1>{{ object }}</h1>
-{{ object.wallettransaction_set.all}}
-
+<ol>
+{% for transact in  object.wallettransaction_set.all %}
+    <li>{{ transact.is_expense }}{{ transact.amount }}</li>
+{% endfor %}
+</ol>

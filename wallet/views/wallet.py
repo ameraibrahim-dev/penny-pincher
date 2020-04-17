@@ -11,43 +11,28 @@ class WalletListView(LoginRequiredMixin, ListView):
         return Wallet.objects.filter(owner=self.request.user)
 
 
-class WalletOverview(LoginRequiredMixin, DetailView):
+class WalletDetailView(LoginRequiredMixin, DetailView):
+    model = Wallet
+
+    def get_queryset(self):
+        return Wallet.objects.filter(owner=self.request.user)
+
+    def form_valid(self, form):
+        instance = form.save(commit=False)
+        instance.owner = self.request.user
+        return super(WalletOverview, self).form_valid(form)
+
+
+class WalletOverview(WalletDetailView):
     template_name = 'wallet/overview.html'
-    model = Wallet
-
-    def get_queryset(self):
-        return Wallet.objects.filter(owner=self.request.user)
-
-    def form_valid(self, form):
-        instance = form.save(commit=False)
-        instance.owner = self.request.user
-        return super(WalletOverview, self).form_valid(form)
 
 
-class WalletSettingsView(LoginRequiredMixin, DetailView):
+class WalletSettingsView(WalletDetailView):
     template_name = 'wallet/settings.html'
-    model = Wallet
-
-    def get_queryset(self):
-        return Wallet.objects.filter(owner=self.request.user)
-
-    def form_valid(self, form):
-        instance = form.save(commit=False)
-        instance.owner = self.request.user
-        return super(WalletOverview, self).form_valid(form)
 
 
-class WalletTransactionsView(LoginRequiredMixin, DetailView):
+class WalletTransactionsView(WalletDetailView):
     template_name = 'wallet/transactions.html'
-    model = Wallet
-
-    def get_queryset(self):
-        return Wallet.objects.filter(owner=self.request.user)
-
-    def form_valid(self, form):
-        instance = form.save(commit=False)
-        instance.owner = self.request.user
-        return super(WalletOverview, self).form_valid(form)
 
 
 class CreateWalletView(LoginRequiredMixin, CreateView):
@@ -62,13 +47,12 @@ class CreateWalletView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         instance = form.save(commit=False)
         instance.owner = self.request.user
+        name = form.cleaned_data.get('name')
+        wallet_type = form.cleaned_data.get('type')
+        if Wallet.objects.filter(owner=self.request.user, type=wallet_type, name=name):
+            form.add_error('name', 'This wallet is duplicated')
+            return self.form_invalid(form)
         return super(CreateWalletView, self).form_valid(form)
-
-    def get_form_kwargs(self):
-        kwargs = super(CreateWalletView, self).get_form_kwargs()
-        kwargs['user'] = self.request.user
-        kwargs.update(self.kwargs)
-        return kwargs
 
 
 class UpdateWalletView(LoginRequiredMixin, UpdateView):
@@ -78,15 +62,14 @@ class UpdateWalletView(LoginRequiredMixin, UpdateView):
     def get_queryset(self):
         return Wallet.objects.filter(owner=self.request.user)
 
-    def get_form_kwargs(self):
-        kwargs = super(UpdateWalletView, self).get_form_kwargs()
-        kwargs['user'] = self.request.user
-        kwargs.update(self.kwargs)
-        return kwargs
-
     def form_valid(self, form):
         instance = form.save(commit=False)
         instance.owner = self.request.user
+        name = form.cleaned_data.get('name')
+        wallet_type = form.cleaned_data.get('type')
+        if Wallet.objects.filter(owner=self.request.user, type=wallet_type, name=name):
+            form.add_error('name', 'This wallet is duplicated')
+            return self.form_invalid(form)
         return super(UpdateWalletView, self).form_valid(form)
 
     def get_success_url(self):

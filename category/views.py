@@ -3,10 +3,13 @@ from django.db.models import ProtectedError
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, TemplateView
+from rest_framework import generics
+from rest_framework.permissions import IsAuthenticated
 
-from .forms import CategoryForm
-from wallet.models import Category
 from category.utils import get_predefined_expenses_categories, get_predefined_earnings_categories
+from wallet.models import Category
+from .forms import CategoryForm
+from .serializers import CategorySerializer
 
 
 class CustomCategoryListView(LoginRequiredMixin, ListView):
@@ -26,6 +29,17 @@ class CreateCustomCategoryView(LoginRequiredMixin, CreateView):
         instance = form.save(commit=False)
         instance.owner = self.request.user
         instance.is_custom = True
+        name = form.cleaned_data.get('name')
+        is_expense = form.cleaned_data.get('is_expense')
+        categories = []
+        if is_expense is True:
+            categories = get_predefined_expenses_categories(self.request.user)
+        else:
+            categories = get_predefined_earnings_categories(self.request.user)
+        for category in categories:
+            if category.name.lower() == name.lower():
+                form.add_error('name', 'This category is predefined')
+                return self.form_invalid(form)
         return super(CreateCustomCategoryView, self).form_valid(form)
 
     def get_context_data(self, **kwargs):
@@ -33,11 +47,6 @@ class CreateCustomCategoryView(LoginRequiredMixin, CreateView):
         ctx['title'] = 'Create Category'
         return ctx
 
-    def get_form_kwargs(self):
-        kwargs = super(CreateCustomCategoryView, self).get_form_kwargs()
-        kwargs['user'] = self.request.user
-        kwargs.update(self.kwargs)
-        return kwargs
 
 
 class UpdateCustomCategoryView(LoginRequiredMixin, UpdateView):
@@ -50,6 +59,17 @@ class UpdateCustomCategoryView(LoginRequiredMixin, UpdateView):
         instance = form.save(commit=False)
         instance.owner = self.request.user
         instance.is_custom = True
+        name = form.cleaned_data.get('name')
+        is_expense = form.cleaned_data.get('is_expense')
+        categories = []
+        if is_expense is True:
+            categories = get_predefined_expenses_categories(self.request.user)
+        else:
+            categories = get_predefined_earnings_categories(self.request.user)
+        for category in categories:
+            if category.name.lower() == name.lower():
+                form.add_error('name', 'This category is predefined')
+                return self.form_invalid(form)
         return super(UpdateCustomCategoryView, self).form_valid(form)
 
     def get_context_data(self, **kwargs):
@@ -60,11 +80,6 @@ class UpdateCustomCategoryView(LoginRequiredMixin, UpdateView):
     def get_queryset(self):
         return Category.objects.filter(owner=self.request.user, is_custom=True)
 
-    def get_form_kwargs(self):
-        kwargs = super(UpdateCustomCategoryView, self).get_form_kwargs()
-        kwargs['user'] = self.request.user
-        kwargs.update(self.kwargs)
-        return kwargs
 
 
 class DeleteCustomCategoryView(LoginRequiredMixin, DeleteView):
@@ -107,3 +122,25 @@ class DefinedEarningsCategories(LoginRequiredMixin, TemplateView):
         context = super().get_context_data(**kwargs)
         context['object_list'] = get_predefined_earnings_categories(self.request.user)
         return context
+
+
+class AllExpenseCategoryJsonList(generics.ListAPIView):
+    serializer_class = CategorySerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        expenses = []
+        expenses.extend(Category.objects.filter(owner=self.request.user, is_custom=True, is_expense=True))
+        expenses.extend(get_predefined_expenses_categories(self.request.user))
+        return expenses
+
+
+class AllEarningsCategoryJsonList(generics.ListAPIView):
+    serializer_class = CategorySerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        earnings = []
+        earnings.extend(Category.objects.filter(owner=self.request.user, is_custom=True, is_expense=False))
+        earnings.extend(get_predefined_earnings_categories(self.request.user))
+        return earnings

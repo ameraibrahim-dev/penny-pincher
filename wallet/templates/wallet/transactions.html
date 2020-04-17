@@ -1,10 +1,14 @@
 <h1>{{ object }}</h1>
-{{ object.wallettransaction_set.all}}
+
 <ol>
 {% for transaction in object.wallettransaction_set.all%}
+    <li>
+
     {{ transaction.category.name }}
-    {% if transaction.is_expense %}-{% endif %}
     {{ transaction.amount }}
+    <a href="{% url 'wallet:wallet_transactions_update_transaction' transaction.pk %}">Update</a>
+     <a href="{% url 'wallet:wallet_transactions_delete_transaction' transaction.pk %}">Delete</a>
+    </li>
 {% endfor %}
 
 </ol>

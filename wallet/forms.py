@@ -1,22 +1,20 @@
+from django.core.validators import MinValueValidator
 from django.forms import ModelForm
 from django import forms
+from djmoney.forms import MoneyField
 
-from user.models import User
-from wallet.models import Wallet
+from category.models import Category
+from category.utils import get_predefined_earnings_categories, get_predefined_expenses_categories
+from penny_pincher.fields import StrippedCharField
+from wallet.models import Wallet, WalletTransaction
+
 
 class WalletCreateForm(ModelForm):
-    user_pk = forms.IntegerField(widget=forms.HiddenInput(), required=True)
+    balance = MoneyField(label='Initial Balance')
 
     class Meta:
         model = Wallet
         fields = ['name', 'type', 'balance']
-        labels = {
-            'balance': 'Initial Balance',
-        }
-
-    def __init__(self, user=None, *args, **kwargs):
-        super(WalletCreateForm, self).__init__(*args, **kwargs)
-        self.fields['user_pk'].initial = user.pk
 
     def clean_balance(self):
         balance = self.cleaned_data.get('balance')
@@ -24,32 +22,29 @@ class WalletCreateForm(ModelForm):
             raise forms.ValidationError('Initial balance must be 0 or grater')
         return balance
 
-    def clean(self):
-        cleaned_data = super().clean()
-        name = cleaned_data.get('name')
-        type = cleaned_data.get('type')
-        user_pk = cleaned_data.get('user_pk')
-        user = User.objects.get(pk=user_pk)
-        if Wallet.objects.filter(owner=user, type=type, name=name):
-            raise forms.ValidationError('This wallet is duplicated')
-
 
 class WalletUpdateForm(ModelForm):
-    user_pk = forms.IntegerField(widget=forms.HiddenInput(), required=True)
-
     class Meta:
         model = Wallet
         fields = ['name', 'type']
 
-    def __init__(self, user=None,pk=None, *args, **kwargs):
-        super(WalletUpdateForm, self).__init__(*args, **kwargs)
-        self.fields['user_pk'].initial = user.pk
 
-    def clean(self):
-        cleaned_data = super().clean()
-        name = cleaned_data.get('name')
-        type = cleaned_data.get('type')
-        user_pk = cleaned_data.get('user_pk')
-        user = User.objects.get(pk=user_pk)
-        if Wallet.objects.filter(owner=user, type=type, name=name):
-            raise forms.ValidationError('This wallet is duplicated')
+class WalletTransactionForm(ModelForm):
+    date = forms.DateField(widget=forms.DateInput)
+    note = forms.CharField(widget=forms.Textarea, required=False)
+    amount = MoneyField()
+    category = forms.CharField(required=False, widget=forms.Select(choices=[]))
+
+    class Meta:
+        model = WalletTransaction
+        fields = ['amount', 'date', 'note', 'is_expense']
+        labels = {
+            'is_expense': 'Type',
+        }
+
+    def clean_amount(self):
+        amount = self.cleaned_data.get('amount')
+        if amount.amount < 0:
+            raise forms.ValidationError('Amount must be 0 or grater')
+        return amount
+
