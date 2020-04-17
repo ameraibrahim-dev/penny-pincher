@@ -47,11 +47,6 @@ class CreateCustomCategoryView(LoginRequiredMixin, CreateView):
         ctx['title'] = 'Create Category'
         return ctx
 
-    def get_form_kwargs(self):
-        kwargs = super(CreateCustomCategoryView, self).get_form_kwargs()
-        kwargs['user'] = self.request.user
-        kwargs.update(self.kwargs)
-        return kwargs
 
 
 class UpdateCustomCategoryView(LoginRequiredMixin, UpdateView):
@@ -85,11 +80,6 @@ class UpdateCustomCategoryView(LoginRequiredMixin, UpdateView):
     def get_queryset(self):
         return Category.objects.filter(owner=self.request.user, is_custom=True)
 
-    def get_form_kwargs(self):
-        kwargs = super(UpdateCustomCategoryView, self).get_form_kwargs()
-        kwargs['user'] = self.request.user
-        kwargs.update(self.kwargs)
-        return kwargs
 
 
 class DeleteCustomCategoryView(LoginRequiredMixin, DeleteView):
@@ -154,3 +144,4 @@ class AllEarningsCategoryJsonList(generics.ListAPIView):
         earnings.extend(Category.objects.filter(owner=self.request.user, is_custom=True, is_expense=False))
         earnings.extend(get_predefined_earnings_categories(self.request.user))
         return earnings
+    
