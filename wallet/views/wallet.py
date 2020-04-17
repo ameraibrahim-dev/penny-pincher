@@ -1,6 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView, ListView
 
+from wallet.forms import WalletCreateForm
 from wallet.models import Wallet
 
 
@@ -40,6 +41,8 @@ class WalletTransactionsView(LoginRequiredMixin, DetailView):
 
 
 class CreateWalletView(LoginRequiredMixin, CreateView):
+    form_class = WalletCreateForm
+    template_name='wallet/create_wallet_form.html'
     def get_queryset(self):
         return Wallet.objects.filter(owner=self.request.user)
 

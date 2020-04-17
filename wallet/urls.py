@@ -5,12 +5,13 @@ app_name = "wallet"
 
 urlpatterns = [
     #wallets
-    path('wallet/overview/', WalletOverview.as_view(), name='wallet_overview'),
-    path('wallet/settings/', WalletSettingsView.as_view(), name='wallet_settings'),
-    path('wallet/transactions/', WalletTransactionsView.as_view(), name='wallet_transactions'),
-    path('wallet/create/', CreateWalletView.as_view(), name='create_wallet'),
-    path('wallet/update/', UpdateWalletView.as_view(), name='update_wallet'),
-    path('wallet/delete/', DeleteWalletView.as_view(), name='delete_wallet'),
+    path('overview/', WalletOverview.as_view(), name='wallet_overview'),
+    path('settings/', WalletSettingsView.as_view(), name='wallet_settings'),
+    path('transactions/', WalletTransactionsView.as_view(), name='wallet_transactions'),
+    path('list/', WalletListView.as_view(), name='wallet_list'),
+    path('create/', CreateWalletView.as_view(), name='create_wallet'),
+    path('update/', UpdateWalletView.as_view(), name='update_wallet'),
+    path('delete/', DeleteWalletView.as_view(), name='delete_wallet'),
     # categories
     path('custom/category/list/', CustomCategoryListView.as_view(), name='custom_categories_list'),
     path('custom/category/create/', CreateCustomCategoryView.as_view(), name='create_custom_categories'),
