@@ -1,3 +1,10 @@
 <h1>{{ object }}</h1>
 {{ object.wallettransaction_set.all}}
+<ol>
+{% for transaction in object.wallettransaction_set.all%}
+    {{ transaction.category.name }}
+    {% if transaction.is_expense %}-{% endif %}
+    {{ transaction.amount }}
+{% endfor %}
 
+</ol>
