@@ -20,7 +20,7 @@ class CreateCustomCategoryView(LoginRequiredMixin, CreateView):
     model = Category
     form_class = CategoryForm
     template_name = 'category/custom_category_form.html'
-    success_url = reverse_lazy('wallet:custom_categories_list')
+    success_url = reverse_lazy('category:custom_categories_list')
 
     def form_valid(self, form):
         instance = form.save(commit=False)
@@ -43,7 +43,7 @@ class CreateCustomCategoryView(LoginRequiredMixin, CreateView):
 class UpdateCustomCategoryView(LoginRequiredMixin, UpdateView):
     model = Category
     form_class = CategoryForm
-    success_url = reverse_lazy('wallet:custom_categories_list')
+    success_url = reverse_lazy('category:custom_categories_list')
     template_name = 'category/custom_category_form.html'
 
     def form_valid(self, form):
@@ -68,7 +68,7 @@ class UpdateCustomCategoryView(LoginRequiredMixin, UpdateView):
 
 
 class DeleteCustomCategoryView(LoginRequiredMixin, DeleteView):
-    success_url = reverse_lazy('wallet:custom_categories_list')
+    success_url = reverse_lazy('category:custom_categories_list')
 
     def form_valid(self, form):
         instance = form.save(commit=False)
