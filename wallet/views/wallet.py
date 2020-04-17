@@ -2,7 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView, ListView
 
-from wallet.forms import WalletCreateForm
+from wallet.forms import WalletCreateForm, WalletUpdateForm
 from wallet.models import Wallet
 
 
@@ -63,6 +63,9 @@ class CreateWalletView(LoginRequiredMixin, CreateView):
 
 
 class UpdateWalletView(LoginRequiredMixin, UpdateView):
+    form_class = WalletUpdateForm
+    template_name = 'wallet/update_wallet_form.html'
+
     def get_queryset(self):
         return Wallet.objects.filter(owner=self.request.user)
 
@@ -72,11 +75,13 @@ class UpdateWalletView(LoginRequiredMixin, UpdateView):
         kwargs.update(self.kwargs)
         return kwargs
 
-
     def form_valid(self, form):
         instance = form.save(commit=False)
         instance.owner = self.request.user
         return super(UpdateWalletView, self).form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('wallet:update_wallet', kwargs={'pk': self.get_object().pk}, )
 
 
 class DeleteWalletView(LoginRequiredMixin, DeleteView):
