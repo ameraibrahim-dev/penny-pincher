@@ -29,7 +29,7 @@ class WalletUpdateForm(ModelForm):
 class WalletTransactionForm(ModelForm):
     date = forms.DateField(widget=forms.DateInput)
     note = forms.CharField(widget=forms.Textarea, required=False)
-    amount = MoneyField(label='Initial Balance', validators=[MinValueValidator(limit_value=0)])
+    amount = MoneyField()
 
     class Meta:
         model = WalletTransaction
