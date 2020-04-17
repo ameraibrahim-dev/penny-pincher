@@ -33,7 +33,7 @@ class CreateTransactionView(LoginRequiredMixin, CreateView):
             if instance.is_expense:
                 categories = get_predefined_expenses_categories(self.request.user)
             else:
-                categories = get_predefined_expenses_categories(self.request.user)
+                categories = get_predefined_earnings_categories(self.request.user)
             category = next(filter(lambda x: x.name == category_name, categories))
             # if category not found in custom / pre defined
             if not category:
@@ -72,7 +72,7 @@ class UpdateTransactionView(LoginRequiredMixin, UpdateView):
             if instance.is_expense:
                 categories = get_predefined_expenses_categories(self.request.user)
             else:
-                categories = get_predefined_expenses_categories(self.request.user)
+                categories = get_predefined_earnings_categories(self.request.user)
             category = next(filter(lambda x: x.name == category_name, categories))
             # if category not found in custom / pre defined
             if not category:
