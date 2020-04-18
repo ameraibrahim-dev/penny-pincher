@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'user',
     'wallet',
     'category',
+    'api',
     # build-in
     'django.contrib.admin',
     'django.contrib.auth',
