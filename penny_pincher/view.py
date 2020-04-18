@@ -11,6 +11,6 @@ class DashboardView(LoginRequiredMixin, TemplateView):
         context = super().get_context_data(**kwargs)
         # get wallet
         order_by_list = ['-updated', '-created']  # order desc
-        wallets = Wallet.objects.filter(owner=self.request.user).order_by(*order_by_list)
+        wallets = Wallet.objects.filter(owner=self.request.user).order_by(*order_by_list)[:5]
         context['wallets'] = wallets
         return context
