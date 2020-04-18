@@ -18,11 +18,15 @@ class Wallet(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     balance = MoneyField(max_digits=14, decimal_places=2, default_currency='PHP')
 
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
     class Meta:
         unique_together = ('name', 'type', 'owner')
 
     def __str__(self):
         return '{}({})'.format(self.name, self.pk)
+
 
 class WalletTransaction(AbstractTransaction):
     category = models.ForeignKey(Category, on_delete=models.PROTECT)
