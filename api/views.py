@@ -1,5 +1,9 @@
-from django.shortcuts import render
 from rest_framework import generics
+from rest_framework.permissions import IsAuthenticated
+
+from api.serializers import CategorySerializer
+from category.models import Category
+from category.utils import get_predefined_expenses_categories, get_predefined_earnings_categories
 
 
 class AllExpenseCategoryJsonList(generics.ListAPIView):
