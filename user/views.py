@@ -33,6 +33,7 @@ class PasswordResetConfirmView(PasswordResetConfirmView):
 
 
 class UserUpdateView(UpdateView, LoginRequiredMixin):
+    model = User
     fields = ['first_name', 'last_name']
     template_name = 'user/user_profile.html'
 
@@ -40,4 +41,4 @@ class UserUpdateView(UpdateView, LoginRequiredMixin):
         return reverse_lazy('user:profile')
 
     def get_object(self):
-        return User.objects.get(pk=self.request.user.pk)
+        return self.request.user
