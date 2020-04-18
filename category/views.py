@@ -3,13 +3,10 @@ from django.db.models import ProtectedError
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, TemplateView
-from rest_framework import generics
-from rest_framework.permissions import IsAuthenticated
 
 from category.utils import get_predefined_expenses_categories, get_predefined_earnings_categories
 from wallet.models import Category
 from .forms import CategoryForm
-from .serializers import CategorySerializer
 
 
 class CustomCategoryListView(LoginRequiredMixin, ListView):
@@ -23,7 +20,7 @@ class CreateCustomCategoryView(LoginRequiredMixin, CreateView):
     model = Category
     form_class = CategoryForm
     template_name = 'category/custom_category_form.html'
-    success_url = reverse_lazy('category:custom_categories_list')
+    success_url = reverse_lazy('category:custom_category_list')
 
     def form_valid(self, form):
         instance = form.save(commit=False)
@@ -52,7 +49,7 @@ class CreateCustomCategoryView(LoginRequiredMixin, CreateView):
 class UpdateCustomCategoryView(LoginRequiredMixin, UpdateView):
     model = Category
     form_class = CategoryForm
-    success_url = reverse_lazy('category:custom_categories_list')
+    success_url = reverse_lazy('category:custom_category_list')
     template_name = 'category/custom_category_form.html'
 
     def form_valid(self, form):
@@ -83,7 +80,7 @@ class UpdateCustomCategoryView(LoginRequiredMixin, UpdateView):
 
 
 class DeleteCustomCategoryView(LoginRequiredMixin, DeleteView):
-    success_url = reverse_lazy('category:custom_categories_list')
+    success_url = reverse_lazy('category:custom_category_list')
 
     def form_valid(self, form):
         instance = form.save(commit=False)
@@ -124,23 +121,3 @@ class DefinedEarningsCategories(LoginRequiredMixin, TemplateView):
         return context
 
 
-class AllExpenseCategoryJsonList(generics.ListAPIView):
-    serializer_class = CategorySerializer
-    permission_classes = [IsAuthenticated]
-
-    def get_queryset(self):
-        expenses = []
-        expenses.extend(Category.objects.filter(owner=self.request.user, is_custom=True, is_expense=True))
-        expenses.extend(get_predefined_expenses_categories(self.request.user))
-        return expenses
-
-
-class AllEarningsCategoryJsonList(generics.ListAPIView):
-    serializer_class = CategorySerializer
-    permission_classes = [IsAuthenticated]
-
-    def get_queryset(self):
-        earnings = []
-        earnings.extend(Category.objects.filter(owner=self.request.user, is_custom=True, is_expense=False))
-        earnings.extend(get_predefined_earnings_categories(self.request.user))
-        return earnings
