@@ -3,9 +3,6 @@ from django.forms import ModelForm
 from django import forms
 from djmoney.forms import MoneyField
 
-from category.models import Category
-from category.utils import get_predefined_earnings_categories, get_predefined_expenses_categories
-from penny_pincher.fields import StrippedCharField
 from wallet.models import Wallet, WalletTransaction
 
 

@@ -1,5 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import Http404
+from django.http import Http404, HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
@@ -22,9 +22,6 @@ class CreateTransactionView(LoginRequiredMixin, CreateView):
         if not wallet:
             raise Http404('wallet not found')
         instance.wallet = wallet
-        # modify amount
-        if instance.is_expense:
-            instance.amount.amount = -instance.amount.amount
         # assign category
         category = Category.objects.filter(name=category_name, is_expense=instance.is_expense).first()
 
@@ -34,6 +31,7 @@ class CreateTransactionView(LoginRequiredMixin, CreateView):
                 categories = get_predefined_expenses_categories(self.request.user)
             else:
                 categories = get_predefined_earnings_categories(self.request.user)
+
             category = next(filter(lambda x: x.name == category_name, categories))
             # if category not found in custom / pre defined
             if not category:
@@ -43,8 +41,17 @@ class CreateTransactionView(LoginRequiredMixin, CreateView):
             category_dict = category.__dict__
             category_dict.pop('_state')
             category = Category.objects.create(**category_dict)
-        # assign
+        # assign category
         instance.category = category
+        # update wallet balance
+        amount = -instance.amount.amount if instance.is_expense else instance.amount.amount
+        instance.wallet.balance.amount += amount
+        # if not enough balance
+        if instance.wallet.balance.amount < 0:
+            form.add_error('amount', 'sufficient Wallet balance')
+            return self.form_invalid(form)
+        # save wallet balance
+        instance.wallet.save()
         return super(CreateTransactionView, self).form_valid(form)
 
     def get_context_data(self, **kwargs):
@@ -61,14 +68,12 @@ class UpdateTransactionView(LoginRequiredMixin, UpdateView):
     def form_valid(self, form):
         instance = form.save(commit=False)
         category_name = form.cleaned_data.get('category')
-        wallet_pk = self.kwargs.get('pk')
-        wallet = Wallet.objects.filter(owner=self.request.user, pk=wallet_pk).first()
-        if not wallet:
-            raise Http404('wallet not found')
-        instance.wallet = wallet
-        # modify amount
-        if instance.is_expense:
-            instance.amount.amount = -instance.amount.amount
+        # reverse transaction
+        original_instance = WalletTransaction.objects.get(pk=instance.pk)
+        if original_instance.is_expense:
+            instance.wallet.balance.amount += original_instance.amount.amount
+        else:
+            instance.wallet.balance.amount -= original_instance.amount.amount
         # assign category
         category = Category.objects.filter(name=category_name, is_expense=instance.is_expense).first()
 
@@ -87,8 +92,17 @@ class UpdateTransactionView(LoginRequiredMixin, UpdateView):
             category_dict = category.__dict__
             category_dict.pop('_state')
             category = Category.objects.create(**category_dict)
-        # assign
+        # assign category
         instance.category = category
+        # update wallet balance
+        amount = -instance.amount.amount if instance.is_expense else instance.amount.amount
+        instance.wallet.balance.amount += amount
+        # if not enough balance
+        if instance.wallet.balance.amount < 0:
+            form.add_error('amount', 'sufficient Wallet balance')
+            return self.form_invalid(form)
+            # save wallet balance
+        instance.wallet.save()
         return super(UpdateTransactionView, self).form_valid(form)
 
     def get_context_data(self, **kwargs):
@@ -98,13 +112,19 @@ class UpdateTransactionView(LoginRequiredMixin, UpdateView):
 
 
 class DeleteTransactionView(LoginRequiredMixin, DeleteView):
+
     def get_queryset(self):
         return WalletTransaction.objects.filter(wallet__owner=self.request.user)
 
-    def form_valid(self, form):
-        instance = form.save(commit=False)
-        instance.wallet.owner = self.request.user
-        return super(DeleteTransactionView, self).form_valid(form)
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        if self.object.wallet.owner == request.user:
+            if self.object.is_expense:
+                self.object.wallet.balance.amount += self.object.amount.amount
+            else:
+                self.object.wallet.balance.amount -= self.object.amount.amount
+            self.object.wallet.save()
+        return super(DeleteTransactionView, self).delete(request, args, kwargs)
 
     def get(self, request, *args, **kwargs):
         return self.post(request, *args, **kwargs)
