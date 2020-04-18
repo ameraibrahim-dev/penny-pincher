@@ -27,9 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 AUTH_USER_MODEL = 'user.User'
-LOGIN_REDIRECT_URL = '/admin'
+LOGIN_REDIRECT_URL = reverse_lazy('dashboard')
 LOGIN_URL = reverse_lazy('user:login')
-CURRENCIES = ('PHP', )
+CURRENCIES = ('PHP',)
 # Application definition
 
 INSTALLED_APPS = [
