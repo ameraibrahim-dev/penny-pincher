@@ -7,6 +7,14 @@ from category.utils import get_predefined_expenses_categories, get_predefined_ea
 from wallet.models import WalletTransaction, Wallet
 
 
+class AllUsedCategoryJsonList(generics.ListAPIView):
+    serializer_class = CategorySerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return Category.objects.filter(owner=self.request.user).all()
+
+
 class AllExpenseCategoryJsonList(generics.ListAPIView):
     serializer_class = CategorySerializer
     permission_classes = [IsAuthenticated]
@@ -32,14 +40,17 @@ class AllEarningsCategoryJsonList(generics.ListAPIView):
 class WalletTransactionsByUser(generics.ListAPIView):
     serializer_class = WalletTransactionSerializer
     permission_classes = [IsAuthenticated]
+    filterset_fields = ['category']
 
     def get_queryset(self):
         return WalletTransaction.objects.filter(wallet__owner=self.request.user)
 
+
 class WalletTransactionsByWallet(generics.ListAPIView):
     serializer_class = WalletTransactionSerializer
     permission_classes = [IsAuthenticated]
+    filterset_fields = ['category']
 
     def get_queryset(self):
-        wallet=Wallet.objects.get(pk=self.kwargs.get('pk'),owner=self.request.user)
+        wallet = Wallet.objects.get(pk=self.kwargs.get('pk'), owner=self.request.user)
         return WalletTransaction.objects.filter(wallet=wallet)

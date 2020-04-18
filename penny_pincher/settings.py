@@ -150,3 +150,8 @@ REGISTRATION_OPEN = True  # A bool indicating whether registration of new accoun
 RECAPTCHA_PUBLIC_KEY = '6LfFpuYUAAAAAOP39B8IWF8klTFB8hdBJnz378_a'
 RECAPTCHA_PRIVATE_KEY = '6LfFpuYUAAAAAMgRTMYKJNbdi71_OyiI9T8skyqM'
 # RECAPTCHA_PROXY = {'http': 'http://127.0.0.1:8000', 'https': 'https://127.0.0.1:8000'
+
+# Rest framework
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+}
