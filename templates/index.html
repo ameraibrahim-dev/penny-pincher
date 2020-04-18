@@ -1,2 +1,11 @@
 {% extends 'base.html' %}
 {% block title %}Dashboard{% endblock %}
+{% block content %}
+    <o1>
+        <li><a href="{% url 'wallet:wallet_list' %}">Waller List</a></li>
+        <li><a href="{% url 'category:custom_category_list' %}">Settings</a></li>
+        <li><a href="{% url 'user:logout' %}">Logout</a></li>
+    </o1>
+    
+
+{% endblock %}
