@@ -40,17 +40,7 @@ class AllEarningsCategoryJsonList(generics.ListAPIView):
 class WalletTransactionsByUser(generics.ListAPIView):
     serializer_class = WalletTransactionSerializer
     permission_classes = [IsAuthenticated]
-    filterset_fields = ['category']
+    filterset_fields = ['wallet', 'is_expense', 'category', 'id']
 
     def get_queryset(self):
         return WalletTransaction.objects.filter(wallet__owner=self.request.user)
-
-
-class WalletTransactionsByWallet(generics.ListAPIView):
-    serializer_class = WalletTransactionSerializer
-    permission_classes = [IsAuthenticated]
-    filterset_fields = ['category']
-
-    def get_queryset(self):
-        wallet = Wallet.objects.get(pk=self.kwargs.get('pk'), owner=self.request.user)
-        return WalletTransaction.objects.filter(wallet=wallet)

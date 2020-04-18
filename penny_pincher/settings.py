@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django_registration',
     'djmoney',
     'rest_framework',
+    'django_filters',
     # apps
     'user',
     'wallet',
