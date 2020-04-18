@@ -5,7 +5,9 @@ app_name = "api"
 
 urlpatterns = [
     path('user/expenses/categories/', AllExpenseCategoryJsonList.as_view(),
-         name='all_expenses_categories'),
+         name='expense_categories_by_user'),
     path('user/earnings/categories/', AllEarningsCategoryJsonList.as_view(),
-         name='all_earnings_categories'),
+         name='earnings_categories_by_user'),
+    path('user/wallet/transactions/list/', WalletTransactionsByUser.as_view(),
+         name='wallet_transactions_by_user'),
 ]

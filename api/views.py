@@ -1,9 +1,10 @@
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
 
-from api.serializers import CategorySerializer
+from api.serializers import CategorySerializer, WalletTransactionSerializer
 from category.models import Category
 from category.utils import get_predefined_expenses_categories, get_predefined_earnings_categories
+from wallet.models import WalletTransaction
 
 
 class AllExpenseCategoryJsonList(generics.ListAPIView):
@@ -27,3 +28,10 @@ class AllEarningsCategoryJsonList(generics.ListAPIView):
         earnings.extend(get_predefined_earnings_categories(self.request.user))
         return earnings
 
+
+class WalletTransactionsByUser(generics.ListAPIView):
+    serializer_class = WalletTransactionSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return WalletTransaction.objects.filter(wallet__owner=self.request.user)

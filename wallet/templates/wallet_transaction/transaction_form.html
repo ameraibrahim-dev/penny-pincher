@@ -14,14 +14,14 @@
     let earning_categories = [];
 
     $.ajax({
-        url: "{% url 'api:all_expenses_categories' %}", success: function (result) {
+        url: "{% url 'api:expense_categories_by_user' %}", success: function (result) {
             expenses_categories = eval(result);
             let options = generateHtml();
             $("#id_category").html(options);
         }
     });
        $.ajax({
-        url: "{% url 'api:all_earnings_categories' %}", success: function (result) {
+        url: "{% url 'api:earnings_categories_by_user' %}", success: function (result) {
             earning_categories = eval(result);
         }
     });
