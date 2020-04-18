@@ -10,4 +10,6 @@ urlpatterns = [
          name='earnings_categories_by_user'),
     path('user/wallet/transactions/list/', WalletTransactionsByUser.as_view(),
          name='wallet_transactions_by_user'),
+    path('user/wallet/transactions/list/<int:pk>/', WalletTransactionsByWallet.as_view(),
+         name='wallet_transactions_by_wallet'),
 ]

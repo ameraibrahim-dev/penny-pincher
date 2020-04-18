@@ -4,7 +4,7 @@ from rest_framework.permissions import IsAuthenticated
 from api.serializers import CategorySerializer, WalletTransactionSerializer
 from category.models import Category
 from category.utils import get_predefined_expenses_categories, get_predefined_earnings_categories
-from wallet.models import WalletTransaction
+from wallet.models import WalletTransaction, Wallet
 
 
 class AllExpenseCategoryJsonList(generics.ListAPIView):
@@ -35,3 +35,11 @@ class WalletTransactionsByUser(generics.ListAPIView):
 
     def get_queryset(self):
         return WalletTransaction.objects.filter(wallet__owner=self.request.user)
+
+class WalletTransactionsByWallet(generics.ListAPIView):
+    serializer_class = WalletTransactionSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        wallet=Wallet.objects.get(pk=self.kwargs.get('pk'),owner=self.request.user)
+        return WalletTransaction.objects.filter(wallet=wallet)
