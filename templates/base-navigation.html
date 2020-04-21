@@ -1,4 +1,5 @@
 {%  extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 
@@ -9,27 +10,27 @@
                 <div class="sidebar-block">
 
                     <div class="sidenav" id="sidenav">
-                        <img src="../sqa_penny_pincher/assets/images/logo.png" alt="" class="main-logo" id="main-logo">
-                        <img src="../sqa_penny_pincher/assets/icons/menu.svg" alt="menu" class="header-menu-mobile" id="header-menu-mobile" >
+                        <img src="{% static "icons/logo.png" %}" alt="" class="main-logo" id="main-logo">
+                        <img src="{% static "icons/menu.svg" %}" alt="menu" class="header-menu-mobile" id="header-menu-mobile" >
 
                             <ul class="sidenav-menu">
                                 <li class="sidenav-item">
                                     <a href="#" class="sidenav-link">
-                                        <img src="../sqa_penny_pincher/assets/icons/home.svg" alt="" class="sidenav-icon" class="sidenav-icon">
+                                        <img src="{% static "icons/home.svg" %}" alt="" class="sidenav-icon" class="sidenav-icon">
                                         <span class="sidenav-item-name">Dashboard</span>
                                     </a>
                                 </li>
 
                                 <li class="sidenav-item">
                                     <a href="#" class="sidenav-link">
-                                        <img src="../sqa_penny_pincher/assets/icons/wallet.svg" alt="" class="sidenav-icon" class="sidenav-icon">
+                                        <img src="{% static "icons/wallet.svg" %}" alt="" class="sidenav-icon" class="sidenav-icon">
                                         <span class="sidenav-item-name">Wallets</span>
                                     </a>
                                 </li>
 
                                 <li class="sidenav-item">
                                     <a href="#" class="sidenav-link">
-                                        <img src="../sqa_penny_pincher/assets/icons/goal.svg" alt="" class="sidenav-icon" class="sidenav-icon">
+                                        <img src="{% static "icons/goal.svg" %}" alt="" class="sidenav-icon" class="sidenav-icon">
                                         <span class="sidenav-item-name">Goals</span>
                                     </a>
                                 </li>
@@ -38,21 +39,21 @@
 
                                 <li class="sidenav-item">
                                     <a href="#" class="sidenav-link">
-                                        <img src="../sqa_penny_pincher/assets/icons/settings.svg" alt="" class="sidenav-icon" class="sidenav-icon">
+                                        <img src="{% static "icons/settings.svg" %}" alt="" class="sidenav-icon" class="sidenav-icon">
                                         <span class="sidenav-item-name">Settings</span>
                                     </a>
                                 </li>
 
                                 <li class="sidenav-item">
                                     <a href="#" class="sidenav-link">
-                                        <img src="../sqa_penny_pincher/assets/images/profile-pic.png" alt="" class="sidenav-icon -profile" class="sidenav-icon">
+                                        <img src="{% static "icons/wallet-icon.png" %}" alt="" class="sidenav-icon -profile" class="sidenav-icon">
                                         <span class="sidenav-item-name">Profile</span>
                                     </a>
                                 </li>
 
                                 <li class="sidenav-item">
                                     <a href="#" class="sidenav-link">
-                                        <img src="../sqa_penny_pincher/assets/icons/logout.svg" alt="" class="sidenav-icon" class="sidenav-icon">
+                                        <img src="{% static "icons/logout.svg" %}" alt="" class="sidenav-icon" class="sidenav-icon">
                                         <span class="sidenav-item-name">Logout</span>
                                     </a>
                                 </li>
@@ -67,44 +68,44 @@
                     </div>
 
                     <div class="sidenav-mobile" id="sidenav-mobile">
-                        <img src="../sqa_penny_pincher/assets/images/logo.png" alt="" class="main-logo -mobile-logo">
+                        <img src="{% static "icons/logo.png" %}" alt="" class="main-logo -mobile-logo">
 
                             <ul class="sidenav-menu">
 
                                 <li class="sidenav-item">
                                     <a href="#" class="sidenav-link">
-                                        <img src="../sqa_penny_pincher/assets/icons/home.svg" alt="" class="sidenav-icon">
+                                        <img src="{% static "icons/home.svg" %}" alt="" class="sidenav-icon">
                                     </a>
                                 </li>
 
                                 <li class="sidenav-item">
                                     <a href="#" class="sidenav-link">
-                                        <img src="../sqa_penny_pincher/assets/icons/wallet.svg" alt=""  class="sidenav-icon">
+                                        <img src="{% static "icons/wallet.svg" %}" alt="" class="sidenav-icon">
                                     </a>
                                 </li>
 
                                 <li class="sidenav-item">
                                     <a href="#" class="sidenav-link">
-                                        <img src="../sqa_penny_pincher/assets/icons/goal.svg" alt="" class="sidenav-icon -space-after">
+                                        <img src="{% static "icons/goal.svg" %}" alt="" class="sidenav-icon -space-after">
                                     </a>
                                 </li>
 
 
                                 <li class="sidenav-item">
                                     <a href="#" class="sidenav-link">
-                                        <img src="../sqa_penny_pincher/assets/icons/settings.svg" alt="" class="sidenav-icon">
+                                        <img src="{% static "icons/settings.svg" %}" alt="" class="sidenav-icon">
                                     </a>
                                 </li>
 
                                 <li class="sidenav-item">
                                     <a href="#" class="sidenav-link">
-                                        <img src="../sqa_penny_pincher/assets/images/profile-pic.png" alt="" class="sidenav-icon -profile" >
+                                        <img src="{% static "icons/wallet-icon.png" %}" alt="" class="sidenav-icon -profile" >
                                     </a>
                                 </li>
 
                                 <li class="sidenav-item">
                                     <a href="#" class="sidenav-link">
-                                        <img src="../sqa_penny_pincher/assets/icons/logout.svg" alt="" class="sidenav-icon">
+                                        <img src="{% static "icons/logout.svg" %}" alt="" class="sidenav-icon">
 
                                     </a>
                                 </li>
@@ -117,6 +118,14 @@
                 </div>
 
                 <div class="content-block" id="content-block">
+                     <!--Gray Overlay-->
+                    <div class="overlay-wrap-content-block-home" id="overlay-wrap"></div>
+                    <!--Gray Overlay-->
+
+                    <div class="header">
+                        <img src="{% static "icons/menu.svg" %}" alt="menu" class="header-menu" id="header-menu" >
+                    </div>
+
 
                     {% block mainContent %}
 
