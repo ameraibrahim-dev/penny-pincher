@@ -1,0 +1,6 @@
+{% extends 'base-navigation.html' %}
+{% block mainContent%}
+<a href="{% url 'goal:update_goal' object.pk%}">Update</a>
+    <a href="{% url 'goal:delete_goal' object.pk%}">Delete</a>
+{{ object }}
+{% endblock %}
