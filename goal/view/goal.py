@@ -14,6 +14,7 @@ class GoalListView(LoginRequiredMixin, ListView):
 class CreateGoalView(LoginRequiredMixin, CreateView):
     model = Goal
     form_class = CreateGoalForm
+    template_name = 'goal/create_goal.html'
 
     def get_queryset(self):
         return Goal.objects.filter(owner=self.request.user)
@@ -26,6 +27,9 @@ class CreateGoalView(LoginRequiredMixin, CreateView):
             form.add_error('name', 'This goal is duplicated')
             return self.form_invalid(form)
         return super(CreateGoalView, self).form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('goal:goal_detail', kwargs={'pk': self.object.pk},)
 
 
 class UpdateGoalView(LoginRequiredMixin, UpdateView):

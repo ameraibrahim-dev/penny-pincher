@@ -39,7 +39,6 @@ class CreateWalletView(LoginRequiredMixin, CreateView):
     model = Wallet
     form_class = WalletCreateForm
     template_name = 'wallet/create_wallet_form.html'
-    success_url = reverse_lazy('wallet:wallet_list')
 
     def get_queryset(self):
         return Wallet.objects.filter(owner=self.request.user)
@@ -53,6 +52,9 @@ class CreateWalletView(LoginRequiredMixin, CreateView):
             form.add_error('name', 'This wallet is duplicated')
             return self.form_invalid(form)
         return super(CreateWalletView, self).form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('wallet:wallet_overview', kwargs={'pk': self.object.pk}, )
 
 
 class UpdateWalletView(LoginRequiredMixin, UpdateView):
