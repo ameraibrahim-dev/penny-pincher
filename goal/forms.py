@@ -30,6 +30,8 @@ class CreateGoalForm(ModelForm):
 
 class UpdateGoalForm(ModelForm):
     balance = MoneyField(disabled=True)
+    target_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}),
+                                  validators=[NotInPastValidator])
 
     class Meta:
         model = Goal
