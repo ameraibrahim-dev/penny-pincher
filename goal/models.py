@@ -10,6 +10,7 @@ class Goal(models.Model):
     progress = models.FloatField(max)
     target_amount = MoneyField(max_digits=14, decimal_places=2, default_currency='PHP')
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    target_date = models.DateField()
 
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
