@@ -25,13 +25,7 @@ class Goal(models.Model):
     @property
     def saving_progress(self):
         progress = Decimal(self.balance / self.target_amount)
-        progress = round(progress, 2)
-        return progress if progress < 100 else 100
-
-    @property
-    def date_progress(self):
-        progress = Decimal(date.today() / self.target_date)
-        progress = round(progress, 2)
+        progress = round(progress, 2)*100
         return progress if progress < 100 else 100
 
 
