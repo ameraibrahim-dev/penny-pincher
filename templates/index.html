@@ -1,13 +1,178 @@
 {% extends 'base-navigation.html' %}
-{% block title %}Dashboard{% endblock %}
-{% block mainContent %}
-    {{ wallets }}
-    <o1>
-        <li><a href="{% url 'wallet:wallet_list' %}">Waller List</a></li>
-        <li><a href="{% url 'category:custom_category_list' %}">Settings</a></li>
-        <li><a href="{% url 'user:profile' %}">Profile</a></li>
-        <li><a href="{% url 'user:logout' %}">Logout</a></li>
-    </o1>
+{% load static %}
 
+{% block title %}PP - Dashboard{% endblock %}
+
+{% block mainContent %}
+
+     <div class="home-wrap">
+        <div class="greeting-banner-block">
+            <span class="banner-title">Welcome to Penny Pincher, Amera!</span>
+            <p class="banner-message">Here, you can keep track of your personal expenses<br>
+                and savings for your long term goals.</p>
+        </div>
+
+        <div class="wallets-section">
+
+            <span data-attr-section-title="Wallets" class="section-description">Recently used wallet</span>
+
+            <div class="wallet-control-block">
+
+                <div class="wallet-block">
+                    <div class="wallet-header">
+                        <img src="{% static 'icons/wallet-icon.png' %}" alt="Piggy Bank" class="wallet-img">
+                        <span data-attr-wallet-name="Amera Wallet" class="wallet-type">Cash</span>
+                    </div>
+                    <span class="wallet-amount">2,000.00</span>
+                </div>
+
+                <div class="wallet-buttons-block">
+                    <button class="wallet-btn">Add New Wallets</button>
+                    <button class="wallet-btn">View Wallets</button>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="overview-section">
+
+            <span data-attr-section-title="Overview" class="section-description">Shows a summary report of all wallets</span>
+
+            <div class="overview-cards-block">
+
+                <div class="statistic-card">
+
+                    <span class="statistic-card-title">Goal 1 - Year Abroad</span>
+                    <div class="statistics-block">
+
+
+                        <span class="progress-percent" id="progress-percent">30 <!--This is the value that represents the bar--></span>
+
+                        <div class="progress-display-block">
+
+                            <div class="progress-wrap">
+                                <div class="progress-bar" id="progress-bar"><!--This is the actual bar that moves--></div>
+                            </div>
+
+                            <div class="progress-dates">
+                                <span class="progress-date">Mar 2020</span>
+                                <span class="progress-date">Dec 2020</span>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+                <div class="overview-finance-cards">
+
+                    <div class="statistic-card">
+                        <span class="statistic-card-title">Total Balance</span>
+                        <div class="statistics-block -finance">
+
+                            <span class="statistic-amount">22000.00</span>
+
+                        </div>
+                    </div>
+
+                    <div class="statistic-card">
+                        <span class="statistic-card-title">Total Period expenses</span>
+                        <div class="statistics-block -finance">
+
+                            <span class="statistic-amount -expense-red">3000.00</span>
+
+                        </div>
+                    </div>
+
+                    <div class="statistic-card">
+                        <span class="statistic-card-title">Total Period Earnings</span>
+                        <div class="statistics-block -finance">
+
+                            <span class="statistic-amount">0.00</span>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="overview-filter-block">
+
+                    <div class="statistic-card">
+                        <span class="statistic-card-title">Filters</span>
+                        <div class="statistics-block -filter">
+
+                            <div class="statistic-input-box">
+                                <span class="statistic-input-label">Category</span>
+                                <div class="statistics-input-box-style">
+                                    <select class="statistics-filter">
+                                    <option value="" disabled selected >All categories</option>
+                                    <option value="1">Audi</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="statistic-input-box">
+                                <span class="statistic-input-label">Note</span>
+                                <div class="statistics-input-box-style">
+                                    <input type="text" name="statistic-keyword-filter" id="statisticKeywordFilter" class="statistic-keyword-filter" placeholder="Filter by specific keyword">
+                                </div>
+                            </div>
+
+                            <div class="statistic-input-box">
+                                <span class="statistic-input-label">Date Range</span>
+                                <div class="statistics-input-box-style">
+                                    <input type="text" name="statistic-keyword-filter" id="statisticKeywordFilter" class="statistic-keyword-filter" placeholder="Filter by specific keyword">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="overview-filter-charts">
+
+                    <div class="statistic-card">
+                        <span class="statistic-card-title">Account Balance</span>
+                        <div class="statistics-block -chart">
+                            <span class="chart-date-range">Mar 01 - 31</span>
+                            <!-- Charts and Numbers-->
+                            <div class="chart-size">
+                                <canvas id="homeLineChart" width="300" height="300"></canvas>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="statistic-card">
+                        <span class="statistic-card-title">Period of Expenses</span>
+                        <div class="statistics-block -chart">
+                            <span class="chart-date-range">Mar 01 - 31</span>
+                            <!-- Charts and Numbers-->
+                            <div class="chart-size">
+                                <canvas id="homePieChart" width="300" height="300"></canvas>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block body-javascript-extension %}
+
+    <script src="{% static "js/progress-bar.js" %}"></script>
+    <script src="{% static "js/pie-chart.js" %}"></script>
+    <script src="{% static "js/line-chart.js" %}"></script>
 
 {% endblock %}
