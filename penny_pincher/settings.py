@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # apps
     'user',
     'wallet',
+    'goal',
     'category',
     'api',
     # build-in
