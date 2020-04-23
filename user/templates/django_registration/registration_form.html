@@ -4,9 +4,80 @@
 {% load i18n %}
 
 {% block content %}
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="{% trans 'Submit' %}"/>
-    </form>
+{#    <form method="post">#}
+{#        {% csrf_token %}#}
+{#        {{ form.as_p }}#}
+{#        <input type="submit" value="{% trans 'Submit' %}"/>#}
+{#    </form>#}
+    <div class="access-body">
+        <div class="access-container">
+
+            <div class="image-registration"></div>
+            <div class="registration-box-container">
+
+                <div class="registration-box">
+
+                    <div class="registration-box-header">
+                        <span class="sign-up">Sign up</span>
+                        <span class="registration-greeting">Join Penny Pincher to easily</br>
+                            keep track of you daily expenses.</span>
+                    </div>
+
+                    <div class="registration-form">
+
+                        <form class="registration-form-fields">
+
+                            <div class="registration-input-field">
+                                <span class="registration-text-field-label">First Name</span>
+
+                                <input type="text" class="registration-text-field" >
+                                <!-- <s:fielderror fieldName="confirmPassword" cssClass="error-field"/>
+	                            <s:textfield cssClass="registration-text-field" name="confirmPassword"/> -->
+                            </div>
+
+                            <div class="registration-input-field">
+                                <span class="registration-text-field-label">Last Name</span>
+
+                                <input type="text" class="registration-text-field" data-field-title="">
+                            </div>
+
+                            <div class="registration-input-field">
+                                <span class="registration-text-field-label">E-mail</span>
+
+                                <input type="text" class="registration-text-field" data-field-title="First Name">
+                            </div>
+
+                            <div class="registration-input-field">
+                                <span class="registration-text-field-label">Password</span>
+
+                            <input type="password" class="registration-text-field" data-field-title="First Name">
+                            </div>
+
+                            <div class="registration-input-field">
+                                <span class="registration-text-field-label">Confirm Password</span>
+
+                            <input type="password" class="registration-text-field" data-field-title="First Name">
+                            </div>
+
+                            <div class="registration-control">
+                                <span class="redirect-prompt">Have an account? <a href="#" class="login-link">Login</a></span>
+                                <button class="btn-primary signup-button">sign up</button>
+                            </div>
+
+                        </form>
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
 {% endblock %}
