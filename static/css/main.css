@@ -757,6 +757,21 @@ button {
         font-weight: bold;
         font-size: 12px;
         color: #35495E; }
+      .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .statistic-card > .statistics-block > .progress-percent {
+        font-family: 'Nunito',sans-serif;
+        font-weight: bold;
+        font-size: 60px;
+        color: #EE8572; }
+      .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .statistic-card > .statistics-block > .progress-display-block {
+        width: 80%; }
+        .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .statistic-card > .statistics-block > .progress-display-block > .progress-wrap > .progress-bar {
+          width: 0%;
+          height: 28px; }
+        .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .statistic-card > .statistics-block > .progress-display-block > .progress-dates > .progress-date {
+          font-family: 'Nunito',sans-serif;
+          font-weight: 400;
+          font-size: 16px;
+          color: #35495E; }
       .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-finance-cards {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
@@ -848,6 +863,21 @@ button {
         font-weight: bold;
         font-size: 12px;
         color: #35495E; }
+      .home-container[data-eq-state$="preMobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .statistic-card > .statistics-block > .progress-percent {
+        font-family: 'Nunito',sans-serif;
+        font-weight: bold;
+        font-size: 72px;
+        color: #EE8572; }
+      .home-container[data-eq-state$="preMobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .statistic-card > .statistics-block > .progress-display-block {
+        width: 80%; }
+        .home-container[data-eq-state$="preMobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .statistic-card > .statistics-block > .progress-display-block > .progress-wrap > .progress-bar {
+          width: 0%;
+          height: 30px; }
+        .home-container[data-eq-state$="preMobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .statistic-card > .statistics-block > .progress-display-block > .progress-dates > .progress-date {
+          font-family: 'Nunito',sans-serif;
+          font-weight: 400;
+          font-size: 18px;
+          color: #35495E; }
       .home-container[data-eq-state$="preMobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-finance-cards {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
