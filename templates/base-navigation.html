@@ -126,12 +126,13 @@
                         <img src="{% static "icons/menu.svg" %}" alt="menu" class="header-menu" id="header-menu" >
                     </div>
 
+                    <div class="main-content-block">
+                        {% block mainContent %}
 
-                    {% block mainContent %}
+                            <!-- Here goes each page's contents-->
 
-                        <!-- Here goes each page's contents-->
-
-                    {% endblock %}
+                        {% endblock %}
+                    </div>
 
                 </div>
 
