@@ -914,7 +914,7 @@ button {
     position: absolute;
     z-index: -1;
     top: 0;
-    width: 100px;
+    width: 200px;
     transition: 0.5s ease; }
     .sidenav-mobile.-collapsed > .main-logo {
       opacity: 0; }
