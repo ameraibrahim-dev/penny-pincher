@@ -9,7 +9,7 @@
     <title>{% block title %}Title{% endblock %}</title>
 
     {% block head-css %}
-        <link rel="stylesheet" href="{% static "css/main.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}">
         <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700&display=swap" rel="stylesheet">
 
     {% endblock %}
@@ -23,19 +23,16 @@
     {% endblock %}
 </head>
 <body>
-    {% block content %}Content{% endblock %}
+{% block content %}Content{% endblock %}
 
-    {% block body-javascript %}
-        <script src="{% static "js/jquery-3.4.1.js" %}"></script>
-        <script src="{% static "js/eq.js" %}"></script>
-        <script src="{% static "js/navigation.js" %}"></script>
-        <script src="{% static "js/progress-bar.js" %}"></script>
-        <script src="{% static "js/pie-chart.js" %}"></script>
-        <script src="{% static "js/line-chart.js" %}"></script>
+{% block body-javascript %}
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"/>
+    <script type="text/javascript" src="{% static "js/eq.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/navigation.js" %}"></script>
+{% endblock %}
 
-
-    {% endblock %}
-
-    {% block body-javascript-extension %}{% endblock %}
+{% block body-javascript-extension %}{% endblock %}
 </body>
 </html>

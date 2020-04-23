@@ -1,6 +1,6 @@
-{% extends 'base.html' %}
+{% extends 'base-navigation.html' %}
 {% block title %}Dashboard{% endblock %}
-{% block content %}
+{% block mainContent %}
     {{ wallets }}
     <o1>
         <li><a href="{% url 'wallet:wallet_list' %}">Waller List</a></li>
