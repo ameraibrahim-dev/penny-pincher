@@ -5,9 +5,9 @@
 
 {% block mainContent %}
 
-     <div class="home-wrap">
+    <div class="home-wrap">
         <div class="greeting-banner-block">
-            <span class="banner-title">Welcome to Penny Pincher, Amera!</span>
+            <span class="banner-title">Welcome to Penny Pincher, {{ request.user.first_name }}</span>
             <p class="banner-message">Here, you can keep track of your personal expenses<br>
                 and savings for your long term goals.</p>
         </div>
@@ -17,15 +17,16 @@
             <span data-attr-section-title="Wallets" class="section-description">Recently used wallet</span>
 
             <div class="wallet-control-block">
-
-                <div class="wallet-block">
-                    <div class="wallet-header">
-                        <img src="{% static 'icons/wallet-icon.png' %}" alt="Piggy Bank" class="wallet-img">
-                        <span data-attr-wallet-name="Amera Wallet" class="wallet-type">Cash</span>
+                {% if wallet %}
+                    <div class="wallet-block">
+                        <div class="wallet-header">
+                            <img src="{% static 'icons/wallet-icon.png' %}" alt="Piggy Bank" class="wallet-img">
+                            <span data-attr-wallet-name="{{ wallet.name }}"
+                                  class="wallet-type">{{ wallet.get_type_display }}</span>
+                        </div>
+                        <span class="wallet-amount">{{ wallet.balance }}</span>
                     </div>
-                    <span class="wallet-amount">2,000.00</span>
-                </div>
-
+                {% endif %}
                 <div class="wallet-buttons-block">
                     <button class="wallet-btn">Add New Wallets</button>
                     <button class="wallet-btn">View Wallets</button>
@@ -36,7 +37,8 @@
 
         <div class="overview-section">
 
-            <span data-attr-section-title="Overview" class="section-description">Shows a summary report of all wallets</span>
+            <span data-attr-section-title="Overview"
+                  class="section-description">Shows a summary report of all wallets</span>
 
             <div class="overview-cards-block">
 
@@ -46,12 +48,14 @@
                     <div class="statistics-block">
 
 
-                        <span class="progress-percent" id="progress-percent">30 <!--This is the value that represents the bar--></span>
+                        <span class="progress-percent" id="progress-percent">30
+                            <!--This is the value that represents the bar--></span>
 
                         <div class="progress-display-block">
 
                             <div class="progress-wrap">
-                                <div class="progress-bar" id="progress-bar"><!--This is the actual bar that moves--></div>
+                                <div class="progress-bar" id="progress-bar">
+                                    <!--This is the actual bar that moves--></div>
                             </div>
 
                             <div class="progress-dates">
@@ -106,8 +110,8 @@
                                 <span class="statistic-input-label">Category</span>
                                 <div class="statistics-input-box-style">
                                     <select class="statistics-filter">
-                                    <option value="" disabled selected >All categories</option>
-                                    <option value="1">Audi</option>
+                                        <option value="" disabled selected>All categories</option>
+                                        <option value="1">Audi</option>
                                     </select>
                                 </div>
                             </div>
@@ -115,14 +119,16 @@
                             <div class="statistic-input-box">
                                 <span class="statistic-input-label">Note</span>
                                 <div class="statistics-input-box-style">
-                                    <input type="text" name="statistic-keyword-filter" id="statisticKeywordFilter" class="statistic-keyword-filter" placeholder="Filter by specific keyword">
+                                    <input type="text" name="statistic-keyword-filter" id="statisticKeywordFilter"
+                                           class="statistic-keyword-filter" placeholder="Filter by specific keyword">
                                 </div>
                             </div>
 
                             <div class="statistic-input-box">
                                 <span class="statistic-input-label">Date Range</span>
                                 <div class="statistics-input-box-style">
-                                    <input type="text" name="statistic-keyword-filter" id="statisticKeywordFilter" class="statistic-keyword-filter" placeholder="Filter by specific keyword">
+                                    <input type="text" name="statistic-keyword-filter" id="statisticKeywordFilter"
+                                           class="statistic-keyword-filter" placeholder="Filter by specific keyword">
                                 </div>
                             </div>
 
@@ -157,9 +163,6 @@
                     </div>
 
                 </div>
-
-
-
 
 
             </div>

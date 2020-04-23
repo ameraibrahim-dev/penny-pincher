@@ -22,7 +22,7 @@ class WalletUpdateForm(ModelForm):
 
 
 class WalletTransactionForm(ModelForm):
-    date = forms.DateField(widget=forms.DateInput)
+    date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
     note = forms.CharField(widget=forms.Textarea, required=False)
     amount = MoneyField()
     category = forms.CharField(required=False, widget=forms.Select(choices=[]))
