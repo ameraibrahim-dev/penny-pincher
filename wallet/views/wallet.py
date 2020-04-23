@@ -82,10 +82,5 @@ class DeleteWalletView(LoginRequiredMixin, DeleteView):
     def get_queryset(self):
         return Wallet.objects.filter(owner=self.request.user)
 
-    def form_valid(self, form):
-        instance = form.save(commit=False)
-        instance.owner = self.request.user
-        return super(DeleteWalletView, self).form_valid(form)
-
     def get(self, request, *args, **kwargs):
         return self.post(request, *args, **kwargs)

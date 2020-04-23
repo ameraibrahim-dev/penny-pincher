@@ -1,7 +1,8 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 
-from goal.forms import CreateGoalForm
+from goal.forms import CreateGoalForm, UpdateGoalForm
 from goal.models import Goal
 
 
@@ -29,7 +30,7 @@ class CreateGoalView(LoginRequiredMixin, CreateView):
 
 class UpdateGoalView(LoginRequiredMixin, UpdateView):
     model = Goal
-    fields = ['']
+    form_class = UpdateGoalForm
 
     def get_queryset(self):
         return Goal.objects.filter(owner=self.request.user)
@@ -41,21 +42,21 @@ class UpdateGoalView(LoginRequiredMixin, UpdateView):
         if Goal.objects.filter(owner=self.request.user, name=name):
             form.add_error('name', 'This goal is duplicated')
             return self.form_invalid(form)
-        return super(CreateGoalView, self).form_valid(form)
+        return super(UpdateGoalView, self).form_valid(form)
 
 
 class DeleteGoalView(LoginRequiredMixin, DeleteView):
-    model = Goal
-    fields = ['']
+    success_url = reverse_lazy('')
 
     def get_queryset(self):
         return Goal.objects.filter(owner=self.request.user)
 
-    def form_valid(self, form):
-        instance = form.save(commit=False)
-        instance.owner = self.request.user
-        name = form.cleaned_data.get('name')
-        if Goal.objects.filter(owner=self.request.user, name=name):
-            form.add_error('name', 'This goal is duplicated')
-            return self.form_invalid(form)
-        return super(CreateGoalView, self).form_valid(form)
+    def get(self, request, *args, **kwargs):
+        return self.post(request, *args, **kwargs)
+
+
+class GoalDetailView(LoginRequiredMixin, DetailView):
+    model = Goal
+
+    def get_queryset(self):
+        return Goal.objects.filter(owner=self.request.user)

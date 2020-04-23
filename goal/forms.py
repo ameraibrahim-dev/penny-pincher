@@ -13,3 +13,13 @@ class CreateGoalForm(ModelForm):
             'balance': 'Initial Amount',
             'Ending Date': 'target_date',
         }
+
+class UpdateGoalForm(ModelForm):
+    class Meta:
+        model = Goal
+        fields = ['name','target_amount','target_date']
+        labels = {
+            'What is the name of your goal': 'name',
+            'How much do you want to save': 'target_amount',
+            'Ending Date': 'target_date',
+        }
