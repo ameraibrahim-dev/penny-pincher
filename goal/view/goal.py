@@ -14,7 +14,7 @@ class GoalListView(LoginRequiredMixin, ListView):
 class CreateGoalView(LoginRequiredMixin, CreateView):
     model = Goal
     form_class = CreateGoalForm
-    template_name = 'goal/create_goal.html'
+    template_name = 'goal/create_goal_form.html'
 
     def get_queryset(self):
         return Goal.objects.filter(owner=self.request.user)
@@ -22,19 +22,16 @@ class CreateGoalView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         instance = form.save(commit=False)
         instance.owner = self.request.user
-        name = form.cleaned_data.get('name')
-        if Goal.objects.filter(owner=self.request.user, name=name):
-            form.add_error('name', 'This goal is duplicated')
-            return self.form_invalid(form)
         return super(CreateGoalView, self).form_valid(form)
 
     def get_success_url(self):
-        return reverse_lazy('goal:goal_detail', kwargs={'pk': self.object.pk},)
+        return reverse_lazy('goal:goal_detail', kwargs={'pk': self.object.pk}, )
 
 
 class UpdateGoalView(LoginRequiredMixin, UpdateView):
     model = Goal
     form_class = UpdateGoalForm
+    template_name = 'goal/update_goal_form.html'
 
     def get_queryset(self):
         return Goal.objects.filter(owner=self.request.user)
@@ -42,15 +39,12 @@ class UpdateGoalView(LoginRequiredMixin, UpdateView):
     def form_valid(self, form):
         instance = form.save(commit=False)
         instance.owner = self.request.user
-        name = form.cleaned_data.get('name')
-        if Goal.objects.filter(owner=self.request.user, name=name):
-            form.add_error('name', 'This goal is duplicated')
-            return self.form_invalid(form)
         return super(UpdateGoalView, self).form_valid(form)
-
+    def get_success_url(self):
+        return reverse_lazy('goal:goal_detail', kwargs={'pk': self.object.pk}, )
 
 class DeleteGoalView(LoginRequiredMixin, DeleteView):
-    success_url = reverse_lazy('')
+    success_url = reverse_lazy('goal:goal_list')
 
     def get_queryset(self):
         return Goal.objects.filter(owner=self.request.user)
