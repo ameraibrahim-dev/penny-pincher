@@ -26,9 +26,14 @@
     {% block content %}Content{% endblock %}
 
     {% block body-javascript %}
-         <script src="{% static "js/jquery-3.4.1.js" %}"></script>
+        <script src="{% static "js/jquery-3.4.1.js" %}"></script>
         <script src="{% static "js/eq.js" %}"></script>
-         <script src="{% static "js/navigation.js" %}"></script>
+        <script src="{% static "js/navigation.js" %}"></script>
+        <script src="{% static "js/progress-bar.js" %}"></script>
+        <script src="{% static "js/pie-chart.js" %}"></script>
+        <script src="{% static "js/line-chart.js" %}"></script>
+
+
     {% endblock %}
 
     {% block body-javascript-extension %}{% endblock %}
