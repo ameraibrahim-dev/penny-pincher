@@ -1,14 +1,13 @@
-from django.core.validators import MinValueValidator
 from django.forms import ModelForm
 from django import forms
-from djmoney.forms import MoneyField
-from djmoney.models.validators import MinMoneyValidator
 
 from goal.models import Goal
+from penny_pincher.validators import NotInPastValidator
 
 
 class CreateGoalForm(ModelForm):
-    target_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+    target_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}),
+                                  validators=[NotInPastValidator])
 
     class Meta:
         model = Goal
@@ -19,8 +18,6 @@ class CreateGoalForm(ModelForm):
             'balance': 'Initial Amount',
             'target_date': 'Ending Date',
         }
-
-
 
 
 class UpdateGoalForm(ModelForm):
