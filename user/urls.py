@@ -10,7 +10,7 @@ app_name = "user"
 
 urlpatterns = [
     # login,logout
-    path('login/', LoginView.as_view(template_name='user_auth/login.html'), name='login'),
+    path('login/', LoginView.as_view(template_name='index.html'), name='login'),
     path('logout/', LogoutView.as_view(template_name='user_auth/logout.html'), name='logout'),
     # password change
     path('password_change/', PasswordChangeView.as_view(), name='password_change'),
