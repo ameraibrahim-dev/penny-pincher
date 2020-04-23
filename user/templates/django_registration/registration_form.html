@@ -25,7 +25,8 @@
 
                     <div class="registration-form">
 
-                        <form class="registration-form-fields">
+                        <form class="registration-form-fields" method="post">
+                            {% csrf_token %}
 
                             <div class="registration-input-field">
                                 <span class="registration-text-field-label">First Name</span>
