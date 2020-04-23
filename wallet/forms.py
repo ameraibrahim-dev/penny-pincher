@@ -13,11 +13,6 @@ class WalletCreateForm(ModelForm):
         model = Wallet
         fields = ['name', 'type', 'balance']
 
-    def clean_balance(self):
-        balance = self.cleaned_data.get('balance')
-        if balance.amount < 0:
-            raise forms.ValidationError('Initial balance must be 0 or grater')
-        return balance
 
 
 class WalletUpdateForm(ModelForm):
