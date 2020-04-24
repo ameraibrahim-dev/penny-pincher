@@ -1,12 +1,12 @@
 from captcha.fields import ReCaptchaField
 from django_registration.forms import RegistrationForm
 from .models import User
-from captcha.widgets import ReCaptchaV2Checkbox
+from captcha.widgets import ReCaptchaV2Checkbox, ReCaptchaV2Invisible
 from django import forms
 
 
 class UserRegistrationForm(RegistrationForm):
-    reCAPTCHA = ReCaptchaField(widget=ReCaptchaV2Checkbox)
+    reCAPTCHA = ReCaptchaField(widget=ReCaptchaV2Invisible)
     first_name = forms.CharField(max_length=30, required=True, min_length=2)
     last_name = forms.CharField(max_length=30, required=True, min_length=2)
     field_order = ['email', 'first_name', 'last_name', 'password1', 'password2', 'reCAPTCHA']
