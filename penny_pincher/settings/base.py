@@ -126,8 +126,8 @@ DEFAULT_FROM_EMAIL = 'Penny Pincher<noreply@example.com>'
 ACCOUNT_ACTIVATION_DAYS = 7  # One-week activation window
 REGISTRATION_OPEN = True  # A bool indicating whether registration of new accounts is currently permitted.
 # Recaptcha
-RECAPTCHA_PUBLIC_KEY = '6LfFpuYUAAAAAOP39B8IWF8klTFB8hdBJnz378_a'
-RECAPTCHA_PRIVATE_KEY = '6LfFpuYUAAAAAMgRTMYKJNbdi71_OyiI9T8skyqM'
+RECAPTCHA_PUBLIC_KEY = '6LfzxO0UAAAAACok0VWYHxqP9JQaY7hhIbwn8smx'
+RECAPTCHA_PRIVATE_KEY = '6LfzxO0UAAAAALPnamYoLYzh6CBRFI5umc3G2dsm'
 # RECAPTCHA_PROXY = {'http': 'http://127.0.0.1:8000', 'https': 'https://127.0.0.1:8000'
 
 # Rest framework
