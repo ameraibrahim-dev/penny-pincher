@@ -2,4 +2,4 @@ from .base import *
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['mysite.com', ]
+ALLOWED_HOSTS = ['penny-pincher-ph.herokuapp.com']
