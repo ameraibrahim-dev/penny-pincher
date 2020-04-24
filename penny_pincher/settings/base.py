@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'djmoney',
     'rest_framework',
     'django_filters',
+    'widget_tweaks',
     # apps
     'user',
     'wallet',
