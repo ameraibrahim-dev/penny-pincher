@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load widget_tweaks %}
 {% block title %}Registration{% endblock %}
 {% load i18n %}
 
@@ -31,7 +31,8 @@
                             <div class="registration-input-field">
                                 <span class="registration-text-field-label">First Name</span>
 
-                                <input type="text" class="registration-text-field" >
+{#                                <input type="text" class="registration-text-field" >#}
+                                {% render_field form. class="registration-text-field"%}
                                 <!-- <s:fielderror fieldName="confirmPassword" cssClass="error-field"/>
 	                            <s:textfield cssClass="registration-text-field" name="confirmPassword"/> -->
                             </div>
@@ -51,7 +52,7 @@
                             <div class="registration-input-field">
                                 <span class="registration-text-field-label">Password</span>
 
-                            <input type="password" class="registration-text-field" data-field-title="First Name">
+                                <input type="password" class="registration-text-field" data-field-title="First Name">
                             </div>
 
                             <div class="registration-input-field">
