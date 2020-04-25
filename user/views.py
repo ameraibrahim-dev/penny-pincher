@@ -1,16 +1,17 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import UpdateView
 from django_registration.backends.activation.views import RegistrationView
-from .forms import UserRegistrationForm, LoginForm
+from .forms import UserRegistrationForm, LoginForm, PasswordResetForm
 from django.urls import reverse_lazy
 from django.contrib.auth.views import PasswordChangeView, PasswordResetView, PasswordResetConfirmView, LoginView
 
 # Create your views here.
 from .models import User
 
+
 class LoginView(LoginView):
     template_name = 'user_auth/login.html'
-    form_class=LoginForm
+    form_class = LoginForm
 
 
 class RegistrationView(RegistrationView):
@@ -27,6 +28,7 @@ class PasswordChangeView(PasswordChangeView):
 class PasswordResetView(PasswordResetView):
     email_template_name = 'user_auth/password_reset_email.html'
     subject_template_name = 'user_auth/password_reset_subject.txt'
+    form_class = PasswordResetForm
     success_url = reverse_lazy('user:password_reset_done')
     template_name = 'user_auth/password_reset_form.html'
 
