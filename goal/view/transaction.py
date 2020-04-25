@@ -14,7 +14,7 @@ class CreateTransactionView(CreateView, LoginRequiredMixin):
     def form_valid(self, form):
         instance = form.save(commit=False)
         goal_pk = self.kwargs.get('pk')
-        goal = Goal.objects.get(pk=goal_pk)
+        goal = Goal.objects.get(owner=self.request.user, pk=goal_pk)
         # update goal balance
         amount = -instance.amount.amount if instance.is_expense else instance.amount.amount
         instance.goal = goal
@@ -33,6 +33,24 @@ class UpdateTransactionView(UpdateView, LoginRequiredMixin):
     model = GoalTransaction
     form_class = GoalTransactionForm
     template_name = 'goal_transaction/transaction_form.html'
+
+    def form_valid(self, form):
+        instance = form.save(commit=False)
+        original_transaction_instance = GoalTransaction.objects.get(goal__owner=self.request.user, pk=instance.pk)
+        # rollback
+        if original_transaction_instance.is_expense:
+            instance.goal.balance.amount += original_transaction_instance.amount.amount
+        else:
+            instance.goal.balance.amount -= original_transaction_instance.amount.amount
+
+        # update goal balance
+        amount = -instance.amount.amount if instance.is_expense else instance.amount.amount
+        instance.goal.balance.amount += amount
+        if instance.goal.balance.amount < 0:
+            form.add_error('amount', 'Insufficient goal balance')
+            return self.form_invalid(form)
+        instance.goal.save()
+        return super(UpdateTransactionView, self).form_valid(form)
 
     def get_queryset(self):
         return GoalTransaction.objects.filter(goal__owner=self.request.user)
