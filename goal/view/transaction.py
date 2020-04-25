@@ -20,7 +20,7 @@ class CreateTransactionView(CreateView, LoginRequiredMixin):
         instance.goal = goal
         instance.goal.balance.amount += amount
         if instance.goal.balance.amount < 0:
-            form.add_error('amount', 'sufficient goal balance')
+            form.add_error('amount', 'Insufficient goal balance')
             return self.form_invalid(form)
         instance.goal.save()
         return super(CreateTransactionView, self).form_valid(form)
