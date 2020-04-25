@@ -9,8 +9,9 @@
     <br>
 
     Transactions
-    <a href="{% url 'goal:create_transaction' %}">Create</a>
+    <a href="{% url 'goal:create_transaction' object.pk %}">Create</a>
     {% for transact in object.goaltransaction_set.all %}
-    {{ transact }}
+        <a href="{% url 'goal:update_transaction' transact.pk %}">Update {{ transact }}</a>
+        <a href="{% url 'goal:delete_transaction' transact.pk %}">Delete {{ transact }}</a>
     {% endfor %}
 {% endblock %}

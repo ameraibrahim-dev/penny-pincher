@@ -12,7 +12,7 @@ urlpatterns = [
     path('detail/<int:pk>/', GoalDetailView.as_view(), name='goal_detail'),
 
     # transactions
-    path('transaction/create/', CreateTransactionView.as_view(), name='create_transaction'),
+    path('transaction/create/<int:pk>/', CreateTransactionView.as_view(), name='create_transaction'),
     path('transaction/update/<int:pk>/', UpdateTransactionView.as_view(), name='update_transaction'),
     path('transaction/delete/<int:pk>', DeleteTransactionView.as_view(), name='delete_transaction'),
 ]

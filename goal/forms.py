@@ -3,7 +3,7 @@ from django import forms
 from djmoney.forms import MoneyField
 
 from goal.models import Goal, GoalTransaction
-from penny_pincher.validators import NotInPastValidator
+from penny_pincher.validators import NotInPastValidator, NotInFutureValidator
 
 
 class CreateGoalForm(ModelForm):
@@ -51,6 +51,8 @@ class UpdateGoalForm(ModelForm):
 
 
 class GoalTransactionForm(ModelForm):
+    date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}),
+                                  validators=[NotInFutureValidator])
     class Meta:
         model = GoalTransaction
-        fields = '__all__'
+        fields = ['amount', 'date', 'note', 'is_expense']
