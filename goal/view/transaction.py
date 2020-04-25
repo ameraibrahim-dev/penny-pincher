@@ -70,3 +70,13 @@ class DeleteTransactionView(DeleteView, LoginRequiredMixin):
 
     def get_success_url(self):
         return reverse_lazy('goal:goal_detail', kwargs={'pk': self.get_object().goal.pk})
+
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        if self.object.goal.owner == request.user:
+            if self.object.is_expense:
+                self.object.goal.balance.amount += self.object.amount.amount
+            else:
+                self.object.goal.balance.amount -= self.object.amount.amount
+            self.object.goal.save()
+        return super(DeleteTransactionView, self).delete(request, args, kwargs)
