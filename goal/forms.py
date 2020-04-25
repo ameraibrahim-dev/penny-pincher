@@ -56,3 +56,6 @@ class GoalTransactionForm(ModelForm):
     class Meta:
         model = GoalTransaction
         fields = ['amount', 'date', 'note', 'is_expense']
+        labels = {
+            'is_expense': 'Type',
+        }

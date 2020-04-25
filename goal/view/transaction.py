@@ -45,6 +45,11 @@ class UpdateTransactionView(UpdateView, LoginRequiredMixin):
     def get_success_url(self):
         return reverse_lazy('goal:goal_detail', kwargs={'pk': self.get_object().goal.pk})
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Update Transaction'
+        return context
+
 
 class DeleteTransactionView(DeleteView, LoginRequiredMixin):
     model = GoalTransaction
