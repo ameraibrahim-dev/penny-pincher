@@ -1,6 +1,24 @@
+{% extends 'base-navigation.html' %}
+{% block mainContent %}
 <form method="post">{% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Update">
 </form>
 <a href="{% url 'user:password_change' %}">Change password</a>
 </form>
+
+
+<!-- Message framework-->
+{% if messages %}
+    {% for message in messages %}
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+            <div class="alert alert-success alert-dismissable">
+                <p class="text-success">
+                    【Success】：{{ message }}
+                </p>
+            </div>
+        {% endif %}
+
+    {% endfor %}
+{% endif %}
+{% endblock %}
