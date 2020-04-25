@@ -44,7 +44,7 @@ class UpdateGoalForm(ModelForm):
 
     def clean(self):
         # balance and target amount comparison
-        if self.cleaned_data['balance'].amount < self.cleaned_data['target_amount'].amount:
+        if self.cleaned_data['balance'].amount > self.cleaned_data['target_amount'].amount:
             self.add_error('target_amount', 'Target amount should grater than or equal your balance')
 
         return self.cleaned_data
