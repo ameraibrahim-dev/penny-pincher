@@ -2,7 +2,7 @@ from django.forms import ModelForm
 from django import forms
 from djmoney.forms import MoneyField
 
-from goal.models import Goal
+from goal.models import Goal, GoalTransaction
 from penny_pincher.validators import NotInPastValidator
 
 
@@ -48,3 +48,9 @@ class UpdateGoalForm(ModelForm):
             self.add_error('target_amount', 'Target amount should grater than your balance')
 
         return self.cleaned_data
+
+
+class GoalTransactionForm(ModelForm):
+    class Meta:
+        model = GoalTransaction
+        fields = '__all__'
