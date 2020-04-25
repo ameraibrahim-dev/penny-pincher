@@ -7,6 +7,8 @@ from goal.models import GoalTransaction
 class TransactionListView(ListView, LoginRequiredMixin):
     model = GoalTransaction
 
+    def get_queryset(self):
+        return GoalTransaction.objects.filter(goal__owner=self.request.user)
 
 class CreateTransactionView(CreateView, LoginRequiredMixin):
     model = GoalTransaction
@@ -22,3 +24,6 @@ class UpdateTransactionView(UpdateView, LoginRequiredMixin):
 
 class DetailTransactionView(DeleteView, LoginRequiredMixin):
     model = GoalTransaction
+
+    def get_queryset(self):
+        return GoalTransaction.objects.filter(goal__owner=self.request.user)
