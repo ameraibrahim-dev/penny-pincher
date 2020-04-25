@@ -1,8 +1,16 @@
 from captcha.fields import ReCaptchaField
+from django.contrib.auth.forms import AuthenticationForm
 from django_registration.forms import RegistrationForm
 from .models import User
-from captcha.widgets import ReCaptchaV2Checkbox, ReCaptchaV2Invisible
+from captcha.widgets import ReCaptchaV2Invisible
 from django import forms
+
+
+class LoginForm(AuthenticationForm):
+    reCAPTCHA = ReCaptchaField(widget=ReCaptchaV2Invisible)
+
+    class Meta:
+        field_order = ['username', 'password', 'reCAPTCHA']
 
 
 class UserRegistrationForm(RegistrationForm):
