@@ -2,8 +2,8 @@ from django.forms import ModelForm
 from django import forms
 from djmoney.forms import MoneyField
 
-from goal.models import Goal
-from penny_pincher.validators import NotInPastValidator
+from goal.models import Goal, GoalTransaction
+from penny_pincher.validators import NotInPastValidator, NotInFutureValidator
 
 
 class CreateGoalForm(ModelForm):
@@ -48,3 +48,14 @@ class UpdateGoalForm(ModelForm):
             self.add_error('target_amount', 'Target amount should grater than your balance')
 
         return self.cleaned_data
+
+
+class GoalTransactionForm(ModelForm):
+    date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}),
+                                  validators=[NotInFutureValidator])
+    class Meta:
+        model = GoalTransaction
+        fields = ['amount', 'date', 'note', 'is_expense']
+        labels = {
+            'is_expense': 'Type',
+        }

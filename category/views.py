@@ -39,12 +39,6 @@ class CreateCustomCategoryView(LoginRequiredMixin, CreateView):
                 return self.form_invalid(form)
         return super(CreateCustomCategoryView, self).form_valid(form)
 
-    def get_context_data(self, **kwargs):
-        ctx = super(CreateCustomCategoryView, self).get_context_data(**kwargs)
-        ctx['title'] = 'Create Category'
-        return ctx
-
-
 
 class UpdateCustomCategoryView(LoginRequiredMixin, UpdateView):
     model = Category
@@ -68,11 +62,6 @@ class UpdateCustomCategoryView(LoginRequiredMixin, UpdateView):
                 form.add_error('name', 'This category is predefined')
                 return self.form_invalid(form)
         return super(UpdateCustomCategoryView, self).form_valid(form)
-
-    def get_context_data(self, **kwargs):
-        ctx = super(UpdateCustomCategoryView, self).get_context_data(**kwargs)
-        ctx['title'] = 'Update Category'
-        return ctx
 
     def get_queryset(self):
         return Category.objects.filter(owner=self.request.user, is_custom=True)

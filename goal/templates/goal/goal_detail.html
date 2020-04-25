@@ -3,10 +3,19 @@
     <a href="{% url 'goal:update_goal' object.pk %}">Update</a>
     <br>
     <a href="{% url 'goal:delete_goal' object.pk %}">Delete</a>
-    {{ object }}
-    {{ object.saving_progress }} %
-
     <br>
 
-    Transactions
+    Balance:{{ object.balance }}
+    <br>
+    Progress{{ object.saving_progress }} %
+    <br>
+
+    <p>Transactions</p>
+    <a href="{% url 'goal:create_transaction' object.pk %}">Create</a>
+    <br>
+    {% for transact in object.goaltransaction_set.all %}
+        <a href="{% url 'goal:update_transaction' transact.pk %}">Update {{ transact }}</a>
+        <a href="{% url 'goal:delete_transaction' transact.pk %}">Delete {{ transact }}</a>
+        <br>
+    {% endfor %}
 {% endblock %}

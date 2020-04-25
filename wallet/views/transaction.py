@@ -48,16 +48,11 @@ class CreateTransactionView(LoginRequiredMixin, CreateView):
         instance.wallet.balance.amount += amount
         # if not enough balance
         if instance.wallet.balance.amount < 0:
-            form.add_error('amount', 'sufficient Wallet balance')
+            form.add_error('amount', 'Insufficient wallet balance')
             return self.form_invalid(form)
         # save wallet balance
         instance.wallet.save()
         return super(CreateTransactionView, self).form_valid(form)
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['title'] = 'Add Transaction'
-        return context
 
 
 class UpdateTransactionView(LoginRequiredMixin, UpdateView):
@@ -68,7 +63,7 @@ class UpdateTransactionView(LoginRequiredMixin, UpdateView):
     def form_valid(self, form):
         instance = form.save(commit=False)
         category_name = form.cleaned_data.get('category')
-        # reverse transaction
+        # reverse wallet_transaction
         original_instance = WalletTransaction.objects.get(pk=instance.pk)
         if original_instance.is_expense:
             instance.wallet.balance.amount += original_instance.amount.amount
@@ -99,16 +94,11 @@ class UpdateTransactionView(LoginRequiredMixin, UpdateView):
         instance.wallet.balance.amount += amount
         # if not enough balance
         if instance.wallet.balance.amount < 0:
-            form.add_error('amount', 'sufficient Wallet balance')
+            form.add_error('amount', 'Insufficient wallet balance')
             return self.form_invalid(form)
             # save wallet balance
         instance.wallet.save()
         return super(UpdateTransactionView, self).form_valid(form)
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['title'] = 'Update Transaction'
-        return context
 
 
 class DeleteTransactionView(LoginRequiredMixin, DeleteView):

@@ -1,0 +1,14 @@
+{% extends 'base-navigation.html' %}
+{% block mainContent %}
+<form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit">
+</form>
+
+    {% if object %}
+         <a href="{% url 'goal:goal_detail' object.pk %}">Back</a>
+        {% else %}
+          <a href="{% url 'goal:goal_detail' view.kwargs.pk %}"> Back</a>
+    {% endif %}
+
+{% endblock %}
