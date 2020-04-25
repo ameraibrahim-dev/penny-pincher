@@ -1,4 +1,6 @@
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import UpdateView
 from django_registration.backends.activation.views import RegistrationView
 from .forms import UserRegistrationForm, LoginForm, PasswordResetForm
@@ -46,3 +48,7 @@ class UserUpdateView(UpdateView, LoginRequiredMixin):
 
     def get_object(self):
         return self.request.user
+
+    def form_valid(self, form):
+        messages.success(self.request, "User profile updated")
+        return super(UserUpdateView, self).form_valid(form)
