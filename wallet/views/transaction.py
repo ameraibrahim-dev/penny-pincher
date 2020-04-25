@@ -12,7 +12,7 @@ from wallet.models import Wallet, WalletTransaction
 class CreateTransactionView(LoginRequiredMixin, CreateView):
     model = WalletTransaction
     form_class = WalletTransactionForm
-    template_name = 'wallet_transaction/transaction_form.html'
+    template_name = 'transaction/transaction_form.html'
 
     def form_valid(self, form):
         instance = form.save(commit=False)
@@ -63,7 +63,7 @@ class CreateTransactionView(LoginRequiredMixin, CreateView):
 class UpdateTransactionView(LoginRequiredMixin, UpdateView):
     model = WalletTransaction
     form_class = WalletTransactionForm
-    template_name = 'wallet_transaction/transaction_form.html'
+    template_name = 'transaction/transaction_form.html'
 
     def form_valid(self, form):
         instance = form.save(commit=False)
