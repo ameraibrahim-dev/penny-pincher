@@ -12,7 +12,7 @@ from wallet.models import Wallet, WalletTransaction
 class CreateTransactionView(LoginRequiredMixin, CreateView):
     model = WalletTransaction
     form_class = WalletTransactionForm
-    template_name = 'transaction/transaction_form.html'
+    template_name = 'wallet_transaction/transaction_form.html'
 
     def form_valid(self, form):
         instance = form.save(commit=False)
@@ -63,12 +63,12 @@ class CreateTransactionView(LoginRequiredMixin, CreateView):
 class UpdateTransactionView(LoginRequiredMixin, UpdateView):
     model = WalletTransaction
     form_class = WalletTransactionForm
-    template_name = 'transaction/transaction_form.html'
+    template_name = 'wallet_transaction/transaction_form.html'
 
     def form_valid(self, form):
         instance = form.save(commit=False)
         category_name = form.cleaned_data.get('category')
-        # reverse transaction
+        # reverse wallet_transaction
         original_instance = WalletTransaction.objects.get(pk=instance.pk)
         if original_instance.is_expense:
             instance.wallet.balance.amount += original_instance.amount.amount

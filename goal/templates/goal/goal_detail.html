@@ -9,4 +9,8 @@
     <br>
 
     Transactions
+    <a href="{% url 'goal:create_transaction' %}">Create</a>
+    {% for transact in object.goaltransaction_set.all %}
+    {{ transact }}
+    {% endfor %}
 {% endblock %}
