@@ -5,10 +5,12 @@ from goal.forms import GoalTransactionForm
 from goal.models import GoalTransaction, Goal
 from django.urls import reverse_lazy
 
+
 class CreateTransactionView(CreateView, LoginRequiredMixin):
     model = GoalTransaction
     form_class = GoalTransactionForm
     template_name = 'goal_transaction/transaction_form.html'
+
     def form_valid(self, form):
         instance = form.save(commit=False)
         goal_pk = self.kwargs.get('pk')
@@ -20,9 +22,9 @@ class CreateTransactionView(CreateView, LoginRequiredMixin):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Add Transaction'
         return context
-    def get_success_url(self):
-        return reverse_lazy()
 
+    def get_success_url(self):
+        return reverse_lazy('goal:goal_detail', kwargs={'pk': self.kwargs.get('pk')})
 
 
 class UpdateTransactionView(UpdateView, LoginRequiredMixin):
@@ -33,6 +35,9 @@ class UpdateTransactionView(UpdateView, LoginRequiredMixin):
     def get_queryset(self):
         return GoalTransaction.objects.filter(goal__owner=self.request.user)
 
+    def get_success_url(self):
+        return reverse_lazy('goal:goal_detail', kwargs={'pk': self.get_object().goal.pk})
+
 
 class DeleteTransactionView(DeleteView, LoginRequiredMixin):
     model = GoalTransaction
@@ -42,3 +47,6 @@ class DeleteTransactionView(DeleteView, LoginRequiredMixin):
 
     def get(self, request, *args, **kwargs):
         return self.post(request, *args, **kwargs)
+
+    def get_success_url(self):
+        return reverse_lazy('goal:goal_detail', kwargs={'pk': self.get_object().goal.pk})
