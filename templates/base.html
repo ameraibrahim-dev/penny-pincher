@@ -8,12 +8,14 @@
     {% block head-meta-extension %}
     {% endblock %}
 
-    <title>{% block title %}Title{% endblock %}</title>
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="icon" href="{% static "icons/favicon.png" %}">
 
     {% block head-css %}
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
         <link rel="stylesheet" href="{% static "css/main.css" %}">
+        <link rel="stylesheet" href="{% static "css/style.css" %}">
         <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700&display=swap" rel="stylesheet">
     {% endblock %}
 
