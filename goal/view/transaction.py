@@ -15,7 +15,14 @@ class CreateTransactionView(CreateView, LoginRequiredMixin):
         instance = form.save(commit=False)
         goal_pk = self.kwargs.get('pk')
         goal = Goal.objects.get(pk=goal_pk)
+        # update goal balance
+        amount = -instance.amount.amount if instance.is_expense else instance.amount.amount
         instance.goal = goal
+        instance.goal.balance.amount += amount
+        if instance.goal.balance.amount < 0:
+            form.add_error('amount', 'sufficient goal balance')
+            return self.form_invalid(form)
+        instance.goal.save()
         return super(CreateTransactionView, self).form_valid(form)
 
     def get_context_data(self, **kwargs):

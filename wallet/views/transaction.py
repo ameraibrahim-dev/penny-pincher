@@ -48,7 +48,7 @@ class CreateTransactionView(LoginRequiredMixin, CreateView):
         instance.wallet.balance.amount += amount
         # if not enough balance
         if instance.wallet.balance.amount < 0:
-            form.add_error('amount', 'sufficient Wallet balance')
+            form.add_error('amount', 'Insufficient wallet balance')
             return self.form_invalid(form)
         # save wallet balance
         instance.wallet.save()
@@ -99,7 +99,7 @@ class UpdateTransactionView(LoginRequiredMixin, UpdateView):
         instance.wallet.balance.amount += amount
         # if not enough balance
         if instance.wallet.balance.amount < 0:
-            form.add_error('amount', 'sufficient Wallet balance')
+            form.add_error('amount', 'Insufficient wallet balance')
             return self.form_invalid(form)
             # save wallet balance
         instance.wallet.save()
