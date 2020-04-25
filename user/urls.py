@@ -1,8 +1,9 @@
 from django.urls import path, include, reverse_lazy
 from django.views.generic import TemplateView
 
-from user.views import PasswordResetConfirmView, PasswordChangeView, PasswordResetView, RegistrationView,UserUpdateView
-from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeDoneView, PasswordResetDoneView, \
+from user.views import PasswordResetConfirmView, PasswordChangeView, PasswordResetView, RegistrationView, \
+    UserUpdateView, LoginView
+from django.contrib.auth.views import LogoutView, PasswordChangeDoneView, PasswordResetDoneView, \
     PasswordResetCompleteView
 from django_registration.backends.activation.views import ActivationView
 
@@ -10,7 +11,7 @@ app_name = "user"
 
 urlpatterns = [
     # login,logout
-    path('login/', LoginView.as_view(template_name='user_auth/login.html'), name='login'),
+    path('login/', LoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(template_name='user_auth/logout.html'), name='logout'),
     # password change
     path('password_change/', PasswordChangeView.as_view(), name='password_change'),
