@@ -1,0 +1,324 @@
+/* GENERAL */
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+
+body, html {
+	height: 100%;
+}
+
+.error-field {
+  font-family: 'Nunito',sans-serif;
+  font-weight: bold;
+  font-size: 10px;
+  color: red; }
+  .error-field.-absolute {
+    font-family: 'Nunito',sans-serif;
+    font-weight: bold;
+    font-size: 10px;
+    color: red;
+    position: absolute;
+    top: 16px;
+}
+
+/* LOGIN CSS */
+.image-login {
+  background: url('../images/sign-in.png');
+  background-position-x: right;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: auto;
+}
+
+.login-container {
+  background-color: #F67575;
+  padding: 32px 64px 0px 64px;
+}
+
+.vertical-center {
+  min-height: 100% !important;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh !important; /* These two lines are counted as one :-)       */
+}
+
+.login-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #F2f2f2;
+  border-radius: 6px;
+  padding: 32px 64px;
+  max-width: 500px;
+  margin: 0 auto; }
+  .login-box > .login-box-header {
+    margin-bottom: 12px; }
+  .login-box > .login-form {
+    margin-bottom: 20px;
+}
+
+.login-box-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%; }
+  .login-box-header > .sign-in {
+    margin-bottom: 12px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.login-form-fields {
+  width: 100%; }
+  .login-form-fields > .login-input-field {
+    margin-bottom: 12px; }
+  .login-form-fields > .login-input-field:last-of-type {
+    margin-bottom: 0px;
+}
+
+.login-control {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .login-control > .redirect-prompt {
+    margin-bottom: 20px;
+}
+
+.sign-in {
+  font-family: 'Nunito',sans-serif;
+  font-weight: bold;
+  font-size: 40px;
+  color: #35495E;
+}
+
+.login-greeting {
+  font-family: 'Nunito',sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  color: #35495E;
+  line-height: 1.5em;
+}
+
+.login-input-field {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start; }
+  .login-input-field > .login-text-field-label {
+    margin-bottom: 6px;
+}
+
+.login-text-field-label {
+  font-family: 'Nunito',sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  color: #35495E;
+  display: block;
+}
+
+.login-text-field {
+  background: #fcf9ea;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 6px;
+  width: 100%;
+}
+
+.forgot-pass-link {
+  font-family: 'Nunito',sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #35495E;
+  text-decoration: underline;
+}
+
+.forgot-pass-link:hover{
+  color:#EE8572;
+}
+
+.register-link {
+  font-family: 'Nunito',sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  padding-top: 20px;
+  color: #49BEB7;
+  text-decoration: underline;
+}
+
+.register-link:hover {
+  color:#EE8572;
+}
+
+.signin-button {
+  font-family: 'Nunito',sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  color: #F2f2f2;
+  background: #EE8572;
+  padding: 8px 24px;
+  border: none;
+  border-radius: 4px;
+  text-transform: uppercase;
+  box-shadow: 0px 4px 14px -4px rgba(0, 0, 0, 0.28);
+}
+
+.signin-button:hover {
+  background: #35495E ;
+}
+/*LOGIN CSS */
+
+
+
+/*PROFILE CSS */
+.container-profile {
+  background-color:#F2F2F2;
+  height: 100%;
+  width: 100%;
+}
+
+.profile-account {
+  font-family: 'Nunito',sans-serif;
+  font-weight: bold;
+  font-size: 35px;
+  color: #35495E;
+  margin-bottom: 10px;
+}
+
+.image-profile {
+  background: url(../images/profile-bg.png);
+  background-position-x: right;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  width: 60%;
+  height: 400px;
+}
+
+.image-change-pass {
+  background: url(../images/change-pass-bg.png);
+  background-position-x: right;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  width: 60%;
+  height: 427px;
+}
+
+.profile-form-box {
+  background: #FFFFFF;
+  border-radius: 6px !important;
+}
+
+.profile-box-section {
+  width: 70%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 30px 60px;
+}
+
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: 15px;
+  font-family: 'Nunito',sans-serif;
+  font-weight: bold;
+  font-size: 25px;
+  color: #35495E;
+}
+
+.profile-form-fields {
+  width: 100%; }
+  .profile-form-fields > .profile-input-field {
+    margin-bottom: 12px; }
+  .profile-form-fields > .profile-input-field:last-of-type {
+    margin-bottom: 0px;
+}
+
+.profile-input-field {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start; }
+  .profile-input-field > .profile-text-field-label {
+    margin-bottom: 6px;
+}
+
+.profile-text-field-label {
+  font-family: 'Nunito',sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  color: #35495E;
+  display: block;
+}
+
+.profile-text-field {
+  padding: 12px 18px;
+  border-radius: 6px;
+  width: 60%;
+}
+
+.update-control {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .update-control > .change-pass-link {
+    margin-bottom: 15px;
+}
+
+.update-password {
+  display: flex;
+  margin-top: 30px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.update-button {
+  font-family: 'Nunito',sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  color: #F2f2f2;
+  background: #EE8572;
+  padding: 8px 24px;
+  border: none;
+  border-radius: 4px;
+  text-transform: uppercase;
+  box-shadow: 0px 4px 14px -4px rgba(0, 0, 0, 0.28);
+}
+
+.update-button:hover {
+  background: #35495E ;
+}
+
+.change-pass-link {
+  font-family: 'Nunito',sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  padding-top: 20px;
+  padding-right: 10px;
+  text-decoration: underline;
+  color: #35495E;
+}
+
+.change-pass-link:hover {
+  color:#EE8572;
+}
+/*PROFILE CSS */
