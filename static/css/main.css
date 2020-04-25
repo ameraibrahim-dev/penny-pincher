@@ -212,6 +212,7 @@ button {
   font-family: 'Nunito',sans-serif;
   font-weight: bold;
   font-size: 14px;
+  text-decoration: underline;
   color: #49BEB7; }
   .login-link:hover {
     font-family: 'Nunito',sans-serif;
