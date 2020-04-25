@@ -17,12 +17,15 @@ class CreateTransactionView(CreateView, LoginRequiredMixin):
 class TransactionDetailView(DetailView, LoginRequiredMixin):
     model = GoalTransaction
 
+    def get_queryset(self):
+        return GoalTransaction.objects.filter(goal__owner=self.request.user)
+
 
 class UpdateTransactionView(UpdateView, LoginRequiredMixin):
     model = GoalTransaction
 
 
-class DetailTransactionView(DeleteView, LoginRequiredMixin):
+class DeleteTransactionView(DeleteView, LoginRequiredMixin):
     model = GoalTransaction
 
     def get_queryset(self):
