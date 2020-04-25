@@ -10,14 +10,14 @@ class LoginForm(AuthenticationForm):
     reCAPTCHA = ReCaptchaField(widget=ReCaptchaV2Invisible)
 
     class Meta:
-        field_order = ['username', 'password', 'reCAPTCHA']
+        fields = ['username', 'password', 'reCAPTCHA']
 
 
 class PasswordResetForm(PasswordResetForm):
     reCAPTCHA = ReCaptchaField(widget=ReCaptchaV2Invisible)
 
     class Meta:
-        field_order = ['email', 'reCAPTCHA']
+        fields = ['email', 'reCAPTCHA']
 
 
 class UserRegistrationForm(RegistrationForm):
