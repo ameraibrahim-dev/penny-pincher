@@ -47,8 +47,6 @@
                                     {% render_field form.last_name class="form-control" %}
                                 </div>
 
-                                {% render_field form.reCAPTCHA class="registration-text-field" %}
-
                                 <div class="form-group update-control">
                                     <a href="{% url 'user:password_change' %}" class="change-pass-link">Change password</a>
                                     <button type="submit" class="update-button btn-secondary float-right">update</button>
