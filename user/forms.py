@@ -1,5 +1,8 @@
 from captcha.fields import ReCaptchaField
 from django.contrib.auth.forms import AuthenticationForm, PasswordResetForm
+from django.core.validators import EmailValidator
+
+from django.forms import EmailField
 from django_registration.forms import RegistrationForm
 from .models import User
 from captcha.widgets import ReCaptchaV2Invisible
@@ -8,6 +11,7 @@ from django import forms
 
 class LoginForm(AuthenticationForm):
     reCAPTCHA = ReCaptchaField(widget=ReCaptchaV2Invisible)
+    username = EmailField(label='Email', validators=[EmailValidator])
 
     class Meta:
         fields = ['username', 'password', 'reCAPTCHA']
