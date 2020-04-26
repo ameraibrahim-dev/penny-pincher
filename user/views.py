@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
+from django.shortcuts import render
 from django.views.generic import UpdateView
 from django_registration.backends.activation.views import RegistrationView
 from .forms import UserRegistrationForm, LoginForm, PasswordResetForm
@@ -20,7 +21,15 @@ class LoginView(LoginView):
 class RegistrationView(RegistrationView):
     email_body_template = 'django_registration/activation_email_body.html'
     form_class = UserRegistrationForm
-    success_url = reverse_lazy("user:django_registration_complete")
+    success_url = 'django_registration/registration_complete.html'
+
+    def form_valid(self, form):
+        context = self.get_context_data()
+        form = context.get('form')
+        email = form.cleaned_data['email']
+        context = {}
+        context['email'] = email
+        return render(self.request, self.get_success_url(), context=context)
 
 
 class PasswordChangeView(PasswordChangeView):
@@ -53,8 +62,10 @@ class PasswordResetConfirmView(PasswordResetConfirmView):
     success_url = reverse_lazy('user:password_reset_complete')
     template_name = 'user_auth/password_reset_confirm.html'
 
+
 class PasswordResetCompleteView(PasswordResetCompleteView):
     template_name = 'user_auth/password_reset_complete.html'
+
 
 class UserUpdateView(UpdateView, LoginRequiredMixin):
     model = User
