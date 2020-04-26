@@ -35,9 +35,10 @@ class PasswordResetView(PasswordResetView):
     template_name = 'user_auth/password_reset_form.html'
 
     def form_valid(self, form):
-        instance = form.save(commit=False)
-        user = User.objects.get(email=instance.email)
-        if user.DoesNotExist:
+        email = form.cleaned_data.get('email')
+        try:
+            User.objects.get(email=email)
+        except User.DoesNotExist:
             form.add_error('email', 'user does not exist')
             return self.form_invalid(form)
         return super().form_valid(form)
