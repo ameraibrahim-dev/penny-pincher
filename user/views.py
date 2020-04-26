@@ -39,7 +39,7 @@ class PasswordResetView(PasswordResetView):
         try:
             User.objects.get(email=email)
         except User.DoesNotExist:
-            form.add_error('email', 'user does not exist')
+            form.add_error('email', 'User does not exist')
             return self.form_invalid(form)
         return super().form_valid(form)
 
