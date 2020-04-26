@@ -26,9 +26,9 @@ urlpatterns = [
 
     # register
     path('register/', RegistrationView.as_view(), name='django_registration_register'),
-    path('register/complete/', TemplateView.as_view(
-        template_name="django_registration/registration_complete.html"
-    ), name='django_registration_complete'),
+    # path('register/complete/', TemplateView.as_view(
+    #    template_name="django_registration/registration_complete.html"
+    # ), name='django_registration_complete'),
     path('register/closed/', TemplateView.as_view(
         template_name="django_registration/registration_closed.html"
     ), name='django_registration_disallowed'),
