@@ -52,6 +52,10 @@ class PasswordResetView(PasswordResetView):
             form.add_error('email', 'User does not exist')
             return self.form_invalid(form)
         return super().form_valid(form)
+    
+    def form_valid(self, form):
+        """If the form is valid, redirect to the supplied URL."""
+        return HttpResponseRedirect(self.get_success_url())
 
 
 class PasswordResetDoneView(PasswordResetDoneView):
