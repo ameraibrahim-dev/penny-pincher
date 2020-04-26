@@ -2,9 +2,8 @@ from django.urls import path, include, reverse_lazy
 from django.views.generic import TemplateView
 
 from user.views import PasswordResetConfirmView, PasswordChangeView, PasswordResetView, RegistrationView, \
-    UserUpdateView, LoginView
-from django.contrib.auth.views import LogoutView, PasswordChangeDoneView, PasswordResetDoneView, \
-    PasswordResetCompleteView
+    UserUpdateView, LoginView, PasswordResetDoneView, PasswordResetCompleteView
+from django.contrib.auth.views import LogoutView, PasswordChangeDoneView
 from django_registration.backends.activation.views import ActivationView
 
 app_name = "user"
@@ -20,14 +19,10 @@ urlpatterns = [
          name='password_change_done'),
     # password reset
     path('password_reset/', PasswordResetView.as_view(), name='password_reset'),
-    path('password_reset/done/',
-         PasswordResetDoneView.as_view(template_name='user_auth/password_reset_done.html'),
-         name='password_reset_done'),
+    path('password_reset/done/', PasswordResetDoneView.as_view(), name='password_reset_done'),
 
     path('reset/<uidb64>/<token>/', PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
-    path('reset/done/',
-         PasswordResetCompleteView.as_view(template_name='user_auth/password_reset_complete.html'),
-         name='password_reset_complete'),
+    path('reset/done/', PasswordResetCompleteView.as_view(), name='password_reset_complete'),
 
     # register
     path('register/', RegistrationView.as_view(), name='django_registration_register'),
