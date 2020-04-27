@@ -21,15 +21,14 @@ class LoginView(LoginView):
 class RegistrationView(RegistrationView):
     email_body_template = 'django_registration/activation_email_body.html'
     form_class = UserRegistrationForm
-    success_url = 'django_registration/registration_complete.html'
+    success_template = 'django_registration/registration_complete.html'
 
     def form_valid(self, form):
         context = self.get_context_data()
         form = context.get('form')
         email = form.cleaned_data['email']
-        context = {}
-        context['email'] = email
-        return render(self.request, self.get_success_url(), context=context)
+        success_context = {'email': email}
+        return render(self.request, self.success_template, context=success_context)
 
 
 class PasswordChangeView(PasswordChangeView):
