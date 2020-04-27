@@ -25,6 +25,7 @@ class RegistrationView(RegistrationView):
 
     def form_valid(self, form):
         user = self.register(form)
+        user.password = None
         success_context = {'user': user}
         return render(self.request, self.success_template, context=success_context)
 
