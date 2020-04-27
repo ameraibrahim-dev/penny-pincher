@@ -49,9 +49,17 @@ class PasswordResetView(PasswordResetView):
         except User.DoesNotExist:
             form.add_error('email', 'User does not exist')
             return self.form_invalid(form)
-        # valid, get email and render success page
-        context = self.get_context_data()
-        form = context.get('form')
+        opts = {
+            'use_https': self.request.is_secure(),
+            'token_generator': self.token_generator,
+            'from_email': self.from_email,
+            'email_template_name': self.email_template_name,
+            'subject_template_name': self.subject_template_name,
+            'request': self.request,
+            'html_email_template_name': self.html_email_template_name,
+            'extra_email_context': self.extra_email_context,
+        }
+        form.save(**opts)
         success_context = {'email': email}
         return render(self.request, self.success_template, context=success_context)
 
