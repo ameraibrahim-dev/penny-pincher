@@ -21,15 +21,13 @@ class LoginView(LoginView):
 class RegistrationView(RegistrationView):
     email_body_template = 'django_registration/activation_email_body.html'
     form_class = UserRegistrationForm
-    success_url = 'django_registration/registration_complete.html'
+    success_template = 'django_registration/registration_complete.html'
 
     def form_valid(self, form):
-        context = self.get_context_data()
-        form = context.get('form')
-        email = form.cleaned_data['email']
-        context = {}
-        context['email'] = email
-        return render(self.request, self.get_success_url(), context=context)
+        user = self.register(form)
+        user.password = None
+        success_context = {'user': user}
+        return render(self.request, self.success_template, context=success_context)
 
 
 class PasswordChangeView(PasswordChangeView):
@@ -41,7 +39,7 @@ class PasswordResetView(PasswordResetView):
     email_template_name = 'user_auth/password_reset_email.html'
     subject_template_name = 'user_auth/password_reset_subject.txt'
     form_class = PasswordResetForm
-    success_url = reverse_lazy('user:password_reset_done')
+    success_template = 'user_auth/password_reset_done.html'
     template_name = 'user_auth/password_reset_form.html'
 
     def form_valid(self, form):
@@ -51,7 +49,19 @@ class PasswordResetView(PasswordResetView):
         except User.DoesNotExist:
             form.add_error('email', 'User does not exist')
             return self.form_invalid(form)
-        return super().form_valid(form)
+        opts = {
+            'use_https': self.request.is_secure(),
+            'token_generator': self.token_generator,
+            'from_email': self.from_email,
+            'email_template_name': self.email_template_name,
+            'subject_template_name': self.subject_template_name,
+            'request': self.request,
+            'html_email_template_name': self.html_email_template_name,
+            'extra_email_context': self.extra_email_context,
+        }
+        form.save(**opts)
+        success_context = {'email': email}
+        return render(self.request, self.success_template, context=success_context)
 
 
 class PasswordResetDoneView(PasswordResetDoneView):

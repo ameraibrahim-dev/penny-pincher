@@ -19,16 +19,12 @@ urlpatterns = [
          name='password_change_done'),
     # password reset
     path('password_reset/', PasswordResetView.as_view(), name='password_reset'),
-    path('password_reset/done/', PasswordResetDoneView.as_view(), name='password_reset_done'),
 
     path('reset/<uidb64>/<token>/', PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     path('reset/done/', PasswordResetCompleteView.as_view(), name='password_reset_complete'),
 
     # register
     path('register/', RegistrationView.as_view(), name='django_registration_register'),
-    # path('register/complete/', TemplateView.as_view(
-    #    template_name="django_registration/registration_complete.html"
-    # ), name='django_registration_complete'),
     path('register/closed/', TemplateView.as_view(
         template_name="django_registration/registration_closed.html"
     ), name='django_registration_disallowed'),
