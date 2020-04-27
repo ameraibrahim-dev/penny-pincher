@@ -24,10 +24,8 @@ class RegistrationView(RegistrationView):
     success_template = 'django_registration/registration_complete.html'
 
     def form_valid(self, form):
-        context = self.get_context_data()
-        form = context.get('form')
-        email = form.cleaned_data['email']
-        success_context = {'email': email}
+        user = self.register(form)
+        success_context = {'user': user}
         return render(self.request, self.success_template, context=success_context)
 
 
@@ -40,7 +38,7 @@ class PasswordResetView(PasswordResetView):
     email_template_name = 'user_auth/password_reset_email.html'
     subject_template_name = 'user_auth/password_reset_subject.txt'
     form_class = PasswordResetForm
-    success_url = reverse_lazy('user:password_reset_done')
+    success_template = 'user_auth/password_reset_done.html'
     template_name = 'user_auth/password_reset_form.html'
 
     def form_valid(self, form):
@@ -50,11 +48,11 @@ class PasswordResetView(PasswordResetView):
         except User.DoesNotExist:
             form.add_error('email', 'User does not exist')
             return self.form_invalid(form)
-        return super().form_valid(form)
-    
-    def form_valid(self, form):
-        """If the form is valid, redirect to the supplied URL."""
-        return HttpResponseRedirect(self.get_success_url())
+        # valid, get email and render success page
+        context = self.get_context_data()
+        form = context.get('form')
+        success_context = {'email': email}
+        return render(self.request, self.success_template, context=success_context)
 
 
 class PasswordResetDoneView(PasswordResetDoneView):
