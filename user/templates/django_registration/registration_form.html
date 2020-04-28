@@ -57,7 +57,7 @@
 
                     <div class="registration-form">
 
-                        <form class="registration-form-fields" method="post" action="{% url 'user:django_registration_register' %}">
+                        <form class="registration-form-fields" method="post" action="{% url 'user:django_registration_register' %}" novalidate>
                             {% csrf_token %}
 
                             <div class="registration-input-field">

@@ -63,6 +63,8 @@ table {
   font-family: 'Nunito',sans-serif;
   font-weight: bold;
   font-size: 10px;
+  display: block;
+  margin-bottom: 0.5em;
   color: red; }
   .error-field.-absolute {
     font-family: 'Nunito',sans-serif;
