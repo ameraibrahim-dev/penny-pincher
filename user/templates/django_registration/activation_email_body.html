@@ -1,6 +1,11 @@
 {% load i18n %}
-{% trans "Activate account at" %} {{ site.name }}:
+{% autoescape off %}
+Thanks for joining Penny Pincher!
+
+Please confirm that your email address is correct to continue. Click on the link below to get started:
 
 {{ scheme }}://{{ site.domain }}{% url 'user:django_registration_activate' activation_key %}
 
-{% blocktrans %}Link is valid for {{ expiration_days }} days.{% endblocktrans %}
+This link is valid for {{ expiration_days }} days.
+
+{% endautoescape %}

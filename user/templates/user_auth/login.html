@@ -20,15 +20,16 @@
                     </div>
 
                     <div class="login-form">
-                        <form  class="login-form-fields" method="post" action="{% url 'user:login' %}">
+                        <form class="login-form-fields" method="post" action="{% url 'user:login' %}" novalidate>
                             {% csrf_token %}
 
+
                             <div class="form-group login-input-field">
-                                <span class="login-text-field-label">E-mail</span>
+                                <span class="login-text-field-label">Email</span>
                                 {% for error in form.username.errors %}
-                                  <span class="error-field">
-                                    {{ error }}
-                                  </span>
+                                    <span class="error-field">
+                                                {{ error }}
+                                              </span>
                                 {% endfor %}
                                 {% render_field form.username class="form-control login-text-field" style="color: #EE8572;" %}
                             </div>
@@ -36,7 +37,7 @@
                             <div class="form-group login-input-field">
                                 <span class="login-text-field-label">Password</span>
                                 {% for error in form.password.errors %}
-                                  <span class="error-field">
+                                    <span class="error-field">
                                     {{ error }}
                                   </span>
                                 {% endfor %}
@@ -48,7 +49,8 @@
                             <div class="form-group login-control">
                                 <a href="{% url 'user:password_reset' %}" class="forgot-pass-link">Forgot Password?</a>
                                 <input type="submit" value="{% trans 'sign in' %}" class="signin-button btn-secondary"/>
-                                <a href="{% url 'user:django_registration_register' %}" class="register-link">Don't have an account? Create an account now!</a>
+                                <a href="{% url 'user:django_registration_register' %}" class="register-link">Don't have
+                                    an account? Create an account now!</a>
                             </div>
 
                         </form>

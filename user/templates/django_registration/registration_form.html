@@ -57,7 +57,7 @@
 
                     <div class="registration-form">
 
-                        <form class="registration-form-fields" method="post" action="{% url 'user:django_registration_register' %}">
+                        <form class="registration-form-fields" method="post" action="{% url 'user:django_registration_register' %}" novalidate>
                             {% csrf_token %}
 
                             <div class="registration-input-field">
@@ -86,7 +86,7 @@
                             </div>
 
                             <div class="registration-input-field">
-                                <span class="registration-text-field-label">E-mail</span>
+                                <span class="registration-text-field-label">Email</span>
                                 {% for error in form.email.errors %}
                                   <span class="error-field">
                                     {{ error }}
@@ -121,7 +121,7 @@
                             {% render_field form.reCAPTCHA class="registration-text-field" %}
 
                             <div class="registration-control">
-                                <span class="redirect-prompt">Have an account? <a href="{% url 'user:login' %}" class="login-link">Login</a></span>
+                                <span class="redirect-prompt">Have an account? <a href="{% url 'user:login' %}" class="login-link">Sign In</a></span>
 {#                                <button class="btn-primary signup-button">sign up</button>#}
                                 <input type="submit" value="{% trans 'sign up' %}" class="btn-primary signup-button"/>
                             </div>
