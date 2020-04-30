@@ -14,7 +14,7 @@ from .models import User
 
 
 class LoginView(LoginView):
-    template_name = 'base-navigation-noFooter.html'
+    template_name = 'user_auth/login.html'
     form_class = LoginForm
 
 
