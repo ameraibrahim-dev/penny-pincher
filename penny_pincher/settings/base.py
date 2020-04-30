@@ -13,6 +13,7 @@ SECRET_KEY = os.environ.get('APP_SECRET_KEY', '0_0m71zsq(b%ys$!%6#*^8&5ixqgz9k&0
 AUTH_USER_MODEL = 'user.User'
 LOGIN_REDIRECT_URL = reverse_lazy('dashboard')
 LOGIN_URL = reverse_lazy('user:login')
+LOGOUT_REDIRECT_URL= reverse_lazy('user:login')
 CURRENCIES = ('PHP',)
 # Application definition
 
