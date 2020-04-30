@@ -63,9 +63,9 @@ table {
   font-family: 'Nunito',sans-serif;
   font-weight: bold;
   font-size: 10px;
+  color: red;
   display: block;
-  margin-bottom: 0.5em;
-  color: red; }
+  margin-bottom: 0.5em; }
   .error-field.-absolute {
     font-family: 'Nunito',sans-serif;
     font-weight: bold;
@@ -214,7 +214,6 @@ button {
   font-family: 'Nunito',sans-serif;
   font-weight: bold;
   font-size: 16px;
-  text-decoration: underline;
   color: #49BEB7; }
   .login-link:hover {
     font-family: 'Nunito',sans-serif;
@@ -458,11 +457,13 @@ button {
   font-size: 18px;
   color: #F2f2f2;
   background: #EE8572;
-  padding: 8px 24px;
+  padding: 10px 24px;
   border: none;
   border-radius: 4px;
   text-transform: uppercase;
   box-shadow: 0px 4px 14px -4px rgba(0, 0, 0, 0.28); }
+  .reset-submit-button:hover {
+    background: #35495E; }
 
 .greeting-banner-block {
   display: flex;
@@ -571,7 +572,7 @@ button {
   display: flex;
   flex-direction: column;
   background: #FFFFFF;
-  padding: 12px;
+  padding: 12px 20px 20px 12px;
   border-radius: 10px; }
   .statistic-card > .statistics-block {
     margin-top: 12px; }
@@ -589,6 +590,12 @@ button {
     padding: 20px 0px; }
   .statistics-block.-chart {
     padding: 20px 0px 40px 0px; }
+  .statistics-block > .transaction:first-of-type {
+    margin-top: 12px; }
+  .statistics-block > .transaction {
+    margin-bottom: 28px; }
+  .statistics-block > .transaction:last-of-type {
+    margin-bottom: 0px; }
 
 .statistic-card-title {
   font-family: 'Nunito',sans-serif;
@@ -665,17 +672,25 @@ button {
   font-weight: 400;
   font-size: 12px;
   color: #35495E; }
+  .statistic-input-label.-add-transaction {
+    font-family: 'Nunito',sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    color: #35495E; }
 
 .statistics-input-box-style {
   padding: 6px;
   border: 1px solid #707070;
   border-radius: 10px; }
+  .statistics-input-box-style.-add-transaction {
+    border: 0.8px solid #707070;
+    padding: 20px 6px; }
 
 .statistics-filter {
   padding: 2px 6px;
   width: 100%;
   border: none;
-  color: rgba(112, 112, 112, 0.8);
+  color: rgba(112, 112, 112, 0.6);
   outline: none; }
 
 .statistic-keyword-filter {
@@ -683,8 +698,14 @@ button {
   width: 100%;
   border: none;
   outline: none; }
-  .statistic-keyword-filter ::placeholder {
-    color: rgba(112, 112, 112, 0.8); }
+  .statistic-keyword-filter::-webkit-input-placeholder {
+    color: rgba(112, 112, 112, 0.6); }
+  .statistic-keyword-filter::-moz-placeholder {
+    color: rgba(112, 112, 112, 0.6); }
+  .statistic-keyword-filter::-ms-placeholder {
+    color: rgba(112, 112, 112, 0.6); }
+  .statistic-keyword-filter::placeholder {
+    color: rgba(112, 112, 112, 0.6); }
 
 .home-container {
   display: flex;
@@ -1076,7 +1097,8 @@ button {
     position: absolute;
     z-index: -1;
     top: 0;
-    width: 100px;
+    height: 100%;
+    width: 200px;
     transition: 0.5s ease; }
     .sidenav-mobile.-collapsed > .main-logo {
       opacity: 0; }
@@ -1179,6 +1201,228 @@ button {
   font-weight: 400;
   font-size: 12px;
   color: #ffffff; }
+
+.transaction-wrap {
+  display: flex;
+  flex-direction: column;
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 40px; }
+  .transaction-wrap > .transaction-header {
+    margin-bottom: 20px; }
+
+.transaction-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%; }
+
+.transaction-wallet-name {
+  font-family: 'Nunito',sans-serif;
+  font-weight: bold;
+  font-size: 28px;
+  color: #35495E; }
+
+.add-transaction-btn {
+  font-family: 'Nunito',sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  color: #F2f2f2;
+  background: #EE8572;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 24px;
+  outline: thick #EE8572; }
+  .add-transaction-btn:hover {
+    font-family: 'Nunito',sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    color: #F2f2f2;
+    background: #35495E; }
+
+.transaction-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%; }
+  .transaction-body > .transaction-filter-block {
+    margin-bottom: 20px; }
+  .transaction-body > .transaction-finance-cards {
+    margin-bottom: 20px; }
+
+.transaction-filter-block {
+  display: flex;
+  flex-direction: column;
+  width: 100%; }
+
+.transaction-finance-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  width: 100%; }
+
+.transaction-display-block {
+  display: flex;
+  flex-direction: column;
+  width: 100%; }
+
+.no-transactions-message {
+  font-family: 'Nunito',sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  color: #35495E; }
+  .no-transactions-message:before {
+    font-family: 'Nunito',sans-serif;
+    font-weight: bold;
+    font-size: 28px;
+    color: #35495E;
+    content: attr(sata-attr-message);
+    display: block;
+    margin-bottom: 24px;
+    text-align: center; }
+
+.transaction {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%; }
+  .transaction > .transaction-notes {
+    margin-right: 20px; }
+  .transaction > .transaction-price {
+    margin-right: 28px; }
+
+.transaction-type {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-width: 300px; }
+  .transaction-type > .transaction-icon {
+    margin-left: 12px; }
+  .transaction-type > .transaction-name {
+    margin-left: 12px; }
+
+.transaction-icon {
+  max-width: 28px;
+  max-height: 28px; }
+
+.transaction-name {
+  font-family: 'Nunito',sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #35495E; }
+
+.transaction-notes {
+  font-family: 'Nunito',sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  color: #35495E;
+  line-height: 1.5em;
+  width: 400px;
+  text-overflow: ellipsis; }
+
+.no-notes {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%; }
+
+.note-empty-lines {
+  height: 1px;
+  width: 100px;
+  background: #707070;
+  opacity: 0.5; }
+
+.transaction-price {
+  display: flex;
+  flex-direction: row;
+  align-items: center; }
+
+.transaction-amount {
+  font-family: 'Nunito',sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  color: #FF3838; }
+  .transaction-amount:after {
+    content: "PHP";
+    text-transform: uppercase;
+    margin-left: 12px; }
+
+.transaction-control {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between; }
+  .transaction-control > .transaction-edit {
+    margin-right: 20px; }
+
+.transaction-edit {
+  cursor: pointer;
+  max-width: 28px;
+  max-height: 28px;
+  transition: all .2s ease-in-out; }
+  .transaction-edit:hover {
+    transform: scale(1.2); }
+
+.transaction-delete {
+  cursor: pointer;
+  max-width: 28px;
+  max-height: 28px;
+  transition: all .2s ease-in-out; }
+  .transaction-delete:hover {
+    transform: scale(1.1); }
+
+.add-transaction-block {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: #FFFFFF;
+  border-radius: 4px;
+  padding: 60px 20px 40px 20px; }
+
+.add-transaction-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px; }
+
+.add-transaction-form-control {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-end; }
+  .add-transaction-form-control > .add-transaction-cancel-btn {
+    margin-right: 20px; }
+
+.add-transaction-cancel-btn {
+  font-family: 'Nunito',sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  color: #F2f2f2;
+  background: #707070;
+  padding: 8px 24px !important;
+  border: none;
+  border-radius: 4px;
+  text-transform: uppercase;
+  box-shadow: 0px 4px 14px -4px rgba(0, 0, 0, 0.28); }
+  .add-transaction-cancel-btn:hover {
+    background: red; }
+
+.add-transaction-save-btn {
+  font-family: 'Nunito',sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  color: #F2f2f2;
+  background: #EE8572;
+  padding: 8px 24px !important;
+  border: none;
+  border-radius: 4px;
+  text-transform: uppercase;
+  box-shadow: 0px 4px 14px -4px rgba(0, 0, 0, 0.28); }
+  .add-transaction-save-btn:hover {
+    background: #35495E; }
 
 html:before {
   display: none;
