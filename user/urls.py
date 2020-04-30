@@ -1,17 +1,17 @@
-from django.urls import path, include, reverse_lazy
+from django.contrib.auth.views import LogoutView, PasswordChangeDoneView
+from django.urls import path, reverse_lazy
 from django.views.generic import TemplateView
+from django_registration.backends.activation.views import ActivationView
 
 from user.views import PasswordResetConfirmView, PasswordChangeView, PasswordResetView, RegistrationView, \
-    UserUpdateView, LoginView, PasswordResetDoneView, PasswordResetCompleteView
-from django.contrib.auth.views import LogoutView, PasswordChangeDoneView
-from django_registration.backends.activation.views import ActivationView
+    UserUpdateView, LoginView, PasswordResetCompleteView
 
 app_name = "user"
 
 urlpatterns = [
     # login,logout
     path('login/', LoginView.as_view(), name='login'),
-    path('logout/', LogoutView.as_view(template_name='user_auth/logout.html'), name='logout'),
+    path('logout/', LogoutView.as_view(), name='logout'),
     # password change
     path('password_change/', PasswordChangeView.as_view(), name='password_change'),
     path('password_change/done/',
