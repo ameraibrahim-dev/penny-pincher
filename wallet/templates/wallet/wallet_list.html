@@ -1,3 +1,11 @@
+{% extends 'base-navigation-noFooter.html' %}
+{% load widget_tweaks %}
+{% block title %}Penny Pincher - View Wallets{% endblock %}
+{% load i18n %}
+{% load static %}
+
+{% block mainContent %}
+
 <a href="{% url 'wallet:create_wallet' %}">Create</a>
 {% for wallet in object_list %}
     <li><a href="{% url 'wallet:wallet_transactions' wallet.pk %}">{{ wallet.name }}</a> <a href="{% url 'wallet:update_wallet' wallet.pk%}"> Update</a>
@@ -6,3 +14,5 @@
 {% empty %}
     <li>No wallet yet.</li>
 {% endfor %}
+
+{% endblock %}
