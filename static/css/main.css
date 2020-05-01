@@ -60,7 +60,7 @@ a:hover, a:focus {
   padding: 12px 24px;
   border: none;
   border-radius: 5px;
-  font-size: 12px;
+  font-size: 12;
   color: white; }
 
 .error-field {
@@ -953,6 +953,7 @@ button {
 
 .sidebar-block {
   overflow: hidden;
+  height: 100%;
   max-width: 200px;
   min-width: max-content; }
 
