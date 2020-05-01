@@ -60,7 +60,7 @@ a:hover, a:focus {
   padding: 12px 24px;
   border: none;
   border-radius: 5px;
-  font-size: 12;
+  font-size: 12px;
   color: white; }
 
 .error-field {
