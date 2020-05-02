@@ -13,6 +13,11 @@ class LoginForm(AuthenticationForm):
     reCAPTCHA = ReCaptchaField(widget=ReCaptchaV2Invisible)
     username = EmailField(label='Email', validators=[EmailValidator])
 
+    error_messages = {
+        'invalid_login': 'Please enter a correct %(username)s and password.',
+        'inactive': 'This account is inactive.',
+    }
+
     class Meta:
         fields = ['username', 'password', 'reCAPTCHA']
 
@@ -29,6 +34,7 @@ class UserRegistrationForm(RegistrationForm):
     first_name = forms.CharField(max_length=30, required=True, min_length=2)
     last_name = forms.CharField(max_length=30, required=True, min_length=2)
     field_order = ['email', 'first_name', 'last_name', 'password1', 'password2', 'reCAPTCHA']
+
     class Meta:
         model = User
         fields = ['email', 'first_name', 'last_name', 'password1', 'password2', 'reCAPTCHA']
