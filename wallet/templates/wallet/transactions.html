@@ -4,7 +4,6 @@
 {% load static %}
 
 {% block mainContent %}
-    <h1>{{ object.balance }}</h1>
 
     <ol>
     {% for transaction in object.wallettransaction_set.all%}
@@ -68,7 +67,7 @@
                     <span class="statistic-card-title">Total Balance</span>
                     <div class="statistics-block -finance">
 
-                        <span class="statistic-amount">22000.00</span>
+                        <span class="statistic-amount">{{ object.balance }}</span>
 
                     </div>
                 </div>
