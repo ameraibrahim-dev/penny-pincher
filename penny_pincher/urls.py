@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from .views import DashboardView
+from django.conf import settings
 
 handler404 = 'penny_pincher.views.custom_page_not_found_view'
 handler500 = 'penny_pincher.views.custom_error_view'
@@ -16,3 +17,9 @@ urlpatterns = [
     path('category/', include('category.urls', namespace='category')),
     path('api/', include('api.urls', namespace='api')),
 ]
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        path('debug/', include(debug_toolbar.urls)),
+    ] + urlpatterns
