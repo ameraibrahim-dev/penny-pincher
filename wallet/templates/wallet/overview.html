@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block mainContent %}
-        <h1>{{ object }}</h1>
+
     <ol>
     {% for transact in  object.wallettransaction_set.all %}
         <li>{{ transact.is_expense }}{{ transact.amount }}</li>
@@ -10,7 +10,7 @@
     </ol>
     <div class="transaction-wrap">
             <div class="transaction-header">
-                <span class="transaction-wallet-name">--Wallet Name Here--</span>
+                <span class="transaction-wallet-name">{{ object }}</span>
                 <button class="btn-primary add-transaction-btn">Add Transaction</button>
             </div>
 
@@ -114,7 +114,7 @@
 
                                 <div class="transaction"><!--One transaction line-->
                                     <div class="transaction-type -chart">
-                                        <img class="transaction-icon" src="../sqa_penny_pincher/assets/icons/food.png" alt="Transaction Icon">
+                                        <img class="transaction-icon" src="/icons/food.png" alt="Transaction Icon">
                                         <span class="transaction-name">Transaction Name</span>
                                     </div>
                                     <div class="transaction-quantity">
@@ -127,7 +127,7 @@
 
                                 <div class="transaction"><!--One transaction line-->
                                     <div class="transaction-type -chart">
-                                        <img class="transaction-icon" src="../sqa_penny_pincher/assets/icons/food.png" alt="Transaction Icon">
+                                        <img class="transaction-icon" src="../icons/food.png" alt="Transaction Icon">
                                         <span class="transaction-name">Transaction Name</span>
                                     </div>
                                     <div class="transaction-quantity">
