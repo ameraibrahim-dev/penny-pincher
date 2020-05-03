@@ -1,14 +1,190 @@
-<h1>{{ object }}</h1>
-<h1>{{ object.balance }}</h1>
-<a href="{% url 'wallet:wallet_transactions_create_transaction' object.pk %}">Create Transaction</a>
-<ol>
-{% for transaction in object.wallettransaction_set.all%}
-    <li>
-    {{ transaction.category.name }}
-    {{ transaction.amount }}
-    <a href="{% url 'wallet:wallet_transactions_update_transaction' transaction.pk %}">Update</a>
-     <a href="{% url 'wallet:wallet_transactions_delete_transaction' transaction.pk %}">Delete</a>
-    </li>
-{% endfor %}
 
-</ol>
+
+{% extends 'base_navigation_no_footer.html' %}
+{% load static %}
+
+{% block mainContent %}
+    <h1>{{ object }}</h1>
+    <h1>{{ object.balance }}</h1>
+    <a href="{% url 'wallet:wallet_transactions_create_transaction' object.pk %}">Create Transaction</a>
+    <ol>
+    {% for transaction in object.wallettransaction_set.all%}
+        <li>
+        {{ transaction.category.name }}
+        {{ transaction.amount }}
+        <a href="{% url 'wallet:wallet_transactions_update_transaction' transaction.pk %}">Update</a>
+         <a href="{% url 'wallet:wallet_transactions_delete_transaction' transaction.pk %}">Delete</a>
+        </li>
+    {% endfor %}
+
+    </ol>
+        <div class="transaction-wrap">
+
+        <div class="transaction-header">
+            <span class="transaction-wallet-name">--Wallet Name Here--</span>
+            <button class="btn-primary add-transaction-btn">Add Transaction</button>
+        </div>
+
+        <div class="transaction-body">
+
+            <div class="transaction-filter-block">
+
+                <div class="statistic-card">
+                    <span class="statistic-card-title">Filters</span>
+                    <div class="statistics-block -filter">
+
+                        <div class="statistic-input-box">
+                            <span class="statistic-input-label">Category</span>
+                            <div class="statistics-input-box-style">
+                                <select class="statistics-filter">
+                                <option value="" disabled selected >All categories</option>
+                                <option value="1">Audi</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="statistic-input-box">
+                            <span class="statistic-input-label">Note</span>
+                            <div class="statistics-input-box-style">
+                                <input type="text" name="statistic-keyword-filter" id="statisticKeywordFilter" class="statistic-keyword-filter" placeholder="Filter by specific keyword">
+                            </div>
+                        </div>
+
+                        <div class="statistic-input-box">
+                            <span class="statistic-input-label">Date Range</span>
+                            <div class="statistics-input-box-style">
+                                <input type="text" name="statistic-keyword-filter" id="statisticKeywordFilter" class="statistic-keyword-filter" placeholder="Filter by specific keyword">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="transaction-finance-cards">
+
+                <div class="statistic-card">
+                    <span class="statistic-card-title">Total Balance</span>
+                    <div class="statistics-block -finance">
+
+                        <span class="statistic-amount">22000.00</span>
+
+                    </div>
+                </div>
+
+                <div class="statistic-card">
+                    <span class="statistic-card-title">Total Period expenses</span>
+                    <div class="statistics-block -finance">
+
+                        <span class="statistic-amount -expense-red">3000.00</span>
+
+                    </div>
+                </div>
+
+                <div class="statistic-card">
+                    <span class="statistic-card-title">Total Period Earnings</span>
+                    <div class="statistics-block -finance">
+
+                        <span class="statistic-amount">0.00</span>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="transaction-display-block">
+                <div class="statistic-card">
+
+                    <span class="statistic-card-title">March 1, 2020</span>
+
+                        <div class="statistics-block">
+                                    <!--Display this div below if there are no transactions-->
+                            <!-- <div sata-attr-message="No Transactions." class="no-transactions-message">To add a transaction, click Add Transaction on the upper right.</div> -->
+
+                            <div class="transaction"> <!--This is one transaction line-->
+                                <div class="transaction-type">
+
+                                    <img class="transaction-icon" src="../sqa_penny_pincher/assets/icons/bills.png" alt="Transaction Icon">
+
+                                    <span class="transaction-name">Transaction Name</span>
+                                </div>
+
+                                <div class="transaction-notes">
+
+                                    I spent fifty today.
+                                    <!--Place notes here-->
+
+
+                                    <!--If no notes display this div-->
+                                    <!-- <div class="no-notes">
+                                        <span class="note-empty-lines"></span>
+                                        <span class="note-empty-lines"></span>
+                                        <span class="note-empty-lines"></span>
+                                    </div> -->
+
+                                </div>
+
+                                <div class="transaction-price">
+                                    <span class="transaction-amount">-2,000.00</span>
+                                </div>
+
+                                <div class="transaction-control">
+                                    <img class="transaction-edit"src="../sqa_penny_pincher/assets/icons/edit.png" alt="edit">
+                                    <img class="transaction-delete"src="../sqa_penny_pincher/assets/icons/delete.png" alt="edit">
+                                </div>
+
+                            </div>
+
+                            <div class="transaction"> <!--This is one transaction line-->
+                                <div class="transaction-type">
+
+                                    <img class="transaction-icon" src="../sqa_penny_pincher/assets/icons/food.png" alt="Transaction Icon">
+
+                                    <span class="transaction-name">Transaction Name</span>
+                                </div>
+
+                                <div class="transaction-notes">
+
+                                    <!--Place notes here-->
+
+
+                                    <!--If no notes display this div-->
+                                    <div class="no-notes">
+                                        <span class="note-empty-lines"></span>
+                                        <span class="note-empty-lines"></span>
+                                        <span class="note-empty-lines"></span>
+                                    </div>
+
+                                </div>
+
+                                <div class="transaction-price">
+                                    <span class="transaction-amount">-1,000.00</span>
+                                </div>
+
+                                <div class="transaction-control">
+                                    <img class="transaction-edit"src="../sqa_penny_pincher/assets/icons/edit.png" alt="edit">
+                                    <img class="transaction-delete"src="../sqa_penny_pincher/assets/icons/delete.png" alt="edit">
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+{% endblock %}

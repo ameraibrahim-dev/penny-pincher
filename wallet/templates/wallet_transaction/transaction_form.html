@@ -1,14 +1,86 @@
-<form method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Save">
-</form>
-{{ object }}
-<div id="expenses">
+{% extends 'base_navigation_no_footer.html' %}
+{% load static %}
 
-</div>
-<script src="https://code.jquery.com/jquery-3.5.0.min.js"
-        integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
-<script>
+{% block mainContent %}
+
+    <form method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Save">
+    </form>
+    {{ object }}
+    <div id="expenses">
+
+    </div>
+
+    <div class="transaction-wrap">
+
+        <div class="transaction-header">
+            <span class="transaction-wallet-name">Add Transaction</span>
+        </div>
+
+        <div class="add-transaction-block">
+
+            <form method="post" class="add-transaction-form">
+
+                <div class="statistic-input-box">
+                    <span class="statistic-input-label -add-transaction">Transaction Type</span>
+                    <div class="statistics-input-box-style -add-transaction">
+                        <select class="statistics-filter">
+                        <option value="" disabled selected >Expense</option>
+                        <option value="1">Audi</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="statistic-input-box">
+                    <span class="statistic-input-label -add-transaction">Category</span>
+                    <div class="statistics-input-box-style -add-transaction">
+                        <select class="statistics-filter">
+                        <option value="" disabled selected >Select Category</option>
+                        <option value="1">Audi</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="statistic-input-box">
+                    <span class="statistic-input-label -add-transaction">Date</span>
+                    <div class="statistics-input-box-style -add-transaction">
+                        <input type="text" name="statistic-keyword-filter" id="statisticDatePicker" class="statistic-keyword-filter" placeholder="Placeholder date today">
+                    </div>
+                </div>
+
+                <div class="statistic-input-box">
+                    <span class="statistic-input-label -add-transaction">Amount</span>
+                    <div class="statistics-input-box-style -add-transaction">
+                        <input type="text" name="statistic-keyword-filter" id="statisticKeywordFilter" class="statistic-keyword-filter" placeholder="0">
+                    </div>
+                </div>
+
+                <div class="statistic-input-box">
+                    <span class="statistic-input-label -add-transaction">Note (Optional)</span>
+                    <div class="statistics-input-box-style -add-transaction">
+                        <input type="text" name="statistic-keyword-filter" id="statisticKeywordFilter" class="statistic-keyword-filter" placeholder="Take down notes...">
+                    </div>
+                </div>
+
+                <div class="add-transaction-form-control">
+                    <button class="add-transaction-cancel-btn">cancel</button>
+                    <button class="add-transaction-save-btn">save</button>
+                </div>
+
+
+            </form>
+
+        </div>
+    </div>
+
+
+
+{% endblock %}
+
+{% block body-javascript-extension %}
+
+    <script>
     let expenses_categories = [];
     let earning_categories = [];
 
@@ -41,6 +113,9 @@
         });
         return expense_options;
     }
-
-
 </script>
+
+
+
+
+{% endblock %}

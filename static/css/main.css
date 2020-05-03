@@ -595,6 +595,10 @@ button {
     padding: 20px 0px; }
   .statistics-block.-chart {
     padding: 20px 0px 40px 0px; }
+  .statistics-block.-overview-chart {
+    padding: 20px 0px 0px 0px; }
+    .statistics-block.-overview-chart > .chart-transactions {
+      margin-top: 40px; }
   .statistics-block > .transaction:first-of-type {
     margin-top: 12px; }
   .statistics-block > .transaction {
@@ -671,6 +675,8 @@ button {
 
 .statistic-input-box > .statistics-input-box-style {
   margin-top: 6px; }
+.statistic-input-box.-update-wallet {
+  width: 100%; }
 
 .statistic-input-label {
   font-family: 'Nunito',sans-serif;
@@ -953,7 +959,6 @@ button {
 
 .sidebar-block {
   overflow: hidden;
-  height: 100%;
   max-width: 200px;
   min-width: max-content; }
 
@@ -1257,6 +1262,8 @@ button {
     margin-bottom: 20px; }
   .transaction-body > .transaction-finance-cards {
     margin-bottom: 20px; }
+  .transaction-body > .transaction-graphs {
+    margin-bottom: 20px; }
 
 .transaction-filter-block {
   display: flex;
@@ -1309,6 +1316,8 @@ button {
     margin-left: 12px; }
   .transaction-type > .transaction-name {
     margin-left: 12px; }
+  .transaction-type.-chart {
+    min-width: 200px; }
 
 .transaction-icon {
   max-width: 28px;
@@ -1392,7 +1401,8 @@ button {
 .add-transaction-form {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 20px; }
+  grid-gap: 20px;
+  grid-column-gap: 40px; }
 
 .add-transaction-form-control {
   display: flex;
@@ -1408,7 +1418,7 @@ button {
   font-size: 12px;
   color: #F2f2f2;
   background: #707070;
-  padding: 8px 24px !important;
+  padding: 10px 24px !important;
   border: none;
   border-radius: 4px;
   text-transform: uppercase;
@@ -1416,7 +1426,52 @@ button {
   .add-transaction-cancel-btn:hover {
     background: red; }
 
+.edit-transaction-block {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: #FFFFFF;
+  border-radius: 4px;
+  padding: 60px 20px 40px 20px; }
+
 .add-transaction-save-btn {
+  font-family: 'Nunito',sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  color: #F2f2f2;
+  background: #EE8572;
+  padding: 10px 24px !important;
+  border: none;
+  border-radius: 4px;
+  text-transform: uppercase;
+  box-shadow: 0px 4px 14px -4px rgba(0, 0, 0, 0.28); }
+  .add-transaction-save-btn:hover {
+    background: #35495E; }
+
+.edit-transaction-form-control {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding-top: 40px; }
+  .edit-transaction-form-control > .edit-transaction-cancel-btn {
+    margin-right: 20px; }
+
+.edit-transaction-cancel-btn {
+  font-family: 'Nunito',sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  color: #F2f2f2;
+  background: #707070;
+  padding: 8px 24px !important;
+  border: none;
+  border-radius: 4px;
+  text-transform: uppercase;
+  box-shadow: 0px 4px 14px -4px rgba(0, 0, 0, 0.28); }
+  .edit-transaction-cancel-btn:hover {
+    background: red; }
+
+.edit-transaction-save-btn {
   font-family: 'Nunito',sans-serif;
   font-weight: bold;
   font-size: 12px;
@@ -1427,8 +1482,397 @@ button {
   border-radius: 4px;
   text-transform: uppercase;
   box-shadow: 0px 4px 14px -4px rgba(0, 0, 0, 0.28); }
-  .add-transaction-save-btn:hover {
+  .edit-transaction-save-btn:hover {
     background: #35495E; }
+
+.transaction-graphs {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 66% 32%;
+  grid-gap: 20px; }
+
+.chart-transactions {
+  width: 100%;
+  display: flex;
+  flex-direction: column; }
+  .chart-transactions > .transaction {
+    margin-bottom: 20px; }
+  .chart-transactions > .transaction:last-of-type {
+    margin-bottom: 0px; }
+
+.transaction-quantity {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: max-content; }
+
+.number-of-transaction {
+  font-family: 'Nunito',sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #35495E; }
+  .number-of-transaction::after {
+    content: 'Transactions';
+    margin-left: 12px; }
+
+.tips-card {
+  background: url(../images/quote.png) center/cover no-repeat;
+  border-radius: 6px;
+  padding: 60px 0px 0px 20px; }
+  .tips-card > .tips-message {
+    margin-top: 32px;
+    margin-bottom: 20px; }
+
+.tips-message {
+  font-family: 'Nunito',sans-serif;
+  font-weight: bold;
+  font-size: 40px;
+  color: #F2f2f2;
+  line-height: 1.2em; }
+
+.tips-author {
+  font-family: 'Nunito',sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  color: #F2f2f2; }
+  .tips-author:before {
+    content: '-';
+    margin-right: 12px; }
+
+.wallet-settings-block {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: #FFFFFF;
+  border-radius: 4px;
+  padding: 40px 20px 40px 60px; }
+  .wallet-settings-block > .general-information {
+    margin-bottom: 40px; }
+
+.update-wallet-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%; }
+  .update-wallet-form > .wallet-settings-form-control {
+    margin-top: 20px; }
+
+.update-wallet-input-boxes {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 40%; }
+  .update-wallet-input-boxes > .statistic-input-box.-update-wallet {
+    margin-bottom: 20px; }
+  .update-wallet-input-boxes > .delete-wallet-link {
+    align-self: flex-end; }
+
+.delete-wallet-link {
+  font-family: 'Nunito',sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #35495E;
+  text-decoration: underline;
+  cursor: pointer; }
+  .delete-wallet-link:hover {
+    color: red; }
+
+.general-information {
+  font-family: 'Nunito',sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  color: #35495E; }
+  .general-information.-category {
+    font-family: 'Nunito',sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    color: #35495E; }
+  .general-information.-category-small {
+    font-family: 'Nunito',sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    color: #35495E; }
+
+.update-wallet-btn {
+  font-family: 'Nunito',sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  color: #F2f2f2;
+  background: #EE8572;
+  padding: 10px 24px !important;
+  border: none;
+  border-radius: 4px;
+  text-transform: uppercase;
+  box-shadow: 0px 4px 14px -4px rgba(0, 0, 0, 0.28); }
+  .update-wallet-btn:hover {
+    background: #35495E; }
+
+.categories-wrap {
+  display: flex;
+  flex-direction: column;
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px 0px; }
+
+.settings-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; }
+  .settings-block.-category-list {
+    justify-content: flex-start; }
+    .settings-block.-category-list > .settings-content {
+      margin-left: 20px; }
+
+.settings-navigation {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  padding: 40px 20px;
+  border-radius: 6px; }
+
+.settings-main-items {
+  display: flex;
+  flex-direction: column;
+  width: 100%; }
+
+.main-item {
+  cursor: pointer; }
+  .main-item > .main-item-name {
+    margin-bottom: 20px; }
+
+.main-item-name {
+  font-family: 'Nunito',sans-serif;
+  font-weight: bold;
+  font-size: 24px;
+  color: #35495E; }
+  .main-item-name:hover {
+    color: #EE8572;
+    transition: 0.2s ease; }
+
+.settings-sub-items {
+  cursor: pointer;
+  padding-left: 20px; }
+  .settings-sub-items > .sub-item {
+    margin-top: 20px; }
+  .settings-sub-items > .sub-item:last-of-type {
+    margin-bottom: 120px; }
+
+.sub-item-name {
+  font-family: 'Nunito',sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  color: #35495E; }
+  .sub-item-name:hover {
+    color: #EE8572;
+    transition: 0.2s ease; }
+
+.settings-content {
+  width: 650px;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 6px; }
+  .settings-content.-category-list {
+    width: 400px; }
+
+.category-list-block > .category:first-of-type {
+  margin-top: 28px; }
+.category-list-block > .category {
+  margin-top: 20px; }
+
+.create-category-block {
+  display: flex;
+  flex-direction: column; }
+  .create-category-block > .general-information {
+    margin-bottom: 28px; }
+  .create-category-block > .new-category-form {
+    margin-bottom: 40px; }
+
+.new-category-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%; }
+
+.category-input-boxes {
+  width: 60%; }
+  .category-input-boxes > .statistic-input-box {
+    margin-bottom: 20px; }
+
+.new-category-btn {
+  font-family: 'Nunito',sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  color: #F2f2f2;
+  background: #EE8572;
+  padding: 10px 24px !important;
+  border: none;
+  border-radius: 4px;
+  text-transform: uppercase;
+  transition: 0.2s ease;
+  box-shadow: 0px 4px 14px -4px rgba(0, 0, 0, 0.28); }
+  .new-category-btn:hover {
+    background: #35495E;
+    transition: 0.2s ease; }
+
+.manage-categories-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; }
+  .manage-categories-block > .general-information.-category {
+    margin-bottom: 28px; }
+  .manage-categories-block > .delete-categories-btn {
+    margin-bottom: 28px; }
+
+.my-categories-block {
+  width: 100%; }
+  .my-categories-block > .category {
+    margin-top: 20px; }
+
+.category {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%; }
+
+.category-description {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-width: 250px;
+  max-width: 250px;
+  white-space: nowrap; }
+  .category-description > .category-icon {
+    margin-left: 12px; }
+  .category-description > .category-name {
+    margin-left: 12px; }
+
+.category-icon {
+  max-width: 28px;
+  max-height: 28px; }
+
+.category-name {
+  font-family: 'Nunito',sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #35495E;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
+.category-type {
+  font-family: 'Nunito',sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  color: #35495E; }
+
+.category-control {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between; }
+  .category-control > .category-edit {
+    margin-right: 20px; }
+
+.category-edit {
+  cursor: pointer;
+  max-width: 28px;
+  max-height: 28px;
+  transition: all .2s ease-in-out; }
+  .category-edit:hover {
+    transform: scale(1.2); }
+
+.category-delete {
+  cursor: pointer;
+  max-width: 28px;
+  max-height: 28px;
+  transition: all .2s ease-in-out; }
+  .category-delete:hover {
+    transform: scale(1.2); }
+
+.modal-test {
+  background: gray;
+  height: 100%; }
+
+.modal-wrap {
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 6px;
+  position: absolute;
+  top: 200px;
+  left: 500px; }
+
+.modal-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0px 60px 0px; }
+  .modal-card > .modal-icon {
+    margin-bottom: 20px; }
+  .modal-card > .modal-message {
+    margin-bottom: 20px; }
+  .modal-card > .modal-reminder {
+    margin-bottom: 24px; }
+
+.modal-icon {
+  max-width: 70px; }
+
+.modal-message {
+  font-family: 'Nunito',sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: #35495E; }
+
+.modal-reminder {
+  font-family: 'Nunito',sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: #35495E;
+  opacity: 0.5; }
+
+.modal-control {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; }
+  .modal-control > .modal-cancel-btn {
+    margin-right: 15px; }
+  .modal-control > .modal-delete-btn {
+    margin-left: 15px; }
+
+.modal-cancel-btn {
+  font-family: 'Nunito',sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  color: #F2f2f2;
+  background: #707070;
+  padding: 8px 24px !important;
+  border: none;
+  border-radius: 4px;
+  text-transform: uppercase;
+  box-shadow: 0px 4px 14px -4px rgba(0, 0, 0, 0.28); }
+  .modal-cancel-btn:hover {
+    background: #35495E; }
+
+.modal-delete-btn {
+  font-family: 'Nunito',sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  color: #F2f2f2;
+  background: red;
+  padding: 8px 24px !important;
+  border: none;
+  border-radius: 4px;
+  text-transform: uppercase;
+  transition: 0.2s ease;
+  box-shadow: 0px 4px 14px -4px rgba(0, 0, 0, 0.28); }
+  .modal-delete-btn:hover {
+    background: red;
+    transform: scale(1.1);
+    transition: 0.2s ease; }
 
 html:before {
   display: none;

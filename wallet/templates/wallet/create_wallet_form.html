@@ -1,4 +1,12 @@
-<form method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Save">
-</form>
+{% extends 'base_navigation_no_footer.html' %}
+{% load static %}
+
+{% block mainContent %}
+    <form method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Save">
+    </form>
+
+
+
+{% endblock %}
