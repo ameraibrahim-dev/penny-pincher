@@ -345,6 +345,19 @@ body, html {
 
 
 /*WALLET CSS */
+.input-text-field-label {
+    font-family: 'Nunito',sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    color: #35495E;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.input-box {
+  border: 1.0px solid #707070;
+  padding: 30px 6px !important;
+}
 .save-control {
   display: flex;
   flex-direction: column;
