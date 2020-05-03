@@ -11,7 +11,8 @@
     <div class="transaction-wrap">
             <div class="transaction-header">
                 <span class="transaction-wallet-name">{{ object }}</span>
-                <button class="btn-primary add-transaction-btn">Add Transaction</button>
+                <a class="btn-primary add-transaction-btn" style="text-decoration: none;"
+               href="{% url 'wallet:wallet_transactions_create_transaction' object.pk %}">Add Transaction</a>
             </div>
 
             <div class="transaction-body">
