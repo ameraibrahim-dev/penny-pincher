@@ -1,5 +1,10 @@
+<body>
 <h1>category</h1>
 <a href="{% url 'category:create_custom_category' %}">Create</a>
+<form method="post">
+    {{ create_custom_category_form.as_p }}
+    <input type="submit">
+</form>
 <ul>
     {% for category in object_list %}
         <li>{{ category.name }} {{ category.wallettransaction_set.all|length }} Transactions
@@ -13,3 +18,4 @@
     {% endfor %}
 
 </ul>
+</body>
