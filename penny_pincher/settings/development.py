@@ -4,6 +4,16 @@ from .base import *
 DEBUG = True
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
+INSTALLED_APPS = INSTALLED_APPS + [
+    # debug toolbar
+    'debug_toolbar',
+]
+MIDDLEWARE = MIDDLEWARE + [
+    # debug toolbar
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+]
+
+# silent test key warnings
 SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
 # Overwrite Recaptcha to test keys
 RECAPTCHA_PUBLIC_KEY = '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'
