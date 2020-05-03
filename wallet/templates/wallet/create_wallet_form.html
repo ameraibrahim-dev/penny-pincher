@@ -7,64 +7,59 @@
 
 {% block mainContent %}
 
-    <div class="container-fluid">
-        <div class="container" style="padding: 50px 200px 0 200px; text-align: center;">
-            <div class="container">
+    <div class="transaction-wrap vertical-center">
+        <div class="transaction-header">
+            <span class="transaction-wallet-name">Add Wallet</span>
+        </div>
+
+        <div class="add-transaction-block">
+
+            <form method="post" class="wallet-form-fields">
+                {% csrf_token %}
                 <div class="row">
-                    <div class="sub-heading">
-                        <span>Add Wallet</span>
+
+                    <div class="col-xl-6">
+                        <div class="form-group">
+                            <span class="input-text-field-label float-left">Wallet Name</span>
+                            {% for error in form.name.errors %}
+                                <span class="error-field">
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                            {% render_field form.name class="form-control input-box" placeholder="What is your wallet name?" %}
+                        </div>
+
+                        <div class="form-group">
+                            <span class="input-text-field-label float-left">Wallet Type</span>
+                            {% for error in form.type.errors %}
+                                <span class="error-field">
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                            {% render_field form.type class="form-control input-box"%}
+                        </div>
+                    </div>
+
+                    <div class="col-xl-6">
+                        <div class="form-group statistic-input-box">
+                            <span class="input-text-field-label float-left">Initial Balance</span>
+                            {% for error in form.balance.errors %}
+                                <span class="error-field">
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                            {% render_field form.balance class="form-control input-box" placeholder="0.00 PHP" %}
+                        </div>
                     </div>
                 </div>
-
-                <div class="row card-box">
-                    <div class="col">
-                         <div class="container" style="padding: 25px;">
-
-                             <form method="post" class="wallet-form-fields">
-                                 {% csrf_token %}
-                                 <div class="form-group">
-                                    <span class="profile-text-field-label float-left">Wallet Name</span>
-                                    {% for error in form.name.errors %}
-                                      <span class="error-field">
-                                        {{ error }}
-                                      </span>
-                                    {% endfor %}
-                                    {% render_field form.name class="form-control"  placeholder="What is your wallet name?"%}
-                                </div>
-
-                                <div class="form-group">
-                                    <span class="profile-text-field-label float-left">Wallet Type</span>
-                                    {% for error in form.type.errors %}
-                                      <span class="error-field">
-                                        {{ error }}
-                                      </span>
-                                    {% endfor %}
-
-                                    {% render_field form.type class="form-control" placeholder="What do you want to pay with?"%}
-                                </div>
-
-                                <div class="form-group">
-                                    <span class="profile-text-field-label float-left">Initial Balance</span>
-                                    {% for error in form.balance.errors %}
-                                      <span class="error-field">
-                                        {{ error }}
-                                      </span>
-                                    {% endfor %}
-                                    {% render_field form.balance class="form-control" placeholder="0.00 PHP"%}
-                                </div>
-
-                                <div class="form-group save-control">
-                                    <button type="submit" class="save-button btn-secondary float-right">save</button>
-                                    <button type="submit" class="cancel-button btn-secondary float-right">cancel</button>
-                                </div>
-
-                            </form>
-                         </div>
-                    </div>
+                <div class="float-right">
+                    <button class="add-transaction-cancel-btn">cancel</button>
+                    <button class="add-transaction-save-btn">save</button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
+
 
 {% endblock %}
 
@@ -74,4 +69,3 @@
     </script>
 
 {% endblock %}
-
