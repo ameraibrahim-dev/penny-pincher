@@ -13,7 +13,7 @@ SECRET_KEY = os.environ.get('APP_SECRET_KEY', '0_0m71zsq(b%ys$!%6#*^8&5ixqgz9k&0
 AUTH_USER_MODEL = 'user.User'
 LOGIN_REDIRECT_URL = reverse_lazy('dashboard')
 LOGIN_URL = reverse_lazy('user:login')
-LOGOUT_REDIRECT_URL= reverse_lazy('user:login')
+LOGOUT_REDIRECT_URL = reverse_lazy('user:login')
 CURRENCIES = ('PHP',)
 # Application definition
 
@@ -49,7 +49,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
 ]
 
 ROOT_URLCONF = 'penny_pincher.urls'
@@ -57,8 +56,10 @@ ROOT_URLCONF = 'penny_pincher.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, '../templates')]
-        ,
+        'DIRS': [
+            os.path.join(BASE_DIR, '../templates'),
+            os.path.join(BASE_DIR, 'penny_pincher', '../templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
