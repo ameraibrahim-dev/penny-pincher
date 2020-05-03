@@ -4,9 +4,8 @@
 {% load static %}
 
 {% block mainContent %}
-    <h1>{{ object }}</h1>
     <h1>{{ object.balance }}</h1>
-    <a href="{% url 'wallet:wallet_transactions_create_transaction' object.pk %}">Create Transaction</a>
+
     <ol>
     {% for transaction in object.wallettransaction_set.all%}
         <li>
@@ -21,8 +20,9 @@
         <div class="transaction-wrap">
 
         <div class="transaction-header">
-            <span class="transaction-wallet-name">--Wallet Name Here--</span>
-            <button class="btn-primary add-transaction-btn">Add Transaction</button>
+            <span class="transaction-wallet-name">{{ object }}</span>
+            <a class="btn-primary add-transaction-btn" style="text-decoration: none;"
+               href="{% url 'wallet:wallet_transactions_create_transaction' object.pk %}">Add Transaction</a>
         </div>
 
         <div class="transaction-body">
@@ -104,7 +104,7 @@
                             <div class="transaction"> <!--This is one transaction line-->
                                 <div class="transaction-type">
 
-                                    <img class="transaction-icon" src="../sqa_penny_pincher/assets/icons/bills.png" alt="Transaction Icon">
+                                    <img class="transaction-icon" src="{% static "icons/bills.png" %}" alt="Transaction Icon">
 
                                     <span class="transaction-name">Transaction Name</span>
                                 </div>
@@ -129,8 +129,8 @@
                                 </div>
 
                                 <div class="transaction-control">
-                                    <img class="transaction-edit"src="../sqa_penny_pincher/assets/icons/edit.png" alt="edit">
-                                    <img class="transaction-delete"src="../sqa_penny_pincher/assets/icons/delete.png" alt="edit">
+                                    <img class="transaction-edit"src="{% static "icons/edit.png" %}" alt="edit">
+                                    <img class="transaction-delete"src="{% static "icons/delete.png" %}" alt="edit">
                                 </div>
 
                             </div>
@@ -138,7 +138,7 @@
                             <div class="transaction"> <!--This is one transaction line-->
                                 <div class="transaction-type">
 
-                                    <img class="transaction-icon" src="../sqa_penny_pincher/assets/icons/food.png" alt="Transaction Icon">
+                                    <img class="transaction-icon" src="{% static "icons/food.png" %}" alt="Transaction Icon">
 
                                     <span class="transaction-name">Transaction Name</span>
                                 </div>
@@ -162,8 +162,8 @@
                                 </div>
 
                                 <div class="transaction-control">
-                                    <img class="transaction-edit"src="../sqa_penny_pincher/assets/icons/edit.png" alt="edit">
-                                    <img class="transaction-delete"src="../sqa_penny_pincher/assets/icons/delete.png" alt="edit">
+                                    <img class="transaction-edit"src="{% static "icons/edit.png" %}" alt="edit">
+                                    <img class="transaction-delete"src="{% static "icons/delete.png" %}" alt="edit">
                                 </div>
 
                             </div>
