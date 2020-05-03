@@ -1,11 +1,155 @@
-<h1>category</h1>
-<ul>
-    {% for category in object_list %}
-        <li>{{ category.name }} {{ category.wallettransaction_set.all|length }} Transactions
-            {% if category.is_expense %}Expense{% else %}Earnings{% endif %}
-        </li>
-    {% empty %}
-        <li>No category yet.</li>
-    {% endfor %}
+{% extends 'base_navigation_no_footer.html' %}
+{% load static %}
 
-</ul>
+{% block mainContent %}
+
+<h1>category</h1>
+    <ul>
+        {% for category in object_list %}
+            <li>{{ category.name }} {{ category.wallettransaction_set.all|length }} Transactions
+                {% if category.is_expense %}Expense{% else %}Earnings{% endif %}
+            </li>
+        {% empty %}
+            <li>No category yet.</li>
+        {% endfor %}
+
+    </ul>
+
+     <div class="categories-wrap">
+
+        <span data-attr-section-title="Settings" class="section-description"></span>
+
+        <div class="settings-block -category-list">
+
+            <div class="settings-navigation">
+
+                <ul class="settings-main-items">
+                    <li class="main-item">
+                        <span class="main-item-name">Category Settings</span>
+
+                        <ul class="settings-sub-items">
+                            <li class="sub-item"><span class="sub-item-name">My Categories</span></li>
+                            <li class="sub-item"><span class="sub-item-name">Earnings Categories</span></li>
+                            <li class="sub-item"><span class="sub-item-name">Expenses Categories</span></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="settings-content -category-list">
+
+                <div class="category-list-block">
+
+                    <span class="general-information -category">Expenses Categories</span>
+
+                    <div class="category"> <!--This is one category line-->
+                        <div class="category-description">
+                            <img class="category-icon" src="../sqa_penny_pincher/assets/icons/food.png" alt="Transaction Icon">
+
+                            <span class="category-name">Food & Drinks</span>
+                        </div>
+
+                        <div class="transaction-quantity">
+                            <span class="number-of-transaction">1</span>
+                        </div>
+                    </div>
+
+                    <div class="category"> <!--This is one category line-->
+                        <div class="category-description">
+                            <img class="category-icon" src="../sqa_penny_pincher/assets/icons/shopping.png" alt="Transaction Icon">
+
+                            <span class="category-name">Shopping</span>
+                        </div>
+
+                        <div class="transaction-quantity">
+                            <span class="number-of-transaction">0</span>
+                        </div>
+                    </div>
+
+                    <div class="category"> <!--This is one category line-->
+                        <div class="category-description">
+                            <img class="category-icon" src="../sqa_penny_pincher/assets/icons/transport.png" alt="Transaction Icon">
+
+                            <span class="category-name">Transport</span>
+                        </div>
+
+                        <div class="transaction-quantity">
+                            <span class="number-of-transaction">1</span>
+                        </div>
+                    </div>
+
+                    <div class="category"> <!--This is one category line-->
+                        <div class="category-description">
+                            <img class="category-icon" src="../sqa_penny_pincher/assets/icons/home.png" alt="Transaction Icon">
+
+                            <span class="category-name">Home</span>
+                        </div>
+
+                        <div class="transaction-quantity">
+                            <span class="number-of-transaction">1</span>
+                        </div>
+                    </div>
+
+                    <div class="category"> <!--This is one category line-->
+                        <div class="category-description">
+                            <img class="category-icon" src="../sqa_penny_pincher/assets/icons/bills.png" alt="Transaction Icon">
+
+                            <span class="category-name">Bills & Fess</span>
+                        </div>
+
+                        <div class="transaction-quantity">
+                            <span class="number-of-transaction">1</span>
+                        </div>
+                    </div>
+
+                    <div class="category"> <!--This is one category line-->
+                        <div class="category-description">
+                            <img class="category-icon" src="../sqa_penny_pincher/assets/icons/entertainment.png" alt="Transaction Icon">
+
+                            <span class="category-name">Entertrainment</span>
+                        </div>
+
+                        <div class="transaction-quantity">
+                            <span class="number-of-transaction">1</span>
+                        </div>
+                    </div>
+
+                    <div class="category"> <!--This is one category line-->
+                        <div class="category-description">
+                            <img class="category-icon" src="../sqa_penny_pincher/assets/icons/groceries.png" alt="Transaction Icon">
+
+                            <span class="category-name">Groceries</span>
+                        </div>
+
+                        <div class="transaction-quantity">
+                            <span class="number-of-transaction">1</span>
+                        </div>
+                    </div>
+
+                    <div class="category"> <!--This is one category line-->
+                        <div class="category-description">
+                            <img class="category-icon" src="../sqa_penny_pincher/assets/icons/health.png" alt="Transaction Icon">
+
+                            <span class="category-name">Health</span>
+                        </div>
+
+                        <div class="transaction-quantity">
+                            <span class="number-of-transaction">1</span>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+
+     </div>
+
+{% endblock %}
