@@ -1,11 +1,146 @@
-<h1>category</h1>
-<ul>
-    {% for category in object_list %}
-        <li>{{ category.name }} {{ category.wallettransaction_set.all|length }} Transactions
-            {% if category.is_expense %}Expense{% else %}Earnings{% endif %}
-        </li>
-    {% empty %}
-        <li>No category yet.</li>
-    {% endfor %}
+{% extends 'base_navigation_no_footer.html' %}
+{% load static %}
 
-</ul>
+{% block mainContent %}
+    <h1>category</h1>
+    <ul>
+        {% for category in object_list %}
+            <li>{{ category.name }} {{ category.wallettransaction_set.all|length }} Transactions
+                {% if category.is_expense %}Expense{% else %}Earnings{% endif %}
+            </li>
+        {% empty %}
+            <li>No category yet.</li>
+        {% endfor %}
+
+    </ul>
+
+    <div class="categories-wrap">
+
+        <span data-attr-section-title="Settings" class="section-description"></span>
+
+        <div class="settings-block -category-list">
+
+            <div class="settings-navigation">
+
+                <ul class="settings-main-items">
+                    <li class="main-item">
+                        <span class="main-item-name">Category Settings</span>
+
+                        <ul class="settings-sub-items">
+                            <li class="sub-item"><span class="sub-item-name">My Categories</span></li>
+                            <li class="sub-item"><span class="sub-item-name">Earnings Categories</span></li>
+                            <li class="sub-item"><span class="sub-item-name">Expenses Categories</span></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="settings-content -category-list">
+
+                <div class="category-list-block">
+
+                    <span class="general-information -category">Earnings Categories</span>
+
+                    <div class="category"> <!--This is one category line-->
+                        <div class="category-description">
+                            <img class="category-icon" src="../sqa_penny_pincher/assets/icons/salary.png" alt="Transaction Icon">
+
+                            <span class="category-name">Salary</span>
+                        </div>
+
+                        <div class="transaction-quantity">
+                            <span class="number-of-transaction">1</span>
+                        </div>
+                    </div>
+
+                    <div class="category"> <!--This is one category line-->
+                        <div class="category-description">
+                            <img class="category-icon" src="../sqa_penny_pincher/assets/icons/business.png" alt="Transaction Icon">
+
+                            <span class="category-name">Business</span>
+                        </div>
+
+                        <div class="transaction-quantity">
+                            <span class="number-of-transaction">0</span>
+                        </div>
+                    </div>
+
+                    <div class="category"> <!--This is one category line-->
+                        <div class="category-description">
+                            <img class="category-icon" src="../sqa_penny_pincher/assets/icons/gifts.png" alt="Transaction Icon">
+
+                            <span class="category-name">Gifts</span>
+                        </div>
+
+                        <div class="transaction-quantity">
+                            <span class="number-of-transaction">1</span>
+                        </div>
+                    </div>
+
+                    <div class="category"> <!--This is one category line-->
+                        <div class="category-description">
+                            <img class="category-icon" src="../sqa_penny_pincher/assets/icons/extra-income.png" alt="Transaction Icon">
+
+                            <span class="category-name">Extra Income</span>
+                        </div>
+
+                        <div class="transaction-quantity">
+                            <span class="number-of-transaction">1</span>
+                        </div>
+                    </div>
+
+                    <div class="category"> <!--This is one category line-->
+                        <div class="category-description">
+                            <img class="category-icon" src="../sqa_penny_pincher/assets/icons/loan.png" alt="Transaction Icon">
+
+                            <span class="category-name">Loan</span>
+                        </div>
+
+                        <div class="transaction-quantity">
+                            <span class="number-of-transaction">1</span>
+                        </div>
+                    </div>
+
+                    <div class="category"> <!--This is one category line-->
+                        <div class="category-description">
+                            <img class="category-icon" src="../sqa_penny_pincher/assets/icons/parental-leave.png" alt="Transaction Icon">
+
+                            <span class="category-name">Parental Leave</span>
+                        </div>
+
+                        <div class="transaction-quantity">
+                            <span class="number-of-transaction">1</span>
+                        </div>
+                    </div>
+
+                    <div class="category"> <!--This is one category line-->
+                        <div class="category-description">
+                            <img class="category-icon" src="../sqa_penny_pincher/assets/icons/insurance.png" alt="Transaction Icon">
+
+                            <span class="category-name">Insurance</span>
+                        </div>
+
+                        <div class="transaction-quantity">
+                            <span class="number-of-transaction">1</span>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+
+    </div>
+
+
+
+
+{% endblock %}
