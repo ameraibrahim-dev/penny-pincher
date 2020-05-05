@@ -1,8 +1,45 @@
-<a href="{% url 'wallet:create_wallet' %}">Create</a>
-{% for wallet in object_list %}
-    <li><a href="{% url 'wallet:wallet_transactions' wallet.pk %}">{{ wallet.name }}</a> <a href="{% url 'wallet:update_wallet' wallet.pk%}"> Update</a>
-    <a href="{% url 'wallet:delete_wallet' wallet.pk%}"> Delete</a>
-    </li>
-{% empty %}
-    <li>No wallet yet.</li>
-{% endfor %}
+{% extends 'base_navigation_no_footer.html' %}
+{% load widget_tweaks %}
+{% block title %}Penny Pincher - My Wallets{% endblock %}
+{% load i18n %}
+{% load static %}
+
+{% block mainContent %}
+
+
+    <div class="transaction-wrap" style="padding: 40px 20px 40px;">
+        <div class="transaction-header">
+            <span class="transaction-wallet-name" style="margin-left: 6px;">My Wallets</span>
+            <a class="btn-primary add-transaction-btn" style="text-decoration: none;margin-right: 10px;"
+               href="{% url 'wallet:create_wallet' %}">Add New Wallet</a>
+        </div>
+
+        <div class="wallet-section">
+
+            {% for wallet in object_list %}
+                <a href="{% url 'wallet:wallet_transactions' wallet.pk %}" class="wallet-section card card-layout border-0 m-2"
+                   style="display: inline-block; text-decoration: none;">
+                <div class="row">
+                    <div class="col-xl-4 col-md-6 col-lg-4">
+                        <div class="wallet-block">
+                            <div class="wallet-header">
+                                <img src="{% static 'icons/wallet-icon.png' %}" alt="Piggy Bank" class="wallet-img">
+                                <span data-attr-wallet-name="{{ wallet.name }}"
+                                      class="wallet-type">{{ wallet.get_type_display }}</span>
+                            </div>
+                            <span class="wallet-amount">{{ wallet.balance }}</span>
+                        </div>
+                    </div>
+                </div>
+                 </a>
+
+            {% empty %}
+                <li>No wallet available yet.</li>
+            {% endfor %}
+
+        </div>
+
+
+    </div>
+
+{% endblock %}

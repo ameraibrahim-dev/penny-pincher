@@ -1,4 +1,65 @@
-<form method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Save">
-</form>
+{% extends 'base_navigation_no_footer.html' %}
+{% load widget_tweaks %}
+{% block title %}Penny Pincher - Wallet Settings{% endblock %}
+{% load i18n %}
+{% load static %}
+
+{% block mainContent %}
+
+    <div class="transaction-wrap">
+
+        <div class="transaction-header">
+            <span class="transaction-wallet-name">{{ object }} Wallet</span>
+        </div>
+
+        <div class="wallet-settings-block">
+
+            <span class="general-information">General Information</span>
+
+            <form method="post" class="update-wallet-form">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <span class="input-text-field-label float-left">Wallet Name</span>
+                            {% for error in form.name.errors %}
+                                <span class="error-field">
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                            {% render_field form.name class="form-control input-box" style="padding: 30px 40px !important;" %}
+                        </div>
+
+                        <div class="form-group">
+                            <span class="input-text-field-label float-left">Wallet Type</span>
+                            {% for error in form.type.errors %}
+                                <span class="error-field">
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                            {% render_field form.type class="form-control input-box" style="padding: 30px 40px !important;" %}
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="wallet-settings-form-control">
+                    <a href="{% url 'wallet:delete_wallet' wallet.pk %}" class="delete-wallet-link">Delete Wallet</a>
+                </div>
+
+                <div class="wallet-settings-form-control">
+                    <button class="update-wallet-btn">update</button>
+                </div>
+
+
+            </form>
+
+
+        </div>
+
+    </div>
+
+
+
+{% endblock %}
+
