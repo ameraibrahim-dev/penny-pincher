@@ -47,9 +47,14 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+a {
+  color: white;
+  text-decoration: none; }
+
 a:hover, a:focus {
-  color: #2A6496;
-  text-decoration: underline; }
+    color: white;
+    text-decoration: none;
+}
 
 .component {
   margin-top: 40px;
