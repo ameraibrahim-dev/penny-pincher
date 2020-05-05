@@ -754,98 +754,101 @@ button {
         width: 0px; }
       .home-container[data-eq-state$="mobile"] > .main-container-block > .sidebar-block > .sidenav-mobile > .sidenav-menu > .sidenav-item > .sidenav-link > .sidenav-icon.-space-after {
         margin-bottom: 300px; }
-    .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .header {
-      position: fixed;
-      width: 100%; }
-    .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap {
-      width: 95%;
-      margin: 0 auto;
-      padding-top: 100px; }
-      .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .greeting-banner-block {
-        padding: 42px 12px 42px 20px; }
-        .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .greeting-banner-block > .banner-title {
-          margin-bottom: 20px; }
-        .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .greeting-banner-block > .banner-title {
+    .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block {
+      margin-left: 0px; }
+      .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .header {
+        position: fixed;
+        width: 100%;
+        margin-left: 0px; }
+      .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap {
+        width: 95%;
+        margin: 0 auto;
+        padding-top: 100px; }
+        .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .greeting-banner-block {
+          padding: 42px 12px 42px 20px; }
+          .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .greeting-banner-block > .banner-title {
+            margin-bottom: 20px; }
+          .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .greeting-banner-block > .banner-title {
+            font-family: 'Nunito',sans-serif;
+            font-weight: 400;
+            font-size: 24px;
+            color: #F2f2f2; }
+          .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .greeting-banner-block > .banner-message {
+            font-family: 'Nunito',sans-serif;
+            font-weight: 400;
+            font-size: 12px;
+            color: #F2f2f2;
+            line-height: 1.4em; }
+        .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .wallets-section > .wallet-control-block {
+          display: flex;
+          flex-direction: column; }
+          .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .wallets-section > .wallet-control-block > .wallet-buttons-block {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 20px;
+            align-content: center;
+            justify-content: space-between;
+            width: 100%;
+            margin: 20px 0px 0px 0px; }
+        .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .statistic-card > .statistic-card-title {
           font-family: 'Nunito',sans-serif;
-          font-weight: 400;
-          font-size: 24px;
-          color: #F2f2f2; }
-        .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .greeting-banner-block > .banner-message {
-          font-family: 'Nunito',sans-serif;
-          font-weight: 400;
+          font-weight: bold;
           font-size: 12px;
-          color: #F2f2f2;
-          line-height: 1.4em; }
-      .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .wallets-section > .wallet-control-block {
-        display: flex;
-        flex-direction: column; }
-        .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .wallets-section > .wallet-control-block > .wallet-buttons-block {
+          color: #35495E; }
+        .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .statistic-card > .statistics-block > .progress-percent {
+          font-family: 'Nunito',sans-serif;
+          font-weight: bold;
+          font-size: 60px;
+          color: #EE8572; }
+        .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .statistic-card > .statistics-block > .progress-display-block {
+          width: 80%; }
+          .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .statistic-card > .statistics-block > .progress-display-block > .progress-wrap > .progress-bar {
+            width: 0%;
+            height: 28px; }
+          .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .statistic-card > .statistics-block > .progress-display-block > .progress-dates > .progress-date {
+            font-family: 'Nunito',sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            color: #35495E; }
+        .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-finance-cards {
           display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          grid-gap: 20px;
-          align-content: center;
-          justify-content: space-between;
-          width: 100%;
-          margin: 20px 0px 0px 0px; }
-      .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .statistic-card > .statistic-card-title {
-        font-family: 'Nunito',sans-serif;
-        font-weight: bold;
-        font-size: 12px;
-        color: #35495E; }
-      .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .statistic-card > .statistics-block > .progress-percent {
-        font-family: 'Nunito',sans-serif;
-        font-weight: bold;
-        font-size: 60px;
-        color: #EE8572; }
-      .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .statistic-card > .statistics-block > .progress-display-block {
-        width: 80%; }
-        .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .statistic-card > .statistics-block > .progress-display-block > .progress-wrap > .progress-bar {
-          width: 0%;
-          height: 28px; }
-        .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .statistic-card > .statistics-block > .progress-display-block > .progress-dates > .progress-date {
-          font-family: 'Nunito',sans-serif;
-          font-weight: 400;
-          font-size: 16px;
-          color: #35495E; }
-      .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-finance-cards {
-        display: grid;
-        grid-template-columns: repeat(1, 1fr);
-        grid-gap: 20px; }
-        .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-finance-cards > .statistic-card > .statistic-card-title {
-          font-family: 'Nunito',sans-serif;
-          font-weight: bold;
-          font-size: 12px;
-          color: #35495E; }
-        .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-finance-cards > .statistic-card > .statistics-block.-finance > .statistic-amount {
-          font-family: 'Nunito',sans-serif;
-          font-weight: bold;
-          font-size: 24px;
-          color: #49BEB7; }
-          .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-finance-cards > .statistic-card > .statistics-block.-finance > .statistic-amount.-expense-red {
+          grid-template-columns: repeat(1, 1fr);
+          grid-gap: 20px; }
+          .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-finance-cards > .statistic-card > .statistic-card-title {
+            font-family: 'Nunito',sans-serif;
+            font-weight: bold;
+            font-size: 12px;
+            color: #35495E; }
+          .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-finance-cards > .statistic-card > .statistics-block.-finance > .statistic-amount {
             font-family: 'Nunito',sans-serif;
             font-weight: bold;
             font-size: 24px;
-            color: #FF3838; }
-            .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-finance-cards > .statistic-card > .statistics-block.-finance > .statistic-amount.-expense-red:before {
-              content: "-";
-              text-transform: uppercase;
-              margin-right: 2px; }
-      .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-filter-block > .statistic-card > .statistic-card-title {
-        font-family: 'Nunito',sans-serif;
-        font-weight: bold;
-        font-size: 12px;
-        color: #35495E; }
-      .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-filter-charts {
-        display: grid;
-        grid-template-columns: repeat(1, 1fr);
-        grid-gap: 20px; }
-        .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-filter-charts > .statistic-card > .statistic-card-title {
+            color: #49BEB7; }
+            .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-finance-cards > .statistic-card > .statistics-block.-finance > .statistic-amount.-expense-red {
+              font-family: 'Nunito',sans-serif;
+              font-weight: bold;
+              font-size: 24px;
+              color: #FF3838; }
+              .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-finance-cards > .statistic-card > .statistics-block.-finance > .statistic-amount.-expense-red:before {
+                content: "-";
+                text-transform: uppercase;
+                margin-right: 2px; }
+        .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-filter-block > .statistic-card > .statistic-card-title {
           font-family: 'Nunito',sans-serif;
           font-weight: bold;
           font-size: 12px;
           color: #35495E; }
-        .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-filter-charts > .statistic-card > .statistics-block.-chart > .chart-size {
-          width: 400px; }
+        .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-filter-charts {
+          display: grid;
+          grid-template-columns: repeat(1, 1fr);
+          grid-gap: 20px; }
+          .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-filter-charts > .statistic-card > .statistic-card-title {
+            font-family: 'Nunito',sans-serif;
+            font-weight: bold;
+            font-size: 12px;
+            color: #35495E; }
+          .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-filter-charts > .statistic-card > .statistics-block.-chart > .chart-size {
+            width: 400px; }
   .home-container[data-eq-state$="preMobile"] {
     display: flex; }
     .home-container[data-eq-state$="preMobile"] > .main-container-block > .sidebar-block {
@@ -963,9 +966,14 @@ button {
   min-width: max-content; }
 
 .content-block {
-  width: 100%; }
+  width: 100%;
+  margin-left: 80px;
+  transition: 0.5s ease; }
   .content-block.-apply-overlay {
     opacity: 0.4; }
+  .content-block.-extend {
+    margin-left: 200px;
+    transition: 0.7s ease; }
 
 .header > .header-menu {
   margin-left: 6px; }
@@ -1060,6 +1068,9 @@ button {
   width: 100%;
   height: 300px !important; }
 
+.main-content-block {
+  margin-top: 60px; }
+
 .sidenav {
   position: absolute;
   opacity: 0;
@@ -1075,7 +1086,7 @@ button {
     opacity: 0; }
   .sidenav.-active {
     opacity: 1;
-    position: relative;
+    position: fixed;
     z-index: 0;
     width: 200px;
     height: 100%;
@@ -1090,7 +1101,7 @@ button {
       transition: 1.2s ease; }
 
 .sidenav-mobile {
-  position: relative;
+  position: fixed;
   width: 80px;
   align-items: center;
   background: #ffffff;
@@ -1175,12 +1186,18 @@ button {
 
 .header {
   background: #ffffff;
+  width: 100%;
   padding: 20px 0px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: left;
-  position: relative; }
+  position: fixed;
+  margin-left: 0px;
+  transition: 0.5s ease; }
+  .header.-extend {
+    margin-left: 180px;
+    transition: 0.7s ease; }
 
 .header-menu {
   max-width: 20px;
