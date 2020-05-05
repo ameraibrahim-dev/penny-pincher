@@ -15,7 +15,7 @@ class CreateGoalForm(ModelForm):
         fields = ['name', 'balance', 'target_amount', 'target_date']
         labels = {
             'name': 'What is the name of your goal',
-            'target_amount': 'target_amount',
+            'target_amount': 'Target Amount',
             'balance': 'Initial Amount',
             'target_date': 'Ending Date',
         }
