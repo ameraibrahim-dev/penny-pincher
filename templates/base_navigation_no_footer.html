@@ -15,23 +15,23 @@
 
                              <div class="sidenav-menu">
                                 <ul class="pages-control">
-                                    <li class="sidenav-item">
+                                    <li class="sidenav-item" id="sidenav-dashboard">
                                         <a href="{% url 'dashboard' %}" class="sidenav-link">
-                                            <img src="{% static "icons/home.svg" %}" alt="" class="sidenav-icon" class="sidenav-icon">
+                                            <img src="{% static "icons/home.svg" %}" alt="" class="sidenav-icon" id="icon-dashboard">
                                             <span class="sidenav-item-name">Dashboard</span>
                                         </a>
                                     </li>
 
-                                    <li class="sidenav-item">
+                                    <li class="sidenav-item" id="sidenav-wallet">
                                         <a href="{% url 'wallet:wallet_list' %}" class="sidenav-link">
-                                            <img src="{% static "icons/wallet.svg" %}" alt="" class="sidenav-icon" class="sidenav-icon">
+                                            <img src="{% static "icons/wallet.svg" %}" alt="" class="sidenav-icon" id="icon-wallet">
                                             <span class="sidenav-item-name">Wallets</span>
                                         </a>
                                     </li>
 
-                                    <li class="sidenav-item">
+                                    <li class="sidenav-item" id="sidenav-goals">
                                         <a href="{% url 'goal:goal_list' %}" class="sidenav-link">
-                                            <img src="{% static "icons/goal.svg" %}" alt="" class="sidenav-icon" class="sidenav-icon">
+                                            <img src="{% static "icons/goal.svg" %}" alt="" class="sidenav-icon" id="icon-goals">
                                             <span class="sidenav-item-name">Goals</span>
                                         </a>
                                     </li>
@@ -40,23 +40,23 @@
                                 <ul class="user-control">
                                     <div class="sidenav-border"></div>
 
-                                    <li class="sidenav-item">
+                                    <li class="sidenav-item" id="sidenav-settings">
                                         <a href="{% url 'category:custom_category_list' %}" class="sidenav-link">
-                                            <img src="{% static "icons/settings.svg" %}" alt="" class="sidenav-icon" class="sidenav-icon">
+                                            <img src="{% static "icons/settings.svg" %}" alt="" class="sidenav-icon" id="icon-settings">
                                             <span class="sidenav-item-name">Settings</span>
                                         </a>
                                     </li>
 
-                                    <li class="sidenav-item">
+                                    <li class="sidenav-item" id="sidenav-profile">
                                         <a href="{% url 'user:profile' %}" class="sidenav-link">
-                                            <img src="{% static "icons/user-icon.png" %}" alt="" class="sidenav-icon -profile" class="sidenav-icon">
+                                            <img src="{% static "icons/user-icon.png" %}" alt="" class="sidenav-icon -profile" id="icon-profile">
                                             <span class="sidenav-item-name">Profile</span>
                                         </a>
                                     </li>
 
-                                    <li class="sidenav-item">
+                                    <li class="sidenav-item" id="sidenav-logout">
                                         <a href="{% url 'user:logout' %}" class="sidenav-link">
-                                            <img src="{% static "icons/logout.svg" %}" alt="" class="sidenav-icon" class="sidenav-icon">
+                                            <img src="{% static "icons/logout.svg" %}" alt="" class="sidenav-icon" id="icon-logout">
                                             <span class="sidenav-item-name">Logout</span>
                                         </a>
                                     </li>
@@ -71,46 +71,47 @@
 
                              <div class="sidenav-menu -mobile">
                                 <ul class="pages-control">
-                                    <li class="sidenav-item">
+                                    <li class="sidenav-item" id="m-sidenav-dashboard">
                                         <a href="{% url 'dashboard' %}" class="sidenav-link">
-                                            <img src="{% static "icons/home.svg" %}" alt="" class="sidenav-icon">
+                                            <img src="{% static "icons/home.svg" %}" alt="" class="sidenav-icon" id="icon-dashboard">
                                         </a>
                                     </li>
 
-                                    <li class="sidenav-item">
+                                    <li class="sidenav-item" id="m-sidenav-wallet">
                                         <a href="{% url 'wallet:wallet_list' %}" class="sidenav-link">
-                                            <img src="{% static "icons/wallet.svg" %}" alt="" class="sidenav-icon">
+                                            <img src="{% static "icons/wallet.svg" %}" alt="" class="sidenav-icon" id="icon-wallet">
                                         </a>
                                     </li>
 
-                                    <li class="sidenav-item">
+                                    <li class="sidenav-item" id="m-sidenav-goals">
                                         <a href="{% url 'goal:goal_list' %}" class="sidenav-link">
-                                            <img src="{% static "icons/goal.svg" %}" alt="" class="sidenav-icon">
+                                            <img src="{% static "icons/goal.svg" %}" alt="" class="sidenav-icon" id="icon-goals">
                                         </a>
                                     </li>
                                 </ul>
 
                                 <ul class="user-control">
-                                    <li class="sidenav-item">
+                                    <li class="sidenav-item" id="m-sidenav-settings">
                                         <a href="{% url 'category:custom_category_list' %}" class="sidenav-link">
-                                            <img src="{% static "icons/settings.svg" %}" alt="" class="sidenav-icon">
+                                            <img src="{% static "icons/settings.svg" %}" alt="" class="sidenav-icon" id="icon-settings">
                                         </a>
                                     </li>
 
-                                    <li class="sidenav-item">
+                                    <li class="sidenav-item" id="m-sidenav-profile">
                                         <a href="{% url 'user:profile' %}" class="sidenav-link">
-                                            <img src="{% static "icons/user-icon.png" %}" alt="" class="sidenav-icon -profile" >
+                                            <img src="{% static "icons/user-icon.png" %}" alt="" class="sidenav-icon -profile" id="icon-profile">
                                         </a>
                                     </li>
 
-                                    <li class="sidenav-item">
+                                    <li class="sidenav-item" id="m-sidenav-logout">
                                         <a href="{% url 'user:logout' %}" class="sidenav-link">
-                                            <img src="{% static "icons/logout.svg" %}" alt="" class="sidenav-icon">
+                                            <img src="{% static "icons/logout.svg" %}" alt="" class="sidenav-icon" id="icon-logout">
 
                                         </a>
                                     </li>
                                 </ul>
                             </div>
+
                     </div>
 
                 </div>

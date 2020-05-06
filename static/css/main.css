@@ -52,9 +52,8 @@ a {
   text-decoration: none; }
 
 a:hover, a:focus {
-    color: white;
-    text-decoration: none;
-}
+  color: white;
+  text-decoration: none; }
 
 .component {
   margin-top: 40px;
@@ -1163,22 +1162,120 @@ button {
 .pages-control {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; }
+  align-items: flex-start;
+  width: 100%; }
   .pages-control > .sidenav-item {
-    margin-bottom: 20px; }
+    margin-bottom: 20px;
+    margin-left: 8px; }
+  .pages-control.-mobile {
+    padding-left: 0px;
+    width: max-content; }
 
 .user-control {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; }
+  align-items: flex-start;
+  width: 100%; }
   .user-control > .sidenav-item {
-    margin-top: 20px; }
+    margin-top: 20px;
+    margin-left: 8px; }
+  .user-control.-mobile {
+    width: max-content; }
 
 .sidenav-item {
   display: flex;
   flex-direction: row;
   align-items: center;
-  transition: 0.3s; }
+  width: 0px;
+  transition: 0.3s ease; }
+  .sidenav-item.-active {
+    background: #EE8572;
+    border-radius: 10px;
+    padding: 10px 12px 10px 0px;
+    width: 140px;
+    transition: 0.3s ease; }
+    .sidenav-item.-active > .sidenav-link > .sidenav-item-name {
+      font-family: 'Nunito',sans-serif;
+      font-weight: 400;
+      font-size: 20px;
+      color: #ffffff; }
+    .sidenav-item.-active > .sidenav-link > #icon-dashboard {
+      content: url(../icons/home-white.svg); }
+    .sidenav-item.-active > .sidenav-link > #icon-wallet {
+      content: url(../icons/wallet-white.svg); }
+    .sidenav-item.-active > .sidenav-link > #icon-goals {
+      content: url(../icons/goal-white.svg); }
+    .sidenav-item.-active > .sidenav-link > #icon-settings {
+      content: url(../icons/settings-white.svg); }
+    .sidenav-item.-active > .sidenav-link > #icon-logout {
+      content: url(../icons/logout-white.svg); }
+    .sidenav-item.-active:hover > .sidenav-link > .sidenav-item-name {
+      font-family: 'Nunito',sans-serif;
+      font-weight: 400;
+      font-size: 20px;
+      color: #ffffff; }
+    .sidenav-item.-active:hover > .sidenav-link > #icon-dashboard {
+      content: url(../icons/home-white.svg); }
+    .sidenav-item.-active:hover > .sidenav-link > #icon-wallet {
+      content: url(../icons/wallet-white.svg); }
+    .sidenav-item.-active:hover > .sidenav-link > #icon-goals {
+      content: url(../icons/goal-white.svg); }
+    .sidenav-item.-active:hover > .sidenav-link > #icon-settings {
+      content: url(../icons/settings-white.svg); }
+    .sidenav-item.-active:hover > .sidenav-link > #icon-logout {
+      content: url(../icons/logout-white.svg); }
+  .sidenav-item.-active-mobile {
+    background: #EE8572;
+    border-radius: 10px;
+    width: 30px;
+    height: 30px; }
+    .sidenav-item.-active-mobile > .sidenav-link > .sidenav-item-name {
+      font-family: 'Nunito',sans-serif;
+      font-weight: 400;
+      font-size: 20px;
+      color: #ffffff; }
+    .sidenav-item.-active-mobile > .sidenav-link > #icon-dashboard {
+      content: url(../icons/home-white.svg); }
+    .sidenav-item.-active-mobile > .sidenav-link > #icon-wallet {
+      content: url(../icons/wallet-white.svg); }
+    .sidenav-item.-active-mobile > .sidenav-link > #icon-goals {
+      content: url(../icons/goal-white.svg); }
+    .sidenav-item.-active-mobile > .sidenav-link > #icon-settings {
+      content: url(../icons/settings-white.svg); }
+    .sidenav-item.-active-mobile > .sidenav-link > #icon-logout {
+      content: url(../icons/logout-white.svg); }
+    .sidenav-item.-active-mobile:hover > .sidenav-link > .sidenav-item-name {
+      font-family: 'Nunito',sans-serif;
+      font-weight: 400;
+      font-size: 20px;
+      color: #ffffff; }
+    .sidenav-item.-active-mobile:hover > .sidenav-link > #icon-dashboard {
+      content: url(../icons/home-white.svg); }
+    .sidenav-item.-active-mobile:hover > .sidenav-link > #icon-wallet {
+      content: url(../icons/wallet-white.svg); }
+    .sidenav-item.-active-mobile:hover > .sidenav-link > #icon-goals {
+      content: url(../icons/goal-white.svg); }
+    .sidenav-item.-active-mobile:hover > .sidenav-link > #icon-settings {
+      content: url(../icons/settings-white.svg); }
+    .sidenav-item.-active-mobile:hover > .sidenav-link > #icon-logout {
+      content: url(../icons/logout-white.svg); }
+  .sidenav-item:hover > .sidenav-link {
+    transition: 0.3s ease; }
+    .sidenav-item:hover > .sidenav-link > .sidenav-item-name {
+      font-family: 'Nunito',sans-serif;
+      font-weight: 400;
+      font-size: 20px;
+      color: #EE8572; }
+    .sidenav-item:hover > .sidenav-link > #icon-dashboard {
+      content: url(../icons/home-peach.svg); }
+    .sidenav-item:hover > .sidenav-link > #icon-wallet {
+      content: url(../icons/wallet-peach.svg); }
+    .sidenav-item:hover > .sidenav-link > #icon-goals {
+      content: url(../icons/goal-peach.svg); }
+    .sidenav-item:hover > .sidenav-link > #icon-settings {
+      content: url(../icons/settings-peach.svg); }
+    .sidenav-item:hover > .sidenav-link > #icon-logout {
+      content: url(../icons/logout-peach.svg); }
 
 .sidenav-link {
   display: flex;
@@ -1186,26 +1283,18 @@ button {
   flex-direction: row;
   align-items: center;
   text-decoration: none; }
+  .sidenav-link > .sidenav-icon {
+    margin-left: 5px; }
   .sidenav-link > .sidenav-item-name {
     margin-left: 6px; }
+  .sidenav-link.-mobile > .sidenav-icon {
+    margin-left: 4px; }
 
 .sidenav-item-name {
   font-family: 'Nunito',sans-serif;
   font-weight: 400;
   font-size: 20px;
-  color: #35495E;
-  transition: 0.2s ease; }
-  .sidenav-item-name:hover {
-    font-family: 'Nunito',sans-serif;
-    font-weight: 400;
-    font-size: 20px;
-    color: #EE8572;
-    transition: 0.2s ease; }
-  .sidenav-item-name.-active {
-    font-family: 'Nunito',sans-serif;
-    font-weight: 400;
-    font-size: 20px;
-    color: #EE8572; }
+  color: #35495E; }
 
 .sidenav-border {
   background: #707070;
@@ -1260,6 +1349,12 @@ button {
   font-weight: 400;
   font-size: 12px;
   color: #ffffff; }
+
+.test-svg {
+  fill: black; }
+
+#icon-dashboard {
+  content: url(../icons/home.svg); }
 
 .transaction-wrap {
   display: flex;
