@@ -79,7 +79,57 @@
 {% endblock %}
 
 {% block body-javascript-extension %}
-<!-- Generate categories based on type-->
-    <!-- Use API Calles-->
+    <script>
+        let categories = [];
+        const TYPE_FIELD_LOCATOR = "#id_is_expense";
+        const CATEGORY_FIELD_LOCATOR = "#id_category";
+
+        $(TYPE_FIELD_LOCATOR).change(
+            function () {
+                let type = $(TYPE_FIELD_LOCATOR + " option:selected").text();
+                getCategories(type);
+                generateCategoryOptions();
+            }
+        );
+
+        function getCategories(type) {
+            let url = null;
+            //determine ajax url
+            switch (type.toLowerCase()) {
+                case "earning":
+                    url = "{% url 'api:earnings_categories_by_user' %}";
+                    break;
+                case "expense":
+                    url = "{% url 'api:expense_categories_by_user' %}";
+                    break;
+                default:
+                    categories = [];
+                    break;
+            }
+            // ajax call to get categories
+            if (url != null) {
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    datatype: 'json',
+                    async: false,
+                    success: function (result) {
+                        categories = eval(result);
+                    },
+                    error: function (error) {
+                        alert(error);
+                    }
+                });
+            }
+        }
+
+        function generateCategoryOptions() {
+            let categoryOptions = "<option value=''  selected>---------</option>";
+            categories.forEach(function (category) {
+                categoryOptions += "<option value='" + category.name + "'  selected>" + category.name + "</option>"
+            });
+            $(CATEGORY_FIELD_LOCATOR).html(categoryOptions);
+        }
+    </script>
 
 {% endblock %}
