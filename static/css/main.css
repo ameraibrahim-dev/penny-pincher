@@ -1428,7 +1428,8 @@ button {
   font-family: 'Nunito',sans-serif;
   font-weight: 300;
   font-size: 16px;
-  color: #35495E; }
+  color: #35495E;
+  text-align: center; }
   .no-transactions-message:before {
     font-family: 'Nunito',sans-serif;
     font-weight: bold;
@@ -1438,6 +1439,9 @@ button {
     display: block;
     margin-bottom: 24px;
     text-align: center; }
+  .no-transactions-message.-wallet {
+    margin-bottom: 12px;
+    line-height: 1.5em; }
 
 .transaction {
   display: flex;
