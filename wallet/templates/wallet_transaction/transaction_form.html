@@ -84,6 +84,7 @@
         const TYPE_FIELD_LOCATOR = "#id_is_expense";
         const CATEGORY_FIELD_LOCATOR = "#id_category";
 
+        // on type change
         $(TYPE_FIELD_LOCATOR).change(
             function () {
                 let type = $(TYPE_FIELD_LOCATOR + " option:selected").text();
@@ -123,6 +124,7 @@
             }
         }
 
+        // generate html and update category options
         function generateCategoryOptions() {
             let categoryOptions = "<option value=''  selected>---------</option>";
             categories.forEach(function (category) {
