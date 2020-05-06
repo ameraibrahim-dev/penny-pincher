@@ -1,7 +1,7 @@
-from djmoney.money import Money
 from rest_framework import serializers
 
 from category.models import Category
+from goal.models import GoalTransaction
 from wallet.models import WalletTransaction
 
 
@@ -23,3 +23,10 @@ class WalletTransactionSerializer(serializers.ModelSerializer):
     class Meta:
         model = WalletTransaction
         fields = ['id', 'amount', 'date', 'is_expense', 'note', 'category', 'wallet']
+
+class GoalTransactionSerializer(serializers.ModelSerializer):
+    amount = MoneySerializer()
+
+    class Meta:
+        model = GoalTransaction
+        fields = ['id', 'amount', 'date', 'is_expense', 'note', 'goal']
