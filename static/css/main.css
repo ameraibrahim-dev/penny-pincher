@@ -47,9 +47,13 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+a {
+  color: white;
+  text-decoration: none; }
+
 a:hover, a:focus {
-  color: #2A6496;
-  text-decoration: underline; }
+  color: white;
+  text-decoration: none; }
 
 .component {
   margin-top: 40px;
@@ -754,98 +758,101 @@ button {
         width: 0px; }
       .home-container[data-eq-state$="mobile"] > .main-container-block > .sidebar-block > .sidenav-mobile > .sidenav-menu > .sidenav-item > .sidenav-link > .sidenav-icon.-space-after {
         margin-bottom: 300px; }
-    .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .header {
-      position: fixed;
-      width: 100%; }
-    .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap {
-      width: 95%;
-      margin: 0 auto;
-      padding-top: 100px; }
-      .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .greeting-banner-block {
-        padding: 42px 12px 42px 20px; }
-        .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .greeting-banner-block > .banner-title {
-          margin-bottom: 20px; }
-        .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .greeting-banner-block > .banner-title {
+    .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block {
+      margin-left: 0px; }
+      .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .header {
+        position: fixed;
+        width: 100%;
+        margin-left: 0px; }
+      .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap {
+        width: 95%;
+        margin: 0 auto;
+        padding-top: 100px; }
+        .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .greeting-banner-block {
+          padding: 42px 12px 42px 20px; }
+          .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .greeting-banner-block > .banner-title {
+            margin-bottom: 20px; }
+          .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .greeting-banner-block > .banner-title {
+            font-family: 'Nunito',sans-serif;
+            font-weight: 400;
+            font-size: 24px;
+            color: #F2f2f2; }
+          .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .greeting-banner-block > .banner-message {
+            font-family: 'Nunito',sans-serif;
+            font-weight: 400;
+            font-size: 12px;
+            color: #F2f2f2;
+            line-height: 1.4em; }
+        .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .wallets-section > .wallet-control-block {
+          display: flex;
+          flex-direction: column; }
+          .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .wallets-section > .wallet-control-block > .wallet-buttons-block {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 20px;
+            align-content: center;
+            justify-content: space-between;
+            width: 100%;
+            margin: 20px 0px 0px 0px; }
+        .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .statistic-card > .statistic-card-title {
           font-family: 'Nunito',sans-serif;
-          font-weight: 400;
-          font-size: 24px;
-          color: #F2f2f2; }
-        .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .greeting-banner-block > .banner-message {
-          font-family: 'Nunito',sans-serif;
-          font-weight: 400;
+          font-weight: bold;
           font-size: 12px;
-          color: #F2f2f2;
-          line-height: 1.4em; }
-      .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .wallets-section > .wallet-control-block {
-        display: flex;
-        flex-direction: column; }
-        .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .wallets-section > .wallet-control-block > .wallet-buttons-block {
+          color: #35495E; }
+        .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .statistic-card > .statistics-block > .progress-percent {
+          font-family: 'Nunito',sans-serif;
+          font-weight: bold;
+          font-size: 60px;
+          color: #EE8572; }
+        .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .statistic-card > .statistics-block > .progress-display-block {
+          width: 80%; }
+          .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .statistic-card > .statistics-block > .progress-display-block > .progress-wrap > .progress-bar {
+            width: 0%;
+            height: 28px; }
+          .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .statistic-card > .statistics-block > .progress-display-block > .progress-dates > .progress-date {
+            font-family: 'Nunito',sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            color: #35495E; }
+        .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-finance-cards {
           display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          grid-gap: 20px;
-          align-content: center;
-          justify-content: space-between;
-          width: 100%;
-          margin: 20px 0px 0px 0px; }
-      .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .statistic-card > .statistic-card-title {
-        font-family: 'Nunito',sans-serif;
-        font-weight: bold;
-        font-size: 12px;
-        color: #35495E; }
-      .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .statistic-card > .statistics-block > .progress-percent {
-        font-family: 'Nunito',sans-serif;
-        font-weight: bold;
-        font-size: 60px;
-        color: #EE8572; }
-      .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .statistic-card > .statistics-block > .progress-display-block {
-        width: 80%; }
-        .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .statistic-card > .statistics-block > .progress-display-block > .progress-wrap > .progress-bar {
-          width: 0%;
-          height: 28px; }
-        .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .statistic-card > .statistics-block > .progress-display-block > .progress-dates > .progress-date {
-          font-family: 'Nunito',sans-serif;
-          font-weight: 400;
-          font-size: 16px;
-          color: #35495E; }
-      .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-finance-cards {
-        display: grid;
-        grid-template-columns: repeat(1, 1fr);
-        grid-gap: 20px; }
-        .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-finance-cards > .statistic-card > .statistic-card-title {
-          font-family: 'Nunito',sans-serif;
-          font-weight: bold;
-          font-size: 12px;
-          color: #35495E; }
-        .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-finance-cards > .statistic-card > .statistics-block.-finance > .statistic-amount {
-          font-family: 'Nunito',sans-serif;
-          font-weight: bold;
-          font-size: 24px;
-          color: #49BEB7; }
-          .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-finance-cards > .statistic-card > .statistics-block.-finance > .statistic-amount.-expense-red {
+          grid-template-columns: repeat(1, 1fr);
+          grid-gap: 20px; }
+          .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-finance-cards > .statistic-card > .statistic-card-title {
+            font-family: 'Nunito',sans-serif;
+            font-weight: bold;
+            font-size: 12px;
+            color: #35495E; }
+          .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-finance-cards > .statistic-card > .statistics-block.-finance > .statistic-amount {
             font-family: 'Nunito',sans-serif;
             font-weight: bold;
             font-size: 24px;
-            color: #FF3838; }
-            .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-finance-cards > .statistic-card > .statistics-block.-finance > .statistic-amount.-expense-red:before {
-              content: "-";
-              text-transform: uppercase;
-              margin-right: 2px; }
-      .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-filter-block > .statistic-card > .statistic-card-title {
-        font-family: 'Nunito',sans-serif;
-        font-weight: bold;
-        font-size: 12px;
-        color: #35495E; }
-      .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-filter-charts {
-        display: grid;
-        grid-template-columns: repeat(1, 1fr);
-        grid-gap: 20px; }
-        .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-filter-charts > .statistic-card > .statistic-card-title {
+            color: #49BEB7; }
+            .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-finance-cards > .statistic-card > .statistics-block.-finance > .statistic-amount.-expense-red {
+              font-family: 'Nunito',sans-serif;
+              font-weight: bold;
+              font-size: 24px;
+              color: #FF3838; }
+              .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-finance-cards > .statistic-card > .statistics-block.-finance > .statistic-amount.-expense-red:before {
+                content: "-";
+                text-transform: uppercase;
+                margin-right: 2px; }
+        .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-filter-block > .statistic-card > .statistic-card-title {
           font-family: 'Nunito',sans-serif;
           font-weight: bold;
           font-size: 12px;
           color: #35495E; }
-        .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-filter-charts > .statistic-card > .statistics-block.-chart > .chart-size {
-          width: 400px; }
+        .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-filter-charts {
+          display: grid;
+          grid-template-columns: repeat(1, 1fr);
+          grid-gap: 20px; }
+          .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-filter-charts > .statistic-card > .statistic-card-title {
+            font-family: 'Nunito',sans-serif;
+            font-weight: bold;
+            font-size: 12px;
+            color: #35495E; }
+          .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-filter-charts > .statistic-card > .statistics-block.-chart > .chart-size {
+            width: 400px; }
   .home-container[data-eq-state$="preMobile"] {
     display: flex; }
     .home-container[data-eq-state$="preMobile"] > .main-container-block > .sidebar-block {
@@ -963,9 +970,14 @@ button {
   min-width: max-content; }
 
 .content-block {
-  width: 100%; }
+  width: 100%;
+  margin-left: 80px;
+  transition: 0.5s ease; }
   .content-block.-apply-overlay {
     opacity: 0.4; }
+  .content-block.-extend {
+    margin-left: 200px;
+    transition: 0.7s ease; }
 
 .header > .header-menu {
   margin-left: 6px; }
@@ -1060,6 +1072,9 @@ button {
   width: 100%;
   height: 300px !important; }
 
+.main-content-block {
+  margin-top: 60px; }
+
 .sidenav {
   position: absolute;
   opacity: 0;
@@ -1071,11 +1086,11 @@ button {
   transition: 0s ease; }
   .sidenav > .main-logo {
     opacity: 0; }
-  .sidenav > .sidenav-menu {
+  .sidenav > .pages-control {
     opacity: 0; }
   .sidenav.-active {
     opacity: 1;
-    position: relative;
+    position: fixed;
     z-index: 0;
     width: 200px;
     height: 100%;
@@ -1085,12 +1100,12 @@ button {
       margin-left: 32px;
       margin-bottom: 40px;
       transition: 0.6s ease; }
-    .sidenav.-active > .sidenav-menu {
+    .sidenav.-active > .pages-control {
       opacity: 1;
       transition: 1.2s ease; }
 
 .sidenav-mobile {
-  position: relative;
+  position: fixed;
   width: 80px;
   align-items: center;
   background: #ffffff;
@@ -1100,7 +1115,7 @@ button {
   .sidenav-mobile > .main-logo {
     margin-bottom: 40px;
     transition: 0.5s ease; }
-  .sidenav-mobile > .sidenav-menu {
+  .sidenav-mobile > .pages-control {
     opacity: 1;
     transition: 0.5s ease;
     margin-left: 12px; }
@@ -1113,7 +1128,7 @@ button {
     transition: 0.5s ease; }
     .sidenav-mobile.-collapsed > .main-logo {
       opacity: 0; }
-    .sidenav-mobile.-collapsed > .sidenav-menu {
+    .sidenav-mobile.-collapsed > .pages-control {
       opacity: 0; }
 
 .main-logo {
@@ -1137,18 +1152,130 @@ button {
 .sidenav-menu {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; }
-  .sidenav-menu > .sidenav-item {
-    margin-bottom: 20px; }
-  .sidenav-menu > .sidenav-border {
-    margin-top: 300px;
-    margin-bottom: 24px; }
+  align-items: flex-start;
+  justify-content: space-between;
+  height: 75%; }
+  .sidenav-menu.-mobile {
+    height: 80%;
+    align-items: center; }
+
+.pages-control {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%; }
+  .pages-control > .sidenav-item {
+    margin-bottom: 20px;
+    margin-left: 8px; }
+  .pages-control.-mobile {
+    padding-left: 0px;
+    width: max-content; }
+
+.user-control {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%; }
+  .user-control > .sidenav-item {
+    margin-top: 20px;
+    margin-left: 8px; }
+  .user-control.-mobile {
+    width: max-content; }
 
 .sidenav-item {
   display: flex;
   flex-direction: row;
   align-items: center;
-  transition: 0.3s; }
+  width: 0px;
+  transition: 0.3s ease; }
+  .sidenav-item.-active {
+    background: #EE8572;
+    border-radius: 10px;
+    padding: 10px 12px 10px 0px;
+    width: 140px;
+    transition: 0.3s ease; }
+    .sidenav-item.-active > .sidenav-link > .sidenav-item-name {
+      font-family: 'Nunito',sans-serif;
+      font-weight: 400;
+      font-size: 20px;
+      color: #ffffff; }
+    .sidenav-item.-active > .sidenav-link > #icon-dashboard {
+      content: url(../icons/home-white.svg); }
+    .sidenav-item.-active > .sidenav-link > #icon-wallet {
+      content: url(../icons/wallet-white.svg); }
+    .sidenav-item.-active > .sidenav-link > #icon-goals {
+      content: url(../icons/goal-white.svg); }
+    .sidenav-item.-active > .sidenav-link > #icon-settings {
+      content: url(../icons/settings-white.svg); }
+    .sidenav-item.-active > .sidenav-link > #icon-logout {
+      content: url(../icons/logout-white.svg); }
+    .sidenav-item.-active:hover > .sidenav-link > .sidenav-item-name {
+      font-family: 'Nunito',sans-serif;
+      font-weight: 400;
+      font-size: 20px;
+      color: #ffffff; }
+    .sidenav-item.-active:hover > .sidenav-link > #icon-dashboard {
+      content: url(../icons/home-white.svg); }
+    .sidenav-item.-active:hover > .sidenav-link > #icon-wallet {
+      content: url(../icons/wallet-white.svg); }
+    .sidenav-item.-active:hover > .sidenav-link > #icon-goals {
+      content: url(../icons/goal-white.svg); }
+    .sidenav-item.-active:hover > .sidenav-link > #icon-settings {
+      content: url(../icons/settings-white.svg); }
+    .sidenav-item.-active:hover > .sidenav-link > #icon-logout {
+      content: url(../icons/logout-white.svg); }
+  .sidenav-item.-active-mobile {
+    background: #EE8572;
+    border-radius: 10px;
+    width: 30px;
+    height: 30px; }
+    .sidenav-item.-active-mobile > .sidenav-link > .sidenav-item-name {
+      font-family: 'Nunito',sans-serif;
+      font-weight: 400;
+      font-size: 20px;
+      color: #ffffff; }
+    .sidenav-item.-active-mobile > .sidenav-link > #icon-dashboard {
+      content: url(../icons/home-white.svg); }
+    .sidenav-item.-active-mobile > .sidenav-link > #icon-wallet {
+      content: url(../icons/wallet-white.svg); }
+    .sidenav-item.-active-mobile > .sidenav-link > #icon-goals {
+      content: url(../icons/goal-white.svg); }
+    .sidenav-item.-active-mobile > .sidenav-link > #icon-settings {
+      content: url(../icons/settings-white.svg); }
+    .sidenav-item.-active-mobile > .sidenav-link > #icon-logout {
+      content: url(../icons/logout-white.svg); }
+    .sidenav-item.-active-mobile:hover > .sidenav-link > .sidenav-item-name {
+      font-family: 'Nunito',sans-serif;
+      font-weight: 400;
+      font-size: 20px;
+      color: #ffffff; }
+    .sidenav-item.-active-mobile:hover > .sidenav-link > #icon-dashboard {
+      content: url(../icons/home-white.svg); }
+    .sidenav-item.-active-mobile:hover > .sidenav-link > #icon-wallet {
+      content: url(../icons/wallet-white.svg); }
+    .sidenav-item.-active-mobile:hover > .sidenav-link > #icon-goals {
+      content: url(../icons/goal-white.svg); }
+    .sidenav-item.-active-mobile:hover > .sidenav-link > #icon-settings {
+      content: url(../icons/settings-white.svg); }
+    .sidenav-item.-active-mobile:hover > .sidenav-link > #icon-logout {
+      content: url(../icons/logout-white.svg); }
+  .sidenav-item:hover > .sidenav-link {
+    transition: 0.3s ease; }
+    .sidenav-item:hover > .sidenav-link > .sidenav-item-name {
+      font-family: 'Nunito',sans-serif;
+      font-weight: 400;
+      font-size: 20px;
+      color: #EE8572; }
+    .sidenav-item:hover > .sidenav-link > #icon-dashboard {
+      content: url(../icons/home-peach.svg); }
+    .sidenav-item:hover > .sidenav-link > #icon-wallet {
+      content: url(../icons/wallet-peach.svg); }
+    .sidenav-item:hover > .sidenav-link > #icon-goals {
+      content: url(../icons/goal-peach.svg); }
+    .sidenav-item:hover > .sidenav-link > #icon-settings {
+      content: url(../icons/settings-peach.svg); }
+    .sidenav-item:hover > .sidenav-link > #icon-logout {
+      content: url(../icons/logout-peach.svg); }
 
 .sidenav-link {
   display: flex;
@@ -1156,8 +1283,12 @@ button {
   flex-direction: row;
   align-items: center;
   text-decoration: none; }
+  .sidenav-link > .sidenav-icon {
+    margin-left: 5px; }
   .sidenav-link > .sidenav-item-name {
     margin-left: 6px; }
+  .sidenav-link.-mobile > .sidenav-icon {
+    margin-left: 4px; }
 
 .sidenav-item-name {
   font-family: 'Nunito',sans-serif;
@@ -1175,12 +1306,18 @@ button {
 
 .header {
   background: #ffffff;
+  width: 100%;
   padding: 20px 0px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: left;
-  position: relative; }
+  position: fixed;
+  margin-left: 0px;
+  transition: 0.5s ease; }
+  .header.-extend {
+    margin-left: 180px;
+    transition: 0.7s ease; }
 
 .header-menu {
   max-width: 20px;
@@ -1212,6 +1349,12 @@ button {
   font-weight: 400;
   font-size: 12px;
   color: #ffffff; }
+
+.test-svg {
+  fill: black; }
+
+#icon-dashboard {
+  content: url(../icons/home.svg); }
 
 .transaction-wrap {
   display: flex;
@@ -1285,7 +1428,8 @@ button {
   font-family: 'Nunito',sans-serif;
   font-weight: 300;
   font-size: 16px;
-  color: #35495E; }
+  color: #35495E;
+  text-align: center; }
   .no-transactions-message:before {
     font-family: 'Nunito',sans-serif;
     font-weight: bold;
@@ -1295,6 +1439,9 @@ button {
     display: block;
     margin-bottom: 24px;
     text-align: center; }
+  .no-transactions-message.-wallet {
+    margin-bottom: 12px;
+    line-height: 1.5em; }
 
 .transaction {
   display: flex;

@@ -26,7 +26,14 @@
                         </div>
                         <span class="wallet-amount">{{ wallet.balance }}</span>
                     </div>
+                {% else %}
+                    <div class="wallet-block">
+                        <div sata-attr-message="No Wallets." class="no-transactions-message -wallet">Add Your first wallet by clicking <br>"Add New Wallets"!</div>
+                    </div>
                 {% endif %}
+
+
+
                 <div class="wallet-buttons-block">
                     <button class="wallet-btn">Add New Wallets</button>
                     <button class="wallet-btn">View Wallets</button>
@@ -177,5 +184,11 @@
     <script src="{% static "js/progress-bar.js" %}"></script>
     <script src="{% static "js/pie-chart.js" %}"></script>
     <script src="{% static "js/line-chart.js" %}"></script>
+    <script>
+
+        $('#sidenav-dashboard').toggleClass('-active');
+        $('#m-sidenav-dashboard').toggleClass('-active-mobile');
+
+    </script>
 
 {% endblock %}

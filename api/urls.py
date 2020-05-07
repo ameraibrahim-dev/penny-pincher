@@ -12,4 +12,6 @@ urlpatterns = [
          name='used_categories'),
     path('v1/user/wallet/transactions/list/', WalletTransactionsByUser.as_view(),
          name='wallet_transactions_by_user'),
+    path('v1/user/goal/transactions/list/', GoalTransactionsByUser.as_view(),
+         name='goal_transactions_by_user'),
 ]

@@ -15,7 +15,6 @@ class CreateGoalForm(ModelForm):
         fields = ['name', 'balance', 'target_amount', 'target_date']
         labels = {
             'name': 'What is the name of your goal',
-            'target_amount': 'target_amount',
             'balance': 'Initial Amount',
             'target_date': 'Ending Date',
         }
@@ -36,11 +35,6 @@ class UpdateGoalForm(ModelForm):
     class Meta:
         model = Goal
         fields = ['name', 'target_amount', 'target_date', 'balance']
-        labels = {
-            'What is the name of your goal': 'name',
-            'How much do you want to save': 'target_amount',
-            'Ending Date': 'target_date',
-        }
 
     def clean(self):
         # balance and target amount comparison

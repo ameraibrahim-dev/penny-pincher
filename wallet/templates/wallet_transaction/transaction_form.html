@@ -79,43 +79,12 @@
 {% endblock %}
 
 {% block body-javascript-extension %}
+  <script src="{% static "js/wallet-transaction-form.js" %}"></script>
 
     <script>
-    let expenses_categories = [];
-    let earning_categories = [];
 
-    $.ajax({
-        url: "{% url 'api:expense_categories_by_user' %}", success: function (result) {
-            expenses_categories = eval(result);
-            let options = generateHtml();
-            $("#id_category").html(options);
-        }
-    });
-       $.ajax({
-        url: "{% url 'api:earnings_categories_by_user' %}", success: function (result) {
-            earning_categories = eval(result);
-        }
-    });
-    String.prototype.format = function () {
-        var str = this;
-        for (var i = 0; i < arguments.length; i++) {
-            str = str.replace('{' + i + '}', arguments[i]);
-        }
-        return str;
-    };
+        $('#sidenav-wallet').toggleClass('-active');
+        $('#m-sidenav-wallet').toggleClass('-active-mobile');
 
-    function generateHtml() {
-        let expense_options = "";
-        expense_options += "<option value='' selected>---------</option>";
-        expenses_categories.forEach(function (item) {
-            let option_html = "<option value='{0}'>{1}</option>".format(item.name, item.name);
-            expense_options += option_html;
-        });
-        return expense_options;
-    }
-</script>
-
-
-
-
+    </script>
 {% endblock %}

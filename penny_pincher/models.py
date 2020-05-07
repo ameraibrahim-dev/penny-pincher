@@ -5,8 +5,8 @@ from djmoney.models.validators import MinMoneyValidator
 
 class AbstractTransaction(models.Model):
     IS_EXPENSE_CHOICES = [
-        (True, 'Expenses'),
-        (False, 'Earnings'),
+        (True, 'Expense'),
+        (False, 'Earning'),
     ]
     amount = MoneyField(max_digits=14, decimal_places=2, default_currency='PHP', validators=[MinMoneyValidator(1)])
     date = models.DateField(null=False, blank=False)
