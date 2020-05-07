@@ -187,3 +187,14 @@
 
 
 {% endblock %}
+
+{% block body-javascript-extension %}
+
+    <script>
+
+        $('#sidenav-wallet').toggleClass('-active');
+        $('#m-sidenav-wallet').toggleClass('-active-mobile');
+
+    </script>
+
+{% endblock %}
