@@ -5,3 +5,14 @@
     <input type="submit" value="Save">
 </form>
 {% endblock %}
+
+{% block body-javascript-extension %}
+
+    <script>
+
+        $('#sidenav-goals').toggleClass('-active');
+        $('#m-sidenav-goals').toggleClass('-active-mobile');
+
+    </script>
+
+{% endblock %}
