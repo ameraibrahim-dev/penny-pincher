@@ -144,3 +144,14 @@
 
 
 {% endblock %}
+
+{% block body-javascript-extension %}
+
+    <script>
+
+        $('#m-sidenav-settings').toggleClass('-active');
+        $('#m-sidenav-settings').toggleClass('-active-mobile');
+
+    </script>
+
+{% endblock %}
