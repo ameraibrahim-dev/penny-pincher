@@ -36,7 +36,7 @@
                                     {{ error }}
                                 </span>
                             {% endfor %}
-                            {% render_field form.type class="form-control input-box"%}
+                            {% render_field form.type class="form-control input-box" %}
                         </div>
                     </div>
 
@@ -67,13 +67,6 @@
 {% block body-javascript-extension %}
     <script>
         $("#id_balance_1").hide();
+        activeNavIcon("#sidenav-wallet", "#m-sidenav-wallet");
     </script>
-
-    <script>
-
-        $('#sidenav-wallet').toggleClass('-active');
-        $('#m-sidenav-wallet').toggleClass('-active-mobile');
-
-    </script>
-
 {% endblock %}

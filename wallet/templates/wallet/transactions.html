@@ -5,17 +5,17 @@
 {% block mainContent %}
 
     <ol>
-    {% for transaction in object.wallettransaction_set.all%}
-        <li>
-        {{ transaction.category.name }}
-        {{ transaction.amount }}
-        <a href="{% url 'wallet:wallet_transactions_update_transaction' transaction.pk %}">Update</a>
-         <a href="{% url 'wallet:wallet_transactions_delete_transaction' transaction.pk %}">Delete</a>
-        </li>
-    {% endfor %}
+        {% for transaction in object.wallettransaction_set.all %}
+            <li>
+                {{ transaction.category.name }}
+                {{ transaction.amount }}
+                <a href="{% url 'wallet:wallet_transactions_update_transaction' transaction.pk %}">Update</a>
+                <a href="{% url 'wallet:wallet_transactions_delete_transaction' transaction.pk %}">Delete</a>
+            </li>
+        {% endfor %}
 
     </ol>
-        <div class="transaction-wrap">
+    <div class="transaction-wrap">
 
         <div class="transaction-header">
             <span class="transaction-wallet-name">{{ object }} Wallet</span>
@@ -35,8 +35,8 @@
                             <span class="statistic-input-label">Category</span>
                             <div class="statistics-input-box-style">
                                 <select class="statistics-filter">
-                                <option value="" disabled selected >All categories</option>
-                                <option value="1">Audi</option>
+                                    <option value="" disabled selected>All categories</option>
+                                    <option value="1">Audi</option>
                                 </select>
                             </div>
                         </div>
@@ -44,14 +44,16 @@
                         <div class="statistic-input-box">
                             <span class="statistic-input-label">Note</span>
                             <div class="statistics-input-box-style">
-                                <input type="text" name="statistic-keyword-filter" id="statisticKeywordFilter" class="statistic-keyword-filter" placeholder="Filter by specific keyword">
+                                <input type="text" name="statistic-keyword-filter" id="statisticKeywordFilter"
+                                       class="statistic-keyword-filter" placeholder="Filter by specific keyword">
                             </div>
                         </div>
 
                         <div class="statistic-input-box">
                             <span class="statistic-input-label">Date Range</span>
                             <div class="statistics-input-box-style">
-                                <input type="text" name="statistic-keyword-filter" id="statisticKeywordFilter" class="statistic-keyword-filter" placeholder="Filter by specific keyword">
+                                <input type="text" name="statistic-keyword-filter" id="statisticKeywordFilter"
+                                       class="statistic-keyword-filter" placeholder="Filter by specific keyword">
                             </div>
                         </div>
 
@@ -95,79 +97,81 @@
 
                     <span class="statistic-card-title">March 1, 2020</span>
 
-                        <div class="statistics-block">
-                                    <!--Display this div below if there are no transactions-->
-                            <!-- <div sata-attr-message="No Transactions." class="no-transactions-message">To add a transaction, click Add Transaction on the upper right.</div> -->
+                    <div class="statistics-block">
+                        <!--Display this div below if there are no transactions-->
+                        <!-- <div sata-attr-message="No Transactions." class="no-transactions-message">To add a transaction, click Add Transaction on the upper right.</div> -->
 
-                            <div class="transaction"> <!--This is one transaction line-->
-                                <div class="transaction-type">
+                        <div class="transaction"> <!--This is one transaction line-->
+                            <div class="transaction-type">
 
-                                    <img class="transaction-icon" src="{% static "icons/bills.png" %}" alt="Transaction Icon">
+                                <img class="transaction-icon" src="{% static "icons/bills.png" %}"
+                                     alt="Transaction Icon">
 
-                                    <span class="transaction-name">Transaction Name</span>
-                                </div>
+                                <span class="transaction-name">Transaction Name</span>
+                            </div>
 
-                                <div class="transaction-notes">
+                            <div class="transaction-notes">
 
-                                    I spent fifty today.
-                                    <!--Place notes here-->
+                                I spent fifty today.
+                                <!--Place notes here-->
 
 
-                                    <!--If no notes display this div-->
-                                    <!-- <div class="no-notes">
-                                        <span class="note-empty-lines"></span>
-                                        <span class="note-empty-lines"></span>
-                                        <span class="note-empty-lines"></span>
-                                    </div> -->
-
-                                </div>
-
-                                <div class="transaction-price">
-                                    <span class="transaction-amount">-2,000.00</span>
-                                </div>
-
-                                <div class="transaction-control">
-                                    <img class="transaction-edit"src="{% static "icons/edit.png" %}" alt="edit">
-                                    <img class="transaction-delete"src="{% static "icons/delete.png" %}" alt="edit">
-                                </div>
+                                <!--If no notes display this div-->
+                                <!-- <div class="no-notes">
+                                    <span class="note-empty-lines"></span>
+                                    <span class="note-empty-lines"></span>
+                                    <span class="note-empty-lines"></span>
+                                </div> -->
 
                             </div>
 
-                            <div class="transaction"> <!--This is one transaction line-->
-                                <div class="transaction-type">
-
-                                    <img class="transaction-icon" src="{% static "icons/food.png" %}" alt="Transaction Icon">
-
-                                    <span class="transaction-name">Transaction Name</span>
-                                </div>
-
-                                <div class="transaction-notes">
-
-                                    <!--Place notes here-->
-
-
-                                    <!--If no notes display this div-->
-                                    <div class="no-notes">
-                                        <span class="note-empty-lines"></span>
-                                        <span class="note-empty-lines"></span>
-                                        <span class="note-empty-lines"></span>
-                                    </div>
-
-                                </div>
-
-                                <div class="transaction-price">
-                                    <span class="transaction-amount">-1,000.00</span>
-                                </div>
-
-                                <div class="transaction-control">
-                                    <img class="transaction-edit"src="{% static "icons/edit.png" %}" alt="edit">
-                                    <img class="transaction-delete"src="{% static "icons/delete.png" %}" alt="edit">
-                                </div>
-
+                            <div class="transaction-price">
+                                <span class="transaction-amount">-2,000.00</span>
                             </div>
 
+                            <div class="transaction-control">
+                                <img class="transaction-edit" src="{% static "icons/edit.png" %}" alt="edit">
+                                <img class="transaction-delete" src="{% static "icons/delete.png" %}" alt="edit">
+                            </div>
 
                         </div>
+
+                        <div class="transaction"> <!--This is one transaction line-->
+                            <div class="transaction-type">
+
+                                <img class="transaction-icon" src="{% static "icons/food.png" %}"
+                                     alt="Transaction Icon">
+
+                                <span class="transaction-name">Transaction Name</span>
+                            </div>
+
+                            <div class="transaction-notes">
+
+                                <!--Place notes here-->
+
+
+                                <!--If no notes display this div-->
+                                <div class="no-notes">
+                                    <span class="note-empty-lines"></span>
+                                    <span class="note-empty-lines"></span>
+                                    <span class="note-empty-lines"></span>
+                                </div>
+
+                            </div>
+
+                            <div class="transaction-price">
+                                <span class="transaction-amount">-1,000.00</span>
+                            </div>
+
+                            <div class="transaction-control">
+                                <img class="transaction-edit" src="{% static "icons/edit.png" %}" alt="edit">
+                                <img class="transaction-delete" src="{% static "icons/delete.png" %}" alt="edit">
+                            </div>
+
+                        </div>
+
+
+                    </div>
 
                 </div>
 
@@ -191,9 +195,7 @@
 
     <script>
         $('#header-transactions').toggleClass('-active');
-        $('#sidenav-wallet').toggleClass('-active');
-        $('#m-sidenav-wallet').toggleClass('-active-mobile');
-
+        activeNavIcon("#sidenav-wallet", "#m-sidenav-wallet");
     </script>
 
 {% endblock %}
