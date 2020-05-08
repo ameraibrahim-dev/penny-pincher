@@ -1,4 +1,9 @@
-{% extends 'base_navigation.html' %}
+{% extends 'base_navigation_no_footer.html' %}
+{% load widget_tweaks %}
+{% block title %}Penny Pincher - My Goals{% endblock %}
+{% load i18n %}
+{% load static %}
+
 {% block mainContent%}
 
 <a href="{% url 'goal:create_goal' %}">Create</a>
