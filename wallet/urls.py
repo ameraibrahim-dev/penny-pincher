@@ -6,7 +6,6 @@ app_name = "wallet"
 urlpatterns = [
     # wallets
     path('overview/<int:pk>/', WalletOverview.as_view(), name='wallet_overview'),
-    path('settings/<int:pk>/', WalletSettingsView.as_view(), name='wallet_settings'),
     path('wallet_transaction/<int:pk>/', WalletTransactionsView.as_view(), name='wallet_transactions'),
     path('list/', WalletListView.as_view(), name='wallet_list'),
     path('create/', CreateWalletView.as_view(), name='create_wallet'),
