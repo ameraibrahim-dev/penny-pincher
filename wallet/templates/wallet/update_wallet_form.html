@@ -1,4 +1,4 @@
-{% extends 'base_navigation_no_footer.html' %}
+{% extends 'wallet/wallet_header.html' %}
 {% load widget_tweaks %}
 {% block title %}Penny Pincher - Wallet Settings{% endblock %}
 {% load i18n %}
@@ -67,6 +67,7 @@
 
     <script>
 
+        $('#header-wallet-settings').toggleClass('-active');
         $('#sidenav-wallet').toggleClass('-active');
         $('#m-sidenav-wallet').toggleClass('-active-mobile');
 
