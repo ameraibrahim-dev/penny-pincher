@@ -1,5 +1,7 @@
 // let sidenav = document.getElementById('sidenav');
 // let sidneavMobile = document.getElementById('sidenav-mobile');
+const IS_NAV_EXPAND_KEY = "isNavBarExpand";
+
 if ($('sidenav').hasClass('-active')) {
     $('sidebar-block').css({
         "min-width": "200px"
@@ -115,12 +117,37 @@ $(window).on('resize', function () {
 });
 
 
-function activeNavIcon(desktopNavLocator,mobileLocator) {
+function activeNavIcon(desktopNavLocator, mobileLocator) {
     $(desktopNavLocator).toggleClass('-active');
     $(mobileLocator).toggleClass('-active-mobile');
 }
 
+// navigation expansion onlick
+$("#header-menu").click(function () {
+    let isNavBarExpand = sessionStorage.getItem(IS_NAV_EXPAND_KEY);
+    if (isNavBarExpand != null) {
+        if (isNavBarExpand == 1) {
+            sessionStorage.setItem(IS_NAV_EXPAND_KEY, 0);
+        } else {
+            sessionStorage.setItem(IS_NAV_EXPAND_KEY, 1);
+        }
+    } else {
+        sessionStorage.setItem(IS_NAV_EXPAND_KEY, 1);
+    }
+});
 
+$(document).ready(function () {
+    let isNavBarExpand = sessionStorage.getItem(IS_NAV_EXPAND_KEY);
+    if (isNavBarExpand != null) {
+        if (isNavBarExpand == 1) {
+            //expand nav bar
+        } else {
+            //close nav bar
+        }
+    } else {
+        sessionStorage.setItem(IS_NAV_EXPAND_KEY, 0);
+    }
+});
 
 
 

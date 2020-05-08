@@ -20,15 +20,145 @@
         <a href="{% url 'goal:delete_transaction' transact.pk %}">Delete {{ transact }}</a>
         <br>
     {% endfor %}
-{% endblock %}
 
-{% block body-javascript-extension %}
 
-    <script>
+    <div class="section-wrap">
 
-        $('#sidenav-goals').toggleClass('-active');
-        $('#m-sidenav-goals').toggleClass('-active-mobile');
+        <div class="section-header">
+            <span class="transaction-wallet-name">Year Abroad</span>
+            <button class="btn-primary add-transaction-btn">View Goals List</button>
+        </div>
 
-    </script>
+        <div class="section-body">
+
+           <div class="goals-card">
+                <div class="chart-size -goals">
+                    <canvas id="homePieChart" width="300" height="300"></canvas>
+                    <span class="chart-name">Year Abroad</span>
+                </div>
+
+                <span data-attr-goal="Goal" class="target-goal">100,000.00</span>
+
+                <div class="goal-progress">
+                    <span class="progress-percent -goals" id="progress-percent">30 <!--This is the value that represents the bar--></span>
+
+                    <div class="progress-display-block">
+
+                        <div class="progress-wrap">
+                            <div class="progress-bar" id="progress-bar"><!--This is the actual bar that moves--></div>
+                        </div>
+
+                        <div class="progress-dates">
+                            <span class="progress-date">Mar 2020</span>
+                            <span class="progress-date">Dec 2020</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <span data-attr-label="Time Left: "class="time-remaining">7</span>
+
+           </div>
+
+        </div>
+
+        <div class="section-header2">
+            <span class="transaction-wallet-name">Transaction</span>
+            <button class="btn-primary add-transaction-btn">Add Transaction</button>
+        </div>
+
+        <div class="section-body">
+
+            <div class="transaction-display-block">
+                <div class="statistic-card">
+
+                    <span class="statistic-card-title">March 1, 2020</span>
+
+                    <div class="statistics-block">
+                                <!--Display this div below if there are no transactions-->
+                        <!-- <div sata-attr-message="No Transactions." class="no-transactions-message">To add a transaction, click Add Transaction on the upper right.</div> -->
+
+                        <div class="transaction"> <!--This is one transaction line-->
+                            <div class="transaction-type">
+
+                                <img class="transaction-icon" src="../sqa_penny_pincher/assets/icons/bills.png" alt="Transaction Icon">
+
+                                <span class="transaction-name">Transaction Name</span>
+                            </div>
+
+                            <div class="transaction-notes">
+
+                                I spent fifty today.
+                                <!--Place notes here-->
+
+
+                                <!--If no notes display this div-->
+                                <!-- <div class="no-notes">
+                                    <span class="note-empty-lines"></span>
+                                    <span class="note-empty-lines"></span>
+                                    <span class="note-empty-lines"></span>
+                                </div> -->
+
+                            </div>
+
+                            <div class="transaction-price">
+                                <span class="transaction-amount">-2,000.00</span>
+                            </div>
+
+                            <div class="transaction-control">
+                                <img class="transaction-edit"src="../sqa_penny_pincher/assets/icons/edit.png" alt="edit">
+                                <img class="transaction-delete"src="../sqa_penny_pincher/assets/icons/delete.png" alt="edit">
+                            </div>
+
+                        </div>
+
+                        <div class="transaction"> <!--This is one transaction line-->
+                            <div class="transaction-type">
+
+                                <img class="transaction-icon" src="../sqa_penny_pincher/assets/icons/food.png" alt="Transaction Icon">
+
+                                <span class="transaction-name">Transaction Name</span>
+                            </div>
+
+                            <div class="transaction-notes">
+
+                                <!--Place notes here-->
+
+
+                                <!--If no notes display this div-->
+                                <div class="no-notes">
+                                    <span class="note-empty-lines"></span>
+                                    <span class="note-empty-lines"></span>
+                                    <span class="note-empty-lines"></span>
+                                </div>
+
+                            </div>
+
+                            <div class="transaction-price">
+                                <span class="transaction-amount">-1,000.00</span>
+                            </div>
+
+                            <div class="transaction-control">
+                                <img class="transaction-edit"src="../sqa_penny_pincher/assets/icons/edit.png" alt="edit">
+                                <img class="transaction-delete"src="../sqa_penny_pincher/assets/icons/delete.png" alt="edit">
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+   </div>
+
+
+
+
+
 
 {% endblock %}
