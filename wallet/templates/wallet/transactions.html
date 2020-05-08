@@ -4,16 +4,6 @@
 
 {% block mainContent %}
 
-    <ol>
-    {% for transaction in object.wallettransaction_set.all%}
-        <li>
-        {{ transaction.category.name }}
-        {{ transaction.amount }}
-        <a href="{% url 'wallet:wallet_transactions_update_transaction' transaction.pk %}">Update</a>
-         <a href="{% url 'wallet:wallet_transactions_delete_transaction' transaction.pk %}">Delete</a>
-        </li>
-    {% endfor %}
-
     </ol>
         <div class="transaction-wrap">
 
@@ -97,74 +87,46 @@
 
                         <div class="statistics-block">
                                     <!--Display this div below if there are no transactions-->
-                            <!-- <div sata-attr-message="No Transactions." class="no-transactions-message">To add a transaction, click Add Transaction on the upper right.</div> -->
 
-                            <div class="transaction"> <!--This is one transaction line-->
-                                <div class="transaction-type">
+                            {% for transaction in object.wallettransaction_set.all%}
+                                <div class="transaction"> <!--This is one transaction line-->
+                                    <div class="transaction-type">
+                                        <img class="transaction-icon" src="{% static "icons/bills.png" %}" alt="Transaction Icon">
+                                        <span class="transaction-name">{{ transaction.category.name }}</span>
+                                    </div>
 
-                                    <img class="transaction-icon" src="{% static "icons/bills.png" %}" alt="Transaction Icon">
+                                    <div class="transaction-notes">
+                                        {% if transaction.note %}
+                                            {{ transaction.note }}
+                                        {% else %}
+                                            <!--If no notes display this div-->
+                                           <div class="no-notes">
+                                               <span class="note-empty-lines"></span>
+                                               <span class="note-empty-lines"></span>
+                                               <span class="note-empty-lines"></span>
+                                          </div>
+                                        {% endif %}
 
-                                    <span class="transaction-name">Transaction Name</span>
-                                </div>
+                                    </div>
 
-                                <div class="transaction-notes">
+                                    <div class="transaction-price">
+                                        <span class="transaction-amount">{{ transaction.amount }}</span>
+                                    </div>
 
-                                    I spent fifty today.
-                                    <!--Place notes here-->
-
-
-                                    <!--If no notes display this div-->
-                                    <!-- <div class="no-notes">
-                                        <span class="note-empty-lines"></span>
-                                        <span class="note-empty-lines"></span>
-                                        <span class="note-empty-lines"></span>
-                                    </div> -->
-
-                                </div>
-
-                                <div class="transaction-price">
-                                    <span class="transaction-amount">-2,000.00</span>
-                                </div>
-
-                                <div class="transaction-control">
-                                    <img class="transaction-edit"src="{% static "icons/edit.png" %}" alt="edit">
-                                    <img class="transaction-delete"src="{% static "icons/delete.png" %}" alt="edit">
-                                </div>
-
-                            </div>
-
-                            <div class="transaction"> <!--This is one transaction line-->
-                                <div class="transaction-type">
-
-                                    <img class="transaction-icon" src="{% static "icons/food.png" %}" alt="Transaction Icon">
-
-                                    <span class="transaction-name">Transaction Name</span>
-                                </div>
-
-                                <div class="transaction-notes">
-
-                                    <!--Place notes here-->
-
-
-                                    <!--If no notes display this div-->
-                                    <div class="no-notes">
-                                        <span class="note-empty-lines"></span>
-                                        <span class="note-empty-lines"></span>
-                                        <span class="note-empty-lines"></span>
+                                    <div class="transaction-control">
+                                        <a href="{% url 'wallet:wallet_transactions_update_transaction' transaction.pk %}"><img class="transaction-edit"src="{% static "icons/edit.png" %}" alt="edit"></a>
+                                        <a href="{% url 'wallet:wallet_transactions_delete_transaction' transaction.pk %}"><img class="transaction-delete"src="{% static "icons/delete.png" %}" alt="edit"></a>
                                     </div>
 
                                 </div>
 
-                                <div class="transaction-price">
-                                    <span class="transaction-amount">-1,000.00</span>
-                                </div>
+                            {% empty %}
 
-                                <div class="transaction-control">
-                                    <img class="transaction-edit"src="{% static "icons/edit.png" %}" alt="edit">
-                                    <img class="transaction-delete"src="{% static "icons/delete.png" %}" alt="edit">
-                                </div>
+                                 <div sata-attr-message="No Transactions." class="no-transactions-message">
+                                     To add a transaction, click Add Transaction on the upper right.
+                                 </div>
 
-                            </div>
+                            {% endfor %}
 
 
                         </div>

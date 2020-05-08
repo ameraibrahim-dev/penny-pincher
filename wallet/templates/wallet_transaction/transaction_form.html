@@ -1,4 +1,4 @@
-{% extends 'wallet/wallet_header.html' %}
+{% extends 'base_navigation_no_footer.html' %}
 {% load widget_tweaks %}
 {% load i18n %}
 {% load static %}
@@ -57,7 +57,7 @@
                                             {{ error }}
                                         </span>
                                     {% endfor %}
-                                    {% render_field form.note class="form-control input-box" placeholder="Take down notes..." %}
+                                    {% render_field form.note class="form-control input-box" placeholder="Take down notes..."  rows="1"%}
                              </div>
                         </div>
 
@@ -113,7 +113,7 @@
                         <div class="col-xl-6">
                             <div class="form-group">
                                 <span class="input-text-field-label float-left">Transaction Type</span>
-                                {% for error in form.name.errors %}
+                                {% for error in form.is_expense.errors %}
                                     <span class="error-field">
                                         {{ error }}
                                     </span>
@@ -123,7 +123,7 @@
 
                             <div class="form-group statistic-input-box">
                                     <span class="input-text-field-label float-left">Date</span>
-                                    {% for error in form.balance.errors %}
+                                    {% for error in form.date.errors %}
                                         <span class="error-field">
                                             {{ error }}
                                         </span>
@@ -133,12 +133,12 @@
 
                              <div class="form-group statistic-input-box">
                                     <span class="input-text-field-label float-left">Notes</span>
-                                    {% for error in form.balance.errors %}
+                                    {% for error in form.note.errors %}
                                         <span class="error-field">
                                             {{ error }}
                                         </span>
                                     {% endfor %}
-                                    {% render_field form.note class="form-control input-box" placeholder="Take down notes..." %}
+                                    {% render_field form.note class="form-control input-box" placeholder="Take down notes..." rows="1"%}
                              </div>
                         </div>
 
@@ -146,7 +146,7 @@
 
                             <div class="form-group">
                                 <span class="input-text-field-label float-left">Category</span>
-                                {% for error in form.type.errors %}
+                                {% for error in form.category.errors %}
                                     <span class="error-field">
                                         {{ error }}
                                     </span>
@@ -157,12 +157,12 @@
 
                             <div class="form-group statistic-input-box">
                                 <span class="input-text-field-label float-left">Amount</span>
-                                {% for error in form.balance.errors %}
+                                {% for error in form.amount.errors %}
                                     <span class="error-field">
                                         {{ error }}
                                     </span>
                                 {% endfor %}
-                                {% render_field form.amount class="form-control input-box" placeholder="0.00 PHP" rows="1"%}
+                                {% render_field form.amount class="form-control input-box" placeholder="0.00 PHP" %}
                             </div>
 
                         </div>
