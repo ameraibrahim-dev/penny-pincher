@@ -17,7 +17,7 @@ class Category(models.Model):
     EARNINGS_ICON_CHOICES = [
         ('salary.png', 'salary.png'),
         ('business.png', 'business.png'),
-        ('gifts.png', 'gifts.pn'),
+        ('gifts.png', 'gifts.png'),
         ('extra-income.png', 'extra-income.png'),
         ('loan.png', 'loan.png'),
         ('parental-leave.png', 'parental-leave.png'),
