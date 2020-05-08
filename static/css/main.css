@@ -569,7 +569,8 @@ button {
   border: none;
   border-radius: 8px;
   padding: 18px 0px;
-  outline: thick #EE8572; }
+  outline: thick #EE8572;
+  box-shadow: 0px 4px 14px -4px rgba(0, 0, 0, 0.28); }
   .wallet-btn:hover {
     font-family: 'Nunito',sans-serif;
     font-weight: bold;
@@ -1428,7 +1429,8 @@ button {
   border: none;
   border-radius: 4px;
   padding: 8px 24px;
-  outline: thick #EE8572; }
+  outline: thick #EE8572;
+  box-shadow: 0px 4px 14px -4px rgba(0, 0, 0, 0.28); }
   .add-transaction-btn:hover {
     font-family: 'Nunito',sans-serif;
     font-weight: bold;
