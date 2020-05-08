@@ -568,7 +568,6 @@ button {
   background: #EE8572;
   border: none;
   border-radius: 8px;
-  box-shadow: 0px 4px 14px -4px rgba(0, 0, 0, 0.28);
   padding: 18px 0px;
   outline: thick #EE8572; }
   .wallet-btn:hover {
@@ -1357,6 +1356,39 @@ button {
 #icon-dashboard {
   content: url(../icons/home.svg); }
 
+.header-menu-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto; }
+  .header-menu-list > .header-menu-item {
+    margin-left: 20px; }
+
+.header-menu-item {
+  transition: 0.3s ease; }
+  .header-menu-item:hover > .header-menu-item-link {
+    transition: 0.3s ease; }
+    .header-menu-item:hover > .header-menu-item-link > .header-menu-item-name {
+      font-family: 'Nunito',sans-serif;
+      font-weight: bold;
+      font-size: 20px;
+      color: #EE8572; }
+  .header-menu-item.-active > .header-menu-item-link > .header-menu-item-name {
+    font-family: 'Nunito',sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    color: #EE8572;
+    border-bottom: 3px solid #EE8572;
+    padding-bottom: 14px; }
+
+.header-menu-item-name {
+  font-family: 'Nunito',sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  color: #35495E; }
+
 .transaction-wrap {
   display: flex;
   flex-direction: column;
@@ -1388,7 +1420,6 @@ button {
   background: #EE8572;
   border: none;
   border-radius: 4px;
-  box-shadow: 0px 4px 14px -4px rgba(0, 0, 0, 0.28);
   padding: 8px 24px;
   outline: thick #EE8572; }
   .add-transaction-btn:hover {

@@ -1,5 +1,6 @@
-{% extends 'base_navigation_no_footer.html' %}
+{% extends 'wallet/wallet_header.html' %}
 {% load static %}
+
 
 {% block mainContent %}
 
@@ -159,7 +160,7 @@
     <script src="{% static "js/line-chart.js" %}"></script>
 
     <script>
-
+        $('#header-overview').toggleClass('-active');
         $('#sidenav-wallet').toggleClass('-active');
         $('#m-sidenav-wallet').toggleClass('-active-mobile');
 

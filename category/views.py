@@ -107,7 +107,7 @@ class DefinedExpensesCategories(LoginRequiredMixin, TemplateView):
 
 
 class DefinedEarningsCategories(LoginRequiredMixin, TemplateView):
-    template_name = 'category/predefined_expenses_category_list.html'
+    template_name = 'category/predefined_earnings_category_list.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

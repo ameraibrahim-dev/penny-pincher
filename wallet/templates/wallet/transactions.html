@@ -1,7 +1,6 @@
-
-
-{% extends 'base_navigation_no_footer.html' %}
+{% extends 'wallet/wallet_header.html' %}
 {% load static %}
+
 
 {% block mainContent %}
 
@@ -191,7 +190,7 @@
 {% block body-javascript-extension %}
 
     <script>
-
+        $('#header-transactions').toggleClass('-active');
         $('#sidenav-wallet').toggleClass('-active');
         $('#m-sidenav-wallet').toggleClass('-active-mobile');
 
