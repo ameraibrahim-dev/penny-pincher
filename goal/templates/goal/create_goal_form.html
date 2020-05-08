@@ -5,44 +5,27 @@
 {% load static %}
 
 {% block mainContent %}
-    {{ form.fields }}
-    <form method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Save">
-</form>
 
-
-     <div class="transaction-wrap vertical-center">
+    <div class="transaction-wrap vertical-center">
         <div class="transaction-header">
             <span class="transaction-wallet-name">Add Goal</span>
         </div>
 
         <div class="add-transaction-block">
             <form method="post" class="wallet-form-fields">
-              {% csrf_token %}
-                 <div class="col-xl-6">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-xl-6">
                         <div class="form-group">
-                            <span class="input-text-field-label float-left">Wallet Name</span>
+                            <span class="input-text-field-label float-left">Goal Name</span>
                             {% for error in form.name.errors %}
                                 <span class="error-field">
                                     {{ error }}
                                 </span>
                             {% endfor %}
-                            {% render_field form.name class="form-control input-box" placeholder="What is your wallet name?" %}
+                            {% render_field form.name class="form-control input-box" placeholder="What is your goal name?" %}
                         </div>
 
-                        <div class="form-group">
-                            <span class="input-text-field-label float-left">Wallet Type</span>
-                            {% for error in form.type.errors %}
-                                <span class="error-field">
-                                    {{ error }}
-                                </span>
-                            {% endfor %}
-                            {% render_field form.type class="form-control input-box"%}
-                        </div>
-                    </div>
-
-                    <div class="col-xl-6">
                         <div class="form-group statistic-input-box">
                             <span class="input-text-field-label float-left">Initial Balance</span>
                             {% for error in form.balance.errors %}
@@ -53,20 +36,44 @@
                             {% render_field form.balance class="form-control input-box" placeholder="0.00 PHP" %}
                         </div>
                     </div>
+
+                    <div class="col-xl-6">
+                        <div class="form-group statistic-input-box">
+                            <span class="input-text-field-label float-left">Target Amount</span>
+                            {% for error in form.target_amount.errors %}
+                                <span class="error-field">
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                            {% render_field form.target_amount class="form-control input-box" placeholder="How much do your want to save?" %}
+                        </div>
+
+                        <div class="form-group statistic-input-box">
+                            <span class="input-text-field-label float-left">Target Date</span>
+                            {% for error in form.target_date.errors %}
+                                <span class="error-field">
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                            {% render_field form.target_date class="form-control input-box" %}
+                        </div>
+                    </div>
                 </div>
                 <div class="float-right">
-                    <a class="add-transaction-cancel-btn" href="{% url 'wallet:wallet_list' %}"
+                    <a class="add-transaction-cancel-btn" href="{% url 'goal:goal_list' %}"
                        style="text-decoration: none;padding: 8px 24px !important;">cancel</a>
                     <button class="add-transaction-save-btn">save</button>
                 </div>
             </form>
         </div>
-     </div>
+    </div>
 {% endblock %}
 
 {% block body-javascript-extension %}
 
     <script>
+        $("#id_target_amount_1").hide();
+        $("#id_balance_1").hide();
 
         $('#sidenav-goals').toggleClass('-active');
         $('#m-sidenav-goals').toggleClass('-active-mobile');
