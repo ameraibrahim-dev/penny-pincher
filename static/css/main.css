@@ -568,6 +568,7 @@ button {
   background: #EE8572;
   border: none;
   border-radius: 8px;
+  box-shadow: 0px 4px 14px -4px rgba(0, 0, 0, 0.28);
   padding: 18px 0px;
   outline: thick #EE8572; }
   .wallet-btn:hover {
