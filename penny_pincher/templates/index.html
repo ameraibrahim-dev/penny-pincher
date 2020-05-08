@@ -35,18 +35,26 @@
                             </div>
                         </div>
                     </a>
+
+                    <div class="wallet-buttons-block">
+                        <a class="btn wallet-btn" style="text-decoration: none;margin-right: 10px;"
+                           href="{% url 'wallet:create_wallet' %}">Add New Wallet</a>
+                        <a class="btn wallet-btn" style="text-decoration: none;margin-right: 10px;"
+                           href="{% url 'wallet:wallet_list' %}">View Wallets</a>
+                    </div>
                 {% else %}
-                    <div class="wallet-block">
-                        <div sata-attr-message="No Wallets." class="no-transactions-message -wallet">Add your first
-                            wallet by clicking on the button <br>"Add New Wallet"!
+                    <div class="wallet-buttons-block ml-3">
+                        <div class="row">
+                            <a class="btn wallet-btn" style="text-decoration: none;width: 85%;"
+                               href="{% url 'wallet:create_wallet' %}">Add New Wallet</a>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <a class="btn wallet-btn" style="text-decoration: none;width: 85%;"
+                               href="{% url 'wallet:wallet_list' %}">View Wallets</a>
                         </div>
                     </div>
                 {% endif %}
-
-                <div class="wallet-buttons-block">
-                    <a class="btn wallet-btn" style="text-decoration: none;margin-right: 10px;" href="{% url 'wallet:create_wallet' %}">Add New Wallet</a>
-                    <a class="btn wallet-btn" style="text-decoration: none;margin-right: 10px;" href="{% url 'wallet:wallet_list' %}">View Wallets</a>
-                </div>
 
             </div>
         </div>
