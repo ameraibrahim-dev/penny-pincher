@@ -5,15 +5,83 @@
 {% load static %}
 
 {% block mainContent %}
-    <form method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Save">
-</form>
+    <div class="transaction-wrap">
+
+        <div class="transaction-header">
+            <span class="transaction-wallet-name">{{ goal.name }} Goal</span>
+        </div>
+
+        <div class="wallet-settings-block">
+
+            <span class="general-information">General Information</span>
+
+            <form method="post" class="update-goal-form">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <span class="input-text-field-label float-left">Goal Name</span>
+                            {% for error in form.name.errors %}
+                                <span class="error-field">
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                            {% render_field form.name class="form-control input-box" style="padding: 30px 40px !important;" %}
+                        </div>
+
+                        <div class="form-group statistic-input-box">
+                            <span class="input-text-field-label float-left">Initial Balance</span>
+                            {% for error in form.balance.errors %}
+                                <span class="error-field">
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                            {% render_field form.balance class="form-control input-box" style="padding: 30px 40px !important;" %}
+                        </div>
+
+                        <div class="form-group statistic-input-box">
+                            <span class="input-text-field-label float-left">Target Amount</span>
+                            {% for error in form.target_amount.errors %}
+                                <span class="error-field">
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                            {% render_field form.target_amount class="form-control input-box" style="padding: 30px 40px !important;" %}
+                        </div>
+
+                        <div class="form-group statistic-input-box">
+                            <span class="input-text-field-label float-left">Target Date</span>
+                            {% for error in form.target_date.errors %}
+                                <span class="error-field">
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                            {% render_field form.target_date class="form-control input-box" %}
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="wallet-settings-form-control float-right" style="margin-bottom: 5px;">
+                    <a href="{% url 'goal:delete_goal' goal.pk %}" class="delete-wallet-link">Delete Goal</a>
+                </div>
+
+
+                <div class="wallet-settings-form-control">
+                    <button class="update-wallet-btn">update</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
 {% endblock %}
 
 {% block body-javascript-extension %}
 
     <script>
+        $("#id_target_amount_1").hide();
+        $("#id_balance_1").hide();
 
         $('#sidenav-goals').toggleClass('-active');
         $('#m-sidenav-goals').toggleClass('-active-mobile');
