@@ -1,24 +1,100 @@
-<body>
-<h1>category</h1>
-<a href="{% url 'category:create_custom_category' %}">Create</a>
-<form method="post">
-    {{ create_custom_category_form.as_p }}
-    <input type="submit">
-</form>
-<ul>
-    {% for category in object_list %}
-        <li>{{ category.name }} {{ category.wallettransaction_set.all|length }} Transactions
-            {% if category.is_expense %}Expense{% else %}Earnings{% endif %} <a
-                    href="{% url 'category:update_custom_category' category.pk %}">Update</a>
-            <a
-                    href="{% url 'category:delete_custom_category' category.pk %}">Delete</a>
-        </li>
-    {% empty %}
-        <li>No category yet.</li>
-    {% endfor %}
+{% extends 'base_navigation_no_footer.html' %}
+{% load widget_tweaks %}
+{% block title %}Penny Pincher - Custom Category List{% endblock %}
+{% load i18n %}
+{% load static %}
 
-</ul>
-</body>
+{% block mainContent %}
+
+    <div class="categories-wrap">
+        <div class="categories-header">
+            <span class="transaction-wallet-name" style="margin-bottom: 0px !important;">Settings</span>
+
+            <a class="btn-primary add-transaction-btn" style="text-decoration: none;"
+               href="{% url 'category:create_custom_category' %}">Add Category </a>
+        </div>
+
+        <div class="settings-block">
+            <div class="settings-navigation">
+
+                <ul class="settings-main-items">
+                    <li class="main-item">
+                        <span class="main-item-name">Category Settings</span>
+
+                        <ul class="settings-sub-items">
+                            <li class="sub-item">
+                                <a href="{% url 'category:custom_category_list' %}" class="sub-item-name">My
+                                    Categories</a>
+                            </li>
+                            <li class="sub-item">
+                                <a href="{% url 'category:predefined_earnings_category_list' %}" class="sub-item-name">
+                                    Earnings Categories</a>
+                            </li>
+                            <li class="sub-item">
+                                <a href="{% url 'category:predefined_expenses_category_list' %}" class="sub-item-name">
+                                    Expenses Categories</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+
+
+            <div class="settings-content">
+                <div class="create-category-block">
+                    <div class="manage-categories-block">
+
+                        <div class="my-categories-block">
+                            <span class="general-information -category-small">My Categories</span>
+
+                            <div class="category">
+                                {% for category in object_list %}
+                                    <div class="category-description">
+                                        <img class="category-icon" src="{% static "icons/salary.png" %}"
+                                             alt="Transaction Icon">
+
+                                        <span class="category-name">{{ category.name }}</span>
+                                    </div>
+
+                                    <div class="transaction-quantity">
+                                        <span class="number-of-transaction">{{ category.wallettransaction_set.all|length }}</span>
+                                    </div>
+
+                                    <div class="category-kind">
+                                        <span class="category-type">
+                                            {% if category.is_expense %}
+                                                Expense
+                                            {% else %}
+                                                Earnings
+                                            {% endif %}
+                                        </span>
+                                    </div>
+
+                                    <div class="category-control">
+                                        <img class="category-edit"
+                                             href="{% url 'category:update_custom_category' category.pk %}"
+                                             src="{% static "icons/edit.png" %}" alt="edit">
+                                        <img class="category-delete"
+                                             href="{% url 'category:delete_custom_category' category.pk %}"
+                                             src="{% static "icons/delete.png" %}" alt="delete">
+                                    </div>
+
+
+                                {% empty %}
+                                    <li>No category yet.</li>
+                                {% endfor %}
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
 
 {% block body-javascript-extension %}
 
