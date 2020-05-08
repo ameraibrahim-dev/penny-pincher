@@ -139,11 +139,23 @@ class OverviewPageCreateTransaction(CreateTransactionView):
     def get_success_url(self):
         return reverse_lazy('wallet:wallet_overview', kwargs={'pk': self.kwargs.get('pk')})
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['header_locator'] = "#header-overview"
+        context['cancel_url'] = reverse_lazy('wallet:wallet_overview', kwargs={'pk': self.kwargs.get('pk')})
+        return context
+
 
 class OverviewPageUpdateTransaction(UpdateTransactionView):
 
     def get_success_url(self):
         return reverse_lazy('wallet:wallet_overview', kwargs={'pk': self.get_object().wallet.pk})
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['header_locator'] = "#header-overview"
+        context['cancel_url'] = reverse_lazy('wallet:wallet_overview', kwargs={'pk': self.kwargs.get('pk')})
+        return context
 
 
 class OverviewPageDeleteTransaction(DeleteTransactionView):
@@ -156,10 +168,22 @@ class TransactionPageCreateTransaction(CreateTransactionView):
     def get_success_url(self):
         return reverse_lazy('wallet:wallet_transactions', kwargs={'pk': self.kwargs.get('pk')})
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['header_locator'] = "#header-transactions"
+        context['cancel_url'] = reverse_lazy('wallet:wallet_transactions', kwargs={'pk': self.kwargs.get('pk')})
+        return context
+
 
 class TransactionPageUpdateTransaction(UpdateTransactionView):
     def get_success_url(self):
         return reverse_lazy('wallet:wallet_transactions', kwargs={'pk': self.get_object().wallet.pk})
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['header_locator'] = "#header-transactions"
+        context['cancel_url'] = reverse_lazy('wallet:wallet_transactions', kwargs={'pk': self.kwargs.get('pk')})
+        return context
 
 
 class TransactionPageDeleteTransaction(DeleteTransactionView):
