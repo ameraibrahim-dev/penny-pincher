@@ -52,11 +52,8 @@
                             {% for category in object_list %}
                                 <div class="category">
                                     <div class="category-description">
-                                        {% load static %}
-                                        {% get_static_prefix as STATIC_PREFIX %}
-                                        <img class="category-icon" src="{{ STATIC_PREFIX }}icons/{{ category.icon }}"
+                                        <img class="category-icon" src="{% static 'icons/'|add:category.icon %}"
                                              alt="Transaction Icon">
-
                                         <span class="category-name">{{ category.name }}</span>
                                     </div>
 
@@ -102,8 +99,7 @@
 
     <script>
 
-        $('#m-sidenav-settings').toggleClass('-active');
-        $('#m-sidenav-settings').toggleClass('-active-mobile');
+       activeNavIcon("#sidenav-settings","#m-sidenav-settings");
 
     </script>
 
