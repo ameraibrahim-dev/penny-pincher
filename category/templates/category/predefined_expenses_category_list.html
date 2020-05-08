@@ -6,7 +6,7 @@
 
 {% block mainContent %}
 
-     <div class="categories-wrap">
+    <div class="categories-wrap">
 
         <span data-attr-section-title="Settings" class="section-description"></span>
 
@@ -19,7 +19,7 @@
                         <span class="main-item-name">Category Settings</span>
 
                         <ul class="settings-sub-items">
-                           <li class="sub-item">
+                            <li class="sub-item">
                                 <a href="{% url 'category:custom_category_list' %}" class="sub-item-name">
                                     My Categories</a>
                             </li>
@@ -43,21 +43,19 @@
                     <span class="general-information -category">Expenses Categories</span>
 
                     {% for category in object_list %}
-                    <div class="category">
-                        <div class="category-description">
+                        <div class="category">
+                            <div class="category-description">
 
-                            {% load static %}
-                            {% get_static_prefix as STATIC_PREFIX %}
-                            <img class="category-icon" src="{{ STATIC_PREFIX }}icons/{{ category.icon }}" alt="Transaction Icon">
+                                <img class="category-icon" src="{% static 'icons/'|add:category.icon %}"
+                                     alt="Transaction Icon">
+                                <span class="category-name">{{ category.name }}</span>
+                            </div>
 
-                            <span class="category-name">{{ category.name }}</span>
+                            <div class="transaction-quantity">
+                                <span class="number-of-transaction">{{ category.wallettransaction_set.all|length }}</span>
+                            </div>
                         </div>
-
-                        <div class="transaction-quantity">
-                            <span class="number-of-transaction">{{ category.wallettransaction_set.all|length }}</span>
-                        </div>
-                    </div>
-                     {% endfor %}
+                    {% endfor %}
 
                 </div>
 
@@ -67,19 +65,14 @@
         </div>
 
 
-
-
-     </div>
+    </div>
 
 {% endblock %}
 
 {% block body-javascript-extension %}
 
     <script>
-
-        $('#m-sidenav-settings').toggleClass('-active');
-        $('#m-sidenav-settings').toggleClass('-active-mobile');
-
+    activeNavIcon("#sidenav-settings","#m-sidenav-settings");
     </script>
 
 {% endblock %}
