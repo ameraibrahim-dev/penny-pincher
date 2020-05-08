@@ -10,7 +10,8 @@
         <div class="categories-header">
             <span class="transaction-wallet-name" style="margin-bottom: 0px !important;">Settings</span>
 
-            <a class="btn-primary add-transaction-btn" style="text-decoration: none;box-shadow: 0px 4px 14px -4px rgba(0, 0, 0, 0.28);"
+            <a class="btn-primary add-transaction-btn"
+               style="text-decoration: none;box-shadow: 0px 4px 14px -4px rgba(0, 0, 0, 0.28);"
                href="{% url 'category:create_custom_category' %}">Add Category </a>
         </div>
 
@@ -48,8 +49,8 @@
                         <div class="my-categories-block">
                             <span class="general-information -category-small">My Categories</span>
 
-                            <div class="category">
-                                {% for category in object_list %}
+                            {% for category in object_list %}
+                                <div class="category">
                                     <div class="category-description">
                                         {% load static %}
                                         {% get_static_prefix as STATIC_PREFIX %}
@@ -82,10 +83,10 @@
                                              src="{% static "icons/delete.png" %}" alt="delete">
                                     </div>
 
-                                {% empty %}
-                                    <li>No category yet.</li>
-                                {% endfor %}
-                            </div>
+                                </div>
+                            {% empty %}
+                                <li>No category yet.</li>
+                            {% endfor %}
 
                         </div>
                     </div>
