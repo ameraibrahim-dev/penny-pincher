@@ -54,6 +54,13 @@ class CreateTransactionView(LoginRequiredMixin, CreateView):
         instance.wallet.save()
         return super(CreateTransactionView, self).form_valid(form)
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        wallet_pk = self.kwargs.get('pk')
+        wallet = Wallet.objects.filter(owner=self.request.user, pk=wallet_pk).first()
+        context['wallet'] = wallet
+        return context
+
 
 class UpdateTransactionView(LoginRequiredMixin, UpdateView):
     model = WalletTransaction
@@ -99,6 +106,13 @@ class UpdateTransactionView(LoginRequiredMixin, UpdateView):
             # save wallet balance
         instance.wallet.save()
         return super(UpdateTransactionView, self).form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        transaction_pk = self.kwargs.get('pk')
+        wallet = WalletTransaction.objects.get(pk=transaction_pk).wallet
+        context['wallet'] = wallet
+        return context
 
 
 class DeleteTransactionView(LoginRequiredMixin, DeleteView):

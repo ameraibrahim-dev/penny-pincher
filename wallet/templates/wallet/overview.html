@@ -1,151 +1,156 @@
-{% extends 'base_navigation_no_footer.html' %}
+{% extends 'wallet/wallet_header.html' %}
 {% load static %}
+
 
 {% block mainContent %}
 
     <ol>
-    {% for transact in  object.wallettransaction_set.all %}
-        <li>{{ transact.is_expense }}{{ transact.amount }}</li>
-    {% endfor %}
+        {% for transact in  object.wallettransaction_set.all %}
+            <li>{{ transact.is_expense }}{{ transact.amount }}</li>
+        {% endfor %}
     </ol>
     <div class="transaction-wrap">
-            <div class="transaction-header">
-                <span class="transaction-wallet-name">{{ object }}</span>
-                <a class="btn-primary add-transaction-btn" style="text-decoration: none;"
+        <div class="transaction-header">
+            <span class="transaction-wallet-name">{{ object }}</span>
+            <a class="btn-primary add-transaction-btn" style="text-decoration: none;"
                href="{% url 'wallet:wallet_transactions_create_transaction' object.pk %}">Add Transaction</a>
-            </div>
+        </div>
 
-            <div class="transaction-body">
+        <div class="transaction-body">
 
-                <div class="transaction-filter-block">
+            <div class="transaction-filter-block">
 
-                    <div class="statistic-card">
-                        <span class="statistic-card-title">Filters</span>
-                        <div class="statistics-block -filter">
+                <div class="statistic-card">
+                    <span class="statistic-card-title">Filters</span>
+                    <div class="statistics-block -filter">
 
-                            <div class="statistic-input-box">
-                                <span class="statistic-input-label">Category</span>
-                                <div class="statistics-input-box-style">
-                                    <select class="statistics-filter">
-                                    <option value="" disabled selected >All categories</option>
+                        <div class="statistic-input-box">
+                            <span class="statistic-input-label">Category</span>
+                            <div class="statistics-input-box-style">
+                                <select class="statistics-filter">
+                                    <option value="" disabled selected>All categories</option>
                                     <option value="1">Audi</option>
-                                    </select>
-                                </div>
+                                </select>
                             </div>
+                        </div>
 
-                            <div class="statistic-input-box">
-                                <span class="statistic-input-label">Note</span>
-                                <div class="statistics-input-box-style">
-                                    <input type="text" name="statistic-keyword-filter" id="statisticKeywordFilter" class="statistic-keyword-filter" placeholder="Filter by specific keyword">
-                                </div>
+                        <div class="statistic-input-box">
+                            <span class="statistic-input-label">Note</span>
+                            <div class="statistics-input-box-style">
+                                <input type="text" name="statistic-keyword-filter" id="statisticKeywordFilter"
+                                       class="statistic-keyword-filter" placeholder="Filter by specific keyword">
                             </div>
+                        </div>
 
-                            <div class="statistic-input-box">
-                                <span class="statistic-input-label">Date Range</span>
-                                <div class="statistics-input-box-style">
-                                    <input type="text" name="statistic-keyword-filter" id="statisticKeywordFilter" class="statistic-keyword-filter" placeholder="Filter by specific keyword">
-                                </div>
+                        <div class="statistic-input-box">
+                            <span class="statistic-input-label">Date Range</span>
+                            <div class="statistics-input-box-style">
+                                <input type="text" name="statistic-keyword-filter" id="statisticKeywordFilter"
+                                       class="statistic-keyword-filter" placeholder="Filter by specific keyword">
                             </div>
-
                         </div>
-                    </div>
 
-                </div>
-
-                <div class="transaction-finance-cards">
-
-                    <div class="statistic-card">
-                        <span class="statistic-card-title">Total Balance</span>
-                        <div class="statistics-block -finance">
-
-                            <span class="statistic-amount">22000.00</span>
-
-                        </div>
-                    </div>
-
-                    <div class="statistic-card">
-                        <span class="statistic-card-title">Total Period expenses</span>
-                        <div class="statistics-block -finance">
-
-                            <span class="statistic-amount -expense-red">3000.00</span>
-
-                        </div>
-                    </div>
-
-                    <div class="statistic-card">
-                        <span class="statistic-card-title">Total Period Earnings</span>
-                        <div class="statistics-block -finance">
-
-                            <span class="statistic-amount">0.00</span>
-
-                        </div>
                     </div>
                 </div>
 
-                <div class="transaction-graphs">
-                    <div class="statistic-card">
-                        <span class="statistic-card-title">Account Balance</span>
-                        <div class="statistics-block -chart">
-                            <span class="chart-date-range">Mar 01 - 31</span>
-                            <!-- Charts and Numbers-->
-                            <div class="chart-size">
-                                <canvas id="homeLineChart" width="300" height="300"></canvas>
-                            </div>
-                        </div>
-                    </div>
+            </div>
 
-                    <div class="tips-card">
-                        <p class="tips-message">The more<br> you LEARN<br> the more<br> you EARN.</p>
-                        <span class="tips-author">WarrenBuffett</span>
-                    </div>
+            <div class="transaction-finance-cards">
 
+                <div class="statistic-card">
+                    <span class="statistic-card-title">Total Balance</span>
+                    <div class="statistics-block -finance">
+
+                        <span class="statistic-amount">22000.00</span>
+
+                    </div>
                 </div>
 
-                <div class="transaction-graphs">
-                    <div class="statistic-card">
-                        <span class="statistic-card-title">Period of Expenses</span>
-                        <div class="statistics-block -overview-chart">
-                            <span class="chart-date-range">Mar 01 - 31</span>
-                            <!-- Charts and Numbers-->
-                            <div class="chart-size">
-                                <canvas id="homePieChart" width="300" height="300"></canvas>
-                            </div>
+                <div class="statistic-card">
+                    <span class="statistic-card-title">Total Period expenses</span>
+                    <div class="statistics-block -finance">
 
-                            <div class="chart-transactions">
+                        <span class="statistic-amount -expense-red">3000.00</span>
 
-                                <div class="transaction"><!--One transaction line-->
-                                    <div class="transaction-type -chart">
-                                        <img class="transaction-icon" src="{% static "icons/food.png" %}" alt="Transaction Icon">
-                                        <span class="transaction-name">Transaction Name</span>
-                                    </div>
-                                    <div class="transaction-quantity">
-                                        <span class="number-of-transaction">1</span>
-                                    </div>
-                                    <div class="transaction-price">
-                                        <span class="transaction-amount">-2,000.00</span>
-                                    </div>
-                                </div>
+                    </div>
+                </div>
 
-                                <div class="transaction"><!--One transaction line-->
-                                    <div class="transaction-type -chart">
-                                        <img class="transaction-icon" src="{% static "icons/food.png" %}" alt="Transaction Icon">
-                                        <span class="transaction-name">Transaction Name</span>
-                                    </div>
-                                    <div class="transaction-quantity">
-                                        <span class="number-of-transaction">1</span>
-                                    </div>
-                                    <div class="transaction-price">
-                                        <span class="transaction-amount">-2,000.00</span>
-                                    </div>
-                                </div>
+                <div class="statistic-card">
+                    <span class="statistic-card-title">Total Period Earnings</span>
+                    <div class="statistics-block -finance">
 
-                            </div>
+                        <span class="statistic-amount">0.00</span>
 
-                        </div>
                     </div>
                 </div>
             </div>
-       </div>
+
+            <div class="transaction-graphs">
+                <div class="statistic-card">
+                    <span class="statistic-card-title">Account Balance</span>
+                    <div class="statistics-block -chart">
+                        <span class="chart-date-range">Mar 01 - 31</span>
+                        <!-- Charts and Numbers-->
+                        <div class="chart-size">
+                            <canvas id="homeLineChart" width="300" height="300"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tips-card">
+                    <p class="tips-message">The more<br> you LEARN<br> the more<br> you EARN.</p>
+                    <span class="tips-author">WarrenBuffett</span>
+                </div>
+
+            </div>
+
+            <div class="transaction-graphs">
+                <div class="statistic-card">
+                    <span class="statistic-card-title">Period of Expenses</span>
+                    <div class="statistics-block -overview-chart">
+                        <span class="chart-date-range">Mar 01 - 31</span>
+                        <!-- Charts and Numbers-->
+                        <div class="chart-size">
+                            <canvas id="homePieChart" width="300" height="300"></canvas>
+                        </div>
+
+                        <div class="chart-transactions">
+
+                            <div class="transaction"><!--One transaction line-->
+                                <div class="transaction-type -chart">
+                                    <img class="transaction-icon" src="{% static "icons/food.png" %}"
+                                         alt="Transaction Icon">
+                                    <span class="transaction-name">Transaction Name</span>
+                                </div>
+                                <div class="transaction-quantity">
+                                    <span class="number-of-transaction">1</span>
+                                </div>
+                                <div class="transaction-price">
+                                    <span class="transaction-amount">-2,000.00</span>
+                                </div>
+                            </div>
+
+                            <div class="transaction"><!--One transaction line-->
+                                <div class="transaction-type -chart">
+                                    <img class="transaction-icon" src="{% static "icons/food.png" %}"
+                                         alt="Transaction Icon">
+                                    <span class="transaction-name">Transaction Name</span>
+                                </div>
+                                <div class="transaction-quantity">
+                                    <span class="number-of-transaction">1</span>
+                                </div>
+                                <div class="transaction-price">
+                                    <span class="transaction-amount">-2,000.00</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 
 
@@ -157,12 +162,10 @@
     <script src="{% static "js/progress-bar.js" %}"></script>
     <script src="{% static "js/pie-chart.js" %}"></script>
     <script src="{% static "js/line-chart.js" %}"></script>
-
+    <script src="{% static "js/wallet-header.js" %}"></script>
     <script>
-
-        $('#sidenav-wallet').toggleClass('-active');
-        $('#m-sidenav-wallet').toggleClass('-active-mobile');
-
+        activeNavIcon("#sidenav-wallet", "#m-sidenav-wallet");
+        activeWalletHeader("#header-overview");
     </script>
 
 {% endblock %}
