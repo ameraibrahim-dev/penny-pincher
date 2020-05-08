@@ -27,10 +27,6 @@ class WalletOverview(WalletDetailView):
     template_name = 'wallet/overview.html'
 
 
-class WalletSettingsView(WalletDetailView):
-    template_name = 'wallet/settings.html'
-
-
 class WalletTransactionsView(WalletDetailView):
     template_name = 'wallet/transactions.html'
 
