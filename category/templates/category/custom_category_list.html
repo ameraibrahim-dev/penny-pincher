@@ -5,7 +5,12 @@
 {% load static %}
 
 {% block mainContent %}
-
+{% for category in category_list %}
+    {{ category }}
+      {{ category.name }}
+   {{ category.wallettransaction_set.all|length }}
+       {{ category.icon }}
+    {% endfor %}
     <div class="categories-wrap">
         <div class="categories-header">
             <span class="transaction-wallet-name" style="margin-bottom: 0px !important;">Settings</span>
