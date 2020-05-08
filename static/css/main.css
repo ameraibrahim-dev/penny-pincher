@@ -508,7 +508,7 @@ button {
     color: #35495E;
     content: attr(data-attr-section-title);
     display: block;
-    margin-bottom: 24px; }
+    margin-bottom: 24px}
 
 .wallet-block {
   display: flex;
@@ -1762,7 +1762,16 @@ button {
   max-width: 1000px;
   width: 100%;
   margin: 0 auto;
-  padding: 40px 0px; }
+  padding: 40px 0px;}
+  .categories-wrap > .categories-header {
+    margin-bottom: 20px; }
+
+.categories-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%; }
 
 .settings-block {
   display: flex;
@@ -1795,9 +1804,6 @@ button {
   font-weight: bold;
   font-size: 24px;
   color: #35495E; }
-  .main-item-name:hover {
-    color: #EE8572;
-    transition: 0.2s ease; }
 
 .settings-sub-items {
   cursor: pointer;
@@ -1817,7 +1823,7 @@ button {
     transition: 0.2s ease; }
 
 .settings-content {
-  width: 650px;
+  width: 708px;
   background: #ffffff;
   padding: 40px;
   border-radius: 6px; }
