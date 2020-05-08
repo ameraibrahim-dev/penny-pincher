@@ -17,21 +17,22 @@
         <div class="wallet-section">
 
             {% for wallet in object_list %}
-                <a href="{% url 'wallet:wallet_transactions' wallet.pk %}" class="wallet-section card card-layout border-0 m-2"
+                <a href="{% url 'wallet:wallet_transactions' wallet.pk %}"
+                   class="wallet-section card card-layout border-0 m-2"
                    style="display: inline-block; text-decoration: none;">
-                <div class="row">
-                    <div class="col-xl-4 col-md-6 col-lg-4">
-                        <div class="wallet-block">
-                            <div class="wallet-header">
-                                <img src="{% static 'icons/wallet-icon.png' %}" alt="Piggy Bank" class="wallet-img">
-                                <span data-attr-wallet-name="{{ wallet.name }}"
-                                      class="wallet-type">{{ wallet.get_type_display }}</span>
+                    <div class="row">
+                        <div class="col-xl-4 col-md-6 col-lg-4">
+                            <div class="wallet-block">
+                                <div class="wallet-header">
+                                    <img src="{% static 'icons/wallet-icon.png' %}" alt="Piggy Bank" class="wallet-img">
+                                    <span data-attr-wallet-name="{{ wallet.name }}"
+                                          class="wallet-type">{{ wallet.get_type_display }}</span>
+                                </div>
+                                <span class="wallet-amount">{{ wallet.balance }}</span>
                             </div>
-                            <span class="wallet-amount">{{ wallet.balance }}</span>
                         </div>
                     </div>
-                </div>
-                 </a>
+                </a>
 
             {% empty %}
                 <li>No wallet available yet.</li>
@@ -48,8 +49,7 @@
 
     <script>
 
-        $('#sidenav-wallet').toggleClass('-active');
-        $('#m-sidenav-wallet').toggleClass('-active-mobile');
+        activeNavIcon("#sidenav-wallet", "#m-sidenav-wallet");
 
     </script>
 

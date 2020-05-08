@@ -1,18 +1,10 @@
 {% extends 'base_navigation_no_footer.html' %}
+{% load widget_tweaks %}
+{% block title %}Penny Pincher - Expenses Category List{% endblock %}
+{% load i18n %}
 {% load static %}
 
 {% block mainContent %}
-
-<h1>category</h1>
-    <ul>
-        {% for category in object_list %}
-            <li>{{ category.name }} {{ category.wallettransaction_set.all|length }} Transactions
-                {% if category.is_expense %}Expense{% else %}Earnings{% endif %}
-            </li>
-        {% empty %}
-            <li>No category yet.</li>
-        {% endfor %}
-    </ul>
 
      <div class="categories-wrap">
 
@@ -27,35 +19,45 @@
                         <span class="main-item-name">Category Settings</span>
 
                         <ul class="settings-sub-items">
-                            <li class="sub-item"><span class="sub-item-name">My Categories</span></li>
-                            <li class="sub-item"><span class="sub-item-name">Earnings Categories</span></li>
-                            <li class="sub-item"><span class="sub-item-name">Expenses Categories</span></li>
+                           <li class="sub-item">
+                                <a href="{% url 'category:custom_category_list' %}" class="sub-item-name">
+                                    My Categories</a>
+                            </li>
+                            <li class="sub-item">
+                                <a href="{% url 'category:predefined_earnings_category_list' %}" class="sub-item-name">
+                                    Earnings Categories</a>
+                            </li>
+                            <li class="sub-item">
+                                <a href="{% url 'category:predefined_expenses_category_list' %}" class="sub-item-name">
+                                    Expenses Categories</a>
                         </ul>
                     </li>
 
                 </ul>
             </div>
 
-            <div class="settings-content -category-list">
+            <div class="settings-content -category-list" style="width: 708px;">
 
                 <div class="category-list-block">
 
                     <span class="general-information -category">Expenses Categories</span>
 
-                    <div class="category"> <!--This is one category line-->
+                    {% for category in object_list %}
+                    <div class="category">
                         <div class="category-description">
-                            <img class="category-icon" src="../sqa_penny_pincher/assets/icons/food.png" alt="Transaction Icon">
 
-                            <span class="category-name">Food & Drinks</span>
+                            {% load static %}
+                            {% get_static_prefix as STATIC_PREFIX %}
+                            <img class="category-icon" src="{{ STATIC_PREFIX }}icons/{{ category.icon }}" alt="Transaction Icon">
+
+                            <span class="category-name">{{ category.name }}</span>
                         </div>
 
                         <div class="transaction-quantity">
-                            <span class="number-of-transaction">1</span>
+                            <span class="number-of-transaction">{{ category.wallettransaction_set.all|length }}</span>
                         </div>
                     </div>
-
-
-
+                     {% endfor %}
 
                 </div>
 

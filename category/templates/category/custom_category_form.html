@@ -1,10 +1,64 @@
-{% extends 'base.html' %}
-{% block title %}{{ title }}{% endblock %}
-{% block content %}
-    <form method="post">{% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Save">
-    </form>
+{% extends 'base_navigation_no_footer.html' %}
+{% load widget_tweaks %}
+{% block title %}Penny Pincher - Add Category{% endblock %}
+{% load i18n %}
+{% load static %}
+
+{% block mainContent %}
+
+    <div class="transaction-wrap vertical-center">
+        <div class="transaction-header">
+            <span class="transaction-wallet-name">Add Category</span>
+        </div>
+
+        <div class="add-transaction-block">
+
+            <form method="post" class="wallet-form-fields">
+                {% csrf_token %}
+                <div class="row">
+
+                    <div class="col-xl-6">
+                        <div class="form-group">
+                            <span class="input-text-field-label float-left">Category Name</span>
+                            {% for error in form.name.errors %}
+                                <span class="error-field">
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                            {% render_field form.name class="form-control input-box" placeholder="ex. Salary" %}
+                        </div>
+
+                        <div class="form-group">
+                            <span class="input-text-field-label float-left">Icon</span>
+                            {% for error in form.icon.errors %}
+                                <span class="error-field">
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                            {% render_field form.icon class="form-control input-box"%}
+                        </div>
+                    </div>
+
+                    <div class="col-xl-6">
+                        <div class="form-group statistic-input-box">
+                            <span class="input-text-field-label float-left">Type</span>
+                            {% for error in form.is_expense.errors %}
+                                <span class="error-field">
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                            {% render_field form.is_expense class="form-control input-box" %}
+                        </div>
+                    </div>
+                </div>
+                <div class="float-right">
+                    <a class="add-transaction-cancel-btn" href="{% url 'category:custom_category_list' %}"
+                       style="text-decoration: none;padding: 8px 24px !important;">cancel</a>
+                    <button class="add-transaction-save-btn">save</button>
+                </div>
+            </form>
+        </div>
+    </div>
 {% endblock %}
 
 {% block body-javascript-extension %}
