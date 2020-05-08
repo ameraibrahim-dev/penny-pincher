@@ -1,7 +1,6 @@
 {% extends 'base_navigation_no_footer.html' %}
 {% load static %}
 
-
 {% block mainContent%}
 
 <a href="{% url 'goal:create_goal' %}">Create</a>
@@ -56,5 +55,16 @@
 
 
 
+
+{% endblock %}
+
+{% block body-javascript-extension %}
+
+    <script>
+
+        $('#sidenav-goals').toggleClass('-active');
+        $('#m-sidenav-goals').toggleClass('-active-mobile');
+
+    </script>
 
 {% endblock %}
