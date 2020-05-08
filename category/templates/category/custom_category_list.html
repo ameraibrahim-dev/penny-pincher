@@ -5,17 +5,12 @@
 {% load static %}
 
 {% block mainContent %}
-{% for category in category_list %}
-    {{ category }}
-      {{ category.name }}
-   {{ category.wallettransaction_set.all|length }}
-       {{ category.icon }}
-    {% endfor %}
+
     <div class="categories-wrap">
         <div class="categories-header">
             <span class="transaction-wallet-name" style="margin-bottom: 0px !important;">Settings</span>
 
-            <a class="btn-primary add-transaction-btn" style="text-decoration: none;"
+            <a class="btn-primary add-transaction-btn" style="text-decoration: none;box-shadow: 0px 4px 14px -4px rgba(0, 0, 0, 0.28);"
                href="{% url 'category:create_custom_category' %}">Add Category </a>
         </div>
 
@@ -56,7 +51,9 @@
                             <div class="category">
                                 {% for category in object_list %}
                                     <div class="category-description">
-                                        <img class="category-icon" src="{% static "icons/salary.png" %}"
+                                        {% load static %}
+                                        {% get_static_prefix as STATIC_PREFIX %}
+                                        <img class="category-icon" src="{{ STATIC_PREFIX }}icons/{{ category.icon }}"
                                              alt="Transaction Icon">
 
                                         <span class="category-name">{{ category.name }}</span>
@@ -84,7 +81,6 @@
                                              href="{% url 'category:delete_custom_category' category.pk %}"
                                              src="{% static "icons/delete.png" %}" alt="delete">
                                     </div>
-
 
                                 {% empty %}
                                     <li>No category yet.</li>

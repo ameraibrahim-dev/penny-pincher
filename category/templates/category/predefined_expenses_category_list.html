@@ -45,7 +45,10 @@
                     {% for category in object_list %}
                     <div class="category">
                         <div class="category-description">
-                            <img class="category-icon" src="{% static "icons/bills.png" %}" alt="Transaction Icon">
+
+                            {% load static %}
+                            {% get_static_prefix as STATIC_PREFIX %}
+                            <img class="category-icon" src="{{ STATIC_PREFIX }}icons/{{ category.icon }}" alt="Transaction Icon">
 
                             <span class="category-name">{{ category.name }}</span>
                         </div>

@@ -43,17 +43,20 @@
                     <span class="general-information -category">Earnings Categories</span>
 
                     {% for category in object_list %}
-                    <div class="category">
-                        <div class="category-description">
-                            <img class="category-icon" src="{% static "icons/extra-income.png" %}" alt="Transaction Icon">
+                        <div class="category">
+                            <div class="category-description">
 
-                            <span class="category-name">{{ category.name }}</span>
-                        </div>
+                                {% load static %}
+                                {% get_static_prefix as STATIC_PREFIX %}
+                                <img class="category-icon" src="{{ STATIC_PREFIX }}icons/{{ category.icon }}"
+                                     alt="Transaction Icon">
+                                <span class="category-name">{{ category.name }}</span>
+                            </div>
 
-                        <div class="transaction-quantity">
-                            <span class="number-of-transaction">{{ category.wallettransaction_set.all|length }}</span>
+                            <div class="transaction-quantity">
+                                <span class="number-of-transaction">{{ category.wallettransaction_set.all|length }}</span>
+                            </div>
                         </div>
-                    </div>
                     {% endfor %}
 
 
