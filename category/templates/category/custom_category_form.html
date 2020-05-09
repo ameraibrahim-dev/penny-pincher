@@ -35,7 +35,17 @@
                                     {{ error }}
                                 </span>
                             {% endfor %}
-                            {% render_field form.icon class="form-control input-box"%}
+
+                            <select name="icon" class="form-control input-box" required id="id_icon">
+                                <option value="" selected>---------</option>
+                                {% for id,name in form.icon.field.choices|slice:"1:" %}
+                                    <option value="{{ id }}" style="max-width: 15%; height: auto"
+                                            data-image="{% static 'icons/'|add:id %}"></option>
+
+                                {% endfor %}
+
+
+                            </select>
                         </div>
                     </div>
 
@@ -62,11 +72,15 @@
 {% endblock %}
 
 {% block body-javascript-extension %}
-
     <script>
-
-    activeNavIcon("#sidenav-settings","#m-sidenav-settings");
-
+        activeNavIcon("#sidenav-settings", "#m-sidenav-settings");
+        $(document).ready(function (e) {
+            try {
+                $("#id_icon").msDropDown();
+            } catch (e) {
+                alert(e.message);
+            }
+        });
     </script>
 
 {% endblock %}
