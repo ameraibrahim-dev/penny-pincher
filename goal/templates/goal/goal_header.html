@@ -1,10 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base_navigation_no_footer.html' %}
+
+{% block header-extension %}
+
+    <ul class="header-menu-list">
+        <li class="header-menu-item" id="header-transactions">
+            <a href="{% url 'goal:goal_list' %}" class="header-menu-item-link">
+                <span class="header-menu-item-name">My Goals</span>
+            </a>
+        </li>
+
+        <li class="header-menu-item" id="header-transactions">
+            <a href="{% url 'goal:goal_detail' goal.pk %}" class="header-menu-item-link">
+                <span class="header-menu-item-name">Goal Details</span>
+            </a>
+        </li>
+
+        <li class="header-menu-item" id="header-wallet-settings">
+            <a href="{% url 'goal:update_goal' goal.pk %}" class="header-menu-item-link">
+                <span class="header-menu-item-name">Goal Settings</span>
+            </a>
+        </li>
+    </ul>
+
+{% endblock %}
