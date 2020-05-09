@@ -40,8 +40,10 @@ class UpdateGoalView(LoginRequiredMixin, UpdateView):
         instance = form.save(commit=False)
         instance.owner = self.request.user
         return super(UpdateGoalView, self).form_valid(form)
+
     def get_success_url(self):
-        return reverse_lazy('goal:goal_detail', kwargs={'pk': self.object.pk}, )
+        return reverse_lazy('goal:update_goal', kwargs={'pk': self.object.pk}, )
+
 
 class DeleteGoalView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('goal:goal_list')
