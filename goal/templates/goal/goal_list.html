@@ -4,56 +4,39 @@
 {% load i18n %}
 {% load static %}
 
-{% block mainContent%}
+{% block mainContent %}
 
-<a href="{% url 'goal:create_goal' %}">Create</a>
-<h1>Goals</h1>
-<ul>
-{% for goal in object_list %}
-    <li><a href="{% url 'goal:goal_detail' goal.pk %}">{{ goal.name }}</a></li>
-{% empty %}
-    <li>No goals yet.</li>
-{% endfor %}
-</ul>
-
-     <div class="section-wrap">
+    <div class="section-wrap">
 
         <div class="section-header">
-            <span class="transaction-wallet-name">Goals List</span>
-            <button class="btn-primary add-transaction-btn">Add Goal</button>
+            <span class="transaction-wallet-name">My Goals</span>
+            <a class="btn-primary add-transaction-btn float-right"
+               style="text-decoration: none;box-shadow: 0px 4px 14px -4px rgba(0, 0, 0, 0.28);"
+               href="{% url 'goal:create_goal' %}">Add Goal</a>
         </div>
 
         <div class="section-body">
             <div class="goals-card -list">
+                {% for goal in object_list %}
+                    <div class="goal">
+                        <div class="goal-name-block">
+                            <a href="{% url 'goal:goal_detail' goal.pk %}" class="goal-name">{{ goal.name }}</a>
+                        </div>
 
-                <div class="goal">
-                    <div class="goal-name-block">
-                        <span class="goal-name">Dream Car</span>
+                        <div class="goal-details">
+                            <span data-attr-goal="" class="target-goal -list">{{ goal.target_amount.amount }}</span>
+                            <span class="goal-date">{{ goal.target_date }}</span>
+                        </div>
                     </div>
-
-                    <div class="goal-details">
-                        <span data-attr-goal="" class="target-goal -list">100,000.00</span>
-                        <span class="goal-date">Sept 2020</span>
-                    </div>
-                </div> <!-- One Goal Line -->
-
-                <div class="goal">
-                    <div class="goal-name-block">
-                        <span class="goal-name">Dream Car</span>
-                    </div>
-
-                    <div class="goal-details">
-                        <span data-attr-goal="" class="target-goal -list">100,000.00</span>
-                        <span class="goal-date">Sept 2020</span>
-                    </div>
-                </div>
-
+                {% empty %}
+                    <li>No goals yet.</li>
+                {% endfor %}
             </div>
 
         </div>
 
 
-     </div>
+    </div>
 
 
 
