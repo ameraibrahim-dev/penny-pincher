@@ -1121,6 +1121,7 @@ button {
   height: 100%; }
   .sidenav-mobile > .main-logo {
     margin-bottom: 40px;
+    margin-left: 6px;
     transition: 0.5s ease; }
   .sidenav-mobile > .pages-control {
     opacity: 1;
@@ -1150,7 +1151,7 @@ button {
   display: none; }
 
 .sidenav-icon {
-  max-width: 20px; }
+  max-width: 24px; }
   .sidenav-icon.-profile {
     border-radius: 100%; }
   .sidenav-icon.-space-after {
@@ -1161,16 +1162,15 @@ button {
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-  height: 75%; }
+  height: 78%; }
   .sidenav-menu.-mobile {
-    height: 80%;
+    height: 88%;
     align-items: center; }
 
 .pages-control {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  width: 100%; }
+  align-items: flex-start; }
   .pages-control > .sidenav-item {
     margin-bottom: 20px;
     margin-left: 8px; }
@@ -1181,13 +1181,16 @@ button {
 .user-control {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  width: 100%; }
+  align-items: flex-start; }
   .user-control > .sidenav-item {
     margin-top: 20px;
     margin-left: 8px; }
   .user-control.-mobile {
-    width: max-content; }
+    margin-right: 20px;
+    width: 100%;
+    padding-left: 0px; }
+  .user-control.-width-100 {
+    width: 100%; }
 
 .sidenav-item {
   display: flex;
@@ -1234,8 +1237,8 @@ button {
   .sidenav-item.-active-mobile {
     background: #EE8572;
     border-radius: 10px;
-    width: 30px;
-    height: 30px; }
+    width: 60px;
+    height: 60px; }
     .sidenav-item.-active-mobile > .sidenav-link > .sidenav-item-name {
       font-family: 'Nunito',sans-serif;
       font-weight: 400;
@@ -1295,7 +1298,7 @@ button {
   .sidenav-link > .sidenav-item-name {
     margin-left: 6px; }
   .sidenav-link.-mobile > .sidenav-icon {
-    margin-left: 4px; }
+    margin-left: 18px; }
 
 .sidenav-item-name {
   font-family: 'Nunito',sans-serif;
