@@ -64,7 +64,7 @@ a:hover, a:focus {
   padding: 12px 24px;
   border: none;
   border-radius: 5px;
-  font-size: 12px;
+  font-size: 12;
   color: white; }
 
 .error-field {
@@ -508,7 +508,7 @@ button {
     color: #35495E;
     content: attr(data-attr-section-title);
     display: block;
-    margin-bottom: 24px}
+    margin-bottom: 24px; }
 
 .wallet-block {
   display: flex;
@@ -568,7 +568,6 @@ button {
   background: #EE8572;
   border: none;
   border-radius: 8px;
-  box-shadow: 0px 4px 14px -4px rgba(0, 0, 0, 0.28);
   padding: 18px 0px;
   outline: thick #EE8572;
   box-shadow: 0px 4px 14px -4px rgba(0, 0, 0, 0.28); }
@@ -1429,7 +1428,6 @@ button {
   background: #EE8572;
   border: none;
   border-radius: 4px;
-  box-shadow: 0px 4px 14px -4px rgba(0, 0, 0, 0.28);
   padding: 8px 24px;
   outline: thick #EE8572;
   box-shadow: 0px 4px 14px -4px rgba(0, 0, 0, 0.28); }
@@ -1804,16 +1802,7 @@ button {
   max-width: 1000px;
   width: 100%;
   margin: 0 auto;
-  padding: 40px 0px;}
-  .categories-wrap > .categories-header {
-    margin-bottom: 20px; }
-
-.categories-header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%; }
+  padding: 40px 0px; }
 
 .settings-block {
   display: flex;
@@ -1846,6 +1835,9 @@ button {
   font-weight: bold;
   font-size: 24px;
   color: #35495E; }
+  .main-item-name:hover {
+    color: #EE8572;
+    transition: 0.2s ease; }
 
 .settings-sub-items {
   cursor: pointer;
@@ -1865,7 +1857,7 @@ button {
     transition: 0.2s ease; }
 
 .settings-content {
-  width: 708px;
+  width: 650px;
   background: #ffffff;
   padding: 40px;
   border-radius: 6px; }
@@ -1990,7 +1982,7 @@ button {
 .section-wrap {
   display: flex;
   flex-direction: column;
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 0 auto;
   width: 100%;
   padding: 40px; }
@@ -2093,13 +2085,18 @@ button {
     margin-right: 6px; }
 
 .goal {
+  cursor: pointer;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   background: #49BEB7;
   width: 100%;
   padding: 16px 12px 32px 12px;
-  border-radius: 10px; }
+  border-radius: 10px;
+  transition: 0.4s ease; }
+  .goal:hover {
+    transform: scale(1.05);
+    transition: 0.4s ease; }
 
 .goal-name-block {
   display: flex; }
