@@ -1,23 +1,16 @@
-{% extends 'base_navigation_no_footer.html' %}
+{% extends 'goal/goal_header.html' %}
 {% load widget_tweaks %}
 {% block title %}Penny Pincher - Goal Details{% endblock %}
 {% load i18n %}
 {% load static %}
 
 {% block mainContent %}
-    <a href="{% url 'goal:update_goal' object.pk %}">Update</a>
-    <br>
-    <a href="{% url 'goal:delete_goal' object.pk %}">Delete</a>
-    <br>
 
     Balance:{{ object.balance }}
     <br>
     Progress{{ object.saving_progress }} %
     <br>
 
-    <p>Transactions</p>
-    <a href="{% url 'goal:create_transaction' object.pk %}">Create</a>
-    <br>
     {% for transact in object.goaltransaction_set.all %}
         <a href="{% url 'goal:update_transaction' transact.pk %}">Update {{ transact }}</a>
         <a href="{% url 'goal:delete_transaction' transact.pk %}">Delete {{ transact }}</a>
@@ -28,46 +21,49 @@
     <div class="section-wrap">
 
         <div class="section-header">
-            <span class="transaction-wallet-name">Year Abroad</span>
-            <button class="btn-primary add-transaction-btn">View Goals List</button>
+            <span class="transaction-wallet-name">{{ goal.name }} Goal</span>
         </div>
 
         <div class="section-body">
 
-           <div class="goals-card">
+            <div class="goals-card">
                 <div class="chart-size -goals">
                     <canvas id="homePieChart" width="300" height="300"></canvas>
-                    <span class="chart-name">Year Abroad</span>
+                    <span class="chart-name">{{ goal.name }}</span>
                 </div>
 
-                <span data-attr-goal="Goal" class="target-goal">100,000.00</span>
+                <span class="target-goal">{{ goal.target_amount.amount }}</span>
 
                 <div class="goal-progress">
-                    <span class="progress-percent -goals" id="progress-percent">30 <!--This is the value that represents the bar--></span>
+                    <!--This is the value that represents the bar-->
+                    <span class="progress-percent -goals" id="progress-percent">{{ object.saving_progress }}</span>
 
                     <div class="progress-display-block">
 
                         <div class="progress-wrap">
-                            <div class="progress-bar" id="progress-bar"><!--This is the actual bar that moves--></div>
+                            <!--This is the actual bar that moves-->
+                            <div class="progress-bar" id="progress-bar"></div>
                         </div>
 
                         <div class="progress-dates">
                             <span class="progress-date">Mar 2020</span>
-                            <span class="progress-date">Dec 2020</span>
+                            <span class="progress-date">{{ goal.target_date.month }} {{ goal.target_date.year }}</span>
                         </div>
 
                     </div>
                 </div>
 
-                <span data-attr-label="Time Left: "class="time-remaining">7</span>
+                <br><br>
 
-           </div>
+            </div>
 
         </div>
 
         <div class="section-header2">
-            <span class="transaction-wallet-name">Transaction</span>
-            <button class="btn-primary add-transaction-btn">Add Transaction</button>
+            <span class="transaction-wallet-name">Transactions</span>
+            <a class="btn-primary add-transaction-btn float-right"
+               style="text-decoration: none;box-shadow: 0px 4px 14px -4px rgba(0, 0, 0, 0.28);"
+               href="{% url 'goal:create_transaction' object.pk %}">Add Transaction</a>
         </div>
 
         <div class="section-body">
@@ -78,75 +74,48 @@
                     <span class="statistic-card-title">March 1, 2020</span>
 
                     <div class="statistics-block">
-                                <!--Display this div below if there are no transactions-->
+                        <!--Display this div below if there are no transactions-->
                         <!-- <div sata-attr-message="No Transactions." class="no-transactions-message">To add a transaction, click Add Transaction on the upper right.</div> -->
+                        {% for transact in object.goaltransaction_set.all %}
+                            <div class="transaction"> <!--This is one transaction line-->
+                                <div class="transaction-type">
 
-                        <div class="transaction"> <!--This is one transaction line-->
-                            <div class="transaction-type">
+                                    <img class="transaction-icon" src="{% static "icons/extra-income.png" %}"
+                                         alt="Transaction Icon">
 
-                                <img class="transaction-icon" src="../sqa_penny_pincher/assets/icons/bills.png" alt="Transaction Icon">
+                                    <span class="transaction-name">Transaction Name</span>
+                                </div>
 
-                                <span class="transaction-name">Transaction Name</span>
-                            </div>
+                                <div class="transaction-notes">
 
-                            <div class="transaction-notes">
-
-                                I spent fifty today.
-                                <!--Place notes here-->
-
-
-                                <!--If no notes display this div-->
-                                <!-- <div class="no-notes">
-                                    <span class="note-empty-lines"></span>
-                                    <span class="note-empty-lines"></span>
-                                    <span class="note-empty-lines"></span>
-                                </div> -->
-
-                            </div>
-
-                            <div class="transaction-price">
-                                <span class="transaction-amount">-2,000.00</span>
-                            </div>
-
-                            <div class="transaction-control">
-                                <img class="transaction-edit"src="../sqa_penny_pincher/assets/icons/edit.png" alt="edit">
-                                <img class="transaction-delete"src="../sqa_penny_pincher/assets/icons/delete.png" alt="edit">
-                            </div>
-
-                        </div>
-
-                        <div class="transaction"> <!--This is one transaction line-->
-                            <div class="transaction-type">
-
-                                <img class="transaction-icon" src="../sqa_penny_pincher/assets/icons/food.png" alt="Transaction Icon">
-
-                                <span class="transaction-name">Transaction Name</span>
-                            </div>
-
-                            <div class="transaction-notes">
-
-                                <!--Place notes here-->
+                                    <!--Place notes here-->
 
 
-                                <!--If no notes display this div-->
-                                <div class="no-notes">
-                                    <span class="note-empty-lines"></span>
-                                    <span class="note-empty-lines"></span>
-                                    <span class="note-empty-lines"></span>
+                                    <!--If no notes display this div-->
+                                    <div class="no-notes">
+                                        <span class="note-empty-lines"></span>
+                                        <span class="note-empty-lines"></span>
+                                        <span class="note-empty-lines"></span>
+                                    </div>
+
+                                </div>
+
+                                <div class="transaction-price">
+                                    <span class="transaction-amount">-1,000.00</span>
+                                </div>
+
+                                <div class="transaction-control">
+                                    <a href="{% url 'goal:update_transaction' transact.pk %}">{{ transact }}
+                                        <img class="transaction-edit" src="{% static "icons/edit.png" %}" alt="edit">
+                                    </a>
+                                    <a href="{% url 'goal:delete_transaction' transact.pk %}">{{ transact }}
+                                        <img class="transaction-delete" src="{% static "icons/delete.png" %}"
+                                             alt="delete">
+                                    </a>
                                 </div>
 
                             </div>
-
-                            <div class="transaction-price">
-                                <span class="transaction-amount">-1,000.00</span>
-                            </div>
-
-                            <div class="transaction-control">
-                                <img class="transaction-edit"src="../sqa_penny_pincher/assets/icons/edit.png" alt="edit">
-                                <img class="transaction-delete"src="../sqa_penny_pincher/assets/icons/delete.png" alt="edit">
-                            </div>
-
-                        </div>
+                        {% endfor %}
 
 
                     </div>
@@ -157,7 +126,7 @@
 
         </div>
 
-   </div>
+    </div>
 
 
 
@@ -167,6 +136,9 @@
 {% endblock %}
 
 {% block body-javascript-extension %}
+
+    <script src="{% static "js/progress-bar.js" %}"></script>
+    <script src="{% static "js/pie-chart.js" %}"></script>
 
     <script>
 
