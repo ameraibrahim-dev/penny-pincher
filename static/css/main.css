@@ -64,7 +64,7 @@ a:hover, a:focus {
   padding: 12px 24px;
   border: none;
   border-radius: 5px;
-  font-size: 12px;
+  font-size: 12;
   color: white; }
 
 .error-field {
@@ -508,7 +508,7 @@ button {
     color: #35495E;
     content: attr(data-attr-section-title);
     display: block;
-    margin-bottom: 24px}
+    margin-bottom: 24px; }
 
 .wallet-block {
   display: flex;
@@ -568,9 +568,9 @@ button {
   background: #EE8572;
   border: none;
   border-radius: 8px;
-  box-shadow: 0px 4px 14px -4px rgba(0, 0, 0, 0.28);
   padding: 18px 0px;
-  outline: thick #EE8572; }
+  outline: thick #EE8572;
+  box-shadow: 0px 4px 14px -4px rgba(0, 0, 0, 0.28); }
   .wallet-btn:hover {
     font-family: 'Nunito',sans-serif;
     font-weight: bold;
@@ -632,6 +632,8 @@ button {
   color: #EE8572; }
   .progress-percent:after {
     content: '%'; }
+  .progress-percent.-goals {
+    display: none; }
 
 .progress-wrap {
   width: 100%;
@@ -1072,6 +1074,10 @@ button {
 .chart-size {
   width: 100%;
   height: 300px !important; }
+  .chart-size.-goals {
+    max-width: 500px;
+    position: relative;
+    z-index: 0; }
 
 .main-content-block {
   margin-top: 60px; }
@@ -1315,7 +1321,8 @@ button {
   justify-content: left;
   position: fixed;
   margin-left: 0px;
-  transition: 0.5s ease; }
+  transition: 0.5s ease;
+  z-index: 1; }
   .header.-extend {
     margin-left: 180px;
     transition: 0.7s ease; }
@@ -1421,9 +1428,9 @@ button {
   background: #EE8572;
   border: none;
   border-radius: 4px;
-  box-shadow: 0px 4px 14px -4px rgba(0, 0, 0, 0.28);
   padding: 8px 24px;
-  outline: thick #EE8572; }
+  outline: thick #EE8572;
+  box-shadow: 0px 4px 14px -4px rgba(0, 0, 0, 0.28); }
   .add-transaction-btn:hover {
     font-family: 'Nunito',sans-serif;
     font-weight: bold;
@@ -1795,16 +1802,7 @@ button {
   max-width: 1000px;
   width: 100%;
   margin: 0 auto;
-  padding: 40px 0px;}
-  .categories-wrap > .categories-header {
-    margin-bottom: 20px; }
-
-.categories-header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%; }
+  padding: 40px 0px; }
 
 .settings-block {
   display: flex;
@@ -1837,6 +1835,9 @@ button {
   font-weight: bold;
   font-size: 24px;
   color: #35495E; }
+  .main-item-name:hover {
+    color: #EE8572;
+    transition: 0.2s ease; }
 
 .settings-sub-items {
   cursor: pointer;
@@ -1856,7 +1857,7 @@ button {
     transition: 0.2s ease; }
 
 .settings-content {
-  width: 708px;
+  width: 650px;
   background: #ffffff;
   padding: 40px;
   border-radius: 6px; }
@@ -1977,6 +1978,148 @@ button {
   transition: all .2s ease-in-out; }
   .category-delete:hover {
     transform: scale(1.2); }
+
+.section-wrap {
+  display: flex;
+  flex-direction: column;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 40px; }
+  .section-wrap > .section-header {
+    margin-bottom: 20px; }
+  .section-wrap > .section-header2 {
+    margin-top: 40px;
+    margin-bottom: 20px; }
+
+.section-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%; }
+
+.section-header2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%; }
+
+.section-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%; }
+
+.goals-card {
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  border-radius: 10px; }
+  .goals-card > .chart-size {
+    margin-top: 12px;
+    margin-bottom: 20px; }
+  .goals-card > .goal-progress {
+    margin-top: 40px; }
+  .goals-card > .time-remaining {
+    margin: 16px 0px 60px 0px; }
+  .goals-card.-list {
+    min-height: 400px;
+    padding: 40px 20px 20px 20px; }
+    .goals-card.-list > .goal {
+      margin-bottom: 20px; }
+
+.chart-name {
+  font-family: 'Nunito',sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #35495E;
+  position: absolute;
+  bottom: 42%;
+  left: 41%; }
+
+.target-goal {
+  font-family: 'Nunito',sans-serif;
+  font-weight: bold;
+  font-size: 24px;
+  color: #35495E;
+  position: relative; }
+  .target-goal:after {
+    content: "PHP";
+    margin-left: 12px; }
+  .target-goal:before {
+    content: attr(data-attr-goal);
+    font-family: 'Nunito',sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    color: #35495E;
+    position: absolute;
+    top: 32px;
+    left: 72px; }
+  .target-goal.-list {
+    font-family: 'Nunito',sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    color: #ffffff; }
+
+.goal-progress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px;
+  width: 100%; }
+
+.time-remaining {
+  font-family: 'Nunito',sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: #35495E; }
+  .time-remaining:after {
+    content: 'Months';
+    margin-left: 6px; }
+  .time-remaining:before {
+    content: attr(data-attr-label);
+    margin-right: 6px; }
+
+.goal {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background: #49BEB7;
+  width: 100%;
+  padding: 16px 12px 32px 12px;
+  border-radius: 10px;
+  transition: 0.4s ease; }
+  .goal:hover {
+    transform: scale(1.05);
+    transition: 0.4s ease; }
+
+.goal-name-block {
+  display: flex; }
+
+.goal-name {
+  font-family: 'Nunito',sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  color: #ffffff; }
+
+.goal-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between; }
+  .goal-details > .goal-date {
+    margin-top: 20px; }
+
+.goal-date {
+  font-family: 'Nunito',sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: #ffffff; }
 
 .modal-test {
   background: gray;
