@@ -1,163 +1,165 @@
-{%  extends 'base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
 {% block content %}
 
     <div class="home-container">
 
-            <div class="main-container-block">
+        <div class="main-container-block">
 
-                <div class="sidebar-block">
+            <div class="sidebar-block">
 
-                    <div class="sidenav" id="sidenav">
-                        <img src="{% static "icons/logo.png" %}" alt="" class="main-logo" id="main-logo">
-                        <img src="{% static "icons/menu.svg" %}" alt="menu" class="header-menu-mobile" id="header-menu-mobile" >
+                <div class="sidenav" id="sidenav">
+                    <img src="{% static "icons/logo.png" %}" alt="" class="main-logo" id="main-logo">
+                    <img src="{% static "icons/menu.svg" %}" alt="menu" class="header-menu-mobile"
+                         id="header-menu-mobile">
 
-                             <div class="sidenav-menu">
-                                <ul class="pages-control">
-                                    <li class="sidenav-item" id="sidenav-dashboard">
-                                        <a href="{% url 'dashboard' %}" class="sidenav-link">
-                                            <img src="{% static "icons/home.svg" %}" alt="" class="sidenav-icon" id="icon-dashboard">
-                                            <span class="sidenav-item-name">Dashboard</span>
-                                        </a>
-                                    </li>
+                    <div class="sidenav-menu">
+                        <ul class="pages-control">
+                            <li class="sidenav-item" id="sidenav-dashboard">
+                                <a href="{% url 'dashboard' %}" class="sidenav-link">
+                                    <img src="{% static "icons/home.svg" %}" alt="" class="sidenav-icon"
+                                         id="icon-dashboard">
+                                    <span class="sidenav-item-name">Dashboard</span>
+                                </a>
+                            </li>
 
-                                    <li class="sidenav-item" id="sidenav-wallet">
-                                        <a href="{% url 'wallet:wallet_list' %}" class="sidenav-link">
-                                            <img src="{% static "icons/wallet.svg" %}" alt="" class="sidenav-icon" id="icon-wallet">
-                                            <span class="sidenav-item-name">Wallets</span>
-                                        </a>
-                                    </li>
+                            <li class="sidenav-item" id="sidenav-wallet">
+                                <a href="{% url 'wallet:wallet_list' %}" class="sidenav-link">
+                                    <img src="{% static "icons/wallet.svg" %}" alt="" class="sidenav-icon"
+                                         id="icon-wallet">
+                                    <span class="sidenav-item-name">Wallets</span>
+                                </a>
+                            </li>
 
-                                    <li class="sidenav-item" id="sidenav-goals">
-                                        <a href="{% url 'goal:goal_list' %}" class="sidenav-link">
-                                            <img src="{% static "icons/goal.svg" %}" alt="" class="sidenav-icon" id="icon-goals">
-                                            <span class="sidenav-item-name">Goals</span>
-                                        </a>
-                                    </li>
-                                </ul>
+                            <li class="sidenav-item" id="sidenav-goals">
+                                <a href="{% url 'goal:goal_list' %}" class="sidenav-link">
+                                    <img src="{% static "icons/goal.svg" %}" alt="" class="sidenav-icon"
+                                         id="icon-goals">
+                                    <span class="sidenav-item-name">Goals</span>
+                                </a>
+                            </li>
+                        </ul>
 
-                                <ul class="user-control -width-100">
-                                    <div class="sidenav-border"></div>
+                        <ul class="user-control -width-100">
+                            <div class="sidenav-border"></div>
 
-                                    <li class="sidenav-item" id="sidenav-settings">
-                                        <a href="{% url 'category:custom_category_list' %}" class="sidenav-link">
-                                            <img src="{% static "icons/settings.svg" %}" alt="" class="sidenav-icon" id="icon-settings">
-                                            <span class="sidenav-item-name">Settings</span>
-                                        </a>
-                                    </li>
+                            <li class="sidenav-item" id="sidenav-settings">
+                                <a href="{% url 'category:custom_category_list' %}" class="sidenav-link">
+                                    <img src="{% static "icons/settings.svg" %}" alt="" class="sidenav-icon"
+                                         id="icon-settings">
+                                    <span class="sidenav-item-name">Settings</span>
+                                </a>
+                            </li>
 
-                                    <li class="sidenav-item" id="sidenav-profile">
-                                        <a href="{% url 'user:profile' %}" class="sidenav-link">
-                                            <img src="{% static "icons/user-icon.png" %}" alt="" class="sidenav-icon -profile" id="icon-profile">
-                                            <span class="sidenav-item-name">Profile</span>
-                                        </a>
-                                    </li>
+                            <li class="sidenav-item" id="sidenav-profile">
+                                <a href="{% url 'user:profile' %}" class="sidenav-link">
+                                    <img src="{% static "icons/user-icon.png" %}" alt="" class="sidenav-icon -profile"
+                                         id="icon-profile">
+                                    <span class="sidenav-item-name">Profile</span>
+                                </a>
+                            </li>
 
-                                    <li class="sidenav-item" id="sidenav-logout">
-                                        <a href="{% url 'user:logout' %}" class="sidenav-link">
-                                            <img src="{% static "icons/logout.svg" %}" alt="" class="sidenav-icon" id="icon-logout">
-                                            <span class="sidenav-item-name">Logout</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-
-
+                            <li class="sidenav-item" id="sidenav-logout">
+                                <a href="{% url 'user:logout' %}" class="sidenav-link">
+                                    <img src="{% static "icons/logout.svg" %}" alt="" class="sidenav-icon"
+                                         id="icon-logout">
+                                    <span class="sidenav-item-name">Logout</span>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
 
-                    <div class="sidenav-mobile" id="sidenav-mobile">
-                        <img src="{% static "icons/logo.png" %}" alt="" class="main-logo -mobile-logo">
 
-                             <div class="sidenav-menu -mobile">
-                                <ul class="pages-control -mobile">
-                                    <li class="sidenav-item" id="m-sidenav-dashboard">
-                                        <a href="{% url 'dashboard' %}" class="sidenav-link -mobile">
-                                            <img src="{% static "icons/home.svg" %}" alt="" class="sidenav-icon" id="icon-dashboard">
-                                        </a>
-                                    </li>
+                </div>
 
-                                    <li class="sidenav-item" id="m-sidenav-wallet">
-                                        <a href="{% url 'wallet:wallet_list' %}" class="sidenav-link -mobile">
-                                            <img src="{% static "icons/wallet.svg" %}" alt="" class="sidenav-icon" id="icon-wallet">
-                                        </a>
-                                    </li>
+                <div class="sidenav-mobile" id="sidenav-mobile">
+                    <img src="{% static "icons/logo.png" %}" alt="" class="main-logo -mobile-logo">
 
-                                    <li class="sidenav-item" id="m-sidenav-goals">
-                                        <a href="{% url 'goal:goal_list' %}" class="sidenav-link -mobile">
-                                            <img src="{% static "icons/goal.svg" %}" alt="" class="sidenav-icon" id="icon-goals">
-                                        </a>
-                                    </li>
-                                </ul>
+                    <div class="sidenav-menu -mobile">
+                        <ul class="pages-control -mobile">
+                            <li class="sidenav-item" id="m-sidenav-dashboard">
+                                <a href="{% url 'dashboard' %}" class="sidenav-link -mobile">
+                                    <img src="{% static "icons/home.svg" %}" alt="" class="sidenav-icon"
+                                         id="icon-dashboard">
+                                </a>
+                            </li>
 
-                                <ul class="user-control -mobile">
-                                    <li class="sidenav-item" id="m-sidenav-settings">
-                                        <a href="{% url 'category:custom_category_list' %}" class="sidenav-link -mobile">
-                                            <img src="{% static "icons/settings.svg" %}" alt="" class="sidenav-icon" id="icon-settings">
-                                        </a>
-                                    </li>
+                            <li class="sidenav-item" id="m-sidenav-wallet">
+                                <a href="{% url 'wallet:wallet_list' %}" class="sidenav-link -mobile">
+                                    <img src="{% static "icons/wallet.svg" %}" alt="" class="sidenav-icon"
+                                         id="icon-wallet">
+                                </a>
+                            </li>
 
-                                    <li class="sidenav-item" id="m-sidenav-profile">
-                                        <a href="{% url 'user:profile' %}" class="sidenav-link -mobile">
-                                            <img src="{% static "icons/user-icon.png" %}" alt="" class="sidenav-icon -profile" id="icon-profile">
-                                        </a>
-                                    </li>
+                            <li class="sidenav-item" id="m-sidenav-goals">
+                                <a href="{% url 'goal:goal_list' %}" class="sidenav-link -mobile">
+                                    <img src="{% static "icons/goal.svg" %}" alt="" class="sidenav-icon"
+                                         id="icon-goals">
+                                </a>
+                            </li>
+                        </ul>
 
-                                    <li class="sidenav-item" id="m-sidenav-logout">
-                                        <a href="{% url 'user:logout' %}" class="sidenav-link -mobile">
-                                            <img src="{% static "icons/logout.svg" %}" alt="" class="sidenav-icon" id="icon-logout">
+                        <ul class="user-control -mobile">
+                            <li class="sidenav-item" id="m-sidenav-settings">
+                                <a href="{% url 'category:custom_category_list' %}" class="sidenav-link -mobile">
+                                    <img src="{% static "icons/settings.svg" %}" alt="" class="sidenav-icon"
+                                         id="icon-settings">
+                                </a>
+                            </li>
 
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
+                            <li class="sidenav-item" id="m-sidenav-profile">
+                                <a href="{% url 'user:profile' %}" class="sidenav-link -mobile">
+                                    <img src="{% static "icons/user-icon.png" %}" alt="" class="sidenav-icon -profile"
+                                         id="icon-profile">
+                                </a>
+                            </li>
 
+                            <li class="sidenav-item" id="m-sidenav-logout">
+                                <a href="{% url 'user:logout' %}" class="sidenav-link -mobile">
+                                    <img src="{% static "icons/logout.svg" %}" alt="" class="sidenav-icon"
+                                         id="icon-logout">
+
+                                </a>
+                            </li>
+                        </ul>
                     </div>
 
                 </div>
 
-                <div class="content-block" id="content-block">
-                     <!--Gray Overlay-->
-                    <div class="overlay-wrap-content-block-home" id="overlay-wrap"></div>
-                    <!--Gray Overlay-->
+            </div>
 
-                    <div class="header">
-                        <img src="{% static "icons/menu.svg" %}" alt="menu" class="header-menu" id="header-menu" >
+            <div class="content-block" id="content-block">
+                <!--Gray Overlay-->
+                <div class="overlay-wrap-content-block-home" id="overlay-wrap"></div>
+                <!--Gray Overlay-->
 
-                        {% block header-extension %}
+                <div class="header">
+                    <img src="{% static "icons/menu.svg" %}" alt="menu" class="header-menu" id="header-menu">
 
-
-
-                        {% endblock %}
-                    </div>
-
-                    <div class="main-content-block">
-
-                        {% block mainContent %}
+                    {% block header-extension %}
 
 
 
-                            <!-- Here goes each page's contents-->
-
-
-
-
-
-                        {% endblock %}
-
-                    </div>
-
+                    {% endblock %}
                 </div>
 
-                {% block deleteModalBlock %}
+                <div class="main-content-block">
 
+                    {% block mainContent %}
+                        <h1>Main Contain</h1>
+                    {% endblock %}
 
-
+                </div>
+                {% block  footer-block %}
                 {% endblock %}
-                </div>
+
             </div>
 
         </div>
+    </div>
+
+    </div>
 
 
 {% endblock %}
