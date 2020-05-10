@@ -24,8 +24,8 @@ class Category(models.Model):
         ('insurance.png', 'insurance.png'),
     ]
     IS_EXPENSE_CHOICES = [
-        (True, 'Expenses'),
-        (False, 'Earnings'),
+        (True, 'Expense'),
+        (False, 'Earning'),
     ]
     name = models.CharField(max_length=500, null=False, blank=False)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -35,7 +35,7 @@ class Category(models.Model):
                             choices=EARNINGS_ICON_CHOICES + EXPENSES_ICON_CHOICES)
 
     class Meta:
-        unique_together = ('name', 'owner')
+        unique_together = ('name', 'owner', 'is_expense', 'is_custom')
 
     def __str__(self):
         return '{}({})'.format(self.name, self.pk)
