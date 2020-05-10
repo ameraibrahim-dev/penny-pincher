@@ -9,7 +9,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -21,11 +20,16 @@ class Migration(migrations.Migration):
             name='Goal',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('balance_currency', djmoney.models.fields.CurrencyField(choices=[('PHP', 'Philippine Peso')], default='PHP', editable=False, max_length=3)),
+                ('balance_currency',
+                 djmoney.models.fields.CurrencyField(choices=[('PHP', 'Philippine Peso')], default='PHP',
+                                                     editable=False, max_length=3)),
                 ('balance', djmoney.models.fields.MoneyField(decimal_places=2, default_currency='PHP', max_digits=14)),
                 ('progress', models.FloatField(verbose_name=builtins.max)),
-                ('target_amount_currency', djmoney.models.fields.CurrencyField(choices=[('PHP', 'Philippine Peso')], default='PHP', editable=False, max_length=3)),
-                ('target_amount', djmoney.models.fields.MoneyField(decimal_places=2, default_currency='PHP', max_digits=14)),
+                ('target_amount_currency',
+                 djmoney.models.fields.CurrencyField(choices=[('PHP', 'Philippine Peso')], default='PHP',
+                                                     editable=False, max_length=3)),
+                ('target_amount',
+                 djmoney.models.fields.MoneyField(decimal_places=2, default_currency='PHP', max_digits=14)),
                 ('created', models.DateTimeField(auto_now_add=True)),
                 ('updated', models.DateTimeField(auto_now=True)),
                 ('owner', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
@@ -35,7 +39,9 @@ class Migration(migrations.Migration):
             name='GoalTransaction',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('amount_currency', djmoney.models.fields.CurrencyField(choices=[('PHP', 'Philippine Peso')], default='PHP', editable=False, max_length=3)),
+                ('amount_currency',
+                 djmoney.models.fields.CurrencyField(choices=[('PHP', 'Philippine Peso')], default='PHP',
+                                                     editable=False, max_length=3)),
                 ('amount', djmoney.models.fields.MoneyField(decimal_places=2, default_currency='PHP', max_digits=14)),
                 ('date', models.DateField()),
                 ('is_expense', models.BooleanField(choices=[(True, 'Expenses'), (False, 'Earnings')])),

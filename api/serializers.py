@@ -24,6 +24,7 @@ class WalletTransactionSerializer(serializers.ModelSerializer):
         model = WalletTransaction
         fields = ['id', 'amount', 'date', 'is_expense', 'note', 'category', 'wallet']
 
+
 class GoalTransactionSerializer(serializers.ModelSerializer):
     amount = MoneySerializer()
 

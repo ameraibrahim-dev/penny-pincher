@@ -10,4 +10,3 @@ class CategoryForm(ModelForm):
         labels = {
             'is_expense': 'Type',
         }
-

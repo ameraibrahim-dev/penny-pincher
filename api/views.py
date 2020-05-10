@@ -46,6 +46,7 @@ class WalletTransactionsByUser(generics.ListAPIView):
     def get_queryset(self):
         return WalletTransaction.objects.filter(wallet__owner=self.request.user)
 
+
 class GoalTransactionsByUser(generics.ListAPIView):
     serializer_class = GoalTransactionSerializer
     permission_classes = [IsAuthenticated]
@@ -53,4 +54,3 @@ class GoalTransactionsByUser(generics.ListAPIView):
 
     def get_queryset(self):
         return GoalTransaction.objects.filter(goal__owner=self.request.user)
-

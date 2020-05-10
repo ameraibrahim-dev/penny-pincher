@@ -4,7 +4,7 @@
 {% block main-content %}
 
     </ol>
-        <div class="transaction-wrap">
+    <div class="transaction-wrap">
 
         <div class="transaction-header">
             <span class="transaction-wallet-name">{{ object.name }}</span>
@@ -24,8 +24,8 @@
                             <span class="statistic-input-label">Category</span>
                             <div class="statistics-input-box-style">
                                 <select class="statistics-filter">
-                                <option value="" disabled selected >All categories</option>
-                                <option value="1">Audi</option>
+                                    <option value="" disabled selected>All categories</option>
+                                    <option value="1">Audi</option>
                                 </select>
                             </div>
                         </div>
@@ -33,14 +33,16 @@
                         <div class="statistic-input-box">
                             <span class="statistic-input-label">Note</span>
                             <div class="statistics-input-box-style">
-                                <input type="text" name="statistic-keyword-filter" id="statisticKeywordFilter" class="statistic-keyword-filter" placeholder="Filter by specific keyword">
+                                <input type="text" name="statistic-keyword-filter" id="statisticKeywordFilter"
+                                       class="statistic-keyword-filter" placeholder="Filter by specific keyword">
                             </div>
                         </div>
 
                         <div class="statistic-input-box">
                             <span class="statistic-input-label">Date Range</span>
                             <div class="statistics-input-box-style">
-                                <input type="text" name="statistic-keyword-filter" id="statisticKeywordFilter" class="statistic-keyword-filter" placeholder="Filter by specific keyword">
+                                <input type="text" name="statistic-keyword-filter" id="statisticKeywordFilter"
+                                       class="statistic-keyword-filter" placeholder="Filter by specific keyword">
                             </div>
                         </div>
 
@@ -84,54 +86,57 @@
 
                     <span class="statistic-card-title">March 1, 2020</span>
 
-                        <div class="statistics-block">
-                                    <!--Display this div below if there are no transactions-->
+                    <div class="statistics-block">
+                        <!--Display this div below if there are no transactions-->
 
-                            {% for transaction in object.wallettransaction_set.all%}
-                                <div class="transaction"> <!--This is one transaction line-->
-                                    <div class="transaction-type">
-                                        <img class="transaction-icon" src="{% static "icons/bills.png" %}" alt="Transaction Icon">
-                                        <span class="transaction-name">{{ transaction.category.name }}</span>
-                                    </div>
+                        {% for transaction in object.wallettransaction_set.all %}
+                            <div class="transaction"> <!--This is one transaction line-->
+                                <div class="transaction-type">
+                                    <img class="transaction-icon" src="{% static "icons/bills.png" %}"
+                                         alt="Transaction Icon">
+                                    <span class="transaction-name">{{ transaction.category.name }}</span>
+                                </div>
 
-                                    <div class="transaction-notes">
-                                        {% if transaction.note %}
-                                            {{ transaction.note }}
-                                        {% else %}
-                                            <!--If no notes display this div-->
-                                           <div class="no-notes">
-                                               <span class="note-empty-lines"></span>
-                                               <span class="note-empty-lines"></span>
-                                               <span class="note-empty-lines"></span>
-                                          </div>
-                                        {% endif %}
-
-                                    </div>
-
-                                    <div class="transaction-price">
-                                        <span class="transaction-amount">{{ transaction.amount }}</span>
-                                    </div>
-
-                                    <div class="transaction-control">
-                                        <a href="{% url 'wallet:wallet_transactions_update_transaction' transaction.pk %}"><img class="transaction-edit"src="{% static "icons/edit.png" %}" alt="edit"></a>
-                                        <a href="#" id="delete-btn"
-                                           onclick="delete_modal('{% url 'wallet:wallet_transactions_delete_transaction' transaction.pk %}','Are you sure you want to delete this transaction?')">
-                                            <img class="transaction-delete"src="{% static "icons/delete.png" %}" alt="edit">
-                                        </a>
-                                    </div>
+                                <div class="transaction-notes">
+                                    {% if transaction.note %}
+                                        {{ transaction.note }}
+                                    {% else %}
+                                        <!--If no notes display this div-->
+                                        <div class="no-notes">
+                                            <span class="note-empty-lines"></span>
+                                            <span class="note-empty-lines"></span>
+                                            <span class="note-empty-lines"></span>
+                                        </div>
+                                    {% endif %}
 
                                 </div>
 
-                            {% empty %}
+                                <div class="transaction-price">
+                                    <span class="transaction-amount">{{ transaction.amount }}</span>
+                                </div>
 
-                                 <div sata-attr-message="No Transactions." class="no-transactions-message">
-                                     To add a transaction, click Add Transaction on the upper right.
-                                 </div>
+                                <div class="transaction-control">
+                                    <a href="{% url 'wallet:wallet_transactions_update_transaction' transaction.pk %}"><img
+                                            class="transaction-edit" src="{% static "icons/edit.png" %}" alt="edit"></a>
+                                    <a href="#" id="delete-btn"
+                                       onclick="delete_modal('{% url 'wallet:wallet_transactions_delete_transaction' transaction.pk %}','Are you sure you want to delete this transaction?')">
+                                        <img class="transaction-delete" src="{% static "icons/delete.png" %}"
+                                             alt="edit">
+                                    </a>
+                                </div>
 
-                            {% endfor %}
+                            </div>
+
+                        {% empty %}
+
+                            <div sata-attr-message="No Transactions." class="no-transactions-message">
+                                To add a transaction, click Add Transaction on the upper right.
+                            </div>
+
+                        {% endfor %}
 
 
-                        </div>
+                    </div>
 
                 </div>
 
@@ -153,7 +158,7 @@
 {% block body-javascript-extension %}
 
     <script>
-    activeNavIcon("#sidenav-wallet","#m-sidenav-wallet");
-    activeWalletHeader("#header-transactions");
+        activeNavIcon("#sidenav-wallet", "#m-sidenav-wallet");
+        activeWalletHeader("#header-transactions");
     </script>
 {% endblock %}

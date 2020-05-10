@@ -23,7 +23,7 @@ class Goal(models.Model):
     @property
     def saving_progress(self):
         progress = Decimal(self.balance / self.target_amount)
-        progress = round(progress*100, 2)
+        progress = round(progress * 100, 2)
         return progress if progress < 100 else 100
 
 

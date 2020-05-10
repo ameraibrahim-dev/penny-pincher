@@ -9,12 +9,12 @@ var myChart = new Chart(ctx, {
             backgroundColor: [
                 '#49BEB7',
                 '#EE8572',
-                
+
             ],
             borderColor: [
                 '#49BEB7',
                 '#EE8572',
-                
+
             ],
             borderWidth: 0
         }]
@@ -24,7 +24,7 @@ var myChart = new Chart(ctx, {
         maintainAspectRatio: false,
         scales: {
             xAxes: [{
-                display:false,
+                display: false,
                 gridLines: {
                     color: "rgba(0, 0, 0, 0)",
                 },
@@ -33,7 +33,7 @@ var myChart = new Chart(ctx, {
                 }
             }],
             yAxes: [{
-                display:false,
+                display: false,
                 gridLines: {
                     color: "rgba(0, 0, 0, 0)",
                 },

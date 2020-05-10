@@ -6,7 +6,6 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('goal', '0002_auto_20200423_1702'),
     ]
@@ -15,11 +14,13 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='goal',
             name='balance',
-            field=djmoney.models.fields.MoneyField(decimal_places=2, default_currency='PHP', max_digits=14, validators=[djmoney.models.validators.MinMoneyValidator(0)]),
+            field=djmoney.models.fields.MoneyField(decimal_places=2, default_currency='PHP', max_digits=14,
+                                                   validators=[djmoney.models.validators.MinMoneyValidator(0)]),
         ),
         migrations.AlterField(
             model_name='goal',
             name='target_amount',
-            field=djmoney.models.fields.MoneyField(decimal_places=2, default_currency='PHP', max_digits=14, validators=[djmoney.models.validators.MinMoneyValidator(1)]),
+            field=djmoney.models.fields.MoneyField(decimal_places=2, default_currency='PHP', max_digits=14,
+                                                   validators=[djmoney.models.validators.MinMoneyValidator(1)]),
         ),
     ]

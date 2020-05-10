@@ -18,7 +18,7 @@
         <div class="section-body">
             <div class="goals-card -list">
                 {% for goal in object_list %}
-                    <a href="{% url 'goal:goal_detail' goal.pk %}" class="goal" >
+                    <a href="{% url 'goal:goal_detail' goal.pk %}" class="goal">
 
                         <div class="goal-name-block">
                             <h1 class="goal-name">{{ goal.name }}</h1>
@@ -28,7 +28,7 @@
                             <span data-attr-goal="" class="target-goal -list">{{ goal.target_amount.amount }}</span>
                             <span class="goal-date">{{ goal.target_date }}</span>
                         </div>
-        
+
                     </a>
                 {% empty %}
                     <li>No goals yet.</li>

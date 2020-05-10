@@ -9,6 +9,7 @@ def NotInPastValidator(value):
     if value < tomorrow:
         raise ValidationError('date should be at least {}'.format(tomorrow))
 
+
 def NotInFutureValidator(value):
     today = datetime.datetime.today().date()
     if value > today:

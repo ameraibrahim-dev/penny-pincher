@@ -7,7 +7,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -21,8 +20,12 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=500)),
-                ('type', models.CharField(choices=[('CH', 'Cash'), ('EM', 'E-Money'), ('CC', 'Credit Card'), ('DC', 'Debit Card')], max_length=500)),
-                ('balance_currency', djmoney.models.fields.CurrencyField(choices=[('PHP', 'Philippine Peso')], default='PHP', editable=False, max_length=3)),
+                ('type', models.CharField(
+                    choices=[('CH', 'Cash'), ('EM', 'E-Money'), ('CC', 'Credit Card'), ('DC', 'Debit Card')],
+                    max_length=500)),
+                ('balance_currency',
+                 djmoney.models.fields.CurrencyField(choices=[('PHP', 'Philippine Peso')], default='PHP',
+                                                     editable=False, max_length=3)),
                 ('balance', djmoney.models.fields.MoneyField(decimal_places=2, default_currency='PHP', max_digits=14)),
                 ('owner', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
@@ -34,7 +37,9 @@ class Migration(migrations.Migration):
             name='WalletTransaction',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('amount_currency', djmoney.models.fields.CurrencyField(choices=[('PHP', 'Philippine Peso')], default='PHP', editable=False, max_length=3)),
+                ('amount_currency',
+                 djmoney.models.fields.CurrencyField(choices=[('PHP', 'Philippine Peso')], default='PHP',
+                                                     editable=False, max_length=3)),
                 ('amount', djmoney.models.fields.MoneyField(decimal_places=2, default_currency='PHP', max_digits=14)),
                 ('date', models.DateField()),
                 ('is_expense', models.BooleanField(choices=[(True, 'Expenses'), (False, 'Earnings')])),

@@ -13,7 +13,6 @@ class WalletCreateForm(ModelForm):
         fields = ['name', 'type', 'balance']
 
 
-
 class WalletUpdateForm(ModelForm):
     class Meta:
         model = Wallet
@@ -38,4 +37,3 @@ class WalletTransactionForm(ModelForm):
         if amount.amount < 0:
             raise forms.ValidationError('Amount must be 0 or grater')
         return amount
-

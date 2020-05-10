@@ -46,7 +46,8 @@ class UpdateGoalForm(ModelForm):
 
 class GoalTransactionForm(ModelForm):
     date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}),
-                                  validators=[NotInFutureValidator])
+                           validators=[NotInFutureValidator])
+
     class Meta:
         model = GoalTransaction
         fields = ['amount', 'date', 'note', 'is_expense']
