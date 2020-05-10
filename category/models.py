@@ -24,8 +24,8 @@ class Category(models.Model):
         ('insurance.png', 'insurance.png'),
     ]
     IS_EXPENSE_CHOICES = [
-        (True, 'Expenses'),
-        (False, 'Earnings'),
+        (True, 'Expense'),
+        (False, 'Earning'),
     ]
     name = models.CharField(max_length=500, null=False, blank=False)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)

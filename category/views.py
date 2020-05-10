@@ -1,4 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db import IntegrityError
 from django.db.models import ProtectedError
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -42,7 +43,11 @@ class CreateCustomCategoryView(LoginRequiredMixin, CreateView):
             if category.name.lower() == name.lower():
                 form.add_error('name', 'This category is predefined')
                 return self.form_invalid(form)
-        return super(CreateCustomCategoryView, self).form_valid(form)
+        try:
+            return super(CreateCustomCategoryView, self).form_valid(form)
+        except IntegrityError:
+            form.add_error('name', 'This category is existed')
+            return self.form_invalid(form)
 
 
 class UpdateCustomCategoryView(LoginRequiredMixin, UpdateView):
@@ -70,7 +75,6 @@ class UpdateCustomCategoryView(LoginRequiredMixin, UpdateView):
 
     def get_queryset(self):
         return Category.objects.filter(owner=self.request.user, is_custom=True)
-
 
 
 class DeleteCustomCategoryView(LoginRequiredMixin, DeleteView):
@@ -113,5 +117,3 @@ class DefinedEarningsCategories(LoginRequiredMixin, TemplateView):
         context = super().get_context_data(**kwargs)
         context['object_list'] = get_predefined_earnings_categories(self.request.user)
         return context
-
-
