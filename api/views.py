@@ -5,7 +5,7 @@ from api.serializers import CategorySerializer, WalletTransactionSerializer, Goa
 from category.models import Category
 from category.utils import get_predefined_expenses_categories, get_predefined_earnings_categories
 from goal.models import GoalTransaction
-from wallet.models import WalletTransaction, Wallet
+from wallet.models import WalletTransaction
 
 
 class AllUsedCategoryJsonList(generics.ListAPIView):

@@ -1,4 +1,5 @@
 import os
+
 from django.urls import reverse_lazy
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
