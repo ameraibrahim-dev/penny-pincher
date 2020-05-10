@@ -4,14 +4,9 @@
 
 {% block mainContent %}
 
-    <ol>
-        {% for transact in  object.wallettransaction_set.all %}
-            <li>{{ transact.is_expense }}{{ transact.amount }}</li>
-        {% endfor %}
-    </ol>
     <div class="transaction-wrap">
         <div class="transaction-header">
-            <span class="transaction-wallet-name">{{ object }}</span>
+            <span class="transaction-wallet-name">{{ object.name }}</span>
             <a class="btn-primary add-transaction-btn" style="text-decoration: none;"
                href="{% url 'wallet:wallet_overview_create_transaction' object.pk %}">Add Transaction</a>
         </div>
@@ -61,7 +56,7 @@
                     <span class="statistic-card-title">Total Balance</span>
                     <div class="statistics-block -finance">
 
-                        <span class="statistic-amount">22000.00</span>
+                        <span class="statistic-amount">{{object.balance.amount}}</span>
 
                     </div>
                 </div>
@@ -162,10 +157,9 @@
     <script src="{% static "js/progress-bar.js" %}"></script>
     <script src="{% static "js/pie-chart.js" %}"></script>
     <script src="{% static "js/line-chart.js" %}"></script>
-    <script src="{% static "js/wallet-header.js" %}"></script>
     <script>
-        activeNavIcon("#sidenav-wallet", "#m-sidenav-wallet");
         activeWalletHeader("#header-overview");
+        activeNavIcon("#sidenav-wallet", "#m-sidenav-wallet");
     </script>
 
 {% endblock %}
