@@ -1,23 +1,20 @@
-{% extends 'base_navigation_no_footer.html' %}
+{% load static %}
+<div class="modal-wrap" id="delete-modal">
+    <div class="modal-card">
 
-{% block modal %}
+        <img src="{% static "icons/warning.png" %}" alt="Icon" class="modal-icon">
 
-    <div class="modal-wrap" id="delete-modal">
-        <div class="modal-card">
+        <p class="modal-message" id="modal-message">Are you sure you want to delete this?</p>
 
-            <img src="../sqa_penny_pincher/assets/icons/warning.png" alt="Icon" class="modal-icon">
+        <span class="modal-reminder">This action cannot be undone</span>
 
-            <p class="modal-message" id="modal-message">Are you sure you want to delete this?</p>
-
-            <span class="modal-reminder">This action cannot be undone</span>
-
-            <div class="modal-control">
-                <a href="#" class="modal-cancel-btn" id="modal-cancel">cancel</a>
-                <a href="#" class="modal-delete-btn" id="modal-delete">delete</a>
-            </div>
+        <div class="modal-control">
+            <a href="#" class="modal-cancel-btn" id="modal-cancel">cancel</a>
+            <a href="#" class="modal-delete-btn" id="modal-delete">delete</a>
         </div>
     </div>
+</div>
 
-    <div class="modal-overlay" id="modal-overlay"></div>
+<div class="modal-overlay" id="modal-overlay"></div>
 
-{% endblock %}
+
