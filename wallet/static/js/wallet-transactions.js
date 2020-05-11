@@ -26,10 +26,8 @@ function getALLTransactionsByWalletID() {
             transactions = result;
             // sort by date
             transactions.sort((a, b) => {
-                return new Date(a.date)- new Date(b.date);
+                return new Date(a.date) - new Date(b.date);
             });
-            console.log(transactions)
-
         }
     });
 }
@@ -44,7 +42,7 @@ function computeTotal() {
         } else {
             totalPeriodEarnings += transact.amount.amount;
         }
-    })
+    });
     // display these total number
     $(TOTAL_PERIOD_EXPENSES_LOCATOR).text(totalPeriodExpenses);
     $(TOTAL_PERIOD_EARNINGS_LOCATOR).text(totalPeriodEarnings);
@@ -64,10 +62,12 @@ function generateCategoriesHtml() {
 
     //sort by is_expense
     categories = new Map([...categories.entries()].sort((a, b) => {
-        return a.is_expense-b.is_expense
-    }));
+            return a[1].is_expense - b[1].is_expense
+        }
+    ).reverse());
     // generate category options
     categories.forEach((value, key) => {
         console.log(value, key);
+
     })
 }
