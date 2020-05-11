@@ -1,14 +1,185 @@
 {% extends 'base_navigation_no_footer.html' %}
+{% load widget_tweaks %}
+{% load i18n %}
+{% load static %}
+
 {% block main-content %}
-    <form method="post">{% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Submit">
-    </form>
 
     {% if object %}
         <a href="{% url 'goal:goal_detail' object.pk %}">Back</a>
     {% else %}
         <a href="{% url 'goal:goal_detail' view.kwargs.pk %}"> Back</a>
     {% endif %}
+
+    <div class="transaction-wrap">
+        <!--If there is an object, use Edit Transaction-->
+        {% if object %}
+
+            <div class="transaction-header">
+                <span class="transaction-wallet-name">Edit Transaction</span>
+            </div>
+
+            <div class="add-transaction-block">
+
+                <form method="post" class="wallet-form-fields">
+                    {% csrf_token %}
+                    <div class="row">
+
+                        <div class="col-xl-6">
+                            <div class="form-group">
+                                <span class="input-text-field-label float-left">Transaction Type</span>
+                                {% for error in form.is_expense.errors %}
+                                    <span class="error-field">
+                                        {{ error }}
+                                    </span>
+                                {% endfor %}
+                                {% render_field form.is_expense class="form-control input-box" placeholder="Ex. Emergency Funds" %}
+                            </div>
+
+                            <div class="form-group statistic-input-box">
+                                <span class="input-text-field-label float-left">Notes</span>
+                                {% for error in form.note.errors %}
+                                    <span class="error-field">
+                                            {{ error }}
+                                        </span>
+                                {% endfor %}
+                                {% render_field form.note class="form-control input-box" placeholder="Take down notes..." rows="1" %}
+                            </div>
+                        </div>
+
+                        <div class="col-xl-6">
+
+                            <div class="form-group statistic-input-box">
+                                <span class="input-text-field-label float-left">Date</span>
+                                {% for error in form.date.errors %}
+                                    <span class="error-field">
+                                            {{ error }}
+                                        </span>
+                                {% endfor %}
+                                {% render_field form.date class="form-control input-box" placeholder="08/05/2020" %}
+                            </div>
+
+
+
+                            <div class="form-group statistic-input-box">
+                                <span class="input-text-field-label float-left">Amount</span>
+                                {% for error in form.amount.errors %}
+                                    <span class="error-field">
+                                        {{ error }}
+                                    </span>
+                                {% endfor %}
+                                {% render_field form.amount class="form-control input-box" placeholder="0.00 PHP" %}
+                            </div>
+
+
+
+                        </div>
+
+
+                    </div>
+                    <div class="float-right">
+                        <a class="add-transaction-cancel-btn" href="{{ cancel_url }}"
+                           style="text-decoration: none;padding: 8px 24px !important;">cancel</a>
+                        <button class="add-transaction-save-btn">save</button>
+                    </div>
+                </form>
+
+            </div>
+
+
+            <!--No object, use Add Transaction-->
+        {% else %}
+
+            <div class="transaction-header">
+                <span class="transaction-wallet-name">Add Transaction</span>
+            </div>
+
+            <div class="add-transaction-block">
+
+                <form method="post" class="wallet-form-fields">
+                    {% csrf_token %}
+                    <div class="row">
+
+                        <div class="col-xl-6">
+                            <div class="form-group">
+                                <span class="input-text-field-label float-left">Transaction Type</span>
+                                {% for error in form.is_expense.errors %}
+                                    <span class="error-field">
+                                        {{ error }}
+                                    </span>
+                                {% endfor %}
+                                {% render_field form.is_expense class="form-control input-box" placeholder="Ex. Emergency Funds" %}
+                            </div>
+
+                            <div class="form-group statistic-input-box">
+                                <span class="input-text-field-label float-left">Notes</span>
+                                {% for error in form.note.errors %}
+                                    <span class="error-field">
+                                            {{ error }}
+                                        </span>
+                                {% endfor %}
+                                {% render_field form.note class="form-control input-box" placeholder="Take down notes..." rows="1" %}
+                            </div>
+                        </div>
+
+                        <div class="col-xl-6">
+
+                            <div class="form-group statistic-input-box">
+                                <span class="input-text-field-label float-left">Date</span>
+                                {% for error in form.date.errors %}
+                                    <span class="error-field">
+                                            {{ error }}
+                                        </span>
+                                {% endfor %}
+                                {% render_field form.date class="form-control input-box" placeholder="08/05/2020" %}
+                            </div>
+
+
+
+                            <div class="form-group statistic-input-box">
+                                <span class="input-text-field-label float-left">Amount</span>
+                                {% for error in form.amount.errors %}
+                                    <span class="error-field">
+                                        {{ error }}
+                                    </span>
+                                {% endfor %}
+                                {% render_field form.amount class="form-control input-box" placeholder="0.00 PHP" %}
+                            </div>
+
+
+
+                        </div>
+
+
+                    </div>
+                    <div class="float-right">
+                        <a class="add-transaction-cancel-btn" href="#"
+                           style="text-decoration: none;padding: 8px 24px !important;">cancel</a>
+                        <button class="add-transaction-save-btn">save</button>
+                    </div>
+                </form>
+
+            </div>
+
+        {% endif %}
+
+
+    </div>
+
+{% endblock %}
+
+
+{% block body-javascript-extension %}
+    <script src="{% static "js/wallet-transaction-form.js" %}"></script>
+    <script>
+        $("#id_amount_1").hide();
+    </script>
+
+    <script>
+
+        $('#sidenav-goals').toggleClass('-active');
+        $('#m-sidenav-goals').toggleClass('-active-mobile');
+
+    </script>
 
 {% endblock %}
