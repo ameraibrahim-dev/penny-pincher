@@ -31,8 +31,10 @@ function generateCategoriesHtml() {
         }
     });
     // generate category options
+    categories = new Map([...categories.entries()].reverse(a => {a.is_expense}));
     categories.forEach((value, key) => {
-        console.log(value,key);
+        console.log(value, key);
     })
+
 
 }
