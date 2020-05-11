@@ -1,5 +1,7 @@
 const WALLET_TRANSACTIONS_API_URL = "/api/v1/user/wallet/transactions/list/";
 const WALLET_PK = $("#walletID").val();
+const TOTAL_PERIOD_EXPENSES_LOCATOR="#total-period-expenses";
+const TOTAL_PERIOD_EARNINGS_LOCATOR="#total-period-earnings";
 
 let transactions = [];
 let totalPeriodExpenses = 0;
@@ -9,8 +11,6 @@ $(document).ready(function () {
     getALLTransactionsByWalletID();
     generateCategoriesHtml();
     computeTotal();
-    alert(totalPeriodExpenses);
-    alert(totalPeriodEarnings);
 });
 
 function getALLTransactionsByWalletID() {
@@ -31,12 +31,14 @@ function computeTotal() {
 
     transactions.forEach(transact => {
         if (transact.category.is_expense) {
-            totalPeriodExpenses -= transact.amount.amount;
+            totalPeriodExpenses += transact.amount.amount;
         } else {
             totalPeriodEarnings += transact.amount.amount;
         }
     })
     //todo display these total number
+    $(TOTAL_PERIOD_EXPENSES_LOCATOR).text(totalPeriodExpenses);
+    $(TOTAL_PERIOD_EARNINGS_LOCATOR).text(totalPeriodEarnings);
 
 }
 
