@@ -4,41 +4,41 @@
 {% load i18n %}
 
 {% block content %}
-{#     <form method="post" action=".">#}
-{#         {% csrf_token %}#}
-{#         {% for err in form.errors %}#}
-{#          <div class="error-field">#}
-{#            {{ err }}#}
-{#          </div>#}
-{#            {% endfor %}#}
-{#          <span class="registration-text-field-label">First Name</span>#}
-{#         {% render_field form.first_name class="registration-text-field" %}#}
-{##}
-{#          <span class="registration-text-field-label">Last Name</span>#}
-{#         {% render_field form.last_name class="registration-text-field" %}#}
-{##}
-{#          <span class="registration-text-field-label">Email</span>#}
-{#         {% for err in form.email.errors %}#}
-{#              <span class="error-field">#}
-{#                {{ err }}#}
-{#              </span>#}
-{#            {% endfor %}#}
-{#         {% render_field form.email class="registration-text-field" %}#}
-{##}
-{##}
-{##}
-{#          <span class="registration-text-field-label">Password1</span>#}
-{#            {% render_field form.password1 class="registration-text-field" %}#}
-{##}
-{#          <span class="registration-text-field-label">Password2</span>#}
-{#         {% render_field form.password2 class="registration-text-field" %}#}
-{##}
-{#         {{ form.reCAPTCHA }}#}
-{##}
-{##}
-{##}
-{#  <input type="submit" value="{% trans 'Submit' %}" />#}
-{#</form>#}
+    {#     <form method="post" action=".">#}
+    {#         {% csrf_token %}#}
+    {#         {% for err in form.errors %}#}
+    {#          <div class="error-field">#}
+    {#            {{ err }}#}
+    {#          </div>#}
+    {#            {% endfor %}#}
+    {#          <span class="registration-text-field-label">First Name</span>#}
+    {#         {% render_field form.first_name class="registration-text-field" %}#}
+    {##}
+    {#          <span class="registration-text-field-label">Last Name</span>#}
+    {#         {% render_field form.last_name class="registration-text-field" %}#}
+    {##}
+    {#          <span class="registration-text-field-label">Email</span>#}
+    {#         {% for err in form.email.errors %}#}
+    {#              <span class="error-field">#}
+    {#                {{ err }}#}
+    {#              </span>#}
+    {#            {% endfor %}#}
+    {#         {% render_field form.email class="registration-text-field" %}#}
+    {##}
+    {##}
+    {##}
+    {#          <span class="registration-text-field-label">Password1</span>#}
+    {#            {% render_field form.password1 class="registration-text-field" %}#}
+    {##}
+    {#          <span class="registration-text-field-label">Password2</span>#}
+    {#         {% render_field form.password2 class="registration-text-field" %}#}
+    {##}
+    {#         {{ form.reCAPTCHA }}#}
+    {##}
+    {##}
+    {##}
+    {#  <input type="submit" value="{% trans 'Submit' %}" />#}
+    {#</form>#}
 
 
     <div class="access-body">
@@ -57,14 +57,15 @@
 
                     <div class="registration-form">
 
-                        <form class="registration-form-fields" method="post" action="{% url 'user:django_registration_register' %}" novalidate>
+                        <form class="registration-form-fields" method="post"
+                              action="{% url 'user:django_registration_register' %}" novalidate>
                             {% csrf_token %}
 
                             <div class="registration-input-field">
                                 <span class="registration-text-field-label">First Name</span>
-{#                                  <input type="text" class="registration-text-field" >#}
+                                {#                                  <input type="text" class="registration-text-field" >#}
                                 {% for error in form.first_name.errors %}
-                                  <span class="error-field">
+                                    <span class="error-field">
                                     {{ error }}
                                   </span>
                                 {% endfor %}
@@ -76,53 +77,54 @@
                             <div class="registration-input-field">
                                 <span class="registration-text-field-label">Last Name</span>
                                 {% for error in form.last_name.errors %}
-                                  <span class="error-field">
+                                    <span class="error-field">
                                     {{ error }}
                                   </span>
                                 {% endfor %}
 
                                 {% render_field form.last_name class="registration-text-field" %}
-{#                                <input type="text" class="registration-text-field" data-field-title="">#}
+                                {#                                <input type="text" class="registration-text-field" data-field-title="">#}
                             </div>
 
                             <div class="registration-input-field">
                                 <span class="registration-text-field-label">Email</span>
                                 {% for error in form.email.errors %}
-                                  <span class="error-field">
+                                    <span class="error-field">
                                     {{ error }}
                                   </span>
                                 {% endfor %}
                                 {% render_field form.email class="registration-text-field" %}
-{#                                <input type="text" class="registration-text-field" data-field-title="First Name">#}
+                                {#                                <input type="text" class="registration-text-field" data-field-title="First Name">#}
                             </div>
 
                             <div class="registration-input-field">
                                 <span class="registration-text-field-label">Password</span>
                                 {% for error in form.password1.errors %}
-                                  <span class="error-field">
+                                    <span class="error-field">
                                     {{ error }}
                                   </span>
                                 {% endfor %}
                                 {% render_field form.password1 class="registration-text-field" %}
-{#                                <input type="password" class="registration-text-field" data-field-title="First Name">#}
+                                {#                                <input type="password" class="registration-text-field" data-field-title="First Name">#}
                             </div>
 
                             <div class="registration-input-field">
                                 <span class="registration-text-field-label">Confirm Password</span>
                                 {% for error in form.password2.errors %}
-                                  <span class="error-field">
+                                    <span class="error-field">
                                     {{ error }}
                                   </span>
                                 {% endfor %}
                                 {% render_field form.password2 class="registration-text-field" %}
-{#                                <input type="password" class="registration-text-field" data-field-title="First Name">#}
+                                {#                                <input type="password" class="registration-text-field" data-field-title="First Name">#}
                             </div>
 
                             {% render_field form.reCAPTCHA class="registration-text-field" %}
 
                             <div class="registration-control">
-                                <span class="redirect-prompt">Have an account? <a href="{% url 'user:login' %}" class="login-link">Sign In</a></span>
-{#                                <button class="btn-primary signup-button">sign up</button>#}
+                                <span class="redirect-prompt">Have an account? <a href="{% url 'user:login' %}"
+                                                                                  class="login-link">Sign In</a></span>
+                                {#                                <button class="btn-primary signup-button">sign up</button>#}
                                 <input type="submit" value="{% trans 'sign up' %}" class="btn-primary signup-button"/>
                             </div>
 

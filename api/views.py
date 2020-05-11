@@ -5,7 +5,7 @@ from api.serializers import CategorySerializer, WalletTransactionSerializer, Goa
 from category.models import Category
 from category.utils import get_predefined_expenses_categories, get_predefined_earnings_categories
 from goal.models import GoalTransaction
-from wallet.models import WalletTransaction, Wallet
+from wallet.models import WalletTransaction
 
 
 class AllUsedCategoryJsonList(generics.ListAPIView):
@@ -46,6 +46,7 @@ class WalletTransactionsByUser(generics.ListAPIView):
     def get_queryset(self):
         return WalletTransaction.objects.filter(wallet__owner=self.request.user)
 
+
 class GoalTransactionsByUser(generics.ListAPIView):
     serializer_class = GoalTransactionSerializer
     permission_classes = [IsAuthenticated]
@@ -53,4 +54,3 @@ class GoalTransactionsByUser(generics.ListAPIView):
 
     def get_queryset(self):
         return GoalTransaction.objects.filter(goal__owner=self.request.user)
-

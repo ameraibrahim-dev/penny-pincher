@@ -1,9 +1,9 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import CreateView, UpdateView, DetailView, DeleteView, ListView
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, UpdateView, DeleteView
 
 from goal.forms import GoalTransactionForm
 from goal.models import GoalTransaction, Goal
-from django.urls import reverse_lazy
 
 
 class CreateTransactionView(CreateView, LoginRequiredMixin):

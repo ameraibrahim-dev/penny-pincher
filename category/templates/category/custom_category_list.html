@@ -4,13 +4,14 @@
 {% load i18n %}
 {% load static %}
 
-{% block mainContent %}
+{% block main-content %}
 
     <div class="categories-wrap">
         <div class="categories-header" style="margin-bottom: 20px;">
             <span class="transaction-wallet-name" style="margin-bottom: 0px !important;">Settings</span>
 
-            <a class="btn-primary add-transaction-btn float-right" style="text-decoration: none;box-shadow: 0px 4px 14px -4px rgba(0, 0, 0, 0.28);"
+            <a class="btn-primary add-transaction-btn float-right"
+               style="text-decoration: none;box-shadow: 0px 4px 14px -4px rgba(0, 0, 0, 0.28);"
                href="{% url 'category:create_custom_category' %}">Add Category</a>
         </div>
 
@@ -95,7 +96,7 @@
 
 {% endblock %}
 
-{% block deleteModalBlock %}
+{% block delete-modal-block %}
     {% include 'delete_modal.html' %}
 {% endblock %}
 
@@ -104,7 +105,7 @@
 
     <script>
 
-       activeNavIcon("#sidenav-settings","#m-sidenav-settings");
+        activeNavIcon("#sidenav-settings", "#m-sidenav-settings");
 
     </script>
 

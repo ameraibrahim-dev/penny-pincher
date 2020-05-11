@@ -1,2 +1,2 @@
-from .wallet import *
 from .transaction import *
+from .wallet import *

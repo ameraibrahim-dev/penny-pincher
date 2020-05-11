@@ -2,14 +2,15 @@
 {% load widget_tweaks %}
 {% block title %}Penny Pincher - Confirm Activation{% endblock %}
 {% load i18n %}
-{% load static%}
+{% load static %}
 
 {% block content %}
 
     <div class="forgot-container ">
         <div class="forgot-success-block">
 
-            <img src="{% static "images/activate-account.png" %}" alt="activate account" class="forgot-password-email-img">
+            <img src="{% static "images/activate-account.png" %}" alt="activate account"
+                 class="forgot-password-email-img">
 
             <span class="forgot-password-email-sent-title">Just one more step...</span>
 
@@ -18,7 +19,8 @@
                 your Penny Pincher account.
             </p>
 
-            <a href="{% url 'user:login' %}" class="btn-primary forgot-login-button" style='text-decoration:none;'>go to sign in</a>
+            <a href="{% url 'user:login' %}" class="btn-primary forgot-login-button" style='text-decoration:none;'>go to
+                sign in</a>
 
         </div>
     </div>

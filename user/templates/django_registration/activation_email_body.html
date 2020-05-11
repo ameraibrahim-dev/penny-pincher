@@ -1,11 +1,11 @@
 {% load i18n %}
 {% autoescape off %}
-Thanks for joining Penny Pincher!
+    Thanks for joining Penny Pincher!
 
-Please confirm that your email address is correct to continue. Click on the link below to get started:
+    Please confirm that your email address is correct to continue. Click on the link below to get started:
 
-{{ scheme }}://{{ site.domain }}{% url 'user:django_registration_activate' activation_key %}
+    {{ scheme }}://{{ site.domain }}{% url 'user:django_registration_activate' activation_key %}
 
-This link is valid for {{ expiration_days }} days.
+    This link is valid for {{ expiration_days }} days.
 
 {% endautoescape %}

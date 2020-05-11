@@ -1,13 +1,11 @@
+from decimal import Decimal
+
 from django.db import models
 from djmoney.models.fields import MoneyField
-from datetime import date
-
 from djmoney.models.validators import MinMoneyValidator
-from moneyed import Money
 
 from penny_pincher.models import AbstractTransaction
 from user.models import User
-from decimal import Decimal
 
 
 class Goal(models.Model):
@@ -25,7 +23,7 @@ class Goal(models.Model):
     @property
     def saving_progress(self):
         progress = Decimal(self.balance / self.target_amount)
-        progress = round(progress*100, 2)
+        progress = round(progress * 100, 2)
         return progress if progress < 100 else 100
 
 

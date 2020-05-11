@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -18,7 +17,14 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=500)),
                 ('is_custom', models.BooleanField()),
                 ('is_expense', models.BooleanField(choices=[(True, 'Expenses'), (False, 'Earnings')])),
-                ('icon', models.CharField(choices=[('salary.png', 'salary.png'), ('business.png', 'business.png'), ('gifts.png', 'gifts.pn'), ('extra-income.png', 'extra-income.png'), ('loan.png', 'loan.png'), ('parental-leave.png', 'parental-leave.png'), ('insurance.png', 'insurance.png'), ('food.png', 'food.png'), ('shopping.png', 'shopping.png'), ('transport.png', 'transport.png'), ('home.png', 'home.png'), ('bills.png', 'bills.png'), ('groceries.png', 'groceries.png'), ('health.png', 'health.png'), ('entertainment.png', 'entertainment.png')], max_length=500)),
+                ('icon', models.CharField(
+                    choices=[('salary.png', 'salary.png'), ('business.png', 'business.png'), ('gifts.png', 'gifts.pn'),
+                             ('extra-income.png', 'extra-income.png'), ('loan.png', 'loan.png'),
+                             ('parental-leave.png', 'parental-leave.png'), ('insurance.png', 'insurance.png'),
+                             ('food.png', 'food.png'), ('shopping.png', 'shopping.png'),
+                             ('transport.png', 'transport.png'), ('home.png', 'home.png'), ('bills.png', 'bills.png'),
+                             ('groceries.png', 'groceries.png'), ('health.png', 'health.png'),
+                             ('entertainment.png', 'entertainment.png')], max_length=500)),
             ],
         ),
     ]

@@ -140,8 +140,10 @@ $(document).ready(function () {
     let isNavBarExpand = sessionStorage.getItem(IS_NAV_EXPAND_KEY);
     if (isNavBarExpand != null) {
         if (isNavBarExpand == 1) {
+            //todo
             //expand nav bar
         } else {
+            //todo
             //close nav bar
         }
     } else {

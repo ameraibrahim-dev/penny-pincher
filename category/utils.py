@@ -1,6 +1,3 @@
-from django.db.models import QuerySet
-
-from user.models import User
 from wallet.models import Category
 
 
@@ -22,9 +19,10 @@ def get_predefined_expenses_categories(user):
         if category:
             out.append(category)
         else:
-            out.append(Category(name=name,icon=icon,**params))
+            out.append(Category(name=name, icon=icon, **params))
 
     return out
+
 
 def get_predefined_earnings_categories(user):
     out = []
@@ -43,6 +41,6 @@ def get_predefined_earnings_categories(user):
         if category:
             out.append(category)
         else:
-            out.append(Category(name=name,icon=icon,**params))
+            out.append(Category(name=name, icon=icon, **params))
 
     return out

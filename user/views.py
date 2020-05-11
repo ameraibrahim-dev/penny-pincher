@@ -1,14 +1,13 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.messages.views import SuccessMessageMixin
-from django.shortcuts import render
-from django.views.generic import UpdateView
-from django_registration.backends.activation.views import RegistrationView
-from .forms import UserRegistrationForm, LoginForm, PasswordResetForm
-from django.urls import reverse_lazy
 from django.contrib.auth.views import PasswordChangeView, PasswordResetView, PasswordResetConfirmView, LoginView, \
     PasswordResetDoneView, PasswordResetCompleteView
+from django.shortcuts import render
+from django.urls import reverse_lazy
+from django.views.generic import UpdateView
+from django_registration.backends.activation.views import RegistrationView
 
+from .forms import UserRegistrationForm, LoginForm, PasswordResetForm
 # Create your views here.
 from .models import User
 

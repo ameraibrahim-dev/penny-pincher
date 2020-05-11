@@ -1,5 +1,5 @@
-from django.forms import ModelForm
 from django import forms
+from django.forms import ModelForm
 from djmoney.forms import MoneyField
 
 from goal.models import Goal, GoalTransaction
@@ -46,7 +46,8 @@ class UpdateGoalForm(ModelForm):
 
 class GoalTransactionForm(ModelForm):
     date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}),
-                                  validators=[NotInFutureValidator])
+                           validators=[NotInFutureValidator])
+
     class Meta:
         model = GoalTransaction
         fields = ['amount', 'date', 'note', 'is_expense']

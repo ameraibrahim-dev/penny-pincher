@@ -1,6 +1,5 @@
-from django.core.validators import MinValueValidator
-from django.forms import ModelForm
 from django import forms
+from django.forms import ModelForm
 from djmoney.forms import MoneyField
 
 from wallet.models import Wallet, WalletTransaction
@@ -12,7 +11,6 @@ class WalletCreateForm(ModelForm):
     class Meta:
         model = Wallet
         fields = ['name', 'type', 'balance']
-
 
 
 class WalletUpdateForm(ModelForm):
@@ -39,4 +37,3 @@ class WalletTransactionForm(ModelForm):
         if amount.amount < 0:
             raise forms.ValidationError('Amount must be 0 or grater')
         return amount
-
