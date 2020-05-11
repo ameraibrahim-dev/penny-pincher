@@ -11,12 +11,13 @@ $(document).ready(function () {
     getALLTransactionsByWalletID();
     generateCategoriesHtml();
     computeTotal();
-
     // set date range
     if (transactions) {
         $('input[id="DateRangeFilter"]').daterangepicker({
-            startDate: new Date(transactions[0].date),
-            endDate: new Date(transactions.slice(-1)[0].date),
+         //   startDate: new Date(transactions[0].date),
+           // endDate: new Date(transactions.slice(-1)[0].date),
+            endDate: new Date(transactions[0].date),
+            startDate: new Date(transactions.slice(-1)[0].date),
         })
     } else {
         $('input[id="DateRangeFilter"]').daterangepicker({})
@@ -32,10 +33,10 @@ function getALLTransactionsByWalletID() {
         async: false,
         success: function (result) {
             transactions = result;
-            // sort by date
+            // sort by date from most recent
             transactions.sort((a, b) => {
                 return new Date(a.date) - new Date(b.date);
-            });
+            }).reverse();
         }
     });
 }
