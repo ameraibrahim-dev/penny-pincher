@@ -1,7 +1,7 @@
 const WALLET_TRANSACTIONS_API_URL = "/api/v1/user/wallet/transactions/list/";
 const WALLET_PK = $("#walletID").val();
-const TOTAL_PERIOD_EXPENSES_LOCATOR = "#total-period-expenses";
-const TOTAL_PERIOD_EARNINGS_LOCATOR = "#total-period-earnings";
+const TOTAL_PERIOD_EXPENSES_TEXT_LOCATOR = "#total-period-expenses";
+const TOTAL_PERIOD_EARNINGS_TEXT_LOCATOR = "#total-period-earnings";
 
 let transactions = [];
 let totalPeriodExpenses = 0;
@@ -53,8 +53,8 @@ function computeTotal() {
         }
     });
     // display these total number
-    $(TOTAL_PERIOD_EXPENSES_LOCATOR).text(totalPeriodExpenses);
-    $(TOTAL_PERIOD_EARNINGS_LOCATOR).text(totalPeriodEarnings);
+    $(TOTAL_PERIOD_EXPENSES_TEXT_LOCATOR).text(totalPeriodExpenses);
+    $(TOTAL_PERIOD_EARNINGS_TEXT_LOCATOR).text(totalPeriodEarnings);
 
 }
 
