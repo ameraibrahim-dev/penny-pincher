@@ -57,8 +57,11 @@ function generateCategoryOptions(type) {
         selectedCatType = "Expense";
     }
     let categoryOptions = "";
-    if (selectedCatType.toLowerCase() == type.toLowerCase()) {
-        categoryOptions = "<option value='" + SELECTED_CATEGORY_NAME + "'  selected>" + SELECTED_CATEGORY_NAME + "</option>";
+    if (selectedCatType != null) {
+        if (selectedCatType.toLowerCase() == type.toLowerCase()) {
+            categoryOptions = "<option value='" + SELECTED_CATEGORY_NAME + "'  selected>" + SELECTED_CATEGORY_NAME + "</option>";
+        }
+
     } else {
         categoryOptions = "<option value=''  selected>---------</option>";
     }
