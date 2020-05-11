@@ -59,7 +59,7 @@ function computeTotal() {
 }
 
 function generateCategoriesHtml() {
-    let category_dropdown = document.getElementById('category-select-filter');
+    let checkboxes = document.getElementById('checkboxes');
     // get categories
     let categories = new Map();
     transactions.forEach(transact => {
@@ -78,9 +78,23 @@ function generateCategoriesHtml() {
     // generate category options
     //todo display categories
     categories.forEach((value, key) => {
-        let option = document.createElement("option");
-        option.value = value.name;
-        option.text = value.name;
-        category_dropdown.appendChild(option);
+        let label = document.createElement("label");
+        let input = document.createElement("input");
+        let span = document.createElement("span");
+
+        input.type="checkbox";
+        input.id=value.name;
+
+        span.innerHTML=value.name;
+
+        label.htmlFor=value.name;
+        label.appendChild(input);
+        label.appendChild(span);
+
+
+
+
+
+        checkboxes.appendChild(label);
     })
 }
