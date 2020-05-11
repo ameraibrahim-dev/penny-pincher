@@ -249,6 +249,42 @@ button {
   .signup-button:hover {
     background: #35495E; }
 
+.multiselect {
+  width: 200px; }
+
+.selectBox {
+  position: relative; }
+
+.selectBox > select {
+  width: 100%;
+  font-weight: bold; }
+
+.overSelect {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0; }
+
+#checkboxes {
+  display: none;
+  border: none;
+  position: absolute;
+  background: #ffffff;
+  max-width: 372px;
+  width: 100%;
+  border: 1px solid #707070;
+  border-radius: 10px;
+  padding: 12px;
+  z-index: 1; }
+
+#checkboxes label {
+  display: block; }
+
+#checkboxes label:hover {
+  background-color: #EE8572;
+  transition: 0.2s ease; }
+
 .forgot-body {
   background-color: #F2F2F2; }
 
@@ -682,6 +718,8 @@ button {
 
 .statistic-input-box > .statistics-input-box-style {
   margin-top: 6px; }
+.statistic-input-box > .statistic-checkboxes {
+  margin-top: 8px; }
 .statistic-input-box.-update-wallet {
   width: 100%; }
 
@@ -699,10 +737,13 @@ button {
 .statistics-input-box-style {
   padding: 6px;
   border: 1px solid #707070;
-  border-radius: 10px; }
+  border-radius: 10px;
+  position: relative; }
   .statistics-input-box-style.-add-transaction {
     border: 0.8px solid #707070;
     padding: 20px 6px; }
+  .statistics-input-box-style.-dropdown {
+    cursor: pointer; }
 
 .statistics-filter {
   padding: 2px 6px;
@@ -710,6 +751,26 @@ button {
   border: none;
   color: rgba(112, 112, 112, 0.6);
   outline: none; }
+
+.statistic-checkboxes > label {
+  cursor: pointer;
+  font-family: 'Nunito',sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #35495E;
+  padding: 6px 6px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  align-content: center; }
+  .statistic-checkboxes > label > span {
+    margin-left: 8px; }
+  .statistic-checkboxes > label:hover {
+    font-family: 'Nunito',sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: #FFFFFF; }
+.statistic-checkboxes > label:last-of-type {
+  margin-bottom: 0px; }
 
 .statistic-keyword-filter {
   padding: 2px 6px;
