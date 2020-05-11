@@ -159,11 +159,12 @@
     <script src="{% static "js/progress-bar.js" %}"></script>
     <script src="{% static "js/pie-chart.js" %}"></script>
     <script src="{% static "js/line-chart.js" %}"></script>
-     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <script>
         activeWalletHeader("#header-overview");
         activeNavIcon("#sidenav-wallet", "#m-sidenav-wallet");
+        $('input[id="DateRangeFilter"]').daterangepicker();
     </script>
 
 {% endblock %}
