@@ -36,9 +36,9 @@
                         <div class="statistic-input-box">
                             <span class="statistic-input-label">Note</span>
                             <div class="statistics-input-box-style">
-                                   <input type="text" name="statistic-keyword-filter"
-                                          id="statisticKeywordFilter" class="statistic-keyword-filter"
-                                          placeholder="Filter by specific keyword">
+                                <input type="text" name="statistic-keyword-filter"
+                                       id="statisticKeywordFilter" class="statistic-keyword-filter"
+                                       placeholder="Filter by specific keyword">
                             </div>
                         </div>
 
@@ -93,7 +93,7 @@
                     <div class="statistics-block">
                         <!--Display this div below if there are no transactions-->
 
-                        {% for transaction in object.wallettransaction_set.all reversed%}
+                        {% comment %}      {% for transaction in object.wallettransaction_set.all reversed%}
                             <div class="transaction"> <!--This is one transaction line-->
                                 <div class="transaction-type">
                                     <img class="transaction-icon" src="{% static "icons/bills.png" %}"
@@ -137,7 +137,7 @@
                                 To add a transaction, click Add Transaction on the upper right.
                             </div>
 
-                        {% endfor %}
+                        {% endfor %}{% endcomment %}
 
 
                     </div>
@@ -162,7 +162,8 @@
 {% block body-javascript-extension %}
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-      <script src="{% static "js/wallet-transactions.js" %}"></script>
+    <script src="cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+    <script src="{% static "js/wallet-transactions.js" %}"></script>
     <script>
         activeNavIcon("#sidenav-wallet", "#m-sidenav-wallet");
         activeWalletHeader("#header-transactions");
