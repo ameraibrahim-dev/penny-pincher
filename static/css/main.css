@@ -1551,6 +1551,12 @@ button {
   .no-transactions-message.-wallet {
     margin-bottom: 12px;
     line-height: 1.5em; }
+  .no-transactions-message.-notes:before {
+    font-family: 'Nunito',sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    color: #35495E;
+    margin-bottom: 0px; }
 
 .transaction {
   display: flex;
@@ -1567,7 +1573,7 @@ button {
   display: flex;
   flex-direction: row;
   align-items: center;
-  min-width: 300px; }
+  min-width: 200px; }
   .transaction-type > .transaction-icon {
     margin-left: 12px; }
   .transaction-type > .transaction-name {
@@ -1591,8 +1597,10 @@ button {
   font-size: 14px;
   color: #35495E;
   line-height: 1.5em;
-  width: 400px;
-  text-overflow: ellipsis; }
+  width: 100%;
+  max-width: 250px;
+  text-overflow: ellipsis;
+  text-align: center; }
 
 .no-notes {
   display: flex;
@@ -1606,6 +1614,17 @@ button {
   width: 100px;
   background: #707070;
   opacity: 0.5; }
+
+.transaction-time {
+  display: flex;
+  flex-direction: row;
+  align-items: center; }
+
+.transaction-date {
+  font-family: 'Nunito',sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  color: #35495E; }
 
 .transaction-price {
   display: flex;
@@ -1626,9 +1645,8 @@ button {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between; }
-  .transaction-control > .transaction-edit {
-    margin-right: 20px; }
+  justify-content: space-between;
+  min-width: 80px; }
 
 .transaction-edit {
   cursor: pointer;
@@ -1770,6 +1788,9 @@ button {
   .number-of-transaction::after {
     content: 'Transactions';
     margin-left: 12px; }
+
+.-width-100 {
+  width: 100%; }
 
 .tips-card {
   background: url(../images/quote.png) center/cover no-repeat;
