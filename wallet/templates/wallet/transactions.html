@@ -92,7 +92,18 @@
 
                     <div class="statistics-block">
                         <!--Display this div below if there are no transactions-->
+                        <div id="transactions-list">
+                            <ul class="list">
+                                {% for transaction in object.wallettransaction_set.all reversed %}
 
+                                    <li>
+                                        <h3 class="name">{{ transaction.category.name }}</h3>
+                                        <p class="note">{{ transaction.note }}</p>
+                                        <p class="amount">{{ transaction.amount.amount }}</p>
+                                    </li>     <br>
+                                {% endfor %}
+                            </ul>
+                        </div>
                         {% comment %}      {% for transaction in object.wallettransaction_set.all reversed%}
                             <div class="transaction"> <!--This is one transaction line-->
                                 <div class="transaction-type">
@@ -164,9 +175,11 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <script src="cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
     <script src="{% static "js/wallet-transactions.js" %}"></script>
+     <script src="{% static "js/wallet-transactions-list.js" %}"></script>
     <script>
         activeNavIcon("#sidenav-wallet", "#m-sidenav-wallet");
         activeWalletHeader("#header-transactions");
+
     </script>
 
 {% endblock %}
