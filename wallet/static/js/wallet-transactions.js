@@ -1,5 +1,7 @@
 const WALLET_TRANSACTIONS_API_URL = "/api/v1/user/wallet/transactions/list/";
 const WALLET_PK = $("#walletID").val();
+const TOTAL_PERIOD_EXPENSES_LOCATOR = "#total-period-expenses";
+const TOTAL_PERIOD_EARNINGS_LOCATOR = "#total-period-earnings";
 
 let transactions = [];
 let totalPeriodExpenses = 0;
@@ -9,8 +11,17 @@ $(document).ready(function () {
     getALLTransactionsByWalletID();
     generateCategoriesHtml();
     computeTotal();
-    alert(totalPeriodExpenses);
-    alert(totalPeriodEarnings);
+
+    // set date range
+    if (transactions) {
+        $('input[id="DateRangeFilter"]').daterangepicker({
+            startDate: new Date(transactions[0].date),
+            endDate: new Date(transactions.slice(-1)[0].date),
+        })
+    } else {
+        $('input[id="DateRangeFilter"]').daterangepicker({})
+    }
+
 });
 
 function getALLTransactionsByWalletID() {
@@ -21,6 +32,10 @@ function getALLTransactionsByWalletID() {
         async: false,
         success: function (result) {
             transactions = result;
+            // sort by date
+            transactions.sort((a, b) => {
+                return new Date(a.date) - new Date(b.date);
+            });
         }
     });
 }
@@ -31,12 +46,14 @@ function computeTotal() {
 
     transactions.forEach(transact => {
         if (transact.category.is_expense) {
-            totalPeriodExpenses -= transact.amount.amount;
+            totalPeriodExpenses += transact.amount.amount;
         } else {
             totalPeriodEarnings += transact.amount.amount;
         }
-    })
-    //todo display these total number
+    });
+    // display these total number
+    $(TOTAL_PERIOD_EXPENSES_LOCATOR).text(totalPeriodExpenses);
+    $(TOTAL_PERIOD_EARNINGS_LOCATOR).text(totalPeriodEarnings);
 
 }
 
@@ -50,11 +67,15 @@ function generateCategoriesHtml() {
             categories.set(key, value);
         }
     });
+
+    //sort by is_expense
+    categories = new Map([...categories.entries()].sort((a, b) => {
+            return a[1].is_expense - b[1].is_expense
+        }
+    ).reverse());
     // generate category options
-    categories = new Map([...categories.entries()].reverse(a => {
-        a.is_expense
-    }));
+    //todo display categories
     categories.forEach((value, key) => {
-        console.log(value, key);
+
     })
 }

@@ -67,7 +67,7 @@
                     <span class="statistic-card-title">Total Period expenses</span>
                     <div class="statistics-block -finance">
 
-                        <span class="statistic-amount -expense-red">3000.00</span>
+                        <span class="statistic-amount -expense-red" id="total-period-expenses">3000.00</span>
 
                     </div>
                 </div>
@@ -76,7 +76,7 @@
                     <span class="statistic-card-title">Total Period Earnings</span>
                     <div class="statistics-block -finance">
 
-                        <span class="statistic-amount">0.00</span>
+                        <span class="statistic-amount" id="total-period-earnings">0.00</span>
 
                     </div>
                 </div>
@@ -163,7 +163,6 @@
     <script>
         activeNavIcon("#sidenav-wallet", "#m-sidenav-wallet");
         activeWalletHeader("#header-transactions");
-        $('input[id="DateRangeFilter"]').daterangepicker();
     </script>
 
 {% endblock %}
