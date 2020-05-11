@@ -30,7 +30,7 @@ $(DATE_RANGE_FIELD_LOCATOR).change(function () {
     transaction_list.filter(function (item) {
 
         let transact_date=new Date(Date.parse(item.values().date));
-        if(transact_date > start_date && transact_date < end_date){
+        if(transact_date >= start_date && transact_date <= end_date){
               return true;
         }else {
             return  false;
