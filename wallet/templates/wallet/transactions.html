@@ -94,7 +94,6 @@
                     <div class="statistics-block">
                         <!--Display this div below if there are no transactions-->
                         <div id="transactions-list">
-                            <input class="search" placeholder="Search"/>
                             <ul class="list">
                                 {% for transaction in object.wallettransaction_set.all reversed %}
 
@@ -115,7 +114,7 @@
                                     </li>     <br>
                                 {% endfor %}
                             </ul>
-                            <ul class="pagination"></ul>
+                            <ul class="pagination" style="background-color: #333333"></ul>
                         </div>
 
                         {% comment %}   {% for transaction in object.wallettransaction_set.all reversed%}
