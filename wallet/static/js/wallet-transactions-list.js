@@ -14,7 +14,14 @@ let options = {
 
 let transaction_list = new List('transactions-list', options);
 $(NOTE_FIELD_LOCATOR).keydown(function () {
-    transaction_list.search($(NOTE_FIELD_LOCATOR).val(), ['note']);
+    let val = $(NOTE_FIELD_LOCATOR).val();
+    if (val.length == '') {
+        transaction_list.search();
+    } else {
+        transaction_list.search($(NOTE_FIELD_LOCATOR).val(), ['note']);
+    }
+
+
 });
 $(DATE_RANGE_FIELD_LOCATOR).change(function () {
     let value = $(DATE_RANGE_FIELD_LOCATOR).val();
