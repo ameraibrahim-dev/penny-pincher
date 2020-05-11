@@ -1,4 +1,4 @@
-{% extends 'base_navigation_no_footer.html' %}
+{% extends 'wallet/wallet_header.html' %}
 {% load widget_tweaks %}
 {% load i18n %}
 {% load static %}
@@ -80,7 +80,8 @@
 
                     </div>
                     <div class="float-right">
-                        <a class="add-transaction-cancel-btn" href="{{ cancel_url }}"
+                        <a class="add-transaction-cancel-btn"
+                           href="{% url 'wallet:wallet_transactions' object.wallet.pk %}"
                            style="text-decoration: none;padding: 8px 24px !important;">cancel</a>
                         <button class="add-transaction-save-btn">save</button>
                     </div>
@@ -161,7 +162,8 @@
 
                     </div>
                     <div class="float-right">
-                        <a class="add-transaction-cancel-btn" href="{{ cancel_url }}"
+                        <a class="add-transaction-cancel-btn"
+                           href="{% url 'wallet:wallet_transactions'  request.resolver_match.kwargs.pk %}"
                            style="text-decoration: none;padding: 8px 24px !important;">cancel</a>
                         <button class="add-transaction-save-btn">save</button>
                     </div>
@@ -182,12 +184,7 @@
     <script src="{% static "js/wallet-transaction-form.js" %}"></script>
     <script>
         $("#id_amount_1").hide();
-    </script>
-
-    <script>
-
-        $('#sidenav-wallet').toggleClass('-active');
-        $('#m-sidenav-wallet').toggleClass('-active-mobile');
-
+        activeNavIcon("#sidenav-wallet", "#m-sidenav-wallet");
+        activeWalletHeader("#header-transactions");
     </script>
 {% endblock %}
