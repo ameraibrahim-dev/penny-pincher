@@ -1,6 +1,8 @@
 {% extends 'wallet/wallet_header.html' %}
 {% load static %}
-
+{% block head-css-extension %}
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
+{% endblock %}
 
 {% block main-content %}
 
@@ -40,7 +42,7 @@
                         <div class="statistic-input-box">
                             <span class="statistic-input-label">Date Range</span>
                             <div class="statistics-input-box-style">
-                                <input type="text" name="statistic-keyword-filter" id="statisticKeywordFilter"
+                                <input type="text" name="statistic-keyword-filter" id="DateRangeFilter"
                                        class="statistic-keyword-filter" placeholder="Filter by specific keyword">
                             </div>
                         </div>
@@ -157,6 +159,8 @@
     <script src="{% static "js/progress-bar.js" %}"></script>
     <script src="{% static "js/pie-chart.js" %}"></script>
     <script src="{% static "js/line-chart.js" %}"></script>
+     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <script>
         activeWalletHeader("#header-overview");
         activeNavIcon("#sidenav-wallet", "#m-sidenav-wallet");
