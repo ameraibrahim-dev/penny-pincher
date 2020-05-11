@@ -1,25 +1,27 @@
 {% extends 'base_navigation_no_footer.html' %}
+{% load static %}
 
 {% block header-extension %}
 
-    <ul class="header-menu-list">
-        <li class="header-menu-item" id="header-transactions">
-            <a href="{% url 'goal:goal_list' %}" class="header-menu-item-link">
-                <span class="header-menu-item-name">My Goals</span>
-            </a>
-        </li>
+    <ul class="header-menu-list -goals">
+{#        <li class="header-menu-item" id="header-transactions">#}
+{#            <a href="{% url 'goal:goal_list' %}" class="header-menu-item-link">#}
+{#                <span class="header-menu-item-name">My Goals</span>#}
+{#            </a>#}
+{#        </li>#}
 
-        <li class="header-menu-item" id="header-transactions">
+        <li class="header-menu-item" id="header-goal-details">
             <a href="{% url 'goal:goal_detail' goal.pk %}" class="header-menu-item-link">
                 <span class="header-menu-item-name">Goal Details</span>
             </a>
         </li>
 
-        <li class="header-menu-item" id="header-wallet-settings">
+        <li class="header-menu-item" id="header-goal-settings">
             <a href="{% url 'goal:update_goal' goal.pk %}" class="header-menu-item-link">
                 <span class="header-menu-item-name">Goal Settings</span>
             </a>
         </li>
     </ul>
-
+    <script src="{% static "js/wallet-header.js" %}"></script>
+{#activeWalletHeader("#header-transactions");#}
 {% endblock %}
