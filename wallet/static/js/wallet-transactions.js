@@ -92,9 +92,6 @@ function generateCategoriesHtml() {
         label.appendChild(span);
 
 
-
-
-
         checkboxes.appendChild(label);
     })
 }

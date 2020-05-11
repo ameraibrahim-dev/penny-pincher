@@ -33,7 +33,7 @@
                                 <div class="overSelect"></div>
                             </div>
                             <div class="statistic-checkboxes"id="checkboxes">
-{#
+
                             </div>
                         </div>
 
@@ -110,33 +110,37 @@
 
                                 {% endfor %}
                             </ul>
-                            <ul class="pagination" style="background-color: #333333"></ul>
+
                         </div>
 
-                        {% comment %}   {% for transaction in object.wallettransaction_set.all reversed%}
-                            <div class="transaction"> <!--This is one transaction line-->
+                        {% for transaction in object.wallettransaction_set.all reversed%}
+
+                            <div class="transactions-list -width-100">
+                                <div class="transaction"> <!--This is one transaction line-->
                                 <div class="transaction-type">
-                                    <img class="transaction-icon" src="{% static "icons/bills.png" %}"
-                                         alt="Transaction Icon">
-                                    <span class="transaction-name">{{ transaction.category.name }}</span>
+
+                                    <img class="transaction-icon" src="{% static "icons/bills.png"%}"
+                                        alt="Transaction Icon">
+
+                                    <span class="transaction-name name">{{ transaction.category.name }}</span>
                                 </div>
 
-                                <div class="transaction-notes">
+                                <div class="transaction-notes note">
+
                                     {% if transaction.note %}
                                         {{ transaction.note }}
                                     {% else %}
                                         <!--If no notes display this div-->
-                                        <div class="no-notes">
-                                            <span class="note-empty-lines"></span>
-                                            <span class="note-empty-lines"></span>
-                                            <span class="note-empty-lines"></span>
-                                        </div>
+                                        <div sata-attr-message="--- No Notes. ---" class="no-transactions-message -notes"></div>
                                     {% endif %}
+                                </div>
 
+                                <div class="transaction-time">
+                                    <span class="transaction-date date">{{ transaction.date }}</span>
                                 </div>
 
                                 <div class="transaction-price">
-                                    <span class="transaction-amount">{{ transaction.amount }}</span>
+                                    <span class="transaction-amount amount">{{ transaction.amount }}</span>
                                 </div>
 
                                 <div class="transaction-control">
@@ -149,6 +153,10 @@
                                     </a>
                                 </div>
 
+                            </div> <!--One transaction line-->
+
+                                <!-- Put your pagination here i guess?-->
+
                             </div>
 
                         {% empty %}
@@ -157,7 +165,11 @@
                                 To add a transaction, click Add Transaction on the upper right.
                             </div>
 
-                        {% endfor %}{% endcomment %}
+                        {% endfor %}
+
+
+
+
 
 
                     </div>
