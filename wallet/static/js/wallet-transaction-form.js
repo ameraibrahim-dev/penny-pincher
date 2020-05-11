@@ -71,3 +71,18 @@ function generateCategoryOptions(type) {
     });
     $(CATEGORY_FIELD_LOCATOR).html(categoryOptions);
 }
+
+$(document).ready(function () {
+    if (SELECTED_CATEGORY_NAME != null) {
+        let type = $(TYPE_FIELD_LOCATOR + " option:selected").text();
+        getCategories(type);
+        let categoryOptions = "<option value='" + SELECTED_CATEGORY_NAME + "'  selected>" + SELECTED_CATEGORY_NAME + "</option>";
+        categories.forEach(function (category) {
+            if (SELECTED_CATEGORY_NAME != category.name) {
+                categoryOptions += "<option value='" + category.name + "'>" + category.name + "</option>"
+            }
+
+        });
+        $(CATEGORY_FIELD_LOCATOR).html(categoryOptions);
+    }
+});
