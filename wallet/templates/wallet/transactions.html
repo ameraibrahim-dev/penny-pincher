@@ -93,8 +93,6 @@
             <div class="transaction-display-block">
                 <div class="statistic-card">
 
-                    <span class="statistic-card-title">March 1, 2020</span>
-
                     <div class="statistics-block">
                         <!--Display this div below if there are no transactions-->
                         <div id="transactions-list">
@@ -119,7 +117,7 @@
                                 <div class="transaction"> <!--This is one transaction line-->
                                 <div class="transaction-type">
 
-                                    <img class="transaction-icon" src="{% static "icons/bills.png"%}"
+                                    <img class="transaction-icon" src="{% static "icons/"|add:transaction.category.icon%}"
                                         alt="Transaction Icon">
 
                                     <span class="transaction-name name">{{ transaction.category.name }}</span>
