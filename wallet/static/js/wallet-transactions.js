@@ -59,6 +59,7 @@ function computeTotal() {
 }
 
 function generateCategoriesHtml() {
+    let category_dropdown = document.getElementById('category-select-filter');
     // get categories
     let categories = new Map();
     transactions.forEach(transact => {
@@ -77,6 +78,9 @@ function generateCategoriesHtml() {
     // generate category options
     //todo display categories
     categories.forEach((value, key) => {
-
+        let option = document.createElement("option");
+        option.value = value.name;
+        option.text = value.name;
+        category_dropdown.appendChild(option);
     })
 }
