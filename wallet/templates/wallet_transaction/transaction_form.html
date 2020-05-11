@@ -5,6 +5,10 @@
 
 
 {% block main-content %}
+    {% if object %}
+    <input type="hidden" id="selected_category_isExpense" value="{{ object.category.is_expense }}">
+     <input type="hidden" id="selected_category_name" value="{{ object.category.name}}">
+    {% endif %}
     <div class="transaction-wrap">
         <div class="transaction-header">
                 <span class="transaction-wallet-name">
@@ -62,7 +66,15 @@
                                         {{ error }}
                                     </span>
                             {% endfor %}
-                            {% render_field form.category class="form-control input-box" %}
+
+                            <select name="category" class="form-control" id="id_category">
+                                {% if object %}
+                                    <option value="{{ object.category.name }}"
+                                            selected>{{ object.category.name }}</option>
+                                {% endif %}
+                            </select>
+                            </select>
+
                         </div>
 
 

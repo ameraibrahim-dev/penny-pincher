@@ -23,11 +23,11 @@ class WalletTransactionForm(ModelForm):
     date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
     note = forms.CharField(widget=forms.Textarea, required=False)
     amount = MoneyField()
-    category = forms.CharField(required=False, widget=forms.Select(choices=[]))
+    category = forms.CharField()
 
     class Meta:
         model = WalletTransaction
-        fields = ['amount', 'date', 'note', 'is_expense']
+        fields = ['amount', 'date', 'note', 'is_expense','category']
         labels = {
             'is_expense': 'Type',
         }
