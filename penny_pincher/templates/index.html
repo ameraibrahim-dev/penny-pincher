@@ -133,12 +133,15 @@
 
                             <div class="statistic-input-box">
                                 <span class="statistic-input-label">Category</span>
-                                <div class="statistics-input-box-style">
-                                    <select class="statistics-filter" id="category-select-filter">
-                                        <option value="" disabled selected>All categories</option>
-
+                                <div class="statistics-input-box-style -dropdown" id="category-select-filter" onclick="showCheckboxes()">
+                                    <select class="statistics-filter">
+                                        <option>All Categories</option>
                                     </select>
+                                    <div class="overSelect"></div>
                                 </div>
+                                 <div class="statistic-checkboxes"id="checkboxes">
+
+                                 </div>
                             </div>
 
                             <div class="statistic-input-box">
@@ -202,6 +205,8 @@
     <script src="{% static "js/progress-bar.js" %}"></script>
     <script src="{% static "js/pie-chart.js" %}"></script>
     <script src="{% static "js/line-chart.js" %}"></script>
+    <script src="{% static "js/wallet-transactions.js" %}"></script>
+    <script src="{% static "js/multiple-select.js" %}"></script>
     <script>
 
         $('#sidenav-dashboard').toggleClass('-active');
