@@ -90,7 +90,7 @@
                     <div class="statistics-block">
                         <!--Display this div below if there are no transactions-->
 
-                        {% for transaction in object.wallettransaction_set.all %}
+                        {% for transaction in object.wallettransaction_set.all reversed%}
                             <div class="transaction"> <!--This is one transaction line-->
                                 <div class="transaction-type">
                                     <img class="transaction-icon" src="{% static "icons/bills.png" %}"
