@@ -1,7 +1,7 @@
 const WALLET_TRANSACTIONS_API_URL = "/api/v1/user/wallet/transactions/list/";
 const WALLET_PK = $("#walletID").val();
-const TOTAL_PERIOD_EXPENSES_LOCATOR="#total-period-expenses";
-const TOTAL_PERIOD_EARNINGS_LOCATOR="#total-period-earnings";
+const TOTAL_PERIOD_EXPENSES_LOCATOR = "#total-period-expenses";
+const TOTAL_PERIOD_EARNINGS_LOCATOR = "#total-period-earnings";
 
 let transactions = [];
 let totalPeriodExpenses = 0;
@@ -11,6 +11,9 @@ $(document).ready(function () {
     getALLTransactionsByWalletID();
     generateCategoriesHtml();
     computeTotal();
+    $('input[id="DateRangeFilter"]').daterangepicker(
+
+    );
 });
 
 function getALLTransactionsByWalletID() {
@@ -21,6 +24,12 @@ function getALLTransactionsByWalletID() {
         async: false,
         success: function (result) {
             transactions = result;
+            // sort by date
+            transactions.sort((a, b) => {
+                return new Date(a.date)- new Date(b.date);
+            });
+            console.log(transactions)
+
         }
     });
 }
@@ -36,7 +45,7 @@ function computeTotal() {
             totalPeriodEarnings += transact.amount.amount;
         }
     })
-    //todo display these total number
+    // display these total number
     $(TOTAL_PERIOD_EXPENSES_LOCATOR).text(totalPeriodExpenses);
     $(TOTAL_PERIOD_EARNINGS_LOCATOR).text(totalPeriodEarnings);
 
@@ -52,10 +61,12 @@ function generateCategoriesHtml() {
             categories.set(key, value);
         }
     });
-    // generate category options
-    categories = new Map([...categories.entries()].reverse(a => {
-        a.is_expense
+
+    //sort by is_expense
+    categories = new Map([...categories.entries()].sort((a, b) => {
+        return a.is_expense-b.is_expense
     }));
+    // generate category options
     categories.forEach((value, key) => {
         console.log(value, key);
     })
