@@ -46,7 +46,7 @@ function computeTotal() {
 
     transactions.forEach(transact => {
         if (transact.category.is_expense) {
-            totalPeriodExpenses += transact.amount.amount;
+            totalPeriodExpenses -= transact.amount.amount;
         } else {
             totalPeriodEarnings += transact.amount.amount;
         }
