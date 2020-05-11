@@ -21,11 +21,14 @@
 
                         <div class="statistic-input-box">
                             <span class="statistic-input-label">Category</span>
-                            <div class="statistics-input-box-style">
+                             <div class="statistics-input-box-style -dropdown" id="category-select-filter" onclick="showCheckboxes()">
                                 <select class="statistics-filter">
-                                    <option value="" disabled selected>All categories</option>
-                                    <option value="1">Audi</option>
+                                    <option>All Categories</option>
                                 </select>
+                                <div class="overSelect"></div>
+                            </div>
+                            <div class="statistic-checkboxes"id="checkboxes">
+
                             </div>
                         </div>
 
@@ -159,6 +162,8 @@
     <script src="{% static "js/line-chart.js" %}"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="{% static "js/wallet-transactions.js" %}"></script>
+    <script src="{% static "js/multiple-select.js" %}"></script>
     <script>
         activeWalletHeader("#header-overview");
         activeNavIcon("#sidenav-wallet", "#m-sidenav-wallet");
