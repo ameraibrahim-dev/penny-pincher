@@ -4,8 +4,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
 {% endblock %}
 {% block main-content %}
-
-    </ol>
+    <input type="hidden" id="walletID" value="{{ wallet.pk }}">
     <div class="transaction-wrap">
 
         <div class="transaction-header">
@@ -160,10 +159,11 @@
 {% block body-javascript-extension %}
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+      <script src="{% static "js/wallet-transactions.js" %}"></script>
     <script>
         activeNavIcon("#sidenav-wallet", "#m-sidenav-wallet");
         activeWalletHeader("#header-transactions");
         $('input[id="DateRangeFilter"]').daterangepicker();
     </script>
- 
+
 {% endblock %}
