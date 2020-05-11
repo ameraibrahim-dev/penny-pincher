@@ -23,7 +23,7 @@ function getALLTransactionsByWalletID() {
 function generateCategoriesHtml() {
     // get categories
     let categories = new Map();
-    transactions.forEach(function (transact) {
+    transactions.forEach(transact=>{
         if (categories.has(transact.category.id) == false) {
             let key = transact.category.id;
             let value = transact.category;
