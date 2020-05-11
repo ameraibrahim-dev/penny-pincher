@@ -11,9 +11,17 @@ $(document).ready(function () {
     getALLTransactionsByWalletID();
     generateCategoriesHtml();
     computeTotal();
-    $('input[id="DateRangeFilter"]').daterangepicker(
 
-    );
+    // set date range
+    if (transactions) {
+        $('input[id="DateRangeFilter"]').daterangepicker({
+            startDate: new Date(transactions[0].date),
+            endDate: new Date(transactions.slice(-1)[0].date),
+        })
+    } else {
+        $('input[id="DateRangeFilter"]').daterangepicker({})
+    }
+
 });
 
 function getALLTransactionsByWalletID() {
@@ -66,8 +74,8 @@ function generateCategoriesHtml() {
         }
     ).reverse());
     // generate category options
+    //todo display categories
     categories.forEach((value, key) => {
-        console.log(value, key);
 
     })
 }
