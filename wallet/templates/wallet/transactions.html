@@ -92,6 +92,7 @@
 
                     <div class="statistics-block">
                         <!--Display this div below if there are no transactions-->
+                    
                         <div id="transactions-list">
                             <ul class="list">
                                 {% for transaction in object.wallettransaction_set.all reversed %}
@@ -103,6 +104,7 @@
                                     </li>     <br>
                                 {% endfor %}
                             </ul>
+                          <ul class="pagination"></ul>
                         </div>
                         {% comment %}      {% for transaction in object.wallettransaction_set.all reversed%}
                             <div class="transaction"> <!--This is one transaction line-->
@@ -173,7 +175,7 @@
 {% block body-javascript-extension %}
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    <script src="cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js" type="text/javascript"></script>
     <script src="{% static "js/wallet-transactions.js" %}"></script>
      <script src="{% static "js/wallet-transactions-list.js" %}"></script>
     <script>
