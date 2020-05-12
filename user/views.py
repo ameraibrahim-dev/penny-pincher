@@ -31,8 +31,11 @@ class RegistrationView(RegistrationView):
 
 class PasswordChangeView(PasswordChangeView):
     template_name = 'user_auth/password_change_form.html'
-    success_url = reverse_lazy('user:password_change_done')
+    success_url = reverse_lazy('user:password_change')
 
+    def form_valid(self, form):
+        messages.success(self.request, "Password Change Successful")
+        return super(PasswordChangeView, self).form_valid(form)
 
 class PasswordResetView(PasswordResetView):
     email_template_name = 'user_auth/password_reset_email.html'
