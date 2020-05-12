@@ -1,5 +1,6 @@
 {% extends 'wallet/wallet_header.html' %}
 {% load static %}
+{% load humanize %}
 {% block head-css-extension %}
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
 {% endblock %}
@@ -59,7 +60,7 @@
                     <span class="statistic-card-title">Total Balance</span>
                     <div class="statistics-block -finance">
 
-                        <span class="statistic-amount">{{ object.balance.amount }}</span>
+                        <span class="statistic-amount">{{ object.balance.amount|intcomma }}</span>
 
                     </div>
                 </div>
