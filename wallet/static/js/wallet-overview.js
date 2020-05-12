@@ -15,14 +15,13 @@
     $(document).ready(function () {
         getALLTransactionsByWalletID();
         getWalletInfoWalletID();
-        console.log(transactions)
-        console.log(walletInfo)
+        readCategories();
     });
     $(NOTE_FIELD_LOCATOR).keyup(function () {
-
+        filter();
     });
     $(DATE_RANGE_FIELD_LOCATOR).change(function () {
-
+        filter();
     });
 
     function isCheckboxChecked() {
@@ -39,7 +38,7 @@
 
             }
             //Adds each checked checkbox to array.
-            readCategories();
+            filter();
         });
 
 
@@ -88,6 +87,61 @@
                 walletInfo = eval(result)[0];
             }
         });
+    }
+
+    function filter() {
+        getALLTransactionsByWalletID();
+        readCategories();
+        filterDate();
+        filterCategory();
+        filterNote();
+        computeTotal();
+        display();
+    }
+
+    function filterDate() {
+        let value = $(DATE_RANGE_FIELD_LOCATOR).val();
+        start_date = new Date(value.split("-")[0].replace(/\s+/g, ''));
+        end_date = new Date(value.split("-")[1].replace(/\s+/g, ''));
+        transactions = transactions.filter(value => {
+            let transact_date = new Date(value.date);
+            return (transact_date >= start_date && transact_date <= end_date);
+        });
+    }
+
+    function filterCategory() {
+        transactions = transactions.filter(value => {
+            return categories.includes(value.category.name)
+        });
+    }
+
+    function filterNote() {
+        let val = $(NOTE_FIELD_LOCATOR).val();
+        if (val.trim() != '') {
+            transactions = transactions.filter(value => {
+                return value.note.toUpperCase() === val.toUpperCase();
+            });
+        }
+
+    }
+
+    function computeTotal() {
+        totalPeriodExpenses = 0;
+        totalPeriodEarnings = 0;
+
+        transactions.forEach(transact => {
+            if (transact.category.is_expense) {
+                totalPeriodExpenses -= transact.amount.amount;
+            } else {
+                totalPeriodEarnings += transact.amount.amount;
+            }
+        });
+    }
+
+    function display() {
+        // display these total number
+        $(TOTAL_PERIOD_EXPENSES_TEXT_LOCATOR).text(Number(totalPeriodExpenses).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        $(TOTAL_PERIOD_EARNINGS_TEXT_LOCATOR).text(Number(totalPeriodEarnings).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
     }
 
 
