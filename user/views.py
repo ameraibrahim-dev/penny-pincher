@@ -86,5 +86,5 @@ class UserUpdateView(UpdateView, LoginRequiredMixin):
         return self.request.user
 
     def form_valid(self, form):
-        messages.success(self.request, "User profile updated")
+        messages.success(self.request, "Update Successful")
         return super(UserUpdateView, self).form_valid(form)
