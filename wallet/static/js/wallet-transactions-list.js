@@ -1,7 +1,7 @@
 const NOTE_FIELD_LOCATOR = "#filterByNoteTextField";
 const DATE_RANGE_FIELD_LOCATOR = "#DateRangeFilter";
 let options = {
-    valueNames: ['name', 'note', 'amount', 'date'],
+    valueNames: ['name', 'note', 'amount', 'date',{name:'isExpense',attr: 'value'} ],
     page: 10,
     pagination: [{
         name: "pagination",
@@ -20,6 +20,12 @@ $(NOTE_FIELD_LOCATOR).keydown(function () {
     } else {
         transaction_list.search($(NOTE_FIELD_LOCATOR).val(), ['note']);
     }
+    //update total
+    let items = transaction_list.visibleItems;
+    items.forEach(value => {
+
+    });
+    console.log(items)
 
 
 });
@@ -29,12 +35,16 @@ $(DATE_RANGE_FIELD_LOCATOR).change(function () {
     end_date = new Date(value.split("-")[1].replace(/\s+/g, ''));
     transaction_list.filter(function (item) {
 
-        let transact_date=new Date(Date.parse(item.values().date));
-        if(transact_date >= start_date && transact_date <= end_date){
-              return true;
-        }else {
-            return  false;
+        let transact_date = new Date(Date.parse(item.values().date));
+        if (transact_date >= start_date && transact_date <= end_date) {
+            return true;
+        } else {
+            return false;
         }
 
     });
+    //update total
+    let items = transaction_list.visibleItems;
+    console.log(items)
+
 });
