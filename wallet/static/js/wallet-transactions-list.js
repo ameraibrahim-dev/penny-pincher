@@ -31,7 +31,6 @@ $(DATE_RANGE_FIELD_LOCATOR).change(function () {
     start_date = new Date(value.split("-")[0].replace(/\s+/g, ''));
     end_date = new Date(value.split("-")[1].replace(/\s+/g, ''));
     transaction_list.filter(function (item) {
-
         let transact_date = new Date(Date.parse(item.values().date));
         if (transact_date >= start_date && transact_date <= end_date) {
             return true;
@@ -45,25 +44,51 @@ $(DATE_RANGE_FIELD_LOCATOR).change(function () {
 
 });
 
-// checkbox onselect
-let categories = [];
-$("input[type='checkbox']").click(function () {
-    if (categories.includes($("input[type='checkbox']").attr('id'))) {
-        let index = categories.indexOf($(this).attr('id'));
-        categories.splice(index, 1);
-    } else {
+function isCheckboxChecked() {
 
+    let categories = [];
+
+    $("input[type='checkbox']").click(function () {
+
+        if (categories.includes($(this).attr('id'))) {
+
+            let index = categories.indexOf($(this).attr('id'));
+            categories.splice(index, 1);
+
+        } else {
+
+
+        }
         //Adds each checked checkbox to array.
         $.each($("input[type='checkbox']:checked"), function () {
-            if ($(this).attr('id') == undefined) {
+            if (categories.includes($(this).attr('id'))) {
+
             } else {
-                categories.push($(this).attr('id'));
+                if ($(this).attr('id') == undefined) {
+
+                } else {
+                    categories.push($(this).attr('id'));
+                }
+            }
+
+
+        });
+
+        transaction_list.filter(function (item) {
+            console.log(categories, item.values().name)
+            if (categories.includes(item.values().name)) {
+                return true;
+            } else {
+                return false;
             }
         });
-    }
-    console.log(categories);
-});
+    updateTotal(transaction_list.visibleItems);
+    });
 
+
+
+    return categories;
+}
 
 function updateTotal(items) {
     let totalPeriodExpenses = 0;
