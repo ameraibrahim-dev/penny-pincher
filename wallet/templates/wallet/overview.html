@@ -35,7 +35,7 @@
                         <div class="statistic-input-box">
                             <span class="statistic-input-label">Note</span>
                             <div class="statistics-input-box-style">
-                                <input type="text" name="statistic-keyword-filter" id="statisticKeywordFilter"
+                                <input type="text" name="statistic-keyword-filter" id="filterByNoteTextField"
                                        class="statistic-keyword-filter" placeholder="Filter by specific keyword">
                             </div>
                         </div>
@@ -162,12 +162,13 @@
     <script src="{% static "js/line-chart.js" %}"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js" type="text/javascript"></script>
     <script src="{% static "js/wallet-transactions.js" %}"></script>
     <script src="{% static "js/multiple-select.js" %}"></script>
+        <script src="{% static "js/wallet-overview.js" %}"></script>
     <script>
         activeWalletHeader("#header-overview");
         activeNavIcon("#sidenav-wallet", "#m-sidenav-wallet");
-        $('input[id="DateRangeFilter"]').daterangepicker();
     </script>
 
 {% endblock %}
