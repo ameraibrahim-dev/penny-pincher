@@ -239,7 +239,7 @@
             accountBalanceInfo.set(value.date, walletBalance)
         });
         walletBalanceCurveChart.data.datasets[0].data = [...accountBalanceInfo.values()];
-        walletBalanceCurveChart.data.datasets.push({
+        walletBalanceCurveChart.data.datasets[1]={
             label: "Expenses",
             strokeColor: "#be2e04",
             fill: "#be2c26",
@@ -247,8 +247,8 @@
             backgroundColor: "#be2c26",
             data: [...expenses.values()],
 
-        });
-        walletBalanceCurveChart.data.datasets.push({
+        };
+        walletBalanceCurveChart.data.datasets[2]={
             label: "Earnings",
             strokeColor: "#0fbe09",
             fill: "#0fbe09",
@@ -256,7 +256,7 @@
             backgroundColor: "#0fbe09",
             data: [...earnings.values()],
 
-        });
+        };
         walletBalanceCurveChart.data.labels = [...accountBalanceInfo.keys()];
         walletBalanceCurveChart.update();
     }
