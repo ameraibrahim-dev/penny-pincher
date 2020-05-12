@@ -46,7 +46,19 @@
                                     {% endfor %}
                                     {% render_field form.last_name class="form-control" %}
                                 </div>
+   <!-- Message framework-->
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                <div class="alert alert-success alert-dismissable">
+                    <p class="text-success">
+                        {{ message }}
+                    </p>
+                </div>
+            {% endif %}
 
+        {% endfor %}
+    {% endif %}
                                 <div class="form-group update-control">
                                     <a href="{% url 'user:password_change' %}" class="change-pass-link">Change
                                         password</a>
@@ -63,27 +75,13 @@
     </div>
 
 
-    <!-- Message framework-->
-    {% if messages %}
-        {% for message in messages %}
-            {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
-                <div class="alert alert-success alert-dismissable">
-                    <p class="text-success">
-                        【Success】：{{ message }}
-                    </p>
-                </div>
-            {% endif %}
 
-        {% endfor %}
-    {% endif %}
 {% endblock %}
 
 {% block body-javascript-extension %}
 
     <script>
-
-        $('#m-sidenav-profile').toggleClass('-active');
-        $('#m-sidenav-profile').toggleClass('-active-mobile');
+    activeNavIcon('#sidenav-profile','#m-sidenav-profile');
 
     </script>
 
