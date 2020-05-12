@@ -2,11 +2,12 @@
 {% load static %}
 {% load widget_tweaks %}
 {% load i18n %}
+{% load humanize %}
 {% block head-css-extension %}
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
 {% endblock %}
+
 {% block main-content %}
-    <input type="hidden" id="walletID" value="{{ wallet.pk }}">
     <div class="transaction-wrap">
 
         <div class="transaction-header">
@@ -25,14 +26,15 @@
 
                         <div class="statistic-input-box">
                             <span class="statistic-input-label">Category</span>
-                            <div class="statistics-input-box-style -dropdown" id="category-select-filter" onclick="showCheckboxes()">
+                            <div class="statistics-input-box-style -dropdown" id="category-select-filter"
+                                 onclick="showCheckboxes()">
                                 <select class="statistics-filter">
                                     <option>All Categories</option>
                                 </select>
                                 <div class="overSelect"></div>
                             </div>
-                            <div class="statistic-checkboxes"id="checkboxes">
-{#
+                            <div class="statistic-checkboxes" id="checkboxes">
+
                             </div>
                         </div>
 
@@ -40,9 +42,9 @@
                         <div class="statistic-input-box">
                             <span class="statistic-input-label">Note</span>
                             <div class="statistics-input-box-style">
-                                   <input type="text" name="statistic-keyword-filter"
-                                          id="statisticKeywordFilter" class="statistic-keyword-filter"
-                                          placeholder="Filter by specific keyword">
+                                <input type="text" name="statistic-keyword-filter"
+                                       id="filterByNoteTextField" class="statistic-keyword-filter"
+                                       placeholder="Filter by specific keyword">
                             </div>
                         </div>
 
@@ -65,7 +67,7 @@
                     <span class="statistic-card-title">Total Balance</span>
                     <div class="statistics-block -finance">
 
-                        <span class="statistic-amount">{{ object.balance.amount }}</span>
+                        <span class="statistic-amount">{{ object.balance.amount|intcomma }}</span>
 
                     </div>
                 </div>
@@ -92,56 +94,66 @@
             <div class="transaction-display-block">
                 <div class="statistic-card">
 
-                    <span class="statistic-card-title">March 1, 2020</span>
-
                     <div class="statistics-block">
                         <!--Display this div below if there are no transactions-->
+                        <div id="transactions-list" class="transactions-list -width-100">
+                            <div class="list">
+                                {% for transaction in object.wallettransaction_set.all reversed %}
+                                    <!--This is one transaction line-->
+                                    <div class="transaction">
+                                        <div class="transaction-type">
 
-                        {% for transaction in object.wallettransaction_set.all reversed%}
-                            <div class="transaction"> <!--This is one transaction line-->
-                                <div class="transaction-type">
-                                    <img class="transaction-icon" src="{% static "icons/bills.png" %}"
-                                         alt="Transaction Icon">
-                                    <span class="transaction-name">{{ transaction.category.name }}</span>
-                                </div>
+                                            <img class="transaction-icon"
+                                                 src="{% static "icons/"|add:transaction.category.icon %}"
+                                                 alt="Transaction Icon">
 
-                                <div class="transaction-notes">
-                                    {% if transaction.note %}
-                                        {{ transaction.note }}
-                                    {% else %}
-                                        <!--If no notes display this div-->
-                                        <div class="no-notes">
-                                            <span class="note-empty-lines"></span>
-                                            <span class="note-empty-lines"></span>
-                                            <span class="note-empty-lines"></span>
+                                            <span class="transaction-name name">{{ transaction.category.name }}</span>
+                                            <input type="hidden" class="isExpense" value="{{ transaction.category.is_expense }}">
                                         </div>
-                                    {% endif %}
 
-                                </div>
+                                        <div class="transaction-notes note">
 
-                                <div class="transaction-price">
-                                    <span class="transaction-amount">{{ transaction.amount }}</span>
-                                </div>
+                                            {% if transaction.note %}
+                                                {{ transaction.note }}
+                                            {% else %}
+                                                <!--If no notes display this div-->
+                                                <div sata-attr-message="--- No Notes. ---"
+                                                     class="no-transactions-message -notes"></div>
+                                            {% endif %}
+                                        </div>
 
-                                <div class="transaction-control">
-                                    <a href="{% url 'wallet:wallet_update_transaction' transaction.pk %}"><img
-                                            class="transaction-edit" src="{% static "icons/edit.png" %}" alt="edit"></a>
-                                    <a href="#" id="delete-btn"
-                                       onclick="delete_modal('{% url 'wallet:wallet_delete_transaction' transaction.pk %}','Are you sure you want to delete this transaction?')">
-                                        <img class="transaction-delete" src="{% static "icons/delete.png" %}"
-                                             alt="edit">
-                                    </a>
-                                </div>
+                                        <div class="transaction-time">
+                                            <span class="transaction-date date">{{ transaction.date }}</span>
+                                        </div>
 
+                                        <div class="transaction-price">
+                                            <span class="transaction-amount amount">{{ transaction.amount.amount}}</span>
+                                        </div>
+
+                                        <div class="transaction-control">
+                                            <a href="{% url 'wallet:wallet_update_transaction' transaction.pk %}"><img
+                                                    class="transaction-edit" src="{% static "icons/edit.png" %}"
+                                                    alt="edit"></a>
+                                            <a href="#" id="delete-btn"
+                                               onclick="delete_modal('{% url 'wallet:wallet_delete_transaction' transaction.pk %}','Are you sure you want to delete this transaction?')">
+                                                <img class="transaction-delete" src="{% static "icons/delete.png" %}"
+                                                     alt="edit">
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                    <!--End of one transaction line-->
+                                {% empty %}
+
+                                    <div sata-attr-message="No Transactions." class="no-transactions-message">
+                                        To add a transaction, click Add Transaction on the upper right.
+                                    </div>
+
+                                {% endfor %}
                             </div>
+                            <ul class="pagination" style="background-color: #333333"></ul>
 
-                        {% empty %}
-
-                            <div sata-attr-message="No Transactions." class="no-transactions-message">
-                                To add a transaction, click Add Transaction on the upper right.
-                            </div>
-
-                        {% endfor %}
+                        </div>
 
 
                     </div>
@@ -166,8 +178,11 @@
 {% block body-javascript-extension %}
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-      <script src="{% static "js/wallet-transactions.js" %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js" type="text/javascript"></script>
+    <script src="{% static "js/wallet-transactions.js" %}"></script>
     <script src="{% static "js/multiple-select.js" %}"></script>
+    <script src="{% static "js/wallet-transactions-list.js" %}"></script>
+
     <script>
         activeNavIcon("#sidenav-wallet", "#m-sidenav-wallet");
         activeWalletHeader("#header-transactions");
