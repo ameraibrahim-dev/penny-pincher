@@ -1,7 +1,8 @@
 const NOTE_FIELD_LOCATOR = "#filterByNoteTextField";
 const DATE_RANGE_FIELD_LOCATOR = "#DateRangeFilter";
+
 let options = {
-    valueNames: ['name', 'note', 'amount', 'date',{name:'isExpense',attr: 'value'} ],
+    valueNames: ['name', 'note', 'amount', 'date', {name: 'isExpense', attr: 'value'}],
     page: 10,
     pagination: [{
         name: "pagination",
@@ -21,11 +22,7 @@ $(NOTE_FIELD_LOCATOR).keydown(function () {
         transaction_list.search($(NOTE_FIELD_LOCATOR).val(), ['note']);
     }
     //update total
-    let items = transaction_list.visibleItems;
-    items.forEach(value => {
-
-    });
-    console.log(items)
+    updateTotal(transaction_list.visibleItems);
 
 
 });
@@ -44,7 +41,30 @@ $(DATE_RANGE_FIELD_LOCATOR).change(function () {
 
     });
     //update total
-    let items = transaction_list.visibleItems;
-    console.log(items)
+    updateTotal(transaction_list.visibleItems);
 
 });
+
+function updateTotal(items) {
+    let totalPeriodExpenses = 0;
+    let totalPeriodEarnings = 0;
+    items.forEach(value => {
+        console.log(value.values())
+        if (value.values().isExpense == 'True') {
+            totalPeriodExpenses -= parseFloat(value.values().amount);
+        } else {
+            totalPeriodEarnings += parseFloat(value.values().amount);
+        }
+    });
+    console.log(totalPeriodExpenses, totalPeriodEarnings)
+    if (totalPeriodExpenses == 'NaN') {
+        totalPeriodExpenses = 0;
+    }
+    if (totalPeriodEarnings == 'NaN') {
+        totalPeriodEarnings = 0;
+    }
+    // display these total number
+    $(TOTAL_PERIOD_EXPENSES_TEXT_LOCATOR).text(Number(totalPeriodExpenses).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+    $(TOTAL_PERIOD_EARNINGS_TEXT_LOCATOR).text(Number(totalPeriodEarnings).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+
+}
