@@ -13,7 +13,7 @@ class AllUsedCategoryJsonList(generics.ListAPIView):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        return Category.objects.filter(owner=self.request.user).all()
+        return Category.objects.filter(owner=self.request.user,wallettransaction__isnull=False).distinct()
 
 
 class AllExpenseCategoryJsonList(generics.ListAPIView):
