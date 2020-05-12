@@ -218,7 +218,7 @@
         accountBalanceInfo.set(created_date, walletBalance);
         expenses.set(created_date, 0);
         earnings.set(created_date, 0);
-
+//create data
         transactions.reverse().forEach(value => {
             if (value.is_expense) {
                 walletBalance -= value.amount.amount;
