@@ -2,7 +2,9 @@
 {% load static %}
 
 {% block title %}Penny Pincher - Dashboard{% endblock %}
-
+{% block head-css-extension %}
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
+{% endblock %}
 
 {% block main-content %}
 
@@ -101,7 +103,7 @@
                         <span class="statistic-card-title">Total Balance</span>
                         <div class="statistics-block -finance">
 
-                            <span class="statistic-amount">22000.00</span>
+                            <span class="statistic-amount" id="total">0.00</span>
 
                         </div>
                     </div>
@@ -110,7 +112,7 @@
                         <span class="statistic-card-title">Total Period expenses</span>
                         <div class="statistics-block -finance">
 
-                            <span class="statistic-amount -expense-red">3000.00</span>
+                            <span class="statistic-amount -expense-red" id="total-period-expenses">0.00</span>
 
                         </div>
                     </div>
@@ -119,7 +121,7 @@
                         <span class="statistic-card-title">Total Period Earnings</span>
                         <div class="statistics-block -finance">
 
-                            <span class="statistic-amount">0.00</span>
+                            <span class="statistic-amount" id="total-period-earnings">0.00</span>
 
                         </div>
                     </div>
@@ -140,9 +142,9 @@
                                     </select>
                                     <div class="overSelect"></div>
                                 </div>
-                                 <div class="statistic-checkboxes"id="checkboxes">
+                                <div class="statistic-checkboxes" id="checkboxes">
 
-                                 </div>
+                                </div>
                             </div>
 
                             <div class="statistic-input-box">
@@ -156,7 +158,7 @@
                             <div class="statistic-input-box">
                                 <span class="statistic-input-label">Date Range</span>
                                 <div class="statistics-input-box-style">
-                                    <input type="text" name="statistic-keyword-filter" id="statisticKeywordFilter"
+                                    <input type="text" name="statistic-keyword-filter" id="DateRangeFilter"
                                            class="statistic-keyword-filter" placeholder="Filter by specific keyword">
                                 </div>
                             </div>
@@ -202,18 +204,15 @@
 {% endblock %}
 
 {% block body-javascript-extension %}
-
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <script src="{% static "js/progress-bar.js" %}"></script>
     <script src="{% static "js/pie-chart.js" %}"></script>
     <script src="{% static "js/line-chart.js" %}"></script>
-    <script src="{% static "js/wallet-transactions.js" %}"></script>
     <script src="{% static "js/multiple-select.js" %}"></script>
-    <script src="{% static "js/index-filter.js" %}"></script>
+    <script src="{% static "js/index.js" %}"></script>
     <script>
-
-        $('#sidenav-dashboard').toggleClass('-active');
-        $('#m-sidenav-dashboard').toggleClass('-active-mobile');
-
+        activeNavIcon("#sidenav-dashboard", "#m-sidenav-dashboard");
     </script>
 
 {% endblock %}
