@@ -14,7 +14,7 @@ let options = {
 };
 
 let transaction_list = new List('transactions-list', options);
-$(NOTE_FIELD_LOCATOR).keydown(function () {
+$(NOTE_FIELD_LOCATOR).keyup(function () {
     let val = $(NOTE_FIELD_LOCATOR).val();
     if (val.length == '') {
         transaction_list.search();
