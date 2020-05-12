@@ -53,8 +53,8 @@ function computeTotal() {
         }
     });
     // display these total number
-    $(TOTAL_PERIOD_EXPENSES_TEXT_LOCATOR).text(totalPeriodExpenses);
-    $(TOTAL_PERIOD_EARNINGS_TEXT_LOCATOR).text(totalPeriodEarnings);
+    $(TOTAL_PERIOD_EXPENSES_TEXT_LOCATOR).text(Number(totalPeriodExpenses).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+    $(TOTAL_PERIOD_EARNINGS_TEXT_LOCATOR).text(Number(totalPeriodEarnings).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
 
 }
 
@@ -88,6 +88,7 @@ function generateCategoriesHtml() {
         span.innerHTML=value.name;
 
         label.htmlFor=value.name;
+        label.className='category-select';
         label.appendChild(input);
         label.appendChild(span);
 
