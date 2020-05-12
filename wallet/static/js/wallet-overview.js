@@ -15,7 +15,7 @@
     let walletBalanceCurveCtx = document.getElementById('walletBalanceCurve').getContext('2d');
     let savingsExpensesContrastCtx = document.getElementById('savingsExpensesContrast').getContext('2d');
     let savingsExpensesContrastChart = null;
-    let walletBalanceCurveCtxChart = null;
+    let walletBalanceCurveChart = null;
 
     $(document).ready(function () {
         getALLTransactionsByWalletID();
@@ -98,18 +98,12 @@
 
     function filter() {
         getALLTransactionsByWalletID();
-        console.log("before filter:", transactions)
         readCategories();
         filterDate();
-        console.log("after filter date:", transactions)
         filterCategory();
-        console.log("after filter category:", transactions)
         filterNote();
-        console.log("after filter note:", transactions)
         computeTotal();
-        console.log("after compute", transactions)
         display();
-        console.log(transactions)
     }
 
     function filterDate() {
@@ -144,7 +138,6 @@
         totalPeriodEarnings = 0;
 
         transactions.forEach(transact => {
-            console.log(transact.category.is_expense)
             if (transact.category.is_expense) {
                 totalPeriodExpenses -= transact.amount.amount;
             } else {
@@ -184,24 +177,52 @@
             options: pieOptions,
         });
 
-        walletBalanceCurveCtxChart = new Chart(walletBalanceCurveCtx, {
+
+        walletBalanceCurveChart = new Chart(walletBalanceCurveCtx, {
             type: 'line',
             data: {
-                labels: ['March 03,2020', 'March 12,2020', 'March 21,2020', 'March 31,2020'],
                 datasets: [{
                     label: "Account Balance in PHP",
                     strokeColor: "#49BEB7",
                     fill: "#49BEB7",
                     borderColor: "#49BEB7",
                     backgroundColor: "#49BEB7",
-                    data: [1000, 5000, 30000, 20000]
-
+                    data: [32, 22],
+                    labels: ['label1', 'label2']
                 }],
 
             },
             options: lineChartOptions,
 
         });
+        updateWalletBalanceCurveCtxChart(walletBalanceCurveChart);
+    }
 
+    function updateWalletBalanceCurveCtxChart(chart) {
+        let label_data = new Map();
+        let walletBalance = walletInfo.balance.amount;
+        // reverse transactions to get original balance
+        transactions.forEach(value => {
+            if (value.is_expense) {
+                walletBalance += value.amount.amount;
+            } else {
+                walletBalance -= value.amount.amount;
+            }
+        });
+        let created_date = new Date(walletInfo.created).toISOString().substring(0, 10);
+        label_data.set(created_date, walletBalance);
+
+        transactions.reverse().forEach(value => {
+            if (value.is_expense) {
+                walletBalance -= value.amount.amount;
+            } else {
+                walletBalance += value.amount.amount;
+            }
+            label_data.set(value.date, walletBalance)
+        });
+        console.log(label_data)
+        chart.data.datasets[0].data = [...label_data.values()];
+        chart.data.labels = [...label_data.keys()];
+        chart.update();
     }
 }
