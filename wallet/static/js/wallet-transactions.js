@@ -88,6 +88,7 @@ function generateCategoriesHtml() {
         span.innerHTML=value.name;
 
         label.htmlFor=value.name;
+        label.className='category-select';
         label.appendChild(input);
         label.appendChild(span);
 

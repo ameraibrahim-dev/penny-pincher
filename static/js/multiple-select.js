@@ -3,7 +3,6 @@ var expanded = false;
 $(document).ready(function () {
   let categories
   categories = isCheckboxChecked();
-  showCheckboxes();
 
 });
 
@@ -23,22 +22,39 @@ function isCheckboxChecked(){
 
   let categories = [];
 
-  $("input[type='checkbox']").click(function () {
-      if(categories.includes($("input[type='checkbox']").attr('id'))){
-         let index = categories.indexOf($(this).attr('id'));
-          categories.splice(index,1);
-      }else {
+    $("input[type='checkbox']").click(function () {
 
-        //Adds each checked checkbox to array.
-        $.each($("input[type='checkbox']:checked"), function () {
-          if ($(this).attr('id') == undefined) {
-          } else {
-            categories.push($(this).attr('id'));
-          }
-        });
-      }
-    console.log(categories);
-  });
+        if(categories.includes($(this).attr('id'))){
+
+            let index = categories.indexOf($(this).attr('id'));
+            categories.splice(index,1);
+
+        }else {
+
+
+        }
+            //Adds each checked checkbox to array.
+            $.each($("input[type='checkbox']:checked"), function () {
+                if(categories.includes($(this).attr('id'))){
+
+                }else{
+                    if ($(this).attr('id') == undefined) {
+
+                    } else {
+                      categories.push($(this).attr('id'));
+                    }
+                }
+
+
+            });
+
+      console.log(categories);
+
+    });
+
+
+
+  console.log(categories);
 
   return categories;
 }
