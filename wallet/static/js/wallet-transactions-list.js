@@ -48,19 +48,7 @@ function isCheckboxChecked() {
 
         }
         //Adds each checked checkbox to array.
-        $.each($("input[type='checkbox']:checked"), function () {
-            if (categories.includes($(this).attr('id'))) {
-
-            } else {
-                if ($(this).attr('id') == undefined) {
-
-                } else {
-                    categories.push($(this).attr('id'));
-                }
-            }
-
-
-        });
+        readCategories();
         filterFunction();
         updateTotal(transaction_list.visibleItems);
     });
@@ -70,11 +58,11 @@ function isCheckboxChecked() {
 }
 
 function filterFunction() {
+    readCategories();
     let value = $(DATE_RANGE_FIELD_LOCATOR).val();
     start_date = new Date(value.split("-")[0].replace(/\s+/g, ''));
     end_date = new Date(value.split("-")[1].replace(/\s+/g, ''));
     transaction_list.filter(function (item) {
-        console.log(categories)
         let transact_date = new Date(Date.parse(item.values().date));
         if ((transact_date >= start_date && transact_date <= end_date) && (categories.includes(item.values().name))) {
             return true;
@@ -105,4 +93,20 @@ function updateTotal(items) {
     $(TOTAL_PERIOD_EXPENSES_TEXT_LOCATOR).text(Number(totalPeriodExpenses).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
     $(TOTAL_PERIOD_EARNINGS_TEXT_LOCATOR).text(Number(totalPeriodEarnings).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
 
+}
+
+function readCategories() {
+    $.each($("input[type='checkbox']:checked"), function () {
+        if (categories.includes($(this).attr('id'))) {
+
+        } else {
+            if ($(this).attr('id') == undefined) {
+
+            } else {
+                categories.push($(this).attr('id'));
+            }
+        }
+
+
+    });
 }
