@@ -91,12 +91,18 @@
 
     function filter() {
         getALLTransactionsByWalletID();
+        console.log("before filter:", transactions)
         readCategories();
         filterDate();
+        console.log("after filter date:", transactions)
         filterCategory();
+        console.log("after filter category:", transactions)
         filterNote();
+        console.log("after filter note:", transactions)
         computeTotal();
+             console.log("after compute", transactions)
         display();
+        console.log(transactions)
     }
 
     function filterDate() {
@@ -104,7 +110,9 @@
         start_date = new Date(value.split("-")[0].replace(/\s+/g, ''));
         end_date = new Date(value.split("-")[1].replace(/\s+/g, ''));
         transactions = transactions.filter(value => {
+            console.log(value.date)
             let transact_date = new Date(value.date);
+            transact_date.setHours(0,0,0,0)
             return (transact_date >= start_date && transact_date <= end_date);
         });
     }
@@ -130,6 +138,7 @@
         totalPeriodEarnings = 0;
 
         transactions.forEach(transact => {
+            console.log(transact.category.is_expense)
             if (transact.category.is_expense) {
                 totalPeriodExpenses -= transact.amount.amount;
             } else {

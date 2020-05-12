@@ -68,8 +68,8 @@
 
         transaction_list.filter(function (item) {
             let transact_date = new Date(Date.parse(item.values().date));
-            console.log(transact_date >= start_date && transact_date <= end_date)
-            console.log(categories.includes(item.values().name))
+           // console.log(transact_date >= start_date && transact_date <= end_date)
+           // console.log(categories.includes(item.values().name))
             if ((transact_date >= start_date && transact_date <= end_date)
                 && (categories.includes(removeEncoding(item.values().name)))) {
                 return true;
