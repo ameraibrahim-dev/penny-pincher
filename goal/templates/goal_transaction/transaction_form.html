@@ -5,12 +5,6 @@
 
 {% block main-content %}
 
-    {% if object %}
-        <a href="{% url 'goal:goal_detail' object.pk %}">Back</a>
-    {% else %}
-        <a href="{% url 'goal:goal_detail' view.kwargs.pk %}"> Back</a>
-    {% endif %}
-
     <div class="transaction-wrap">
         <!--If there is an object, use Edit Transaction-->
         {% if object %}
@@ -60,7 +54,6 @@
                             </div>
 
 
-
                             <div class="form-group statistic-input-box">
                                 <span class="input-text-field-label float-left">Amount</span>
                                 {% for error in form.amount.errors %}
@@ -70,7 +63,6 @@
                                 {% endfor %}
                                 {% render_field form.amount class="form-control input-box" placeholder="0.00 PHP" %}
                             </div>
-
 
 
                         </div>
@@ -135,7 +127,6 @@
                             </div>
 
 
-
                             <div class="form-group statistic-input-box">
                                 <span class="input-text-field-label float-left">Amount</span>
                                 {% for error in form.amount.errors %}
@@ -147,14 +138,19 @@
                             </div>
 
 
-
                         </div>
 
 
                     </div>
                     <div class="float-right">
-                        <a class="add-transaction-cancel-btn" href="{{ cancel_url }}"
-                           style="text-decoration: none;padding: 8px 24px !important;">cancel</a>
+
+                        {% if object %}
+                            <a class="add-transaction-cancel-btn" href="{% url 'goal:goal_detail' object.pk %}"
+                               style="text-decoration: none;padding: 8px 24px !important;">cancel</a>
+                        {% else %}
+                            <a class="add-transaction-cancel-btn" href="{% url 'goal:goal_detail' view.kwargs.pk %}"
+                               style="text-decoration: none;padding: 8px 24px !important;">cancel</a>
+                        {% endif %}
                         <button class="add-transaction-save-btn">save</button>
                     </div>
                 </form>
