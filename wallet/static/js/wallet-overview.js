@@ -216,8 +216,7 @@
         });
         let created_date = new Date(walletInfo.created).toISOString().substring(0, 10);
         accountBalanceInfo.set(created_date, walletBalance);
-        expenses.set(created_date, 0);
-        earnings.set(created_date, 0);
+
 //create data
         transactions.reverse().forEach(value => {
             if (value.is_expense) {
