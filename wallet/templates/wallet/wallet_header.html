@@ -1,7 +1,7 @@
 {% extends 'base_navigation_no_footer.html' %}
 {% load static %}
 {% block header-extension %}
-
+    <input type="hidden" id="walletID" value="{{ wallet.pk }}">
     <ul class="header-menu-list">
         <li class="header-menu-item" id="header-transactions">
             <a href="{% url 'wallet:wallet_transactions' wallet.pk %}" class="header-menu-item-link">
