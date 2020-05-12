@@ -26,13 +26,14 @@
 
                         <div class="statistic-input-box">
                             <span class="statistic-input-label">Category</span>
-                            <div class="statistics-input-box-style -dropdown" id="category-select-filter" onclick="showCheckboxes()">
+                            <div class="statistics-input-box-style -dropdown" id="category-select-filter"
+                                 onclick="showCheckboxes()">
                                 <select class="statistics-filter">
                                     <option>All Categories</option>
                                 </select>
                                 <div class="overSelect"></div>
                             </div>
-                            <div class="statistic-checkboxes"id="checkboxes">
+                            <div class="statistic-checkboxes" id="checkboxes">
 
                             </div>
                         </div>
@@ -95,82 +96,67 @@
 
                     <div class="statistics-block">
                         <!--Display this div below if there are no transactions-->
-                        <div id="transactions-list">
-                            <ul class="list">
+                        <div id="transactions-list" class="transactions-list -width-100">
+                            <div class="list">
                                 {% for transaction in object.wallettransaction_set.all reversed %}
 
-                                    <li>
-                                        <h3 class="name">{{ transaction.category.name }}</h3>
-                                        <p class="note">{{ transaction.note }}</p>
-                                        <p class="amount">{{ transaction.amount.amount }}</p>
-                                        <p class="date">{{ transaction.date }}</p>
-                                    </li>     <br>
+                                    <div class="transaction"> <!--This is one transaction line-->
+                                        <div class="transaction-type">
+
+                                            <img class="transaction-icon"
+                                                 src="{% static "icons/"|add:transaction.category.icon %}"
+                                                 alt="Transaction Icon">
+
+                                            <span class="transaction-name name">{{ transaction.category.name }}</span>
+                                        </div>
+
+                                        <div class="transaction-notes note">
+
+                                            {% if transaction.note %}
+                                                {{ transaction.note }}
+                                            {% else %}
+                                                <!--If no notes display this div-->
+                                                <div sata-attr-message="--- No Notes. ---"
+                                                     class="no-transactions-message -notes"></div>
+                                            {% endif %}
+                                        </div>
+
+                                        <div class="transaction-time">
+                                            <span class="transaction-date date">{{ transaction.date }}</span>
+                                        </div>
+
+                                        <div class="transaction-price">
+                                            <span class="transaction-amount amount">{{ transaction.amount }}</span>
+                                        </div>
+
+                                        <div class="transaction-control">
+                                            <a href="{% url 'wallet:wallet_update_transaction' transaction.pk %}"><img
+                                                    class="transaction-edit" src="{% static "icons/edit.png" %}"
+                                                    alt="edit"></a>
+                                            <a href="#" id="delete-btn"
+                                               onclick="delete_modal('{% url 'wallet:wallet_delete_transaction' transaction.pk %}','Are you sure you want to delete this transaction?')">
+                                                <img class="transaction-delete" src="{% static "icons/delete.png" %}"
+                                                     alt="edit">
+                                            </a>
+                                        </div>
+
+                                    </div> <!--One transaction line-->
+
+                                    <!-- Put your pagination here i guess?-->
+
+
+
+                                {% empty %}
+
+                                    <div sata-attr-message="No Transactions." class="no-transactions-message">
+                                        To add a transaction, click Add Transaction on the upper right.
+                                    </div>
 
                                 {% endfor %}
-                            </ul>
-                         <ul class="pagination" style="background-color: #333333"></ul>
+                            </div>
+                            <ul class="pagination" style="background-color: #333333"></ul>
 
                         </div>
-
-                        {% for transaction in object.wallettransaction_set.all reversed %}
-
-                            <div class="transactions-list -width-100">
-                                <div class="transaction"> <!--This is one transaction line-->
-                                    <div class="transaction-type">
-
-                                        <img class="transaction-icon"
-                                             src="{% static "icons/"|add:transaction.category.icon %}"
-                                             alt="Transaction Icon">
-
-                                        <span class="transaction-name name">{{ transaction.category.name }}</span>
-                                    </div>
-
-                                    <div class="transaction-notes note">
-
-                                        {% if transaction.note %}
-                                            {{ transaction.note }}
-                                        {% else %}
-                                            <!--If no notes display this div-->
-                                            <div sata-attr-message="--- No Notes. ---"
-                                                 class="no-transactions-message -notes"></div>
-                                        {% endif %}
-                                    </div>
-
-                                    <div class="transaction-time">
-                                        <span class="transaction-date date">{{ transaction.date }}</span>
-                                    </div>
-
-                                    <div class="transaction-price">
-                                        <span class="transaction-amount amount">{{ transaction.amount }}</span>
-                                    </div>
-
-                                    <div class="transaction-control">
-                                        <a href="{% url 'wallet:wallet_update_transaction' transaction.pk %}"><img
-                                                class="transaction-edit" src="{% static "icons/edit.png" %}" alt="edit"></a>
-                                        <a href="#" id="delete-btn"
-                                           onclick="delete_modal('{% url 'wallet:wallet_delete_transaction' transaction.pk %}','Are you sure you want to delete this transaction?')">
-                                            <img class="transaction-delete" src="{% static "icons/delete.png" %}"
-                                                 alt="edit">
-                                        </a>
-                                    </div>
-
-                                </div> <!--One transaction line-->
-
-                                <!-- Put your pagination here i guess?-->
-
-                            </div>
-
-                        {% empty %}
-
-                            <div sata-attr-message="No Transactions." class="no-transactions-message">
-                                To add a transaction, click Add Transaction on the upper right.
-                            </div>
-
-                        {% endfor %}
-
-
-
-
 
 
                     </div>
@@ -195,7 +181,7 @@
 {% block body-javascript-extension %}
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js" type="text/javascript"></script>
     <script src="{% static "js/wallet-transactions.js" %}"></script>
     <script src="{% static "js/multiple-select.js" %}"></script>
     <script src="{% static "js/wallet-transactions-list.js" %}"></script>
