@@ -8,7 +8,14 @@
 
     <div class="transaction-wrap vertical-center">
         <div class="transaction-header">
-            <span class="transaction-wallet-name">Add Category</span>
+            <span class="transaction-wallet-name">
+                {% if object %}
+                    Edit Category
+                {% else %}
+                    Add Category
+                {% endif %}
+
+            </span>
         </div>
 
         <div class="add-transaction-block">
@@ -35,17 +42,28 @@
                                     {{ error }}
                                 </span>
                             {% endfor %}
+                            {% if object %}
+                                <select name="icon" class="form-control input-box" required id="id_icon">
+                                    <option value="{{ object.icon }}" style="max-width: 15%; height: auto"
+                                            data-image="{% static 'icons/'|add:object.icon %}"
+                                            selected></option>
+                                    {% for id,name in form.icon.field.choices|slice:"1:" %}
+                                        {% if name != object.icon %}
+                                            <option value="{{ id }}" style="max-width: 15%; height: auto"
+                                                    data-image="{% static 'icons/'|add:id %}"></option>
+                                        {% endif %}
+                                    {% endfor %}
+                                </select>
+                            {% else %}
+                                <select name="icon" class="form-control input-box" required id="id_icon">
+                                    <option value="" selected>---------</option>
+                                    {% for id,name in form.icon.field.choices|slice:"1:" %}
+                                        <option value="{{ id }}" style="max-width: 15%; height: auto"
+                                                data-image="{% static 'icons/'|add:id %}"></option>
+                                    {% endfor %}
+                                </select>
+                            {% endif %}
 
-                            <select name="icon" class="form-control input-box" required id="id_icon">
-                                <option value="" selected>---------</option>
-                                {% for id,name in form.icon.field.choices|slice:"1:" %}
-                                    <option value="{{ id }}" style="max-width: 15%; height: auto"
-                                            data-image="{% static 'icons/'|add:id %}"></option>
-
-                                {% endfor %}
-
-
-                            </select>
                         </div>
                     </div>
 

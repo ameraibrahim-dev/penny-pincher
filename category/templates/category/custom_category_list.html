@@ -72,9 +72,10 @@
                                     </div>
 
                                     <div class="category-control">
+                                        <a href="{% url 'category:update_custom_category' category.pk %}">
                                         <img class="category-edit"
-                                             href="{% url 'category:update_custom_category' category.pk %}"
-                                             src="{% static "icons/edit.png" %}" alt="edit">
+
+                                             src="{% static "icons/edit.png" %}" alt="edit"></a>
                                         <img class="category-delete"
                                              href="#}"
                                              src="{% static "icons/delete.png" %}" alt="delete"
