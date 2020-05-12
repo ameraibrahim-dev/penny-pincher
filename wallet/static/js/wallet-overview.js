@@ -202,7 +202,9 @@
     }
 
     function updateWalletBalanceCurveCtxChart() {
-        let label_data = new Map();
+        let accountBalanceInfo = new Map();
+        let expenses = new Map();
+        let earnings = new Map();
         let walletBalance = walletInfo.balance.amount;
         // reverse transactions to get original balance
         transactions.forEach(value => {
@@ -213,18 +215,49 @@
             }
         });
         let created_date = new Date(walletInfo.created).toISOString().substring(0, 10);
-        label_data.set(created_date, walletBalance);
+        accountBalanceInfo.set(created_date, walletBalance);
+        expenses.set(created_date, 0);
+        earnings.set(created_date, 0);
 
         transactions.reverse().forEach(value => {
             if (value.is_expense) {
                 walletBalance -= value.amount.amount;
+                if (expenses.has(value.date)) {
+                    expenses.set(value.date, expenses.get(value.date) + value.amount.amount);
+                } else {
+                    expenses.set(value.date, value.amount.amount);
+                }
+
             } else {
                 walletBalance += value.amount.amount;
+                if (earnings.has(value.date)) {
+                    earnings.set(value.date, expenses.get(value.date) + value.amount.amount);
+                } else {
+                    earnings.set(value.date, value.amount.amount);
+                }
             }
-            label_data.set(value.date, walletBalance)
+            accountBalanceInfo.set(value.date, walletBalance)
         });
-        walletBalanceCurveChart.data.datasets[0].data = [...label_data.values()];
-        walletBalanceCurveChart.data.labels = [...label_data.keys()];
+        walletBalanceCurveChart.data.datasets[0].data = [...accountBalanceInfo.values()];
+        walletBalanceCurveChart.data.datasets.push({
+            label: "Expenses",
+            strokeColor: "#be2e04",
+            fill: "#be2c26",
+            borderColor: "#be2c26",
+            backgroundColor: "#be2c26",
+            data: [...expenses.values()],
+
+        });
+        walletBalanceCurveChart.data.datasets.push({
+            label: "Earnings",
+            strokeColor: "#0fbe09",
+            fill: "#0fbe09",
+            borderColor: "#0fbe09",
+            backgroundColor: "#0fbe09",
+            data: [...earnings.values()],
+
+        });
+        walletBalanceCurveChart.data.labels = [...accountBalanceInfo.keys()];
         walletBalanceCurveChart.update();
     }
 
