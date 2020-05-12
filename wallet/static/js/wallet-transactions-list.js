@@ -45,18 +45,36 @@ $(DATE_RANGE_FIELD_LOCATOR).change(function () {
 
 });
 
+// checkbox onselect
+let categories = [];
+$("input[type='checkbox']").click(function () {
+    if (categories.includes($("input[type='checkbox']").attr('id'))) {
+        let index = categories.indexOf($(this).attr('id'));
+        categories.splice(index, 1);
+    } else {
+
+        //Adds each checked checkbox to array.
+        $.each($("input[type='checkbox']:checked"), function () {
+            if ($(this).attr('id') == undefined) {
+            } else {
+                categories.push($(this).attr('id'));
+            }
+        });
+    }
+    console.log(categories);
+});
+
+
 function updateTotal(items) {
     let totalPeriodExpenses = 0;
     let totalPeriodEarnings = 0;
     items.forEach(value => {
-        console.log(value.values())
         if (value.values().isExpense == 'True') {
             totalPeriodExpenses -= parseFloat(value.values().amount);
         } else {
             totalPeriodEarnings += parseFloat(value.values().amount);
         }
     });
-    console.log(totalPeriodExpenses, totalPeriodEarnings)
     if (totalPeriodExpenses == 'NaN') {
         totalPeriodExpenses = 0;
     }
