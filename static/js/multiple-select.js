@@ -30,9 +30,8 @@ function isCheckboxChecked(){
             categories.splice(index,1);
 
         }else {
-
-
         }
+
             //Adds each checked checkbox to array.
             $.each($("input[type='checkbox']:checked"), function () {
                 if(categories.includes($(this).attr('id'))){
@@ -51,8 +50,6 @@ function isCheckboxChecked(){
       console.log(categories);
 
     });
-
-
 
   console.log(categories);
 
