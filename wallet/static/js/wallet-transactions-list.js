@@ -88,7 +88,6 @@ function updateTotal(items) {
     let totalPeriodEarnings = 0;
     items.forEach(value => {
         if (value.values().isExpense == 'True') {
-            console.log(value.values().amount.replace(",",""))
             totalPeriodExpenses -= parseFloat(value.values().amount.replace(",",""));
         } else {
             totalPeriodEarnings += parseFloat(value.values().amount.replace(",",""));
