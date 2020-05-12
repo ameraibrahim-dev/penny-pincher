@@ -15,4 +15,6 @@ urlpatterns = [
          name='wallet_transactions_by_user'),
     path('v1/user/goal/transactions/list/', GoalTransactionsByUser.as_view(),
          name='goal_transactions_by_user'),
+    path('v1/user/wallet/list/', WalletList.as_view(),
+         name='user_wallets'),
 ]

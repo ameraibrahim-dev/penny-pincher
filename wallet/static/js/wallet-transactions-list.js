@@ -1,6 +1,7 @@
 const NOTE_FIELD_LOCATOR = "#filterByNoteTextField";
 const DATE_RANGE_FIELD_LOCATOR = "#DateRangeFilter";
 let categories = [];
+
 let options = {
     valueNames: ['name', 'note', 'amount', 'date', {name: 'isExpense', attr: 'value'}],
     page: 10,
@@ -47,19 +48,7 @@ function isCheckboxChecked() {
 
         }
         //Adds each checked checkbox to array.
-        $.each($("input[type='checkbox']:checked"), function () {
-            if (categories.includes($(this).attr('id'))) {
-
-            } else {
-                if ($(this).attr('id') == undefined) {
-
-                } else {
-                    categories.push($(this).attr('id'));
-                }
-            }
-
-
-        });
+        readCategories();
         filterFunction();
         updateTotal(transaction_list.visibleItems);
     });
@@ -69,6 +58,7 @@ function isCheckboxChecked() {
 }
 
 function filterFunction() {
+    readCategories();
     let value = $(DATE_RANGE_FIELD_LOCATOR).val();
     start_date = new Date(value.split("-")[0].replace(/\s+/g, ''));
     end_date = new Date(value.split("-")[1].replace(/\s+/g, ''));
@@ -88,9 +78,9 @@ function updateTotal(items) {
     let totalPeriodEarnings = 0;
     items.forEach(value => {
         if (value.values().isExpense == 'True') {
-            totalPeriodExpenses -= parseFloat(value.values().amount);
+            totalPeriodExpenses -= parseFloat(value.values().amount.replace(",", ""));
         } else {
-            totalPeriodEarnings += parseFloat(value.values().amount);
+            totalPeriodEarnings += parseFloat(value.values().amount.replace(",", ""));
         }
     });
     if (totalPeriodExpenses == 'NaN') {
@@ -103,4 +93,20 @@ function updateTotal(items) {
     $(TOTAL_PERIOD_EXPENSES_TEXT_LOCATOR).text(Number(totalPeriodExpenses).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
     $(TOTAL_PERIOD_EARNINGS_TEXT_LOCATOR).text(Number(totalPeriodEarnings).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
 
+}
+
+function readCategories() {
+    $.each($("input[type='checkbox']:checked"), function () {
+        if (categories.includes($(this).attr('id'))) {
+
+        } else {
+            if ($(this).attr('id') == undefined) {
+
+            } else {
+                categories.push($(this).attr('id'));
+            }
+        }
+
+
+    });
 }
