@@ -53,8 +53,8 @@ function computeTotal() {
         }
     });
     // display these total number
-    $(TOTAL_PERIOD_EXPENSES_TEXT_LOCATOR).text(totalPeriodExpenses);
-    $(TOTAL_PERIOD_EARNINGS_TEXT_LOCATOR).text(totalPeriodEarnings);
+    $(TOTAL_PERIOD_EXPENSES_TEXT_LOCATOR).text(totalPeriodExpenses.toLocaleString("ph"));
+    $(TOTAL_PERIOD_EARNINGS_TEXT_LOCATOR).text(totalPeriodEarnings.toLocaleString("ph"));
 
 }
 
