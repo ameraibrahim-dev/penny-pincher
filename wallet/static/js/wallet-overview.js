@@ -230,33 +230,48 @@
             } else {
                 walletBalance += value.amount.amount;
                 if (earnings.has(value.date)) {
-                    earnings.set(value.date, expenses.get(value.date) + value.amount.amount);
+                    earnings.set(value.date, earnings.get(value.date) + value.amount.amount);
                 } else {
                     earnings.set(value.date, value.amount.amount);
                 }
             }
             accountBalanceInfo.set(value.date, walletBalance)
         });
+        let earnings_data = []
+        let expense_data = []
+        let labels = [...accountBalanceInfo.keys()]
+        labels.forEach(value => {
+            if (earnings.has(value)) {
+                earnings_data.push(earnings.get(value))
+            } else {
+                earnings_data.push(0);
+            }
+            if (expenses.has(value)) {
+                expense_data.push(expenses.get(value))
+            } else {
+                expense_data.push(0);
+            }
+        });
         walletBalanceCurveChart.data.datasets[0].data = [...accountBalanceInfo.values()];
-        walletBalanceCurveChart.data.datasets[1]={
+        walletBalanceCurveChart.data.datasets[1] = {
             label: "Expenses",
             strokeColor: "#be2e04",
             fill: "#be2c26",
             borderColor: "#be2c26",
             backgroundColor: "#be2c26",
-            data: [...expenses.values()],
+            data: expense_data,
 
         };
-        walletBalanceCurveChart.data.datasets[2]={
+        walletBalanceCurveChart.data.datasets[2] = {
             label: "Earnings",
             strokeColor: "#0fbe09",
             fill: "#0fbe09",
             borderColor: "#0fbe09",
             backgroundColor: "#0fbe09",
-            data: [...earnings.values()],
+            data: earnings_data,
 
         };
-        walletBalanceCurveChart.data.labels = [...accountBalanceInfo.keys()];
+        walletBalanceCurveChart.data.labels = labels;
         walletBalanceCurveChart.update();
     }
 
