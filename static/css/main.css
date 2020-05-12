@@ -55,6 +55,10 @@ a:hover, a:focus {
   color: white;
   text-decoration: none; }
 
+.form-control{
+  height: auto;
+}
+
 .component {
   margin-top: 40px;
   margin-left: 12px; }
