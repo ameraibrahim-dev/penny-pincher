@@ -3,6 +3,7 @@
 {% block title %}Penny Pincher - My Wallets{% endblock %}
 {% load i18n %}
 {% load static %}
+{% load humanize %}
 
 {% block main-content %}
 
@@ -28,7 +29,7 @@
                                     <span data-attr-wallet-name="{{ wallet.name }}"
                                           class="wallet-type">{{ wallet.get_type_display }}</span>
                                 </div>
-                                <span class="wallet-amount">{{ wallet.balance.amount }}</span>
+                                <span class="wallet-amount">{{ wallet.balance.amount|intcomma }}</span>
                             </div>
                         </div>
                     </div>
