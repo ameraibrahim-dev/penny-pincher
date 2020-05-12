@@ -2,7 +2,7 @@ const NOTE_FIELD_LOCATOR = "#filterByNoteTextField";
 const DATE_RANGE_FIELD_LOCATOR = "#DateRangeFilter";
 let options = {
     valueNames: ['name', 'note', 'amount', 'date'],
-    page: 2,
+    page: 20,
     pagination: [{
         name: "pagination",
         paginationClass: "pagination",
