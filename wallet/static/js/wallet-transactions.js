@@ -44,7 +44,6 @@
     function computeTotal() {
         totalPeriodExpenses = 0;
         totalPeriodEarnings = 0;
-
         transactions.forEach(transact => {
             if (transact.category.is_expense) {
                 totalPeriodExpenses -= transact.amount.amount;
@@ -83,7 +82,7 @@
             let span = document.createElement("span");
 
             input.type = "checkbox";
-            input.id = value.name;
+            input.id = unescape(value.name);
             input.checked = true;
 
             span.innerHTML = value.name;
@@ -93,8 +92,8 @@
             label.appendChild(input);
             label.appendChild(span);
 
-
             checkboxes.appendChild(label);
         })
     }
+
 }
