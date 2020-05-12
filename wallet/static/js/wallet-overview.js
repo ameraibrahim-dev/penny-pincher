@@ -150,6 +150,8 @@
         // display these total number
         $(TOTAL_PERIOD_EXPENSES_TEXT_LOCATOR).text(Number(totalPeriodExpenses).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         $(TOTAL_PERIOD_EARNINGS_TEXT_LOCATOR).text(Number(totalPeriodEarnings).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+        updateSavingsExpensesContrastChart();
+        updateWalletBalanceCurveCtxChart();
     }
 
 //charts.js
@@ -160,7 +162,7 @@
                 labels: ['Savings', 'Expenses',],
                 datasets: [{
                     label: '# of Votes',
-                    data: [totalPeriodEarnings, totalPeriodExpenses],
+                    data: [0, 0],
                     backgroundColor: [
                         '#49BEB7',
                         '#EE8572',
@@ -188,17 +190,18 @@
                     borderColor: "#49BEB7",
                     backgroundColor: "#49BEB7",
                     data: [32, 22],
-                    labels: ['label1', 'label2']
-                }],
 
+                }],
+                labels: ['label1', 'label2']
             },
             options: lineChartOptions,
 
         });
-        updateWalletBalanceCurveCtxChart(walletBalanceCurveChart);
+        updateWalletBalanceCurveCtxChart();
+        updateSavingsExpensesContrastChart();
     }
 
-    function updateWalletBalanceCurveCtxChart(chart) {
+    function updateWalletBalanceCurveCtxChart() {
         let label_data = new Map();
         let walletBalance = walletInfo.balance.amount;
         // reverse transactions to get original balance
@@ -220,9 +223,13 @@
             }
             label_data.set(value.date, walletBalance)
         });
-        console.log(label_data)
-        chart.data.datasets[0].data = [...label_data.values()];
-        chart.data.labels = [...label_data.keys()];
-        chart.update();
+        walletBalanceCurveChart.data.datasets[0].data = [...label_data.values()];
+        walletBalanceCurveChart.data.labels = [...label_data.keys()];
+        walletBalanceCurveChart.update();
+    }
+
+    function updateSavingsExpensesContrastChart() {
+        savingsExpensesContrastChart.data.datasets[0].data = [totalPeriodEarnings, totalPeriodExpenses];
+        savingsExpensesContrastChart.update();
     }
 }
