@@ -88,9 +88,10 @@ function updateTotal(items) {
     let totalPeriodEarnings = 0;
     items.forEach(value => {
         if (value.values().isExpense == 'True') {
-            totalPeriodExpenses -= parseFloat(value.values().amount);
+            console.log(value.values().amount.replace(",",""))
+            totalPeriodExpenses -= parseFloat(value.values().amount.replace(",",""));
         } else {
-            totalPeriodEarnings += parseFloat(value.values().amount);
+            totalPeriodEarnings += parseFloat(value.values().amount.replace(",",""));
         }
     });
     if (totalPeriodExpenses == 'NaN') {
