@@ -110,7 +110,6 @@
         start_date = new Date(value.split("-")[0].replace(/\s+/g, ''));
         end_date = new Date(value.split("-")[1].replace(/\s+/g, ''));
         transactions = transactions.filter(value => {
-            console.log(value.date)
             let transact_date = new Date(value.date);
             transact_date.setHours(0,0,0,0)
             return (transact_date >= start_date && transact_date <= end_date);
