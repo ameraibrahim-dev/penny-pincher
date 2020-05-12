@@ -1,6 +1,6 @@
 const NOTE_FIELD_LOCATOR = "#filterByNoteTextField";
 const DATE_RANGE_FIELD_LOCATOR = "#DateRangeFilter";
-
+let categories = [];
 let options = {
     valueNames: ['name', 'note', 'amount', 'date', {name: 'isExpense', attr: 'value'}],
     page: 10,
@@ -27,18 +27,7 @@ $(NOTE_FIELD_LOCATOR).keyup(function () {
 
 });
 $(DATE_RANGE_FIELD_LOCATOR).change(function () {
-    let value = $(DATE_RANGE_FIELD_LOCATOR).val();
-    start_date = new Date(value.split("-")[0].replace(/\s+/g, ''));
-    end_date = new Date(value.split("-")[1].replace(/\s+/g, ''));
-    transaction_list.filter(function (item) {
-        let transact_date = new Date(Date.parse(item.values().date));
-        if (transact_date >= start_date && transact_date <= end_date) {
-            return true;
-        } else {
-            return false;
-        }
-
-    });
+    filterFunction();
     //update total
     updateTotal(transaction_list.visibleItems);
 
@@ -46,10 +35,8 @@ $(DATE_RANGE_FIELD_LOCATOR).change(function () {
 
 function isCheckboxChecked() {
 
-    let categories = [];
 
     $("input[type='checkbox']").click(function () {
-
         if (categories.includes($(this).attr('id'))) {
 
             let index = categories.indexOf($(this).attr('id'));
@@ -73,19 +60,27 @@ function isCheckboxChecked() {
 
 
         });
-
-        transaction_list.filter(function (item) {
-            if (categories.includes(item.values().name)) {
-                return true;
-            } else {
-                return false;
-            }
-        });
+        filterFunction();
         updateTotal(transaction_list.visibleItems);
     });
 
 
     return categories;
+}
+
+function filterFunction() {
+    let value = $(DATE_RANGE_FIELD_LOCATOR).val();
+    start_date = new Date(value.split("-")[0].replace(/\s+/g, ''));
+    end_date = new Date(value.split("-")[1].replace(/\s+/g, ''));
+    transaction_list.filter(function (item) {
+        let transact_date = new Date(Date.parse(item.values().date));
+        if ((transact_date >= start_date && transact_date <= end_date) && (categories.includes(item.values().name))) {
+            return true;
+        } else {
+            return false;
+        }
+    });
+
 }
 
 function updateTotal(items) {
