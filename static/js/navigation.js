@@ -142,9 +142,23 @@ $(document).ready(function () {
         if (isNavBarExpand == 1) {
             //todo expand nav bar
             //expand nav bar
+            $('#sidenav').toggleClass('-active');
+            $('#sidenav-mobile').toggleClass('-collapsed');
+            $('#content-block').toggleClass('-extend');
+            $('#sidenav').css("transition", 'none');
+            $('#sidenav-mobile').css("transition", 'none');
+            $('#content-block').css("transition", 'none');
+
         } else {
             //todo close nav bar
             //close nav bar
+            $('#sidenav').removeClass('-active');
+            $('#sidenav-mobile').removeClass('-collapsed');
+            $('#content-block').removeClass('-extend');
+            $('#sidenav').css("transition", 'none');
+            $('#sidenav-mobile').css("transition", 'none');
+            $('#content-block').css("transition", 'none');
+
         }
     } else {
         sessionStorage.setItem(IS_NAV_EXPAND_KEY, 0);
