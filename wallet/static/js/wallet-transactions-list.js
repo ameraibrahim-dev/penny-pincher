@@ -20,6 +20,7 @@ $(NOTE_FIELD_LOCATOR).keydown(function () {
     } else {
         transaction_list.search($(NOTE_FIELD_LOCATOR).val(), ['note']);
     }
+    //update total
 
 
 });
@@ -29,12 +30,14 @@ $(DATE_RANGE_FIELD_LOCATOR).change(function () {
     end_date = new Date(value.split("-")[1].replace(/\s+/g, ''));
     transaction_list.filter(function (item) {
 
-        let transact_date=new Date(Date.parse(item.values().date));
-        if(transact_date >= start_date && transact_date <= end_date){
-              return true;
-        }else {
-            return  false;
+        let transact_date = new Date(Date.parse(item.values().date));
+        if (transact_date >= start_date && transact_date <= end_date) {
+            return true;
+        } else {
+            return false;
         }
 
     });
+
+    //update total
 });
