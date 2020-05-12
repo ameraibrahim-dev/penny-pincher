@@ -7,19 +7,21 @@ let transactions = [];
 let totalPeriodExpenses = 0;
 let totalPeriodEarnings = 0;
 
-
-getALLTransactionsByWalletID();
-generateCategoriesHtml();
-computeTotal();
+$(document).ready(function () {
+    getALLTransactionsByWalletID();
+    generateCategoriesHtml();
+    computeTotal();
 // set date range
-if (transactions) {
-    $('input[id="DateRangeFilter"]').daterangepicker({
-        endDate: new Date(transactions[0].date),
-        startDate: new Date(transactions.slice(-1)[0].date),
-    })
-} else {
-    $('input[id="DateRangeFilter"]').daterangepicker({})
-}
+    if (transactions) {
+        $('input[id="DateRangeFilter"]').daterangepicker({
+            endDate: new Date(transactions[0].date),
+            startDate: new Date(transactions.slice(-1)[0].date),
+        })
+    } else {
+        $('input[id="DateRangeFilter"]').daterangepicker({})
+    }
+
+});
 
 
 function getALLTransactionsByWalletID() {
