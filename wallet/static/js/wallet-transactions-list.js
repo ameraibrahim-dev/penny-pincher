@@ -1,6 +1,7 @@
 const NOTE_FIELD_LOCATOR = "#filterByNoteTextField";
 const DATE_RANGE_FIELD_LOCATOR = "#DateRangeFilter";
 let categories = [];
+
 let options = {
     valueNames: ['name', 'note', 'amount', 'date', {name: 'isExpense', attr: 'value'}],
     page: 10,
@@ -73,6 +74,7 @@ function filterFunction() {
     start_date = new Date(value.split("-")[0].replace(/\s+/g, ''));
     end_date = new Date(value.split("-")[1].replace(/\s+/g, ''));
     transaction_list.filter(function (item) {
+        console.log(categories)
         let transact_date = new Date(Date.parse(item.values().date));
         if ((transact_date >= start_date && transact_date <= end_date) && (categories.includes(item.values().name))) {
             return true;
@@ -88,9 +90,9 @@ function updateTotal(items) {
     let totalPeriodEarnings = 0;
     items.forEach(value => {
         if (value.values().isExpense == 'True') {
-            totalPeriodExpenses -= parseFloat(value.values().amount.replace(",",""));
+            totalPeriodExpenses -= parseFloat(value.values().amount.replace(",", ""));
         } else {
-            totalPeriodEarnings += parseFloat(value.values().amount.replace(",",""));
+            totalPeriodEarnings += parseFloat(value.values().amount.replace(",", ""));
         }
     });
     if (totalPeriodExpenses == 'NaN') {

@@ -7,23 +7,20 @@ let transactions = [];
 let totalPeriodExpenses = 0;
 let totalPeriodEarnings = 0;
 
-$(document).ready(function () {
-    getALLTransactionsByWalletID();
-    generateCategoriesHtml();
-    computeTotal();
-    // set date range
-    if (transactions) {
-        $('input[id="DateRangeFilter"]').daterangepicker({
-         //   startDate: new Date(transactions[0].date),
-           // endDate: new Date(transactions.slice(-1)[0].date),
-            endDate: new Date(transactions[0].date),
-            startDate: new Date(transactions.slice(-1)[0].date),
-        })
-    } else {
-        $('input[id="DateRangeFilter"]').daterangepicker({})
-    }
 
-});
+getALLTransactionsByWalletID();
+generateCategoriesHtml();
+computeTotal();
+// set date range
+if (transactions) {
+    $('input[id="DateRangeFilter"]').daterangepicker({
+        endDate: new Date(transactions[0].date),
+        startDate: new Date(transactions.slice(-1)[0].date),
+    })
+} else {
+    $('input[id="DateRangeFilter"]').daterangepicker({})
+}
+
 
 function getALLTransactionsByWalletID() {
     $.ajax({
@@ -82,13 +79,14 @@ function generateCategoriesHtml() {
         let input = document.createElement("input");
         let span = document.createElement("span");
 
-        input.type="checkbox";
-        input.id=value.name;
+        input.type = "checkbox";
+        input.id = value.name;
+        input.checked = true;
 
-        span.innerHTML=value.name;
+        span.innerHTML = value.name;
 
-        label.htmlFor=value.name;
-        label.className='category-select';
+        label.htmlFor = value.name;
+        label.className = 'category-select';
         label.appendChild(input);
         label.appendChild(span);
 
