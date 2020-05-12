@@ -12,10 +12,17 @@
     let totalPeriodExpenses = 0;
     let totalPeriodEarnings = 0;
     let walletInfo = null;
+    let walletBalanceCurveCtx = document.getElementById('walletBalanceCurve').getContext('2d');
+    let savingsExpensesContrastCtx = document.getElementById('savingsExpensesContrast').getContext('2d');
+    let savingsExpensesContrastChart = null;
+    let walletBalanceCurveCtxChart = null;
+
     $(document).ready(function () {
         getALLTransactionsByWalletID();
         getWalletInfoWalletID();
         readCategories();
+        computeTotal();
+        initCharts();
     });
     $(NOTE_FIELD_LOCATOR).keyup(function () {
         filter();
@@ -100,7 +107,7 @@
         filterNote();
         console.log("after filter note:", transactions)
         computeTotal();
-             console.log("after compute", transactions)
+        console.log("after compute", transactions)
         display();
         console.log(transactions)
     }
@@ -111,7 +118,7 @@
         end_date = new Date(value.split("-")[1].replace(/\s+/g, ''));
         transactions = transactions.filter(value => {
             let transact_date = new Date(value.date);
-            transact_date.setHours(0,0,0,0)
+            transact_date.setHours(0, 0, 0, 0)
             return (transact_date >= start_date && transact_date <= end_date);
         });
     }
@@ -152,5 +159,49 @@
         $(TOTAL_PERIOD_EARNINGS_TEXT_LOCATOR).text(Number(totalPeriodEarnings).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
     }
 
+//charts.js
+    function initCharts() {
+        savingsExpensesContrastChart = new Chart(savingsExpensesContrastCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Savings', 'Expenses',],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [totalPeriodEarnings, totalPeriodExpenses],
+                    backgroundColor: [
+                        '#49BEB7',
+                        '#EE8572',
 
+                    ],
+                    borderColor: [
+                        '#49BEB7',
+                        '#EE8572',
+
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: pieOptions,
+        });
+
+        walletBalanceCurveCtxChart = new Chart(walletBalanceCurveCtx, {
+            type: 'line',
+            data: {
+                labels: ['March 03,2020', 'March 12,2020', 'March 21,2020', 'March 31,2020'],
+                datasets: [{
+                    label: "Account Balance in PHP",
+                    strokeColor: "#49BEB7",
+                    fill: "#49BEB7",
+                    borderColor: "#49BEB7",
+                    backgroundColor: "#49BEB7",
+                    data: [1000, 5000, 30000, 20000]
+
+                }],
+
+            },
+            options: lineChartOptions,
+
+        });
+
+    }
 }

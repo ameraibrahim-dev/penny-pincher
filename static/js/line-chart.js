@@ -1,21 +1,5 @@
 var ctx = document.getElementById('homeLineChart');
-var myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-
-        labels: ['March 03,2020', 'March 12,2020', 'March 21,2020', 'March 31,2020'],
-        datasets: [{
-            label: "Account Balance in PHP",
-            strokeColor: "#49BEB7",
-            fill: "#49BEB7",
-            borderColor: "#49BEB7",
-            backgroundColor: "#49BEB7",
-            data: [1000, 5000, 30000, 20000]
-
-        }],
-
-    },
-    options: {
+let lineChartOptions={
         responsive: true,
         maintainAspectRatio: false,
         scales: {
@@ -47,7 +31,21 @@ var myChart = new Chart(ctx, {
                 }
             }
         }
-    }
+    };
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['March 03,2020', 'March 12,2020', 'March 21,2020', 'March 31,2020'],
+        datasets: [{
+            label: "Account Balance in PHP",
+            strokeColor: "#49BEB7",
+            fill: "#49BEB7",
+            borderColor: "#49BEB7",
+            backgroundColor: "#49BEB7",
+            data: [1000, 5000, 30000, 20000]
 
+        }],
 
+    },
+    options:lineChartOptions,
 });
