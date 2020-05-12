@@ -109,6 +109,7 @@
                                                  alt="Transaction Icon">
 
                                             <span class="transaction-name name">{{ transaction.category.name }}</span>
+                                            <input type="hidden" class="isExpense" value="{{ transaction.category.is_expense }}">
                                         </div>
 
                                         <div class="transaction-notes note">
