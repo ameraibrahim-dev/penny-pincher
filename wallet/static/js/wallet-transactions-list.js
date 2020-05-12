@@ -75,16 +75,14 @@ function isCheckboxChecked() {
         });
 
         transaction_list.filter(function (item) {
-            console.log(categories, item.values().name)
             if (categories.includes(item.values().name)) {
                 return true;
             } else {
                 return false;
             }
         });
-    updateTotal(transaction_list.visibleItems);
+        updateTotal(transaction_list.visibleItems);
     });
-
 
 
     return categories;
