@@ -48,12 +48,12 @@ table {
   border-spacing: 0; }
 
 a {
-  color: white;
-  text-decoration: none; }
+  color: #EE8572;
+  text-decoration: #EE8572; }
 
 a:hover, a:focus {
-  color: white;
-  text-decoration: none; }
+  color: #EE8572;
+  text-decoration: #EE8572; }
 
 .form-control {
   height: auto; }
@@ -558,11 +558,15 @@ button {
   min-width: 300px;
   -webkit-box-shadow: 0px 3px 6px -1px rgba(112, 112, 112, 0.5);
   -moz-box-shadow: 0px 3px 6px -1px rgba(112, 112, 112, 0.5);
-  box-shadow: 0px 3px 6px -1px rgba(112, 112, 112, 0.5); }
+  box-shadow: 0px 3px 6px -1px rgba(112, 112, 112, 0.5);
+  transition: 0.3s ease; }
   .wallet-block > .wallet-header {
     margin-bottom: 20px; }
   .wallet-block > .wallet-amount {
     margin-left: 72px; }
+  .wallet-block.-scale:hover {
+    transition: 0.3s ease;
+    transform: scale(1.1); }
 
 .wallet-header {
   display: flex;
@@ -714,10 +718,6 @@ button {
     font-weight: bold;
     font-size: 28px;
     color: #FF3838; }
-    .statistic-amount.-expense-red:before {
-      content: "-";
-      text-transform: uppercase;
-      margin-right: 2px; }
 
 .statistic-input-box > .statistics-input-box-style {
   margin-top: 6px; }
@@ -1144,7 +1144,8 @@ button {
     z-index: 0; }
 
 .main-content-block {
-  margin-top: 60px; }
+  margin-top: 60px;
+  margin-bottom: 80px; }
 
 .sidenav {
   position: absolute;
@@ -1442,7 +1443,7 @@ button {
   .header-menu-list > .header-menu-item {
     margin-left: 20px; }
   .header-menu-list.-goals {
-    max-width: 400px; }
+    max-width: 500px; }
 
 .header-menu-item {
   transition: 0.3s ease; }
@@ -1619,9 +1620,8 @@ button {
   opacity: 0.5; }
 
 .transaction-time {
-  display: flex;
-  flex-direction: row;
-  align-items: center; }
+  text-align: center;
+  min-width: 140px; }
 
 .transaction-date {
   font-family: 'Nunito',sans-serif;
@@ -1630,9 +1630,8 @@ button {
   color: #35495E; }
 
 .transaction-price {
-  display: flex;
-  flex-direction: row;
-  align-items: center; }
+  text-align: center;
+  min-width: 140px; }
 
 .transaction-amount {
   font-family: 'Nunito',sans-serif;
@@ -1794,6 +1793,22 @@ button {
 
 .-width-100 {
   width: 100%; }
+
+.-transaction-margin > .transaction {
+  margin-bottom: 20px; }
+
+.-pagination-style {
+  color: #EE8572;
+  text-decoration: #EE8572;
+  margin-left: 20px; }
+  .-pagination-style::before {
+    content: 'Page ';
+    font-family: 'Nunito',sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #35495E;
+    margin-right: 12px;
+    margin-top: 1px; }
 
 .tips-card {
   background: url(../images/quote.png) center/cover no-repeat;

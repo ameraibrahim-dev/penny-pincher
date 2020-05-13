@@ -97,7 +97,7 @@
                     <div class="statistics-block">
                         <!--Display this div below if there are no transactions-->
                         <div id="transactions-list" class="transactions-list -width-100">
-                            <div class="list">
+                            <div class="list -transaction-margin">
                                 {% for transaction in object.wallettransaction_set.all reversed %}
                                     <!--This is one transaction line-->
                                     <div class="transaction">
@@ -151,7 +151,7 @@
 
                                 {% endfor %}
                             </div>
-                            <ul class="pagination" style="background-color: #333333"></ul>
+                            <ul class="pagination -pagination-style" ></ul>
 
                         </div>
 
