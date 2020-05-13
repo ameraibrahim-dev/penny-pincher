@@ -108,8 +108,12 @@
 
     function filterDate() {
         let value = $(DATE_RANGE_FIELD_LOCATOR).val();
-        start_date = new Date(value.split("-")[0].replace(/\s+/g, ''));
-        end_date = new Date(value.split("-")[1].replace(/\s+/g, ''));
+        let start_date = new Date(value.split("-")[0].replace(/\s+/g, ''));
+        let end_date = new Date(value.split("-")[1].replace(/\s+/g, ''));
+        //display filter range
+        let displayText = moment(start_date).format("MMM") + " " + start_date.getDate() + " - " + end_date.getDate();
+        $(".chart-date-range").text(displayText);
+        //filter
         transactions = transactions.filter(value => {
             let transact_date = new Date(value.date);
             transact_date.setHours(0, 0, 0, 0)
@@ -214,6 +218,7 @@
                 walletBalance -= value.amount.amount;
             }
         });
+        //add created date,balance at that time
         let created_date = new Date(walletInfo.created).toISOString().substring(0, 10);
         accountBalanceInfo.set(created_date, walletBalance);
 
@@ -237,8 +242,9 @@
             }
             accountBalanceInfo.set(value.date, walletBalance)
         });
-        let earnings_data = []
-        let expense_data = []
+        //generate values for all the labels
+        let earnings_data = [];
+        let expense_data = [];
         let labels = [...accountBalanceInfo.keys()]
         labels.forEach(value => {
             if (earnings.has(value)) {
@@ -252,6 +258,7 @@
                 expense_data.push(0);
             }
         });
+        //set data,labels and update
         walletBalanceCurveChart.data.datasets[0].data = [...accountBalanceInfo.values()];
         walletBalanceCurveChart.data.datasets[1] = {
             label: "Expenses",
