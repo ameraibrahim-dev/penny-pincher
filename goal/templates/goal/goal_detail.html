@@ -6,18 +6,6 @@
 
 {% block main-content %}
 
-    Balance:{{ object.balance }}
-    <br>
-    Progress{{ object.saving_progress }} %
-    <br>
-
-    {% for transact in object.goaltransaction_set.all %}
-        <a href="{% url 'goal:update_transaction' transact.pk %}">Update {{ transact }}</a>
-        <a href="{% url 'goal:delete_transaction' transact.pk %}">Delete {{ transact }}</a>
-        <br>
-    {% endfor %}
-
-
     <div class="section-wrap">
 
         <div class="section-header">
