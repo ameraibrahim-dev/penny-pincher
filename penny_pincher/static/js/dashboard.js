@@ -202,12 +202,32 @@
         getWalletInitialBalance();
         let balance_info = getAccountBalanceInfo(date_range);
         console.log("Balance Info:", balance_info);
+        let expense = getExpenses(date_range);
+        let earnings = getEarnings(date_range);
 
     }
 
     function updateSavingsExpensesContrastChart() {
         savingsExpensesContrastChart.data.datasets[0].data = [totalPeriodEarnings, totalPeriodExpenses];
         savingsExpensesContrastChart.update();
+    }
+
+    function getExpenses(date_range = []) {
+        let expenses = [];
+        date_range.forEach(value => {
+            let expense_transacts=transactions.filter(t => {
+                t.date=value && t.category.is_expense==true;
+            })
+            console.log(expense_transacts)
+        })
+
+    }
+
+    function getEarnings(date_range = []) {
+        let earnings = [];
+        date_range.forEach(value => {
+
+        })
     }
 
     function getAccountBalanceInfo(date_range) {
@@ -219,9 +239,9 @@
             transactionOnThatDate.forEach(singleTransact => {
                 //find the target wallet
                 let wallet = walletList.find(w => w.id == singleTransact.wallet);
+                // transact
                 if (singleTransact.is_expense) {
-                    wallet.initial =wallet.initial- singleTransact.amount.amount;
-
+                    wallet.initial = wallet.initial - singleTransact.amount.amount;
                 } else {
                     wallet.initial += singleTransact.amount.amount;
                 }
