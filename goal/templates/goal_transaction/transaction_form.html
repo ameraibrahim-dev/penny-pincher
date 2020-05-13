@@ -7,154 +7,86 @@
 
     <div class="transaction-wrap">
         <!--If there is an object, use Edit Transaction-->
-        {% if object %}
+        <div class="transaction-header">
+                <span class="transaction-wallet-name">
+                    {% if object %}
+                        Edit Transaction
+                    {% else %}
+                        Add Transaction
+                    {% endif %}
+                </span>
+        </div>
 
-            <div class="transaction-header">
-                <span class="transaction-wallet-name">Edit Transaction</span>
-            </div>
+        <div class="add-transaction-block">
 
-            <div class="add-transaction-block">
+            <form method="post" class="wallet-form-fields">
+                {% csrf_token %}
+                <div class="row">
 
-                <form method="post" class="wallet-form-fields">
-                    {% csrf_token %}
-                    <div class="row">
-
-                        <div class="col-xl-6">
-                            <div class="form-group">
-                                <span class="input-text-field-label float-left">Transaction Type</span>
-                                {% for error in form.is_expense.errors %}
-                                    <span class="error-field">
+                    <div class="col-xl-6">
+                        <div class="form-group">
+                            <span class="input-text-field-label float-left">Transaction Type</span>
+                            {% for error in form.is_expense.errors %}
+                                <span class="error-field">
                                         {{ error }}
                                     </span>
-                                {% endfor %}
-                                {% render_field form.is_expense class="form-control input-box" placeholder="Ex. Emergency Funds" %}
-                            </div>
-
-                            <div class="form-group statistic-input-box">
-                                <span class="input-text-field-label float-left">Notes</span>
-                                {% for error in form.note.errors %}
-                                    <span class="error-field">
-                                            {{ error }}
-                                        </span>
-                                {% endfor %}
-                                {% render_field form.note class="form-control input-box" placeholder="Take down notes..." rows="1" %}
-                            </div>
+                            {% endfor %}
+                            {% render_field form.is_expense class="form-control input-box" placeholder="Ex. Emergency Funds" %}
                         </div>
 
-                        <div class="col-xl-6">
-
-                            <div class="form-group statistic-input-box">
-                                <span class="input-text-field-label float-left">Date</span>
-                                {% for error in form.date.errors %}
-                                    <span class="error-field">
+                        <div class="form-group statistic-input-box">
+                            <span class="input-text-field-label float-left">Notes</span>
+                            {% for error in form.note.errors %}
+                                <span class="error-field">
                                             {{ error }}
                                         </span>
-                                {% endfor %}
-                                {% render_field form.date class="form-control input-box" placeholder="08/05/2020" %}
-                            </div>
-
-
-                            <div class="form-group statistic-input-box">
-                                <span class="input-text-field-label float-left">Amount</span>
-                                {% for error in form.amount.errors %}
-                                    <span class="error-field">
-                                        {{ error }}
-                                    </span>
-                                {% endfor %}
-                                {% render_field form.amount class="form-control input-box" placeholder="0.00 PHP" %}
-                            </div>
-
-
+                            {% endfor %}
+                            {% render_field form.note class="form-control input-box" placeholder="Take down notes..." rows="1" %}
                         </div>
-
-
                     </div>
-                    <div class="float-right">
-                        <a class="add-transaction-cancel-btn" href="{% url 'goal:goal_detail' object.goal.pk %}"
-                           style="text-decoration: none;padding: 8px 24px !important;">cancel</a>
-                        <button class="add-transaction-save-btn">save</button>
-                    </div>
-                </form>
 
-            </div>
+                    <div class="col-xl-6">
 
-
-            <!--No object, use Add Transaction-->
-        {% else %}
-
-            <div class="transaction-header">
-                <span class="transaction-wallet-name">Add Transaction</span>
-            </div>
-
-            <div class="add-transaction-block">
-
-                <form method="post" class="wallet-form-fields">
-                    {% csrf_token %}
-                    <div class="row">
-
-                        <div class="col-xl-6">
-                            <div class="form-group">
-                                <span class="input-text-field-label float-left">Transaction Type</span>
-                                {% for error in form.is_expense.errors %}
-                                    <span class="error-field">
-                                        {{ error }}
-                                    </span>
-                                {% endfor %}
-                                {% render_field form.is_expense class="form-control input-box" placeholder="Ex. Emergency Funds" %}
-                            </div>
-
-                            <div class="form-group statistic-input-box">
-                                <span class="input-text-field-label float-left">Notes</span>
-                                {% for error in form.note.errors %}
-                                    <span class="error-field">
+                        <div class="form-group statistic-input-box">
+                            <span class="input-text-field-label float-left">Date</span>
+                            {% for error in form.date.errors %}
+                                <span class="error-field">
                                             {{ error }}
                                         </span>
-                                {% endfor %}
-                                {% render_field form.note class="form-control input-box" placeholder="Take down notes..." rows="1" %}
-                            </div>
+                            {% endfor %}
+                            {% render_field form.date class="form-control input-box" placeholder="08/05/2020" %}
                         </div>
 
-                        <div class="col-xl-6">
 
-                            <div class="form-group statistic-input-box">
-                                <span class="input-text-field-label float-left">Date</span>
-                                {% for error in form.date.errors %}
-                                    <span class="error-field">
-                                            {{ error }}
-                                        </span>
-                                {% endfor %}
-                                {% render_field form.date class="form-control input-box" placeholder="08/05/2020" %}
-                            </div>
-
-
-                            <div class="form-group statistic-input-box">
-                                <span class="input-text-field-label float-left">Amount</span>
-                                {% for error in form.amount.errors %}
-                                    <span class="error-field">
+                        <div class="form-group statistic-input-box">
+                            <span class="input-text-field-label float-left">Amount</span>
+                            {% for error in form.amount.errors %}
+                                <span class="error-field">
                                         {{ error }}
                                     </span>
-                                {% endfor %}
-                                {% render_field form.amount class="form-control input-box" placeholder="0.00 PHP" %}
-                            </div>
-
-
+                            {% endfor %}
+                            {% render_field form.amount class="form-control input-box" placeholder="0.00 PHP" %}
                         </div>
 
 
                     </div>
-                    <div class="float-right">
 
-                        <a class="add-transaction-cancel-btn" href="{% url 'goal:goal_detail' view.kwargs.pk %}"
-                           style="text-decoration: none;padding: 8px 24px !important;">cancel</a>
 
-                        <button class="add-transaction-save-btn">save</button>
-                    </div>
-                </form>
+                </div>
+                <div class="float-right">
+                            {% if object %}
+                           <a class="add-transaction-cancel-btn" href="{% url 'goal:goal_detail' object.goal.pk %}"
+                       style="text-decoration: none;padding: 8px 24px !important;">cancel</a>
+                    {% else %}
+                                 <a class="add-transaction-cancel-btn" href="{% url 'goal:goal_detail' view.kwargs.pk %}"
+                       style="text-decoration: none;padding: 8px 24px !important;">cancel</a>
+                    {% endif %}
 
-            </div>
+                    <button class="add-transaction-save-btn">save</button>
+                </div>
+            </form>
 
-        {% endif %}
-
+        </div>
 
     </div>
 
@@ -168,8 +100,8 @@
     </script>
 
     <script>
-       activeGoalHeader("#header-goal-details");
-       activeNavIcon('#sidenav-goals','#m-sidenav-goals');
+        activeGoalHeader("#header-goal-details");
+        activeNavIcon('#sidenav-goals', '#m-sidenav-goals');
     </script>
 
 {% endblock %}
