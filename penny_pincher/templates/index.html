@@ -1,5 +1,6 @@
 {% extends 'base_navigation.html' %}
 {% load static %}
+{% load humanize %}
 
 {% block title %}Penny Pincher - Dashboard{% endblock %}
 {% block head-css-extension %}
@@ -33,7 +34,7 @@
                                         <span data-attr-wallet-name="{{ wallet.name }}"
                                               class="wallet-type">{{ wallet.get_type_display }}</span>
                                     </div>
-                                    <span class="wallet-amount">{{ wallet.balance }}</span>
+                                    <span class="wallet-amount">{{ wallet.balance.amount|intcomma }}</span>
                                 </div>
                             </div>
                         </div>
@@ -182,7 +183,7 @@
                     </div>
 
                     <div class="statistic-card">
-                        <span class="statistic-card-title">Period of Expenses</span>
+                        <span class="statistic-card-title">Period of Expenses and Earnings</span>
                         <div class="statistics-block -chart">
                             <span class="chart-date-range">Mar 01 - 31</span>
                             <!-- Charts and Numbers-->
