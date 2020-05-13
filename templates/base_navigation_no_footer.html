@@ -10,7 +10,9 @@
             <div class="sidebar-block">
 
                 <div class="sidenav" id="sidenav">
-                    <img src="{% static "icons/logo.png" %}" alt="" class="main-logo" id="main-logo">
+                    <a href="{% url 'dashboard' %}">
+                        <img src="{% static "icons/logo.png" %}" alt="" class="main-logo" id="main-logo">
+                    </a>
                     <img src="{% static "icons/menu.svg" %}" alt="menu" class="header-menu-mobile"
                          id="header-menu-mobile">
 
@@ -74,8 +76,9 @@
                 </div>
 
                 <div class="sidenav-mobile" id="sidenav-mobile">
-                    <img src="{% static "icons/logo.png" %}" alt="" class="main-logo -mobile-logo">
-
+                    <a href="{% url 'dashboard' %}">
+                        <img src="{% static "icons/logo.png" %}" alt="" class="main-logo -mobile-logo">
+                    </a>
                     <div class="sidenav-menu -mobile">
                         <ul class="pages-control -mobile">
                             <li class="sidenav-item" id="m-sidenav-dashboard">

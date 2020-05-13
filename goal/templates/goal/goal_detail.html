@@ -1,8 +1,10 @@
 {% extends 'goal/goal_header.html' %}
 {% load widget_tweaks %}
-{% block title %}Penny Pincher - Goal Details{% endblock %}
 {% load i18n %}
 {% load static %}
+{% load humanize %}
+
+{% block title %}Penny Pincher - Goal Details{% endblock %}
 
 {% block main-content %}
 
@@ -36,7 +38,7 @@
 
                         <div class="progress-dates">
                             <span class="progress-date">Mar 2020</span>
-                            <span class="progress-date">{{ goal.target_date.month }} {{ goal.target_date.year }}</span>
+                            <span class="progress-date">{{ goal.target_date|date:"M Y" }}</span>
                         </div>
 
                     </div>
@@ -59,39 +61,29 @@
 
             <div class="transaction-display-block">
                 <div class="statistic-card">
-
-                    <span class="statistic-card-title">March 1, 2020</span>
-
                     <div class="statistics-block">
                         <!--Display this div below if there are no transactions-->
                         <!-- <div sata-attr-message="No Transactions." class="no-transactions-message">To add a transaction, click Add Transaction on the upper right.</div> -->
                         {% for transact in object.goaltransaction_set.all %}
                             <div class="transaction"> <!--This is one transaction line-->
-                                <div class="transaction-type">
-
-                                    <img class="transaction-icon" src="{% static "icons/extra-income.png" %}"
-                                         alt="Transaction Icon">
-
-                                    <span class="transaction-name">Transaction Name</span>
+                                <div class="transaction-price">
+                                    <span class="transaction-amount">{{ transact.amount }}</span>
                                 </div>
 
                                 <div class="transaction-notes">
-
-                                    <!--Place notes here-->
-
-
-                                    <!--If no notes display this div-->
-                                    <div class="no-notes">
-                                        <span class="note-empty-lines"></span>
-                                        <span class="note-empty-lines"></span>
-                                        <span class="note-empty-lines"></span>
-                                    </div>
-
+                                    {% if transact.note %}
+                                        {{ transact.note }}
+                                    {% else %}
+                                        <!--If no notes display this div-->
+                                        <div sata-attr-message="--- No Notes. ---"
+                                             class="no-transactions-message -notes"></div>
+                                    {% endif %}
                                 </div>
 
-                                <div class="transaction-price">
-                                    <span class="transaction-amount">-1,000.00</span>
+                                <div class="transaction-time">
+                                    <span class="transaction-date date">{{ transact.date }}</span>
                                 </div>
+
 
                                 <div class="transaction-control">
                                     <a href="{% url 'goal:update_transaction' transact.pk %}">
@@ -106,6 +98,15 @@
                                 </div>
 
                             </div>
+
+
+
+                        {% empty %}
+
+                             <div sata-attr-message="No Transactions." class="no-transactions-message">
+                                 To add a transaction, click Add Transaction on the upper right.
+                             </div>
+
                         {% endfor %}
 
                     </div>
