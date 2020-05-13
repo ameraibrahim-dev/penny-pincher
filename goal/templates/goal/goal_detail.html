@@ -10,7 +10,7 @@
 
         <div class="section-header">
             <span class="transaction-wallet-name">{{ goal.name }} Goal</span>
-             <a class="btn-primary add-transaction-btn" style="text-decoration: none;"
+            <a class="btn-primary add-transaction-btn" style="text-decoration: none;"
                href="{% url 'goal:goal_list' %}">View Goals List</a>
         </div>
 
@@ -109,7 +109,6 @@
                             </div>
                         {% endfor %}
 
-
                     </div>
 
                 </div>
@@ -130,15 +129,9 @@
 
     <script src="{% static "js/progress-bar.js" %}"></script>
     <script src="{% static "js/pie-chart.js" %}"></script>
-
     <script>
-        activeWalletHeader("#header-goal-details");
-    </script>
-    <script>
-
-        $('#sidenav-goals').toggleClass('-active');
-        $('#m-sidenav-goals').toggleClass('-active-mobile');
-
+        activeGoalHeader("#header-goal-details");
+        activeNavIcon('#sidenav-goals', '#m-sidenav-goals');
     </script>
 
 {% endblock %}
