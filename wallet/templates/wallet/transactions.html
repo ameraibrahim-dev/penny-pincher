@@ -98,7 +98,7 @@
                         <!--Display this div below if there are no transactions-->
                         <div id="transactions-list" class="transactions-list -width-100">
                             <div class="list -transaction-margin">
-                                {% for transaction in object.wallettransaction_set.all reversed %}
+                                {% for transaction in object.wallettransaction_set.all|dictsort:"date" reversed %}
                                     <!--This is one transaction line-->
                                     <div class="transaction">
                                         <div class="transaction-type">
