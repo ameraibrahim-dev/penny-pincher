@@ -39,14 +39,12 @@ class UpdateGoalForm(ModelForm):
     def clean(self):
         # balance and target amount comparison
         if self.cleaned_data['balance'].amount > self.cleaned_data['target_amount'].amount:
-            self.add_error('target_amount', 'Target amount should grater than or equal your balance')
-
+            self.add_error('target_amount', 'Target amount should grater than your balance')
         return self.cleaned_data
 
 
 class GoalTransactionForm(ModelForm):
-    date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}),
-                           validators=[NotInFutureValidator])
+    date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
 
     class Meta:
         model = GoalTransaction
