@@ -69,35 +69,35 @@
                   class="section-description">Shows a summary report of all wallets</span>
 
             <div class="overview-cards-block">
+                {% if goal %}
+                    <div class="statistic-card">
 
-                <div class="statistic-card">
-
-                    <span class="statistic-card-title">Goal - {{ goal.name }}</span>
-                    <div class="statistics-block">
+                        <span class="statistic-card-title">Goal - {{ goal.name }}</span>
+                        <div class="statistics-block">
 
 
                         <span class="progress-percent" id="progress-percent">{{ goal.saving_progress }}
                             <!--This is the value that represents the bar--></span>
 
-                        <div class="progress-display-block">
+                            <div class="progress-display-block">
 
-                            <div class="progress-wrap">
-                                <div class="progress-bar" id="progress-bar">
-                                    <!--This is the actual bar that moves--></div>
+                                <div class="progress-wrap">
+                                    <div class="progress-bar" id="progress-bar">
+                                        <!--This is the actual bar that moves--></div>
+                                </div>
+
+                                <div class="progress-dates">
+                                    <span class="progress-date" id="start-date"></span>
+                                    <span class="progress-date">{{ goal.target_date|date:"M Y" }}</span>
+                                </div>
+
                             </div>
 
-                            <div class="progress-dates">
-                                <span class="progress-date" id="start-date"></span>
-                                <span class="progress-date">{{ goal.target_date|date:"M Y" }}</span>
-                            </div>
 
                         </div>
 
-
                     </div>
-
-                </div>
-
+                {% endif %}
                 <div class="overview-finance-cards">
 
                     <div class="statistic-card">
@@ -211,7 +211,7 @@
     <script src="{% static "js/pie-chart.js" %}"></script>
     <script src="{% static "js/line-chart.js" %}"></script>
     <script src="{% static "js/index.js" %}"></script>
-        <script src="{% static "js/multiple-select.js" %}"></script>
+    <script src="{% static "js/multiple-select.js" %}"></script>
     <script src="{% static "js/dashboard.js" %}"></script>
     <script src="{% static "js/date.js" %}"></script>
     <script>
