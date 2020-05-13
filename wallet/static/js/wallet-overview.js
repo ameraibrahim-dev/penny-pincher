@@ -234,7 +234,7 @@
         //generate values for all the labels
         let earnings_data = [];
         let expense_data = [];
-        let labels = [...accountBalanceInfo.keys()]
+        let labels = [...accountBalanceInfo.keys()];
         labels.forEach(value => {
             if (earnings.has(value)) {
                 earnings_data.push(earnings.get(value))
