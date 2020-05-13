@@ -27,6 +27,12 @@ class CreateTransactionView(CreateView, LoginRequiredMixin):
 
     def get_success_url(self):
         return reverse_lazy('goal:goal_detail', kwargs={'pk': self.kwargs.get('pk')})
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        goal_pk = self.kwargs.get('pk')
+        goal = Goal.objects.filter(owner=self.request.user, pk=goal_pk).first()
+        context['goal'] = goal
+        return context
 
 
 class UpdateTransactionView(UpdateView, LoginRequiredMixin):
@@ -57,6 +63,11 @@ class UpdateTransactionView(UpdateView, LoginRequiredMixin):
 
     def get_success_url(self):
         return reverse_lazy('goal:goal_detail', kwargs={'pk': self.get_object().goal.pk})
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['goal'] = self.get_object()
+        return context
 
 
 class DeleteTransactionView(DeleteView, LoginRequiredMixin):
