@@ -70,7 +70,7 @@
 
                     </div>
                     <div class="float-right">
-                        <a class="add-transaction-cancel-btn" href="{{ cancel_url }}"
+                        <a class="add-transaction-cancel-btn" href="{% url 'goal:goal_detail' object.goal.pk %}"
                            style="text-decoration: none;padding: 8px 24px !important;">cancel</a>
                         <button class="add-transaction-save-btn">save</button>
                     </div>
@@ -144,13 +144,9 @@
                     </div>
                     <div class="float-right">
 
-                        {% if object %}
-                            <a class="add-transaction-cancel-btn" href="{% url 'goal:goal_detail' object.pk %}"
-                               style="text-decoration: none;padding: 8px 24px !important;">cancel</a>
-                        {% else %}
-                            <a class="add-transaction-cancel-btn" href="{% url 'goal:goal_detail' view.kwargs.pk %}"
-                               style="text-decoration: none;padding: 8px 24px !important;">cancel</a>
-                        {% endif %}
+                        <a class="add-transaction-cancel-btn" href="{% url 'goal:goal_detail' view.kwargs.pk %}"
+                           style="text-decoration: none;padding: 8px 24px !important;">cancel</a>
+
                         <button class="add-transaction-save-btn">save</button>
                     </div>
                 </form>
