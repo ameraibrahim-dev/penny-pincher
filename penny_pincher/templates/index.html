@@ -151,7 +151,7 @@
                             <div class="statistic-input-box">
                                 <span class="statistic-input-label">Note</span>
                                 <div class="statistics-input-box-style">
-                                    <input type="text" name="statistic-keyword-filter" id="statisticKeywordFilter"
+                                    <input type="text" name="statistic-keyword-filter" id="filterByNoteTextField"
                                            class="statistic-keyword-filter" placeholder="Filter by specific keyword">
                                 </div>
                             </div>
@@ -176,7 +176,7 @@
                             <span class="chart-date-range">Mar 01 - 31</span>
                             <!-- Charts and Numbers-->
                             <div class="chart-size">
-                                <canvas id="homeLineChart" width="300" height="300"></canvas>
+                                <canvas id="walletBalanceCurve" width="300" height="300"></canvas>
                             </div>
 
                         </div>
@@ -188,7 +188,7 @@
                             <span class="chart-date-range">Mar 01 - 31</span>
                             <!-- Charts and Numbers-->
                             <div class="chart-size">
-                                <canvas id="homePieChart" width="300" height="300"></canvas>
+                                <canvas id="savingsExpensesContrast" width="300" height="300"></canvas>
                             </div>
 
                         </div>
@@ -211,7 +211,7 @@
     <script src="{% static "js/pie-chart.js" %}"></script>
     <script src="{% static "js/line-chart.js" %}"></script>
     <script src="{% static "js/index.js" %}"></script>
-    <script src="{% static "js/multiple-select.js" %}"></script>
+    <script src="{% static "js/dashboard.js" %}"></script>
     <script>
         activeNavIcon("#sidenav-dashboard", "#m-sidenav-dashboard");
     </script>
