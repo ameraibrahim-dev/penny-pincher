@@ -194,18 +194,39 @@
     }
 
     function updateWalletBalanceCurveCtxChart() {
-        console.log("Wallet List:", walletList);
-        console.log("Transactions:", transactions);
+        //console.log("Wallet List:", walletList);
+        //console.log("Transactions:", transactions);
         // get date range
         let date_range = getDateRange();
-        console.log("Date Range:", date_range);
+        // console.log("Date Range:", date_range);
         getWalletInitialBalance();
         let balance_info = getAccountBalanceInfo(date_range);
-        console.log("Balance Info:", balance_info);
-        let expense = getFilteredExpensesEarnings(date_range, true);
+        //console.log("Balance Info:", balance_info);
+        let expenses = getFilteredExpensesEarnings(date_range, true);
         let earnings = getFilteredExpensesEarnings(date_range);
-        console.log(expense,earnings)
+        //  console.log(expense,earnings)
+//set data,labels and update
+        walletBalanceCurveChart.data.datasets[0].data = [...balance_info.values()];
+        walletBalanceCurveChart.data.datasets[1] = {
+            label: "Expenses",
+            strokeColor: "#be2e04",
+            fill: "#be2c26",
+            borderColor: "#be2c26",
+            backgroundColor: "#be2c26",
+            data: expenses,
 
+        };
+        walletBalanceCurveChart.data.datasets[2] = {
+            label: "Earnings",
+            strokeColor: "#0fbe09",
+            fill: "#0fbe09",
+            borderColor: "#0fbe09",
+            backgroundColor: "#0fbe09",
+            data: earnings,
+
+        };
+        walletBalanceCurveChart.data.labels = [...balance_info.keys()];
+        walletBalanceCurveChart.update();
     }
 
     function updateSavingsExpensesContrastChart() {
