@@ -31,26 +31,15 @@
         filter();
     });
 
-    function isCheckboxChecked() {
+    $(document).on("click", "input[type='checkbox']", function () {
+        if (categories.includes($(this).attr('id'))) {
 
+            let index = categories.indexOf($(this).attr('id'));
+            categories.splice(index, 1);
 
-        $("input[type='checkbox']").click(function () {
-            if (categories.includes($(this).attr('id'))) {
-
-                let index = categories.indexOf($(this).attr('id'));
-                categories.splice(index, 1);
-
-            } else {
-
-
-            }
-            //Adds each checked checkbox to array.
-            filter();
-        });
-
-
-        return categories;
-    }
+        }
+        filter();
+    });
 
     function readCategories() {
         $.each($("input[type='checkbox']:checked"), function () {

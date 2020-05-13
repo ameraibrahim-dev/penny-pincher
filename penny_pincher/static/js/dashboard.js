@@ -1,6 +1,6 @@
 {
     const WALLET_TRANSACTIONS_API_URL = "/api/v1/user/wallet/transactions/list/";
-        const WALLET_LIST_API_URL = "/api/v1/user/wallet/list/";
+    const WALLET_LIST_API_URL = "/api/v1/user/wallet/list/";
     const NOTE_FIELD_LOCATOR = "#filterByNoteTextField";
     const DATE_RANGE_FIELD_LOCATOR = "#DateRangeFilter";
     const TOTAL_PERIOD_EXPENSES_TEXT_LOCATOR = "#total-period-expenses";
@@ -30,25 +30,16 @@
         filter();
     });
 
-    function isCheckboxChecked() {
 
-        $("input[type='checkbox']").click(function () {
-            if (categories.includes($(this).attr('id'))) {
+    $(document).on("click", "input[type='checkbox']", function () {
+        if (categories.includes($(this).attr('id'))) {
 
-                let index = categories.indexOf($(this).attr('id'));
-                categories.splice(index, 1);
+            let index = categories.indexOf($(this).attr('id'));
+            categories.splice(index, 1);
 
-            } else {
-
-
-            }
-            //Adds each checked checkbox to array.
-            filter();
-        });
-
-
-        return categories;
-    }
+        }
+        filter();
+    });
 
     function readCategories() {
         $.each($("input[type='checkbox']:checked"), function () {
@@ -153,7 +144,7 @@
         $(TOTAL_PERIOD_EXPENSES_TEXT_LOCATOR).text(Number(totalPeriodExpenses).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         $(TOTAL_PERIOD_EARNINGS_TEXT_LOCATOR).text(Number(totalPeriodEarnings).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         updateSavingsExpensesContrastChart();
-      //  updateWalletBalanceCurveCtxChart();
+        //  updateWalletBalanceCurveCtxChart();
     }
 
 //charts.js
@@ -164,7 +155,7 @@
                 labels: ['Savings', 'Expenses',],
                 datasets: [{
                     label: '# of Votes',
-                    data: [10,30],
+                    data: [10, 30],
                     backgroundColor: [
                         '#49BEB7',
                         '#EE8572',
@@ -199,7 +190,7 @@
             options: lineChartOptions,
 
         });
-   //     updateWalletBalanceCurveCtxChart();
+        //     updateWalletBalanceCurveCtxChart();
         updateSavingsExpensesContrastChart();
     }
 

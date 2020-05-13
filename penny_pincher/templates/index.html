@@ -214,6 +214,20 @@
     <script src="{% static "js/index.js" %}"></script>
     <script src="{% static "js/dashboard.js" %}"></script>
     <script>
+
+    $("input[type='checkbox']").click(function () {
+        alert("click")
+        if (categories.includes($(this).attr('id'))) {
+
+            let index = categories.indexOf($(this).attr('id'));
+            categories.splice(index, 1);
+
+        } else {
+
+
+        }
+        alert("s")
+    });
         activeNavIcon("#sidenav-dashboard", "#m-sidenav-dashboard");
     </script>
 
