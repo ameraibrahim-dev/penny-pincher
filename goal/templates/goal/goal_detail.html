@@ -23,7 +23,7 @@
                     <canvas id="homePieChart" width="300" height="300"></canvas>
                 </div>
 
-                <span class="target-goal">{{ goal.target_amount.amount }}</span>
+                <span class="target-goal">{{ goal.target_amount.amount|intcomma  }}</span>
 
                 <div class="goal-progress">
                     <!--This is the value that represents the bar-->
@@ -67,7 +67,7 @@
                         {% for transact in object.goaltransaction_set.all %}
                             <div class="transaction"> <!--This is one transaction line-->
                                 <div class="transaction-price">
-                                    <span class="transaction-amount">{{ transact.amount }}</span>
+                                    <span class="transaction-amount">{{ transact.amount|intcomma  }}</span>
                                 </div>
 
                                 <div class="transaction-notes">
