@@ -202,8 +202,9 @@
         getWalletInitialBalance();
         let balance_info = getAccountBalanceInfo(date_range);
         console.log("Balance Info:", balance_info);
-        let expense = getExpenses(date_range);
-        let earnings = getEarnings(date_range);
+        let expense = getFilteredExpensesEarnings(date_range, true);
+        let earnings = getFilteredExpensesEarnings(date_range);
+        console.log(expense,earnings)
 
     }
 
@@ -212,22 +213,18 @@
         savingsExpensesContrastChart.update();
     }
 
-    function getExpenses(date_range = []) {
-        let expenses = [];
+    function getFilteredExpensesEarnings(date_range = [], isExpense = false) {
+        let trans = [];
         date_range.forEach(value => {
-            let expense_transacts=transactions.filter(t => {
-                t.date=value && t.category.is_expense==true;
-            })
-            console.log(expense_transacts)
-        })
-
-    }
-
-    function getEarnings(date_range = []) {
-        let earnings = [];
-        date_range.forEach(value => {
-
-        })
+            let transacts = transactions.filter(val => (val.date == value && val.category.is_expense == isExpense));
+            // sum all transactions
+            let sum = 0;
+            transacts.forEach(val => {
+                sum += val.amount.amount;
+            });
+            trans.push(sum);
+        });
+        return trans;
     }
 
     function getAccountBalanceInfo(date_range) {
