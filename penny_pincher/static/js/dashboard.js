@@ -216,10 +216,15 @@
         date_range.forEach(value => {
             // get all trasactions on that date
             let transactionOnThatDate = transactions.filter(t => t.date == value);
-            console.log("transactionOnThatDate:", value, transactionOnThatDate);
-
             transactionOnThatDate.forEach(singleTransact => {
                 //find the target wallet
+                let wallet = walletList.find(w => w.id == singleTransact.wallet);
+                if (singleTransact.is_expense) {
+                    wallet.initial =wallet.initial- singleTransact.amount.amount;
+
+                } else {
+                    wallet.initial += singleTransact.amount.amount;
+                }
             });
             accountBalanceInfo.set(value, getTotalInitialFromAllWallet());
 
@@ -230,7 +235,6 @@
     function getTotalInitialFromAllWallet() {
         let sum = 0;
         walletList.forEach(value => {
-            console.log(value);
             sum += value.initial;
         });
         return sum;
