@@ -55,9 +55,8 @@ a:hover, a:focus {
   color: white;
   text-decoration: none; }
 
-.form-control{
-  height: auto;
-}
+.form-control {
+  height: auto; }
 
 .component {
   margin-top: 40px;
@@ -1125,7 +1124,7 @@ button {
 
 .overview-filter-charts {
   display: grid;
-  grid-template-columns: 60% 40%;
+  grid-template-columns: 58% 40%;
   grid-gap: 20px; }
 
 .chart-date-range {
