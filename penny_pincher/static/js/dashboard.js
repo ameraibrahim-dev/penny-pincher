@@ -78,7 +78,7 @@
             url: WALLET_LIST_API_URL,
             async: false,
             success: function (result) {
-                walletList = eval(result)[0];
+                walletList = eval(result);
             }
         });
     }
