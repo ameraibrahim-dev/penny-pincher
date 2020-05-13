@@ -110,7 +110,7 @@
 
             input.type = "checkbox";
             input.checked = true;
-            input.id = value.name;
+            input.id = unescape(value.name);
 
             span.innerHTML = value.name;
 
