@@ -152,7 +152,7 @@
         // display these total number
         $(TOTAL_PERIOD_EXPENSES_TEXT_LOCATOR).text(Number(totalPeriodExpenses).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         $(TOTAL_PERIOD_EARNINGS_TEXT_LOCATOR).text(Number(totalPeriodEarnings).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-    //    updateSavingsExpensesContrastChart();
+        updateSavingsExpensesContrastChart();
       //  updateWalletBalanceCurveCtxChart();
     }
 
@@ -200,7 +200,7 @@
 
         });
    //     updateWalletBalanceCurveCtxChart();
-     //   updateSavingsExpensesContrastChart();
+        updateSavingsExpensesContrastChart();
     }
 
     function updateWalletBalanceCurveCtxChart() {
