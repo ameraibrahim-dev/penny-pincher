@@ -4,42 +4,6 @@
 {% load i18n %}
 
 {% block content %}
-    {#     <form method="post" action=".">#}
-    {#         {% csrf_token %}#}
-    {#         {% for err in form.errors %}#}
-    {#          <div class="error-field">#}
-    {#            {{ err }}#}
-    {#          </div>#}
-    {#            {% endfor %}#}
-    {#          <span class="registration-text-field-label">First Name</span>#}
-    {#         {% render_field form.first_name class="registration-text-field" %}#}
-    {##}
-    {#          <span class="registration-text-field-label">Last Name</span>#}
-    {#         {% render_field form.last_name class="registration-text-field" %}#}
-    {##}
-    {#          <span class="registration-text-field-label">Email</span>#}
-    {#         {% for err in form.email.errors %}#}
-    {#              <span class="error-field">#}
-    {#                {{ err }}#}
-    {#              </span>#}
-    {#            {% endfor %}#}
-    {#         {% render_field form.email class="registration-text-field" %}#}
-    {##}
-    {##}
-    {##}
-    {#          <span class="registration-text-field-label">Password1</span>#}
-    {#            {% render_field form.password1 class="registration-text-field" %}#}
-    {##}
-    {#          <span class="registration-text-field-label">Password2</span>#}
-    {#         {% render_field form.password2 class="registration-text-field" %}#}
-    {##}
-    {#         {{ form.reCAPTCHA }}#}
-    {##}
-    {##}
-    {##}
-    {#  <input type="submit" value="{% trans 'Submit' %}" />#}
-    {#</form>#}
-
 
     <div class="access-body">
         <div class="access-container">
@@ -98,7 +62,7 @@
                             </div>
 
                             <div class="registration-input-field">
-                                <span class="registration-text-field-label">Password</span>
+                                <span class="registration-text-field-label -add-info">Password</span>
                                 {% for error in form.password1.errors %}
                                     <span class="error-field">
                                     {{ error }}

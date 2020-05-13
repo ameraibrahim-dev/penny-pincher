@@ -23,7 +23,7 @@
                                 <a href="{% url 'category:custom_category_list' %}" class="sub-item-name">
                                     My Categories</a>
                             </li>
-                            <li class="sub-item">
+                            <li class="sub-item" id="earnings-list">
                                 <a href="{% url 'category:predefined_earnings_category_list' %}" class="sub-item-name">
                                     Earnings Categories</a>
                             </li>
@@ -73,6 +73,11 @@
 {% endblock %}
 
 {% block body-javascript-extension %}
+    <script src="{% static 'js/category-sidepanel.js' %}"></script>
+
+    <script>
+         activeCategorySidepanel('#earnings-list');
+    </script>
 
     <script>
 

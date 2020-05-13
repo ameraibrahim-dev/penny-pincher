@@ -27,7 +27,7 @@
                                 <a href="{% url 'category:predefined_earnings_category_list' %}" class="sub-item-name">
                                     Earnings Categories</a>
                             </li>
-                            <li class="sub-item">
+                            <li class="sub-item" id="expenses-list">
                                 <a href="{% url 'category:predefined_expenses_category_list' %}" class="sub-item-name">
                                     Expenses Categories</a>
                         </ul>
@@ -70,6 +70,11 @@
 {% endblock %}
 
 {% block body-javascript-extension %}
+    <script src="{% static 'js/category-sidepanel.js' %}"></script>
+
+    <script>
+         activeCategorySidepanel('#expenses-list');
+    </script>
 
     <script>
         activeNavIcon("#sidenav-settings", "#m-sidenav-settings");
