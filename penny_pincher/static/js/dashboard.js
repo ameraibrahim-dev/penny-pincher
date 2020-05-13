@@ -199,6 +199,7 @@
         // get date range
         let date_range = getDateRange();
         console.log("Date Range:", date_range);
+        getWalletInitialBalance();
 
 
     }
@@ -209,7 +210,18 @@
     }
 
     function getWalletInitialBalance() {
-
+        transactions.forEach(value => {
+            let wallet = walletList.find(w => w.id == value.wallet);
+            if (wallet.initial in window) {
+                wallet.initial = wallet.balance.amount;
+            }
+            if (value.is_expense) {
+                wallet.initial += value.amount.amount;
+            } else {
+                wallet.initial -= value.amount.amount;
+            }
+        });
+        console.log(walletList);
     }
 
     function getDateRange() {
