@@ -37,7 +37,7 @@
                         </div>
 
                         <div class="progress-dates">
-                            <span class="progress-date">Mar 2020</span>
+                            <span class="progress-date" id="start-date"></span>
                             <span class="progress-date">{{ goal.target_date|date:"M Y" }}</span>
                         </div>
 
@@ -132,6 +132,7 @@
 
     <script src="{% static "js/progress-bar.js" %}"></script>
     <script src="{% static "js/pie-chart.js" %}"></script>
+    <script src="{% static "js/date.js" %}"></script>
     <script>
         activeGoalHeader("#header-goal-details");
         activeNavIcon('#sidenav-goals', '#m-sidenav-goals');

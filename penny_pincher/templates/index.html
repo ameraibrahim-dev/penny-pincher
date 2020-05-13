@@ -76,7 +76,7 @@
                     <div class="statistics-block">
 
 
-                        <span class="progress-percent" id="progress-percent">30
+                        <span class="progress-percent" id="progress-percent">{{ goal.saving_progress }}
                             <!--This is the value that represents the bar--></span>
 
                         <div class="progress-display-block">
@@ -88,7 +88,7 @@
 
                             <div class="progress-dates">
                                 <span class="progress-date" id="start-date"></span>
-                                <span class="progress-date">Dec 2020</span>
+                                <span class="progress-date">{{ goal.target_date|date:"M Y" }}</span>
                             </div>
 
                         </div>
