@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from category.models import Category
-from goal.models import GoalTransaction
+from goal.models import GoalTransaction, Goal
 from wallet.models import WalletTransaction, Wallet
 
 
@@ -39,3 +39,10 @@ class WalletSerializer(serializers.ModelSerializer):
     class Meta:
         model = Wallet
         fields = ['id', 'name', 'balance', 'created', 'updated', 'type']
+
+class GoalSerializer(serializers.ModelSerializer):
+    balance = MoneySerializer()
+    target_amount= MoneySerializer()
+    class Meta:
+        model = Goal
+        fields =  ['id', 'name', 'balance', 'target_amount', 'target_date', 'created','updated','saving_progress']
