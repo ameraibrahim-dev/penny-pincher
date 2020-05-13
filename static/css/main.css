@@ -1450,7 +1450,7 @@ button {
   .header-menu-list > .header-menu-item {
     margin-left: 20px; }
   .header-menu-list.-goals {
-    max-width: 400px; }
+    max-width: 500px; }
 
 .header-menu-item {
   transition: 0.3s ease; }
