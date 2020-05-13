@@ -261,7 +261,7 @@
                 if (singleTransact.is_expense) {
                     wallet.initial = wallet.initial - singleTransact.amount.amount;
                 } else {
-                    wallet.initial += singleTransact.amount.amount;
+                       wallet.initial = wallet.initial + singleTransact.amount.amount;
                 }
             });
             accountBalanceInfo.set(value, getTotalInitialFromAllWallet());
