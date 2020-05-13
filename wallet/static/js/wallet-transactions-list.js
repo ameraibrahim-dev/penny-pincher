@@ -36,29 +36,17 @@
         updateTotal(transaction_list.visibleItems);
 
     });
+    $(document).on("click", "input[type='checkbox']", function () {
+        if (categories.includes($(this).attr('id'))) {
 
-    function isCheckboxChecked() {
+            let index = categories.indexOf($(this).attr('id'));
+            categories.splice(index, 1);
 
-
-        $("input[type='checkbox']").click(function () {
-            if (categories.includes($(this).attr('id'))) {
-
-                let index = categories.indexOf($(this).attr('id'));
-                categories.splice(index, 1);
-
-            } else {
-
-
-            }
-            //Adds each checked checkbox to array.
-            readCategories();
-            filterFunction();
-            updateTotal(transaction_list.visibleItems);
-        });
-
-
-        return categories;
-    }
+        }
+        readCategories();
+        filterFunction();
+        updateTotal(transaction_list.visibleItems);
+    });
 
     function filterFunction() {
         readCategories();

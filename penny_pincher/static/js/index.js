@@ -24,8 +24,6 @@
         // set date range
         if (transactions) {
             $('input[id="DateRangeFilter"]').daterangepicker({
-                //   startDate: new Date(transactions[0].date),
-                // endDate: new Date(transactions.slice(-1)[0].date),
                 endDate: new Date(transactions[0].date),
                 startDate: new Date(transactions.slice(-1)[0].date),
             })
