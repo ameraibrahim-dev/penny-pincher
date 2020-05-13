@@ -110,6 +110,7 @@ function generateCategoriesHtml() {
         let span = document.createElement("span");
 
         input.type = "checkbox";
+        input.checked=true;
         input.id = value.name;
 
         span.innerHTML = value.name;
