@@ -143,7 +143,7 @@
         $(TOTAL_PERIOD_EXPENSES_TEXT_LOCATOR).text(Number(totalPeriodExpenses).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         $(TOTAL_PERIOD_EARNINGS_TEXT_LOCATOR).text(Number(totalPeriodEarnings).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         updateSavingsExpensesContrastChart();
-         updateWalletBalanceCurveCtxChart();
+        updateWalletBalanceCurveCtxChart();
     }
 
 //charts.js
@@ -189,19 +189,41 @@
             options: lineChartOptions,
 
         });
-           updateWalletBalanceCurveCtxChart();
+        updateWalletBalanceCurveCtxChart();
         updateSavingsExpensesContrastChart();
     }
 
     function updateWalletBalanceCurveCtxChart() {
-      console.log(walletList)
-        console.log(transactions)
+        console.log("Wallet List:", walletList);
+        console.log("Transactions:", transactions);
+        // get date range
+        let date_range = getDateRange();
+        console.log("Date Range:", date_range);
+
 
     }
 
     function updateSavingsExpensesContrastChart() {
         savingsExpensesContrastChart.data.datasets[0].data = [totalPeriodEarnings, totalPeriodExpenses];
         savingsExpensesContrastChart.update();
+    }
+
+    function getWalletInitialBalance() {
+
+    }
+
+    function getDateRange() {
+        let date_range = [];
+        transactions.forEach(value => {
+            if (!date_range.includes(value.date)) {
+                date_range.push(value.date)
+            }
+        });
+        walletList.forEach(value => {
+            date_range.push(value.created.substring(0, 10));
+        });
+        date_range.sort((a, b) => new Date(a) - new Date(b));
+        return date_range;
     }
 }
 
