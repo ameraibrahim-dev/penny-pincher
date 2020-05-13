@@ -3,6 +3,7 @@
 {% block title %}Penny Pincher - My Goals{% endblock %}
 {% load i18n %}
 {% load static %}
+{% load humanize %}
 
 {% block main-content %}
 
@@ -25,7 +26,7 @@
                         </div>
 
                         <div class="goal-details">
-                            <span data-attr-goal="" class="target-goal -list">{{ goal.target_amount.amount }}</span>
+                            <span data-attr-goal="" class="target-goal -list">{{ goal.target_amount.amount|intcomma }}</span>
                             <span class="goal-date">{{ goal.target_date }}</span>
                         </div>
 

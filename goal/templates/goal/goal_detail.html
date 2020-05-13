@@ -23,7 +23,7 @@
                     <canvas id="homePieChart" width="300" height="300"></canvas>
                 </div>
 
-                <span class="target-goal">{{ goal.target_amount.amount }}</span>
+                <span class="target-goal">{{ goal.target_amount.amount|intcomma  }}</span>
 
                 <div class="goal-progress">
                     <!--This is the value that represents the bar-->
@@ -66,8 +66,11 @@
                         <!-- <div sata-attr-message="No Transactions." class="no-transactions-message">To add a transaction, click Add Transaction on the upper right.</div> -->
                         {% for transact in object.goaltransaction_set.all %}
                             <div class="transaction"> <!--This is one transaction line-->
-                                <div class="transaction-price">
-                                    <span class="transaction-amount">{{ transact.amount }}</span>
+                                <div class="transaction-type">
+                                    <img class="transaction-icon" src="{% static "icons/internship.png" %}"
+                                                 alt="Transaction Icon">
+
+                                    <span class="transaction-amount" style="margin-left: 12px">{{ transact.amount|intcomma  }}</span>
                                 </div>
 
                                 <div class="transaction-notes">
