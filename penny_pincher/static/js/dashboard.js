@@ -151,7 +151,7 @@
         savingsExpensesContrastChart = new Chart(savingsExpensesContrastCtx, {
             type: 'doughnut',
             data: {
-                labels: ['Savings', 'Expenses',],
+                labels: ['Earnings', 'Expenses',],
                 datasets: [{
                     label: '# of Votes',
                     data: [10, 30],
