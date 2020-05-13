@@ -6,20 +6,19 @@
     const TOTAL_PERIOD_EXPENSES_TEXT_LOCATOR = "#total-period-expenses";
     const TOTAL_PERIOD_EARNINGS_TEXT_LOCATOR = "#total-period-earnings";
 
-    const WALLET_PK = $("#walletID").val();
     let categories = [];
     let transactions = [];
     let totalPeriodExpenses = 0;
     let totalPeriodEarnings = 0;
-    let walletInfo = null;
+    let walletList = [];
     let walletBalanceCurveCtx = document.getElementById('walletBalanceCurve').getContext('2d');
     let savingsExpensesContrastCtx = document.getElementById('savingsExpensesContrast').getContext('2d');
     let savingsExpensesContrastChart = null;
     let walletBalanceCurveChart = null;
 
     $(document).ready(function () {
-        getALLTransactionsByWalletID();
-        getWalletInfoWalletID();
+        getALLTransactions();
+        getAllWallets();
         readCategories();
         computeTotal();
         initCharts();
@@ -30,6 +29,7 @@
     $(DATE_RANGE_FIELD_LOCATOR).change(function () {
         filter();
     });
+
 
     $(document).on("click", "input[type='checkbox']", function () {
         if (categories.includes($(this).attr('id'))) {
@@ -57,11 +57,10 @@
         });
     }
 
-    function getALLTransactionsByWalletID() {
+    function getALLTransactions() {
         $.ajax({
             dataType: "json",
             url: WALLET_TRANSACTIONS_API_URL,
-            data: {'wallet': WALLET_PK},
             async: false,
             success: function (result) {
                 transactions = eval(result);
@@ -73,20 +72,21 @@
         });
     }
 
-    function getWalletInfoWalletID() {
+    function getAllWallets() {
         $.ajax({
             dataType: "json",
             url: WALLET_LIST_API_URL,
-            data: {'id': WALLET_PK},
             async: false,
             success: function (result) {
-                walletInfo = eval(result)[0];
+                walletList = eval(result)[0];
             }
         });
     }
 
     function filter() {
-        getALLTransactionsByWalletID();
+        console.log("filter call");
+        getALLTransactions();
+        getAllWallets();
         readCategories();
         filterDate();
         filterCategory();
@@ -144,7 +144,7 @@
         $(TOTAL_PERIOD_EXPENSES_TEXT_LOCATOR).text(Number(totalPeriodExpenses).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         $(TOTAL_PERIOD_EARNINGS_TEXT_LOCATOR).text(Number(totalPeriodEarnings).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         updateSavingsExpensesContrastChart();
-        updateWalletBalanceCurveCtxChart();
+        //  updateWalletBalanceCurveCtxChart();
     }
 
 //charts.js
@@ -155,7 +155,7 @@
                 labels: ['Savings', 'Expenses',],
                 datasets: [{
                     label: '# of Votes',
-                    data: [0, 0],
+                    data: [10, 30],
                     backgroundColor: [
                         '#49BEB7',
                         '#EE8572',
@@ -190,7 +190,7 @@
             options: lineChartOptions,
 
         });
-        updateWalletBalanceCurveCtxChart();
+        //     updateWalletBalanceCurveCtxChart();
         updateSavingsExpensesContrastChart();
     }
 
@@ -247,6 +247,9 @@
                 expense_data.push(0);
             }
         });
+        console.log([...accountBalanceInfo.values()])
+        console.log(expense_data)
+        console.log(earnings_data)
         //set data,labels and update
         walletBalanceCurveChart.data.datasets[0].data = [...accountBalanceInfo.values()];
         walletBalanceCurveChart.data.datasets[1] = {
@@ -276,3 +279,4 @@
         savingsExpensesContrastChart.update();
     }
 }
+

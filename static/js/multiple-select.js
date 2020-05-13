@@ -49,11 +49,8 @@ function isCheckboxChecked(){
 
             });
 
-      console.log(categories);
 
     });
-
-  console.log(categories);
 
   return categories;
 }
