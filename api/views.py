@@ -1,10 +1,11 @@
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
 
-from api.serializers import CategorySerializer, WalletTransactionSerializer, GoalTransactionSerializer, WalletSerializer
+from api.serializers import CategorySerializer, WalletTransactionSerializer, GoalTransactionSerializer, \
+    WalletSerializer, GoalSerializer
 from category.models import Category
 from category.utils import get_predefined_expenses_categories, get_predefined_earnings_categories
-from goal.models import GoalTransaction
+from goal.models import GoalTransaction, Goal
 from wallet.models import WalletTransaction, Wallet
 
 
@@ -63,3 +64,11 @@ class WalletList(generics.ListAPIView):
 
     def get_queryset(self):
         return Wallet.objects.filter(owner=self.request.user)
+
+class GoalList(generics.ListAPIView):
+    serializer_class = GoalSerializer
+    permission_classes = [IsAuthenticated]
+    filterset_fields = ['id', 'name', 'balance', 'target_amount', 'target_date', 'created','updated']
+
+    def get_queryset(self):
+        return Goal.objects.filter(owner=self.request.user)

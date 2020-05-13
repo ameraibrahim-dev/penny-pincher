@@ -4,11 +4,6 @@
 {% block header-extension %}
 
     <ul class="header-menu-list -goals">
-{#        <li class="header-menu-item" id="header-transactions">#}
-{#            <a href="{% url 'goal:goal_list' %}" class="header-menu-item-link">#}
-{#                <span class="header-menu-item-name">My Goals</span>#}
-{#            </a>#}
-{#        </li>#}
 
         <li class="header-menu-item" id="header-goal-details">
             <a href="{% url 'goal:goal_detail' goal.pk %}" class="header-menu-item-link">
@@ -22,6 +17,5 @@
             </a>
         </li>
     </ul>
-    <script src="{% static "js/wallet-header.js" %}"></script>
-{#activeWalletHeader("#header-transactions");#}
+    <script src="{% static "js/goal-header.js" %}"></script>
 {% endblock %}
