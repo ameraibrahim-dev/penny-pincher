@@ -26,7 +26,7 @@ let pieOptions= {
 var myChart = new Chart(ctx, {
     type: 'doughnut',
     data: {
-        labels: ['Savings', 'Expenses'],
+        labels: ['Earnings', 'Expenses'],
         datasets: [{
             label: '# of Votes',
             data: [30000, 12000],

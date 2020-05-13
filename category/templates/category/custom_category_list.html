@@ -23,15 +23,15 @@
                         <span class="main-item-name">Category Settings</span>
 
                         <ul class="settings-sub-items">
-                            <li class="sub-item">
-                                <a href="{% url 'category:custom_category_list' %}" class="sub-item-name">My
-                                    Categories</a>
+                            <li class="sub-item" id="custom-category-list">
+                                <a href="{% url 'category:custom_category_list' %}" class="sub-item-name">
+                                    My Categories</a>
                             </li>
-                            <li class="sub-item">
+                            <li class="sub-item" id="earnings-list">
                                 <a href="{% url 'category:predefined_earnings_category_list' %}" class="sub-item-name">
                                     Earnings Categories</a>
                             </li>
-                            <li class="sub-item">
+                            <li class="sub-item" id="expenses-list">
                                 <a href="{% url 'category:predefined_expenses_category_list' %}" class="sub-item-name">
                                     Expenses Categories</a>
                             </li>
@@ -102,12 +102,13 @@
 {% endblock %}
 
 {% block body-javascript-extension %}
-
+    <script src="{% static 'js/category-sidepanel.js' %}"></script>
 
     <script>
-
+         activeCategorySidepanel('#custom-category-list');
+    </script>
+    <script>
         activeNavIcon("#sidenav-settings", "#m-sidenav-settings");
-
     </script>
 
 {% endblock %}
