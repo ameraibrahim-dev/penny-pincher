@@ -40,9 +40,12 @@ class WalletSerializer(serializers.ModelSerializer):
         model = Wallet
         fields = ['id', 'name', 'balance', 'created', 'updated', 'type']
 
+
 class GoalSerializer(serializers.ModelSerializer):
     balance = MoneySerializer()
-    target_amount= MoneySerializer()
+    target_amount = MoneySerializer()
+
     class Meta:
         model = Goal
-        fields =  ['id', 'name', 'balance', 'target_amount', 'target_date', 'created','updated','saving_progress']
+        fields = ['id', 'name', 'balance', 'target_amount', 'target_date', 'created', 'updated', 'saving_progress',
+                  'date_progress']
