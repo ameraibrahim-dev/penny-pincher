@@ -18,3 +18,7 @@ class AbstractTransaction(models.Model):
 
     class Meta:
         abstract = True
+
+    @property
+    def sign(self):
+        return '-' if self.is_expense else '+'
