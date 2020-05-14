@@ -13,7 +13,6 @@
             paginationClass: "pagination",
             outerWindow: 2,
             innerWindow: 2,
-
         }],
     };
 
