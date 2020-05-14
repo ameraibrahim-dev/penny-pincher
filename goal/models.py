@@ -1,3 +1,4 @@
+from datetime import date, datetime
 from decimal import Decimal
 
 from django.db import models
@@ -23,6 +24,14 @@ class Goal(models.Model):
     @property
     def saving_progress(self):
         progress = Decimal(self.balance / self.target_amount)
+        progress = round(progress * 100, 2)
+        return progress if progress < 100 else 100
+
+    @property
+    def date_progress(self):
+        date_interval = self.target_date - self.created.date()
+        days_passed = datetime.now().date() - self.created.date()
+        progress = Decimal(days_passed / date_interval)
         progress = round(progress * 100, 2)
         return progress if progress < 100 else 100
 

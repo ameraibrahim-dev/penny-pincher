@@ -1,11 +1,7 @@
 var expanded = false;
 
 $(document).ready(function () {
-  let categories
-
-  categories = isCheckboxChecked();
-
-  console.log(categories);
+  let categories= isCheckboxChecked();
 });
 
 function showCheckboxes() {

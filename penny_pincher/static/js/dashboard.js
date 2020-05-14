@@ -78,13 +78,12 @@
             url: WALLET_LIST_API_URL,
             async: false,
             success: function (result) {
-                walletList = eval(result)[0];
+                walletList = eval(result);
             }
         });
     }
 
     function filter() {
-        console.log("filter call");
         getALLTransactions();
         getAllWallets();
         readCategories();
@@ -144,7 +143,7 @@
         $(TOTAL_PERIOD_EXPENSES_TEXT_LOCATOR).text(Number(totalPeriodExpenses).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         $(TOTAL_PERIOD_EARNINGS_TEXT_LOCATOR).text(Number(totalPeriodEarnings).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
         updateSavingsExpensesContrastChart();
-        //  updateWalletBalanceCurveCtxChart();
+        updateWalletBalanceCurveCtxChart();
     }
 
 //charts.js
@@ -152,7 +151,7 @@
         savingsExpensesContrastChart = new Chart(savingsExpensesContrastCtx, {
             type: 'doughnut',
             data: {
-                labels: ['Savings', 'Expenses',],
+                labels: ['Earnings', 'Expenses',],
                 datasets: [{
                     label: '# of Votes',
                     data: [10, 30],
@@ -190,75 +189,31 @@
             options: lineChartOptions,
 
         });
-        //     updateWalletBalanceCurveCtxChart();
+        updateWalletBalanceCurveCtxChart();
         updateSavingsExpensesContrastChart();
     }
 
     function updateWalletBalanceCurveCtxChart() {
-        let accountBalanceInfo = new Map();
-        let expenses = new Map();
-        let earnings = new Map();
-        let walletBalance = walletInfo.balance.amount;
-        // reverse transactions to get original balance
-        transactions.forEach(value => {
-            if (value.is_expense) {
-                walletBalance += value.amount.amount;
-            } else {
-                walletBalance -= value.amount.amount;
-            }
-        });
-        //add created date,balance at that time
-        let created_date = new Date(walletInfo.created).toISOString().substring(0, 10);
-        accountBalanceInfo.set(created_date, walletBalance);
-
-//create data
-        transactions.reverse().forEach(value => {
-            if (value.is_expense) {
-                walletBalance -= value.amount.amount;
-                if (expenses.has(value.date)) {
-                    expenses.set(value.date, expenses.get(value.date) + value.amount.amount);
-                } else {
-                    expenses.set(value.date, value.amount.amount);
-                }
-
-            } else {
-                walletBalance += value.amount.amount;
-                if (earnings.has(value.date)) {
-                    earnings.set(value.date, earnings.get(value.date) + value.amount.amount);
-                } else {
-                    earnings.set(value.date, value.amount.amount);
-                }
-            }
-            accountBalanceInfo.set(value.date, walletBalance)
-        });
-        //generate values for all the labels
-        let earnings_data = [];
-        let expense_data = [];
-        let labels = [...accountBalanceInfo.keys()]
-        labels.forEach(value => {
-            if (earnings.has(value)) {
-                earnings_data.push(earnings.get(value))
-            } else {
-                earnings_data.push(0);
-            }
-            if (expenses.has(value)) {
-                expense_data.push(expenses.get(value))
-            } else {
-                expense_data.push(0);
-            }
-        });
-        console.log([...accountBalanceInfo.values()])
-        console.log(expense_data)
-        console.log(earnings_data)
-        //set data,labels and update
-        walletBalanceCurveChart.data.datasets[0].data = [...accountBalanceInfo.values()];
+        //console.log("Wallet List:", walletList);
+        //console.log("Transactions:", transactions);
+        // get date range
+        let date_range = getDateRange();
+        // console.log("Date Range:", date_range);
+        getWalletInitialBalance();
+        let balance_info = getAccountBalanceInfo(date_range);
+        //console.log("Balance Info:", balance_info);
+        let expenses = getFilteredExpensesEarnings(date_range, true);
+        let earnings = getFilteredExpensesEarnings(date_range);
+        //  console.log(expense,earnings)
+//set data,labels and update
+        walletBalanceCurveChart.data.datasets[0].data = [...balance_info.values()];
         walletBalanceCurveChart.data.datasets[1] = {
             label: "Expenses",
             strokeColor: "#be2e04",
             fill: "#be2c26",
             borderColor: "#be2c26",
             backgroundColor: "#be2c26",
-            data: expense_data,
+            data: expenses,
 
         };
         walletBalanceCurveChart.data.datasets[2] = {
@@ -267,16 +222,94 @@
             fill: "#0fbe09",
             borderColor: "#0fbe09",
             backgroundColor: "#0fbe09",
-            data: earnings_data,
+            data: earnings,
 
         };
-        walletBalanceCurveChart.data.labels = labels;
+        walletBalanceCurveChart.data.labels = [...balance_info.keys()];
         walletBalanceCurveChart.update();
     }
 
     function updateSavingsExpensesContrastChart() {
         savingsExpensesContrastChart.data.datasets[0].data = [totalPeriodEarnings, totalPeriodExpenses];
         savingsExpensesContrastChart.update();
+    }
+
+    function getFilteredExpensesEarnings(date_range = [], isExpense = false) {
+        let trans = [];
+        date_range.forEach(value => {
+            let transacts = transactions.filter(val => (val.date == value && val.category.is_expense == isExpense));
+            // sum all transactions
+            let sum = 0;
+            transacts.forEach(val => {
+                sum += val.amount.amount;
+            });
+            trans.push(sum);
+        });
+        return trans;
+    }
+
+    function getAccountBalanceInfo(date_range) {
+        // create data
+        let accountBalanceInfo = new Map();
+        date_range.forEach(value => {
+            // get all trasactions on that date
+            let transactionOnThatDate = transactions.filter(t => t.date == value);
+            transactionOnThatDate.forEach(singleTransact => {
+                //find the target wallet
+                let wallet = walletList.find(w => w.id == singleTransact.wallet);
+                // transact
+                if (singleTransact.is_expense) {
+                    wallet.initial = wallet.initial - singleTransact.amount.amount;
+                } else {
+                       wallet.initial = wallet.initial + singleTransact.amount.amount;
+                }
+            });
+            accountBalanceInfo.set(value, getTotalInitialFromAllWallet());
+
+        });
+        return accountBalanceInfo;
+    }
+
+    function getTotalInitialFromAllWallet() {
+        let sum = 0;
+        walletList.forEach(value => {
+            sum += value.initial;
+        });
+        return sum;
+    }
+
+    function getWalletInitialBalance() {
+        transactions.forEach(value => {
+            let wallet = walletList.find(w => w.id == value.wallet);
+            if (wallet.initial == null) {
+                wallet.initial = wallet.balance.amount;
+            }
+            if (value.is_expense) {
+                wallet.initial += value.amount.amount;
+            } else {
+                wallet.initial -= value.amount.amount;
+            }
+        });
+        walletList.forEach(value => {
+            if (value.initial == null) {
+                value.initial = value.balance.amount;
+            }
+        })
+        console.log(walletList);
+    }
+
+    function getDateRange() {
+        let date_range = [];
+        transactions.forEach(value => {
+            if (!date_range.includes(value.date)) {
+                date_range.push(value.date)
+            }
+        });
+        walletList.forEach(value => {
+            date_range.push(value.created.substring(0, 10));
+        });
+        date_range.sort((a, b) => new Date(a) - new Date(b));
+        return date_range;
     }
 }
 
