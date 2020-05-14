@@ -211,7 +211,7 @@ img.fnone {
     width: 16px;
     height: 16px;
     margin-top: -8px;
-    background: url(../../images/msdropdown/skin1/dd_arrow.gif) no-repeat;
+    background: url(/static/images/dd_arrow.gif) no-repeat;
 }
 
 .dd .ddArrow:hover {
@@ -220,7 +220,7 @@ img.fnone {
 
 .dd .ddTitle {
     color: #000;
-    background: #e2e2e4 url(../../images/msdropdown/skin1/title-bg.gif) repeat-x left top;
+    background: #e2e2e4 url(/static/images/title-bg.gif) repeat-x left top;
 }
 
 .dd .ddTitle .ddTitleText {
