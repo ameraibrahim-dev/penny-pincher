@@ -22,7 +22,7 @@ class WalletTransactionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = WalletTransaction
-        fields = ['id', 'amount', 'date', 'is_expense', 'note', 'category', 'wallet']
+        fields = ['id', 'amount', 'date', 'is_expense', 'note', 'category', 'wallet', 'sign', 'created', 'updated']
 
 
 class GoalTransactionSerializer(serializers.ModelSerializer):
@@ -30,7 +30,7 @@ class GoalTransactionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = GoalTransaction
-        fields = ['id', 'amount', 'date', 'is_expense', 'note', 'goal']
+        fields = ['id', 'amount', 'date', 'is_expense', 'note', 'goal', 'sign', 'created', 'updated']
 
 
 class WalletSerializer(serializers.ModelSerializer):
