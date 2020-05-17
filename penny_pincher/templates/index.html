@@ -63,13 +63,11 @@
             </div>
         </div>
 
-        <div class="overview-section">
-
-            <span data-attr-section-title="Overview"
-                  class="section-description">Shows a summary report of all status transactions and recent goal savings</span>
+        <div class="overview-section" style="margin-bottom: 64px;">
+             <span data-attr-section-title="Goals" class="section-description">Recent goal savings</span>
 
             <div class="overview-cards-block">
-                {% if goal %}
+                 {% if goal %}
                     <div class="statistic-card">
 
                         <span class="statistic-card-title">Goal - {{ goal.name }}</span>
@@ -98,6 +96,17 @@
 
                     </div>
                 {% endif %}
+            </div>
+
+        </div>
+
+        <div class="overview-section">
+
+            <span data-attr-section-title="Overview"
+                  class="section-description" style="margin-bottom: 5px;">Shows a summary report of all status transactions</span>
+
+            <div class="overview-cards-block">
+
                 <div class="overview-finance-cards">
 
                     <div class="statistic-card">
