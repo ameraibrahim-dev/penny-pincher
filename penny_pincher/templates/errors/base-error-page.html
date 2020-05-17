@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+     <div class="access-container -error">
+
+        <div class="error-block">
+            <div class="error-box">
+                {% block error-message %}
+{#                    <span data-attr-error-message="Page not Found" class="error-type">404</span>#}
+{#                    #}
+{#                    <p class="error-description">You may have mistyped the address#}
+{#                    or the page may have moved.</p>#}
+                {% endblock %}
+
+                <a href="{% url 'dashboard' %}" class="btn-link">
+                    <button class="back-to-home-btn">Back to home</button>
+                </a>
+            </div>
+        </div>
+
+        <div class="error-image-block">
+            {% block error-image %}
+
+            {% endblock %}
+{#            <img src="../sqa_penny_pincher/assets/images/404-error.png" alt="" class="error-image">#}
+        </div>
+
+     </div>
+
+{% endblock %}

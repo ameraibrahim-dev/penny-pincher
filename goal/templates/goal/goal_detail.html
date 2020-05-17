@@ -13,7 +13,7 @@
         <div class="section-header">
             <span class="transaction-wallet-name">{{ goal.name }} Goal</span>
             <a class="btn-primary add-transaction-btn" style="text-decoration: none;"
-               href="{% url 'goal:goal_list' %}">View Goals List</a>
+               href="{% url 'goal:goal_list' %}">View My Goals</a>
         </div>
 
         <div class="section-body">
@@ -74,7 +74,7 @@
                                             <img class="transaction-icon" src="{% static "icons/internship.png" %}"
                                                          alt="Transaction Icon">
 
-                                            <span class="transaction-amount amount" style="margin-left: 12px">{{ transact.amount|intcomma  }}</span>
+                                            <span class="transaction-amount amount" style="margin-left: 12px">{{ transact.amount.amount|intcomma  }}</span>
                                         </div>
 
                                         <div class="transaction-notes note">
