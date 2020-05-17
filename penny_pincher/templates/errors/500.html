@@ -1,7 +1,7 @@
-{% extends 'base-error-pages.html' %}
+{% extends 'errors/base-error-page.html' %}
 {% load static %}
 
-{% block errorMessage %}
+{% block error-message %}
     <span data-attr-error-message="Internal Server Error" class="error-type">500</span>#}
 
     <p class="error-description">The server encountered an internal error<br>
@@ -12,6 +12,6 @@
 
     <img src="{% static 'images/500-error.png' %}" alt="" class="error-image">
 
-{% block errorImage %}
+{% block error-image %}
 
 {% endblock %}

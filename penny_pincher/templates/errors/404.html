@@ -1,7 +1,7 @@
-{% extends 'base-error-pages.html' %}
+{% extends 'errors/base-error-page.html' %}
 {% load static %}
 
-{% block errorMessage %}
+{% block error-message %}
     <span data-attr-error-message="Page not Found" class="error-type">404</span>#}
 
     <p class="error-description">You may have mistyped the address<br>
@@ -11,6 +11,6 @@
 
     <img src="{% static 'images/404-error.png' %}" alt="" class="error-image">
 
-{% block errorImage %}
+{% block error-image %}
 
 {% endblock %}
