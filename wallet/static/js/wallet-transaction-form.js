@@ -1,3 +1,4 @@
+{
 let categories = [];
 const TYPE_FIELD_LOCATOR = "#id_is_expense";
 const CATEGORY_FIELD_LOCATOR = "#id_category";
@@ -9,7 +10,7 @@ const SELECTED_CATEGORY_IS_EXPENSE = $(SELECTED_CATEGORY_TYPE_LOCATOR).val();
 const SELECTED_CATEGORY_NAME = $(SELECTED_CATEGORY_NAME_LOCATOR).val();
 
 // on type change
-$(TYPE_FIELD_LOCATOR).change(
+$(TYPE_FIELD_LOCATOR).click(
     function () {
         let type = $(TYPE_FIELD_LOCATOR + " option:selected").text();
         getCategories(type);
@@ -89,3 +90,4 @@ $(document).ready(function () {
         $(CATEGORY_FIELD_LOCATOR).html(categoryOptions);
     }
 });
+}
