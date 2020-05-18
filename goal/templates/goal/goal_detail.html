@@ -23,7 +23,7 @@
                     <canvas id="homePieChart" width="300" height="300"></canvas>
                 </div>
 
-                <span class="target-goal">{{ goal.target_amount.amount|intcomma  }}</span>
+                <span class="target-goal">{{ goal.target_amount.amount|intcomma }}</span>
 
                 <div class="goal-progress">
                     <!--This is the value that represents the bar-->
@@ -64,17 +64,27 @@
                     <div class="statistics-block">
                         <!--Display this div below if there are no transactions-->
                         <!-- <div sata-attr-message="No Transactions." class="no-transactions-message">To add a transaction, click Add Transaction on the upper right.</div> -->
-                         <div id="transactions-list" class="transactions-list -width-100">
-                             <div class="list -transaction-margin">
+                        <div id="transactions-list" class="transactions-list -width-100">
+                            <div class="list -transaction-margin">
                                 {% for transact in object.goaltransaction_set.all %}
 
                                     <div class="transaction"> <!--This is one transaction line-->
 
                                         <div class="transaction-type">
-                                            <img class="transaction-icon" src="{% static "icons/internship.png" %}"
-                                                         alt="Transaction Icon">
+                                            {% if transact.is_expense %}
+                                                <img class="transaction-icon" src="{% static "icons/expense.png" %}"
+                                                     alt="Transaction Icon">
+                                                <span class="transaction-name name">Expense</span>
+                                            {% else %}
+                                                <img class="transaction-icon" src="{% static "icons/internship.png" %}"
+                                                     alt="Transaction Icon">
+                                                <span class="transaction-name name">Earning</span>
+                                            {% endif %}
+                                        </div>
 
-                                            <span class="transaction-amount amount" style="margin-left: 12px">{{ transact.amount.amount|intcomma  }}</span>
+                                        <div class="transaction-price">
+                                            <span class="transaction-amount amount"
+                                                  style="margin-left: 12px">{{ transact.amount.amount|intcomma }}</span>
                                         </div>
 
                                         <div class="transaction-notes note">
@@ -94,7 +104,8 @@
 
                                         <div class="transaction-control">
                                             <a href="{% url 'goal:update_transaction' transact.pk %}">
-                                                <img class="transaction-edit" src="{% static "icons/edit.png" %}" alt="edit">
+                                                <img class="transaction-edit" src="{% static "icons/edit.png" %}"
+                                                     alt="edit">
                                             </a>
                                             <a href="#"
                                                id="delete-btn"
@@ -109,18 +120,17 @@
 
                                 {% empty %}
 
-                                     <div sata-attr-message="No Transactions." class="no-transactions-message">
-                                         To add a transaction, click Add Transaction on the upper right.
-                                     </div>
+                                    <div sata-attr-message="No Transactions." class="no-transactions-message">
+                                        To add a transaction, click Add Transaction on the upper right.
+                                    </div>
 
                                 {% endfor %}
 
-                             </div>
-                             <ul class="pagination -pagination-style" ></ul>
-                         </div>
+                            </div>
+                            <ul class="pagination -pagination-style"></ul>
+                        </div>
 
                     </div>
-
 
 
                 </div>
