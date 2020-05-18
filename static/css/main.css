@@ -706,7 +706,7 @@ button {
     margin-top: 12px; }
   .statistic-card.-hidden {
     background: transparent;
-    padding-right: 0px; }
+    padding: 12px 0px 0px 12px; }
     .statistic-card.-hidden > .statistic-card-title {
       display: none; }
   .statistic-card.-overview-hidden {
@@ -1568,8 +1568,6 @@ button {
   margin: 0 auto;
   width: 100%;
   padding: 40px; }
-  .transaction-wrap > .transaction-header {
-    margin-bottom: 20px; }
 
 .transaction-header {
   display: flex;
