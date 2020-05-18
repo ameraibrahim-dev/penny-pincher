@@ -704,6 +704,17 @@ button {
   border-radius: 10px; }
   .statistic-card > .statistics-block {
     margin-top: 12px; }
+  .statistic-card.-hidden {
+    background: transparent;
+    padding: 12px 0px 0px 12px; }
+    .statistic-card.-hidden > .statistic-card-title {
+      display: none; }
+  .statistic-card.-overview-hidden {
+    display: none;
+    background: transparent;
+    padding: 20px 0px 0px 0px; }
+    .statistic-card.-overview-hidden > .statistic-card-title {
+      display: none; }
 
 .statistics-block {
   display: flex;
@@ -800,6 +811,13 @@ button {
   margin-top: 8px; }
 .statistic-input-box.-update-wallet {
   width: 100%; }
+.statistic-input-box.-hidden {
+  display: none; }
+.statistic-input-box.-align-right {
+  align-self: flex-end; }
+
+.statistics-input-box-style {
+  background: #FFFFFF; }
 
 .statistic-input-label {
   font-family: 'Nunito',sans-serif;
@@ -1550,8 +1568,6 @@ button {
   margin: 0 auto;
   width: 100%;
   padding: 40px; }
-  .transaction-wrap > .transaction-header {
-    margin-bottom: 20px; }
 
 .transaction-header {
   display: flex;
@@ -1564,7 +1580,8 @@ button {
   font-family: 'Nunito',sans-serif;
   font-weight: bold;
   font-size: 28px;
-  color: #35495E; }
+  color: #35495E;
+  margin-top: 28px; }
 
 .add-transaction-btn {
   font-family: 'Nunito',sans-serif;
