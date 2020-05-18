@@ -46,7 +46,7 @@ class CreateCustomCategoryView(LoginRequiredMixin, CreateView):
         try:
             return super(CreateCustomCategoryView, self).form_valid(form)
         except IntegrityError:
-            form.add_error('name', 'This category is existed')
+            form.add_error('name', 'This category is existing')
             return self.form_invalid(form)
 
 
