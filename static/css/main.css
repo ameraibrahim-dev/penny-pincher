@@ -704,6 +704,11 @@ button {
   border-radius: 10px; }
   .statistic-card > .statistics-block {
     margin-top: 12px; }
+  .statistic-card.-hidden {
+    background: transparent;
+    padding-right: 0px; }
+    .statistic-card.-hidden > .statistic-card-title {
+      display: none; }
 
 .statistics-block {
   display: flex;
@@ -800,6 +805,13 @@ button {
   margin-top: 8px; }
 .statistic-input-box.-update-wallet {
   width: 100%; }
+.statistic-input-box.-hidden {
+  display: none; }
+.statistic-input-box.-align-right {
+  align-self: flex-end; }
+
+.statistics-input-box-style {
+  background: #FFFFFF; }
 
 .statistic-input-label {
   font-family: 'Nunito',sans-serif;
