@@ -709,6 +709,12 @@ button {
     padding-right: 0px; }
     .statistic-card.-hidden > .statistic-card-title {
       display: none; }
+  .statistic-card.-overview-hidden {
+    display: none;
+    background: transparent;
+    padding: 20px 0px 0px 0px; }
+    .statistic-card.-overview-hidden > .statistic-card-title {
+      display: none; }
 
 .statistics-block {
   display: flex;
@@ -1576,7 +1582,8 @@ button {
   font-family: 'Nunito',sans-serif;
   font-weight: bold;
   font-size: 28px;
-  color: #35495E; }
+  color: #35495E;
+  margin-top: 28px; }
 
 .add-transaction-btn {
   font-family: 'Nunito',sans-serif;

@@ -10,17 +10,25 @@
     <div class="transaction-wrap">
         <div class="transaction-header">
             <span class="transaction-wallet-name">{{ object.name }} Wallet</span>
+
+            <div class="statistic-input-box">
+                <span class="statistic-input-label">Date Range</span>
+                <div class="statistics-input-box-style">
+                    <input type="text" name="statistic-keyword-filter" id="DateRangeFilter"
+                           class="statistic-keyword-filter" placeholder="Filter by specific keyword">
+                </div>
+            </div>
         </div>
 
         <div class="transaction-body">
 
             <div class="transaction-filter-block">
 
-                <div class="statistic-card">
+                <div class="statistic-card  -overview-hidden">
                     <span class="statistic-card-title">Filters</span>
                     <div class="statistics-block -filter">
 
-                        <div class="statistic-input-box">
+                        <div class="statistic-input-box -hidden">
                             <span class="statistic-input-label">Category</span>
                              <div class="statistics-input-box-style -dropdown" id="category-select-filter" onclick="showCheckboxes()">
                                 <select class="statistics-filter">
@@ -33,7 +41,7 @@
                             </div>
                         </div>
 
-                        <div class="statistic-input-box">
+                        <div class="statistic-input-box -hidden">
                             <span class="statistic-input-label">Note</span>
                             <div class="statistics-input-box-style">
                                 <input type="text" name="statistic-keyword-filter" id="filterByNoteTextField"
@@ -41,13 +49,7 @@
                             </div>
                         </div>
 
-                        <div class="statistic-input-box">
-                            <span class="statistic-input-label">Date Range</span>
-                            <div class="statistics-input-box-style">
-                                <input type="text" name="statistic-keyword-filter" id="DateRangeFilter"
-                                       class="statistic-keyword-filter" placeholder="Filter by specific keyword">
-                            </div>
-                        </div>
+
 
                     </div>
                 </div>
