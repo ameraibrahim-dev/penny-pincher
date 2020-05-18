@@ -112,11 +112,6 @@
                                             {% endif %}
                                         </div>
 
-                                        <div class="transaction-price">
-                                            <span class="transaction-amount amount"
-                                                  style="margin-left: 12px">{{ transact.amount.amount|intcomma }}</span>
-                                        </div>
-
                                         <div class="transaction-notes note">
                                             {% if transact.note %}
                                                 {{ transact.note }}
@@ -129,6 +124,11 @@
 
                                         <div class="transaction-time">
                                             <span class="transaction-date date">{{ transact.date }}</span>
+                                        </div>
+
+                                         <div class="transaction-price">
+                                            <span class="transaction-amount amount"
+                                                  style="margin-left: 12px">{{ transact.amount.amount|intcomma }}</span>
                                         </div>
 
 
