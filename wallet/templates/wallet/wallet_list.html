@@ -27,6 +27,7 @@
                                     <div class="wallet-header">
                                         <img src="{% static 'icons/wallet-icon.png' %}" alt="Piggy Bank"
                                              class="wallet-img">
+                                        <input type="hidden" class="wallet-name" value="{{ wallet.name }}">
                                         <span data-attr-wallet-name="{{ wallet.name }}"
                                               class="wallet-type">{{ wallet.get_type_display }}</span>
                                     </div>
