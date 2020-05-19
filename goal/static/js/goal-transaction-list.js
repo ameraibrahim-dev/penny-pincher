@@ -15,7 +15,51 @@
             innerWindow: 2,
         }],
     };
+    var expenseEarningsChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Earnings', 'Expenses'],
+            datasets: [{
+                label: '# of Votes',
+                data: [30000, 12000],
+                backgroundColor: [
+                    '#49BEB7',
+                    '#EE8572',
 
+                ],
+                borderColor: [
+                    '#49BEB7',
+                    '#EE8572',
+
+                ],
+                borderWidth: 0
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                xAxes: [{
+                    display: false,
+                    gridLines: {
+                        color: "rgba(0, 0, 0, 0)",
+                    },
+                    ticks: {
+                        display: false //this will remove only the label
+                    }
+                }],
+                yAxes: [{
+                    display: false,
+                    gridLines: {
+                        color: "rgba(0, 0, 0, 0)",
+                    },
+                    ticks: {
+                        display: false //this will remove only the label
+                    }
+                }]
+            }
+        }
+    });
 
     function getALLTransactionsByGoalID() {
         $.ajax({
@@ -44,7 +88,7 @@
         } else {
             $('input[id="DateRangeFilter"]').daterangepicker({})
         }
-
+        filterFunction();
     });
     let goalTransactionsList = new List('transactions-list', options);
     $(DATE_RANGE_FIELD_LOCATOR).change(function () {
@@ -73,8 +117,31 @@
                 return false;
             }
         });
+        expenseEarningsChart.data.datasets[0].data=[getSum(false),getSum(true)];
+        expenseEarningsChart.update();
 
     }
+
+    function getSum(isExpense) {
+        let items=goalTransactionsList.visibleItems;
+        let sum=0;
+        let value=null;
+        let value_isExpense=false;
+        items.forEach(value=>{
+             value=value.values();
+             if(value.name=="Earning"){
+                 value_isExpense=false;
+             }else{
+                 value_isExpense=true;
+             }
+             if(isExpense==value_isExpense){
+                sum+=parseFloat(value.amount.replace(",",""));
+             }
+        });
+        return sum;
+
+    }
+
 
 }
 
