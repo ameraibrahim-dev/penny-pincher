@@ -1,8 +1,7 @@
-from decimal import Decimal
-
 from django.db import models
 from djmoney.models.fields import MoneyField
 from djmoney.models.validators import MinMoneyValidator
+from djmoney.money import Money
 
 from category.models import Category
 from penny_pincher.models import AbstractTransaction
@@ -19,9 +18,7 @@ class Wallet(models.Model):
     name = models.CharField(max_length=500, null=False, blank=False)
     type = models.CharField(max_length=500, null=False, blank=False, choices=TYPE_CHOICES)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    balance = MoneyField(max_digits=14, decimal_places=2, default_currency='PHP', validators=[MinMoneyValidator(0)],
-                         amount_default=Decimal("0"),
-                         currency_default="PHP")
+    balance = MoneyField(max_digits=14, decimal_places=2, default=Money("0", "PHP"), validators=[MinMoneyValidator(0)])
 
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
