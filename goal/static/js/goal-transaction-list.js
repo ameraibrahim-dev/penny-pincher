@@ -50,6 +50,14 @@
     $(DATE_RANGE_FIELD_LOCATOR).change(function () {
         filterFunction();
     });
+    $(SEARCH_FIELD_LOCATOR).keyup(function () {
+        let val = $(SEARCH_FIELD_LOCATOR).val();
+        if (val.length == '') {
+            goalTransactionsList.search();
+        } else {
+            goalTransactionsList.search($(SEARCH_FIELD_LOCATOR).val(), ['note', 'amount']);
+        }
+    });
 
     function filterFunction() {
         let value = $(DATE_RANGE_FIELD_LOCATOR).val();
@@ -67,6 +75,7 @@
         });
 
     }
+
 }
 
 
