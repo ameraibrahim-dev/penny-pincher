@@ -1,7 +1,10 @@
 {
     const GOAL_TRANSACTIONS_API_URL = "/api/v1/user/goal/transactions/list/";
+    const DATE_RANGE_FIELD_LOCATOR = "#DateRangeFilter";
+    const SEARCH_FIELD_LOCATOR = "#searchField";
     const GOAL_PK = $("#goaltID").val();
     let transactions = [];
+
     let options = {
         valueNames: ['name', 'note', 'amount', 'date'],
         page: 10,
@@ -33,7 +36,6 @@
     $(document).ready(function () {
         getALLTransactionsByGoalID();
 // set date range
-        console.log(transactions)
         if (transactions) {
             $('input[id="DateRangeFilter"]').daterangepicker({
                 endDate: new Date(transactions[0].date),
@@ -42,9 +44,29 @@
         } else {
             $('input[id="DateRangeFilter"]').daterangepicker({})
         }
-        let goalList = new List('transactions-list', options);
+
+    });
+    let goalTransactionsList = new List('transactions-list', options);
+    $(DATE_RANGE_FIELD_LOCATOR).change(function () {
+        filterFunction();
     });
 
+    function filterFunction() {
+        let value = $(DATE_RANGE_FIELD_LOCATOR).val();
+        start_date = new Date(value.split("-")[0].replace(/\s+/g, ''));
+        end_date = new Date(value.split("-")[1].replace(/\s+/g, ''));
+
+        goalTransactionsList.filter(function (item) {
+            let transact_date = new Date(Date.parse(item.values().date));
+            transact_date.setHours(0, 0, 0, 0);
+            if (transact_date >= start_date && transact_date <= end_date) {
+                return true;
+            } else {
+                return false;
+            }
+        });
+
+    }
 }
 
 
