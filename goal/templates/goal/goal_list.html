@@ -16,8 +16,11 @@
                href="{% url 'goal:create_goal' %}">Add Goal</a>
         </div>
 
-        <div class="section-body">
-            <div class="goals-card -list">
+        <div class="section-body" >
+
+        <div id="goals-list" class="goals-card">
+          <input class="search">
+            <div class="goals-card -list list">
                 {% for goal in object_list %}
                     <a href="{% url 'goal:goal_detail' goal.pk %}" class="goal">
 
@@ -35,7 +38,7 @@
                     <li>No goals yet.</li>
                 {% endfor %}
             </div>
-
+</div>
         </div>
 
 
@@ -48,12 +51,18 @@
 {% endblock %}
 
 {% block body-javascript-extension %}
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js" type="text/javascript"></script>
     <script>
 
         $('#sidenav-goals').toggleClass('-active');
         $('#m-sidenav-goals').toggleClass('-active-mobile');
 
+    </script>
+    <script>
+        let options = {
+        valueNames: ['goal-name','target-goal'],
+    };
+           let goalsList = new List('goals-list', options);
     </script>
 
 {% endblock %}
