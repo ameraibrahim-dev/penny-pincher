@@ -6,11 +6,9 @@ from wallet.models import Wallet, WalletTransaction
 
 
 class WalletCreateForm(ModelForm):
-    balance = MoneyField(label='Initial Balance')
-
     class Meta:
         model = Wallet
-        fields = ['name', 'type', 'balance']
+        fields = ['name', 'type']
 
 
 class WalletUpdateForm(ModelForm):
