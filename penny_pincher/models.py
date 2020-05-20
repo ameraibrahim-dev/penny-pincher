@@ -2,6 +2,8 @@ from django.db import models
 from djmoney.models.fields import MoneyField
 from djmoney.models.validators import MinMoneyValidator
 
+from penny_pincher.validators import NotInFutureValidator
+
 
 class AbstractTransaction(models.Model):
     IS_EXPENSE_CHOICES = [
@@ -9,7 +11,7 @@ class AbstractTransaction(models.Model):
         (False, 'Earning'),
     ]
     amount = MoneyField(max_digits=14, decimal_places=2, default_currency='PHP', validators=[MinMoneyValidator(1)])
-    date = models.DateField(null=False, blank=False)
+    date = models.DateField(null=False, blank=False,validators=[NotInFutureValidator])
     is_expense = models.BooleanField(null=False, blank=False, choices=IS_EXPENSE_CHOICES)
     note = models.CharField(max_length=3000, null=True, blank=True)
 
