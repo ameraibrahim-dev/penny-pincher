@@ -22,6 +22,7 @@ class Wallet(models.Model):
 
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+    opened = models.DateTimeField(null=True)
 
     class Meta:
         unique_together = ('name', 'type', 'owner')
