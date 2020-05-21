@@ -16,10 +16,21 @@
                href="{% url 'goal:create_goal' %}">Add Goal</a>
         </div>
 
+        <div class="search-div">
+             <div class="statistic-input-box -width-300px">
+                <span class="statistic-input-label">Search</span>
+                <div class="statistics-input-box-style">
+                    <input type="text" name="statistic-keyword-filter"
+                           id="searchField" class="search statistic-keyword-filter"
+                           placeholder="Filter by specific keyword">
+                </div>
+             </div>
+        </div>
+
         <div class="section-body" >
 
         <div id="goals-list" class="goals-card">
-          <input class="search">
+
             <div class="goals-card -list list">
                 {% for goal in object_list %}
                     <a href="{% url 'goal:goal_detail' goal.pk %}" class="goal">
