@@ -21,7 +21,7 @@ class WalletDetailView(LoginRequiredMixin, DetailView):
 
     def get_object(self, queryset=None):
         wallet = super().get_object(self.get_queryset())
-        wallet.opened=datetime.now()
+        wallet.opened = datetime.now()
         wallet.save()
         return wallet
 

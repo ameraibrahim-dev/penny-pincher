@@ -4,6 +4,7 @@ from decimal import Decimal
 from django.db import models
 from djmoney.models.fields import MoneyField
 from djmoney.models.validators import MinMoneyValidator
+from djmoney.money import Money
 
 from penny_pincher.models import AbstractTransaction
 from user.models import User
@@ -11,7 +12,7 @@ from user.models import User
 
 class Goal(models.Model):
     name = models.CharField(max_length=500)
-    balance = MoneyField(max_digits=14, decimal_places=2, default_currency='PHP',
+    balance = MoneyField(max_digits=14, decimal_places=2, default=Money("0", "PHP"),
                          validators=[MinMoneyValidator(0)])
     target_amount = MoneyField(max_digits=14, decimal_places=2, default_currency='PHP',
                                validators=[MinMoneyValidator(1)])
