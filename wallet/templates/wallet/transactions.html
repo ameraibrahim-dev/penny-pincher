@@ -69,7 +69,7 @@
 
                         <div id="transactions-list" class="transactions-list -width-100">
                             <div class="list -transaction-margin">
-                                {% for transaction in object.wallettransaction_set.all|dictsort:"date" reversed %}
+                                {% for transaction in object.wallettransaction_set.all|dictsortreversed:"date" %}
                                     <!--This is one transaction line-->
                                     <div class="transaction">
                                         <div class="transaction-type">
@@ -79,7 +79,8 @@
                                                  alt="Transaction Icon">
 
                                             <span class="transaction-name name">{{ transaction.category.name }}</span>
-                                            <input type="hidden" class="isExpense" value="{{ transaction.category.is_expense }}">
+                                            <input type="hidden" class="isExpense"
+                                                   value="{{ transaction.category.is_expense }}">
                                         </div>
 
                                         <div class="transaction-notes note">
@@ -98,7 +99,7 @@
                                         </div>
 
                                         <div class="transaction-price">
-                                            <span class="transaction-amount amount">{{ transaction.amount.amount|intcomma}}</span>
+                                            <span class="transaction-amount amount">{{ transaction.amount.amount|intcomma }}</span>
                                         </div>
 
                                         <div class="transaction-control">
@@ -122,7 +123,7 @@
 
                                 {% endfor %}
                             </div>
-                            <ul class="pagination -pagination-style" ></ul>
+                            <ul class="pagination -pagination-style"></ul>
 
                         </div>
 
