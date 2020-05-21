@@ -12,20 +12,11 @@ class CreateGoalForm(ModelForm):
 
     class Meta:
         model = Goal
-        fields = ['name', 'balance', 'target_amount', 'target_date']
+        fields = ['name', 'target_amount', 'target_date']
         labels = {
             'name': 'What is the name of your goal',
-            'balance': 'Initial Amount',
             'target_date': 'Ending Date',
         }
-
-    def clean(self):
-        if self.cleaned_data['balance'] >= self.cleaned_data['target_amount']:
-            self.add_error('target_amount', 'Target amount should grater than your initial amount')
-            self.add_error('balance', 'Initial amount should less than your target amount')
-
-        return self.cleaned_data
-
 
 class UpdateGoalForm(ModelForm):
     balance = MoneyField(disabled=True)
@@ -35,12 +26,6 @@ class UpdateGoalForm(ModelForm):
     class Meta:
         model = Goal
         fields = ['name', 'target_amount', 'target_date', 'balance']
-
-    def clean(self):
-        # balance and target amount comparison
-        if self.cleaned_data['balance'].amount > self.cleaned_data['target_amount'].amount:
-            self.add_error('target_amount', 'Target amount should grater than your balance')
-        return self.cleaned_data
 
 
 class GoalTransactionForm(ModelForm):

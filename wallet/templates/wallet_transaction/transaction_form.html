@@ -43,7 +43,8 @@
                                             {{ error }}
                                         </span>
                             {% endfor %}
-                            {% render_field form.date class="form-control input-box" placeholder="08/05/2020" %}
+                         {% now "Y-m-d" as today%}
+                            {% render_field form.date class="form-control input-box" max=today  %}
                         </div>
 
                         <div class="form-group statistic-input-box">

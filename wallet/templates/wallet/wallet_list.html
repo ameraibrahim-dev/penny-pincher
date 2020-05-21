@@ -14,31 +14,33 @@
             <a class="btn-primary add-transaction-btn" style="text-decoration: none;margin-right: 10px;"
                href="{% url 'wallet:create_wallet' %}">Add New Wallet</a>
         </div>
-
-        <div class="wallet-section">
-
-            {% for wallet in object_list %}
-                <a href="{% url 'wallet:wallet_transactions' wallet.pk %}"
-                   class="wallet-section card card-layout border-0 m-2"
-                   style="display: inline-block; text-decoration: none;">
-                    <div class="row">
-                        <div class="col-xl-4 col-md-6 col-lg-4">
-                            <div class="wallet-block -scale">
-                                <div class="wallet-header">
-                                    <img src="{% static 'icons/wallet-icon.png' %}" alt="Piggy Bank" class="wallet-img">
-                                    <span data-attr-wallet-name="{{ wallet.name }}"
-                                          class="wallet-type">{{ wallet.get_type_display }}</span>
+        <div class="wallet-section" id="wallet-list">
+         <input class="search">
+            <div class="list">
+                {% for wallet in object_list %}
+                    <a href="{% url 'wallet:wallet_transactions' wallet.pk %}"
+                       class="wallet-section card card-layout border-0 m-2"
+                       style="display: inline-block; text-decoration: none;">
+                        <div class="row">
+                            <div class="col-xl-4 col-md-6 col-lg-4">
+                                <div class="wallet-block -scale">
+                                    <div class="wallet-header">
+                                        <img src="{% static 'icons/wallet-icon.png' %}" alt="Piggy Bank"
+                                             class="wallet-img">
+                                        <input type="hidden" class="wallet-name" value="{{ wallet.name }}">
+                                        <span data-attr-wallet-name="{{ wallet.name }}"
+                                              class="wallet-type">{{ wallet.get_type_display }}</span>
+                                    </div>
+                                    <span class="wallet-amount">{{ wallet.balance.amount|intcomma }}</span>
                                 </div>
-                                <span class="wallet-amount">{{ wallet.balance.amount|intcomma }}</span>
                             </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
 
-            {% empty %}
-                <li>No wallet available yet.</li>
-            {% endfor %}
-
+                {% empty %}
+                    <li>No wallet available yet.</li>
+                {% endfor %}
+            </div>
         </div>
 
 
@@ -47,11 +49,10 @@
 {% endblock %}
 
 {% block body-javascript-extension %}
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js" type="text/javascript"></script>
+    <script src="{% static "js/wallet-list.js" %}"></script>
     <script>
-
         activeNavIcon("#sidenav-wallet", "#m-sidenav-wallet");
-
     </script>
 
 {% endblock %}

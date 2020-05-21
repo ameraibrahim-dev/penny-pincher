@@ -1,3 +1,5 @@
+from django.utils import timezone
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
@@ -60,3 +62,9 @@ class GoalDetailView(LoginRequiredMixin, DetailView):
 
     def get_queryset(self):
         return Goal.objects.filter(owner=self.request.user)
+
+    def get_object(self, queryset=None):
+        goal = super().get_object(self.get_queryset())
+        goal.opened = timezone.now()
+        goal.save()
+        return goal

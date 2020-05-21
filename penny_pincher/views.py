@@ -12,23 +12,13 @@ class DashboardView(LoginRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         # goal,wallet
         context = super().get_context_data(**kwargs)
-        order_by_list = ['-updated', '-created']  # order desc
+        order_by_list = ['-opened']  # order desc
         # get latest wallet
-        wallet = WalletTransaction.objects.filter(wallet__owner=self.request.user).order_by(*order_by_list).first()
-        if not wallet:
-            wallet = Wallet.objects.filter(owner=self.request.user).order_by(*order_by_list).first()
-        else:
-            # extract wallet from transaction
-            wallet = wallet.wallet
+        wallet = Wallet.objects.filter(owner=self.request.user).order_by(*order_by_list).first()
         context['wallet'] = wallet
 
         # Get Latest Goal
-        goal = GoalTransaction.objects.filter(goal__owner=self.request.user).order_by(*order_by_list).first()
-        if not goal:
-            goal = Goal.objects.filter(owner=self.request.user).order_by(*order_by_list).first()
-        else:
-            # extract goal from transaction
-            goal = goal.goal
+        goal = Goal.objects.filter(owner=self.request.user).order_by(*order_by_list).first()
         context['goal'] = goal
         return context
 

@@ -23,7 +23,7 @@
                     <canvas id="homePieChart" width="300" height="300"></canvas>
                 </div>
 
-                <span class="target-goal">{{ goal.target_amount.amount|intcomma  }}</span>
+                <span class="target-goal">{{ goal.target_amount.amount|intcomma }}</span>
 
                 <div class="goal-progress">
                     <!--This is the value that represents the bar-->
@@ -58,23 +58,58 @@
         </div>
 
         <div class="section-body">
+            <div class="transaction-filter-block" style="margin-bottom: 20px;">
+
+                <div class="statistic-card -hidden">
+                    <span class="statistic-card-title">Filters</span>
+                    <div class="statistics-block -filter">
+
+                        <div class="statistic-input-box">
+                            <span class="statistic-input-label">Search</span>
+                            <div class="statistics-input-box-style">
+                                <input type="text" name="statistic-keyword-filter"
+                                       id="searchField" class="statistic-keyword-filter"
+                                       placeholder="Filter by specific keyword">
+                            </div>
+                        </div>
+
+                        <div class="statistic-input-box">
+                            <span class="statistic-input-label">Date Range</span>
+                            <div class="statistics-input-box-style">
+                                <input type="text" name="statistic-keyword-filter" id="DateRangeFilter"
+                                       class="statistic-keyword-filter" placeholder="Filter by specific keyword">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="section-body">
 
             <div class="transaction-display-block">
                 <div class="statistic-card">
                     <div class="statistics-block">
                         <!--Display this div below if there are no transactions-->
                         <!-- <div sata-attr-message="No Transactions." class="no-transactions-message">To add a transaction, click Add Transaction on the upper right.</div> -->
-                         <div id="transactions-list" class="transactions-list -width-100">
-                             <div class="list -transaction-margin">
+                        <div id="transactions-list" class="transactions-list -width-100">
+                            <div class="list -transaction-margin">
                                 {% for transact in object.goaltransaction_set.all %}
 
                                     <div class="transaction"> <!--This is one transaction line-->
 
                                         <div class="transaction-type">
-                                            <img class="transaction-icon" src="{% static "icons/internship.png" %}"
-                                                         alt="Transaction Icon">
-
-                                            <span class="transaction-amount amount" style="margin-left: 12px">{{ transact.amount.amount|intcomma  }}</span>
+                                            {% if transact.is_expense %}
+                                                <img class="transaction-icon" src="{% static "icons/expense.png" %}"
+                                                     alt="Transaction Icon">
+                                                <span class="transaction-name name">Expense</span>
+                                            {% else %}
+                                                <img class="transaction-icon" src="{% static "icons/internship.png" %}"
+                                                     alt="Transaction Icon">
+                                                <span class="transaction-name name">Earning</span>
+                                            {% endif %}
                                         </div>
 
                                         <div class="transaction-notes note">
@@ -91,10 +126,16 @@
                                             <span class="transaction-date date">{{ transact.date }}</span>
                                         </div>
 
+                                        <div class="transaction-price">
+                                            <span class="transaction-amount amount"
+                                                  style="margin-left: 12px">{{ transact.amount.amount|intcomma }}</span>
+                                        </div>
+
 
                                         <div class="transaction-control">
                                             <a href="{% url 'goal:update_transaction' transact.pk %}">
-                                                <img class="transaction-edit" src="{% static "icons/edit.png" %}" alt="edit">
+                                                <img class="transaction-edit" src="{% static "icons/edit.png" %}"
+                                                     alt="edit">
                                             </a>
                                             <a href="#"
                                                id="delete-btn"
@@ -109,18 +150,17 @@
 
                                 {% empty %}
 
-                                     <div sata-attr-message="No Transactions." class="no-transactions-message">
-                                         To add a transaction, click Add Transaction on the upper right.
-                                     </div>
+                                    <div sata-attr-message="No Transactions." class="no-transactions-message">
+                                        To add a transaction, click Add Transaction on the upper right.
+                                    </div>
 
                                 {% endfor %}
 
-                             </div>
-                             <ul class="pagination -pagination-style" ></ul>
-                         </div>
+                            </div>
+                            <ul class="pagination -pagination-style"></ul>
+                        </div>
 
                     </div>
-
 
 
                 </div>
@@ -138,7 +178,8 @@
 {% endblock %}
 
 {% block body-javascript-extension %}
-
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <script src="{% static "js/progress-bar.js" %}"></script>
     <script src="{% static "js/pie-chart.js" %}"></script>
     <script src="{% static "js/date.js" %}"></script>
