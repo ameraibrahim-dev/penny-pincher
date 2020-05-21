@@ -99,7 +99,11 @@
                                         </div>
 
                                         <div class="transaction-price">
-                                            <span class="transaction-amount amount">{{ transaction.amount.amount|intcomma }}</span>
+                                            {% if transaction.is_expense %}
+                                                <span class="transaction-amount amount">{{ transaction.amount.amount|intcomma}}</span>
+                                            {% else %}
+                                                <span class="transaction-amount-earning amount">{{ transaction.amount.amount|intcomma}}</span>
+                                            {% endif %}
                                         </div>
 
                                         <div class="transaction-control">

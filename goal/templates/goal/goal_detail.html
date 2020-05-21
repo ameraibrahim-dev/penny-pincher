@@ -127,8 +127,13 @@
                                         </div>
 
                                         <div class="transaction-price">
-                                            <span class="transaction-amount amount"
-                                                  style="margin-left: 12px">{{ transact.amount.amount|intcomma }}</span>
+                                            {% if transact.is_expense %}
+                                                <span class="transaction-amount amount"
+                                                      style="margin-left: 12px">{{ transact.amount.amount|intcomma }}</span>
+                                            {% else %}
+                                                <span class="transaction-amount-earning amount"
+                                                      style="margin-left: 12px">{{ transact.amount.amount|intcomma }}</span>
+                                            {% endif %}
                                         </div>
 
 

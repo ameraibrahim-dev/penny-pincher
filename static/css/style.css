@@ -310,6 +310,7 @@ body, html {
     font-size: 14px;
     color: #35495E;
     display: block;
+    margin-bottom: 5px;
 }
 
 .profile-text-field {
