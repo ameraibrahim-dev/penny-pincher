@@ -1000,20 +1000,6 @@ button {
             font-weight: bold;
             font-size: 12px;
             color: #35495E; }
-          .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-finance-cards > .statistic-card > .statistics-block.-finance > .statistic-amount {
-            font-family: 'Nunito',sans-serif;
-            font-weight: bold;
-            font-size: 24px;
-            color: #49BEB7; }
-            .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-finance-cards > .statistic-card > .statistics-block.-finance > .statistic-amount.-expense-red {
-              font-family: 'Nunito',sans-serif;
-              font-weight: bold;
-              font-size: 24px;
-              color: #FF3838; }
-              .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-finance-cards > .statistic-card > .statistics-block.-finance > .statistic-amount.-expense-red:before {
-                content: "-";
-                text-transform: uppercase;
-                margin-right: 2px; }
         .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-filter-block > .statistic-card > .statistic-card-title {
           font-family: 'Nunito',sans-serif;
           font-weight: bold;
@@ -1106,20 +1092,6 @@ button {
           font-weight: bold;
           font-size: 12px;
           color: #35495E; }
-        .home-container[data-eq-state$="preMobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-finance-cards > .statistic-card > .statistics-block.-finance > .statistic-amount {
-          font-family: 'Nunito',sans-serif;
-          font-weight: bold;
-          font-size: 20px;
-          color: #49BEB7; }
-          .home-container[data-eq-state$="preMobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-finance-cards > .statistic-card > .statistics-block.-finance > .statistic-amount.-expense-red {
-            font-family: 'Nunito',sans-serif;
-            font-weight: bold;
-            font-size: 20px;
-            color: #FF3838; }
-            .home-container[data-eq-state$="preMobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-finance-cards > .statistic-card > .statistics-block.-finance > .statistic-amount.-expense-red:before {
-              content: "-";
-              text-transform: uppercase;
-              margin-right: 2px; }
       .home-container[data-eq-state$="preMobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-filter-block > .statistic-card > .statistic-card-title {
         font-family: 'Nunito',sans-serif;
         font-weight: bold;
