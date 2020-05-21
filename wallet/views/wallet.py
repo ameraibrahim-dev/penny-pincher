@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView, ListView
@@ -17,10 +19,11 @@ class WalletDetailView(LoginRequiredMixin, DetailView):
     def get_queryset(self):
         return Wallet.objects.filter(owner=self.request.user)
 
-    def form_valid(self, form):
-        instance = form.save(commit=False)
-        instance.owner = self.request.user
-        return super(WalletOverview, self).form_valid(form)
+    def get_object(self, queryset=None):
+        wallet = super().get_object(self.get_queryset())
+        wallet.opened = datetime.now()
+        wallet.save()
+        return wallet
 
 
 class WalletOverview(WalletDetailView):
