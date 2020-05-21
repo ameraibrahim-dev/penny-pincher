@@ -709,6 +709,11 @@ button {
     padding: 12px 0px 0px 12px; }
     .statistic-card.-hidden > .statistic-card-title {
       display: none; }
+  .statistic-card.-hidden-no-padding-top {
+    background: transparent;
+    padding: 0px 0px 0px 12px; }
+    .statistic-card.-hidden-no-padding-top > .statistic-card-title {
+      display: none; }
   .statistic-card.-overview-hidden {
     display: none;
     background: transparent;
@@ -733,6 +738,12 @@ button {
     padding: 20px 0px 0px 0px; }
     .statistics-block.-overview-chart > .chart-transactions {
       margin-top: 40px; }
+  .statistics-block.-row-right {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end; }
+    .statistics-block.-row-right > .statistic-input-box:first-of-type {
+      margin-right: 20px; }
   .statistics-block > .transaction:first-of-type {
     margin-top: 12px; }
   .statistics-block > .transaction {
@@ -815,6 +826,12 @@ button {
   display: none; }
 .statistic-input-box.-align-right {
   align-self: flex-end; }
+.statistic-input-box.-width-41 {
+  width: 41%; }
+.statistic-input-box.-width-32 {
+  width: 32%; }
+.statistic-input-box.-width-300px {
+  width: 300px; }
 
 .statistics-input-box-style {
   background: #FFFFFF; }
@@ -994,6 +1011,7 @@ button {
               font-size: 24px;
               color: #FF3838; }
               .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-finance-cards > .statistic-card > .statistics-block.-finance > .statistic-amount.-expense-red:before {
+                content: "-";
                 text-transform: uppercase;
                 margin-right: 2px; }
         .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-filter-block > .statistic-card > .statistic-card-title {
@@ -1099,6 +1117,7 @@ button {
             font-size: 20px;
             color: #FF3838; }
             .home-container[data-eq-state$="preMobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-finance-cards > .statistic-card > .statistics-block.-finance > .statistic-amount.-expense-red:before {
+              content: "-";
               text-transform: uppercase;
               margin-right: 2px; }
       .home-container[data-eq-state$="preMobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-filter-block > .statistic-card > .statistic-card-title {
@@ -1566,6 +1585,10 @@ button {
   margin: 0 auto;
   width: 100%;
   padding: 40px; }
+  .transaction-wrap > .transaction-header {
+    margin-bottom: 20px; }
+  .transaction-wrap.-no-margin > .transaction-header {
+    margin-bottom: 0px; }
 
 .transaction-header {
   display: flex;
@@ -1928,6 +1951,14 @@ button {
     content: '-';
     margin-right: 12px; }
 
+.search-div {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 20px; }
+
 .wallet-settings-block {
   display: flex;
   flex-direction: column;
@@ -1945,6 +1976,9 @@ button {
   width: 100%; }
   .update-wallet-form > .wallet-settings-form-control {
     margin-top: 20px; }
+  .update-wallet-form.-goal-settings {
+    width: 70%;
+    margin-left: 120px; }
 
 .update-wallet-input-boxes {
   display: flex;
@@ -2414,7 +2448,11 @@ button {
   box-shadow: 0px 4px 14px -4px rgba(0, 0, 0, 0.28);
   cursor: pointer; }
   .modal-cancel-btn:hover {
-    background: #35495E; }
+    background: red;
+    font-family: 'Nunito',sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    color: #F2f2f2; }
 
 .modal-delete-btn {
   font-family: 'Nunito',sans-serif;

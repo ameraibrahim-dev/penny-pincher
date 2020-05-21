@@ -425,3 +425,9 @@ body, html {
 }
 
 /*WALLET CSS */
+
+/*CSS OVERRIDES */
+.update-goal-form{
+    width: 70%;
+    margin-left:100px;
+}
