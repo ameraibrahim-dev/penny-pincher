@@ -7,7 +7,7 @@
 
 {% block main-content %}
 
-    <div class="section-wrap">
+    <div class="section-wrap" id="goals-list">
 
         <div class="section-header">
             <span class="transaction-wallet-name">My Goals</span>
@@ -17,39 +17,40 @@
         </div>
 
         <div class="search-div">
-             <div class="statistic-input-box -width-300px">
+            <div class="statistic-input-box -width-300px">
                 <span class="statistic-input-label">Search</span>
                 <div class="statistics-input-box-style">
                     <input type="text" name="statistic-keyword-filter"
                            id="searchField" class="search statistic-keyword-filter"
                            placeholder="Filter by specific keyword">
                 </div>
-             </div>
+            </div>
         </div>
 
-        <div class="section-body" >
+        <div class="section-body">
 
-        <div id="goals-list" class="goals-card">
+            <div class="goals-card">
 
-            <div class="goals-card -list list">
-                {% for goal in object_list %}
-                    <a href="{% url 'goal:goal_detail' goal.pk %}" class="goal">
+                <div class="goals-card -list list">
+                    {% for goal in object_list %}
+                        <a href="{% url 'goal:goal_detail' goal.pk %}" class="goal">
 
-                        <div class="goal-name-block">
-                            <h1 class="goal-name">{{ goal.name }}</h1>
-                        </div>
+                            <div class="goal-name-block">
+                                <h1 class="goal-name">{{ goal.name }}</h1>
+                            </div>
 
-                        <div class="goal-details">
-                            <span data-attr-goal="" class="target-goal -list">{{ goal.target_amount.amount|intcomma }}</span>
-                            <span class="goal-date">{{ goal.target_date }}</span>
-                        </div>
+                            <div class="goal-details">
+                                <span data-attr-goal=""
+                                      class="target-goal -list">{{ goal.target_amount.amount|intcomma }}</span>
+                                <span class="goal-date">{{ goal.target_date }}</span>
+                            </div>
 
-                    </a>
-                {% empty %}
-                    <li>No goals yet.</li>
-                {% endfor %}
+                        </a>
+                    {% empty %}
+                        <li>No goals yet.</li>
+                    {% endfor %}
+                </div>
             </div>
-</div>
         </div>
 
 
@@ -71,9 +72,9 @@
     </script>
     <script>
         let options = {
-        valueNames: ['goal-name','target-goal'],
-    };
-           let goalsList = new List('goals-list', options);
+            valueNames: ['goal-name', 'target-goal'],
+        };
+        let goalsList = new List('goals-list', options);
     </script>
 
 {% endblock %}
