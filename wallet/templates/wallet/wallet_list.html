@@ -11,17 +11,17 @@
     <div class="transaction-wrap" style="padding: 40px 20px 40px;"  id="wallet-list">
         <div class="transaction-header">
             <span class="transaction-wallet-name" style="margin-left: 6px;">My Wallets</span>
-            <a class="btn-primary add-transaction-btn" style="text-decoration: none;margin-right: 10px;"
+            <a class="btn-primary add-transaction-btn" style="text-decoration: none;margin-right: 25px;"
                href="{% url 'wallet:create_wallet' %}">Add New Wallet</a>
         </div>
 
         <div class="search-div">
-             <div class="statistic-input-box -width-300px">
+             <div class="statistic-input-box -width-300px" style="margin-right: 20px;">
                 <span class="statistic-input-label">Search</span>
                 <div class="statistics-input-box-style">
                     <input type="text" name="statistic-keyword-filter"
                            id="searchField" class="search statistic-keyword-filter"
-                           placeholder="Filter by specific keyword">
+                           placeholder="Search by specific keyword">
                 </div>
             </div>
         </div>
@@ -50,7 +50,13 @@
                     </a>
 
                 {% empty %}
-                    <li>No wallet available yet.</li>
+                    <div class="wallets-card" style="margin-right: 20px;">
+                        <div class="wallets-card -list">
+                            <div sata-attr-message="No Wallets Available." class="no-transactions-message">
+                                To add a wallet, click Add New Wallet on the upper right.
+                            </div>
+                        </div>
+                    </div>
                 {% endfor %}
             </div>
         </div>

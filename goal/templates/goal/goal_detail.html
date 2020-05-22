@@ -96,7 +96,7 @@
                         <!-- <div sata-attr-message="No Transactions." class="no-transactions-message">To add a transaction, click Add Transaction on the upper right.</div> -->
                         <div id="transactions-list" class="transactions-list -width-100">
                             <div class="list -transaction-margin">
-                                {% for transact in object.goaltransaction_set.all %}
+                                {% for transact in object.goaltransaction_set.all|dictsortreversed:"date" %}
 
                                     <div class="transaction"> <!--This is one transaction line-->
 
@@ -127,8 +127,13 @@
                                         </div>
 
                                         <div class="transaction-price">
-                                            <span class="transaction-amount amount"
-                                                  style="margin-left: 12px">{{ transact.amount.amount|intcomma }}</span>
+                                            {% if transact.is_expense %}
+                                                <span class="transaction-amount amount"
+                                                      style="margin-left: 12px">{{ transact.amount.amount|intcomma }}</span>
+                                            {% else %}
+                                                <span class="transaction-amount-earning amount"
+                                                      style="margin-left: 12px">{{ transact.amount.amount|intcomma }}</span>
+                                            {% endif %}
                                         </div>
 
 

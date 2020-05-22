@@ -73,9 +73,9 @@
 
                                     <div class="category-control">
                                         <a href="{% url 'category:update_custom_category' category.pk %}">
-                                        <img class="category-edit"
+                                            <img class="category-edit"
 
-                                             src="{% static "icons/edit.png" %}" alt="edit"></a>
+                                                 src="{% static "icons/edit.png" %}" alt="edit"></a>
                                         <img class="category-delete"
                                              href="#}"
                                              src="{% static "icons/delete.png" %}" alt="delete"
@@ -84,7 +84,9 @@
 
                                 </div>
                             {% empty %}
-                                <li>No category yet.</li>
+                                <div sata-attr-message="No Custom Categories." class="no-transactions-message pt-5">
+                                    To add a custom category, click Add Category on the upper right.
+                                </div>
                             {% endfor %}
 
                         </div>
@@ -105,7 +107,7 @@
     <script src="{% static 'js/category-sidepanel.js' %}"></script>
 
     <script>
-         activeCategorySidepanel('#custom-category-list');
+        activeCategorySidepanel('#custom-category-list');
     </script>
     <script>
         activeNavIcon("#sidenav-settings", "#m-sidenav-settings");
