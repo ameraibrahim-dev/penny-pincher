@@ -8,12 +8,10 @@
     <div class="transaction-wrap">
 
         <div class="transaction-header">
-            <span class="transaction-wallet-name">{{ goal.name }} Goal</span>
+            <span class="transaction-wallet-name">{{ goal.name }} Goal - General Information</span>
         </div>
 
         <div class="wallet-settings-block">
-
-            <span class="general-information">General Information</span>
 
             <form method="post" class="update-goal-form">
                 {% csrf_token %}

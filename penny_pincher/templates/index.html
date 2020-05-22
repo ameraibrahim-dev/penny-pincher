@@ -95,6 +95,13 @@
                         </div>
 
                     </div>
+                 {% else %}
+                     <div class="wallet-buttons-block ml-3">
+                        <div class="row">
+                            <a class="btn wallet-btn" style="text-decoration: none;width: 85%;"
+                               href="{% url 'goal:create_goal' %}">Add New Goal</a>
+                        </div>
+                    </div>
                 {% endif %}
             </div>
 
