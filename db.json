@@ -895,7 +895,7 @@
     "model": "contenttypes.contenttype",
     "pk": 1,
     "fields": {
-      "app_label": "user",
+      "app_label": "user.user",
       "model": "user"
     }
   },
@@ -903,7 +903,7 @@
     "model": "contenttypes.contenttype",
     "pk": 2,
     "fields": {
-      "app_label": "wallet",
+      "app_label": "wallet.wallet",
       "model": "wallet"
     }
   },
@@ -911,7 +911,7 @@
     "model": "contenttypes.contenttype",
     "pk": 3,
     "fields": {
-      "app_label": "wallet",
+      "app_label": "wallet.wallettransaction",
       "model": "wallettransaction"
     }
   },
@@ -919,7 +919,7 @@
     "model": "contenttypes.contenttype",
     "pk": 4,
     "fields": {
-      "app_label": "goal",
+      "app_label": "goal.goal",
       "model": "goal"
     }
   },
@@ -927,7 +927,7 @@
     "model": "contenttypes.contenttype",
     "pk": 5,
     "fields": {
-      "app_label": "goal",
+      "app_label": "goal.goaltransaction",
       "model": "goaltransaction"
     }
   },
@@ -935,7 +935,7 @@
     "model": "contenttypes.contenttype",
     "pk": 6,
     "fields": {
-      "app_label": "category",
+      "app_label": "category.category",
       "model": "category"
     }
   },
@@ -943,7 +943,7 @@
     "model": "contenttypes.contenttype",
     "pk": 7,
     "fields": {
-      "app_label": "admin",
+      "app_label": "admin.logentry",
       "model": "logentry"
     }
   },
@@ -951,7 +951,7 @@
     "model": "contenttypes.contenttype",
     "pk": 8,
     "fields": {
-      "app_label": "auth",
+      "app_label": "auth.permission",
       "model": "permission"
     }
   },
@@ -959,7 +959,7 @@
     "model": "contenttypes.contenttype",
     "pk": 9,
     "fields": {
-      "app_label": "auth",
+      "app_label": "auth.group",
       "model": "group"
     }
   },
@@ -967,7 +967,7 @@
     "model": "contenttypes.contenttype",
     "pk": 10,
     "fields": {
-      "app_label": "contenttypes",
+      "app_label": "contenttypes.contenttype",
       "model": "contenttype"
     }
   },
@@ -975,7 +975,7 @@
     "model": "contenttypes.contenttype",
     "pk": 11,
     "fields": {
-      "app_label": "sessions",
+      "app_label": "sessions.session",
       "model": "session"
     }
   },
@@ -1558,17 +1558,6 @@
   },
   {
     "model": "category.category",
-    "pk": 3,
-    "fields": {
-      "name": "Internship",
-      "owner": 1,
-      "is_custom": true,
-      "is_expense": false,
-      "icon": "salary.png"
-    }
-  },
-  {
-    "model": "category.category",
     "pk": 5,
     "fields": {
       "name": "iACADEMY",
@@ -1716,5 +1705,4 @@
       "user_permissions": []
     }
   }
-
 ]
