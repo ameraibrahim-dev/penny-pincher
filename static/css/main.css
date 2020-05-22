@@ -1728,6 +1728,16 @@ button {
     text-transform: uppercase;
     margin-left: 12px; }
 
+.transaction-amount-earning {
+  font-family: 'Nunito',sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  color: #49BEB7; }
+  .transaction-amount-earning:after {
+    content: "PHP";
+    text-transform: uppercase;
+    margin-left: 12px; }
+
 .transaction-control {
   display: flex;
   flex-direction: row;
