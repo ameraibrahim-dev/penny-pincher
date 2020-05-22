@@ -1,6 +1,6 @@
 {% load static %}
 <div class="modal-wrap" id="delete-modal">
-    <div class="modal-card">
+    <div class="modal-card -active" id="modal-card">
 
         <img src="{% static "icons/warning.png" %}" alt="Icon" class="modal-icon">
 
@@ -10,9 +10,25 @@
 
         <div class="modal-control">
             <a href="#" class="modal-cancel-btn" id="modal-cancel">cancel</a>
-            <a href="#" class="modal-delete-btn" id="modal-delete">delete</a>
+            <a href="#" class="modal-delete-btn" id="modal-delete" onclick="display_confirmation()">delete</a>
         </div>
     </div>
+
+    <!--Confirmation-->
+    <div class="modal-card-confirm" id="modal-confirm">
+        <img src="{% static 'icons/success.png' %}" alt="Icon" class="modal-icon">
+
+        <p class="modal-message" id="confirm-message"></p>
+
+        <div class="modal-control" id="confirm-control">
+            <a href="#" class="modal-confirm-btn" id="modal-confirm-btn">
+                <button class="modal-cancel-btn" >ok</button>
+            </a>
+        </div>
+
+        <span class="redirect-msg" id="redirect-msg">Redirecting...</span>
+    </div>
+
 </div>
 
 <div class="modal-overlay" id="modal-overlay"></div>
