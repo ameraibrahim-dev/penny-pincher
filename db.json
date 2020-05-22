@@ -1698,5 +1698,23 @@
       "is_expense": true,
       "icon": "health.png"
     }
+  },
+  {
+    "model": "user.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$180000$zABT7aPDBaBT$U73zPJEnHicLK0KARpaQSzAVCBNb+BteptW8obvw10M=",
+      "last_login": "2020-05-22T23:41:18.231Z",
+      "is_superuser": true,
+      "email": "admin@example.com",
+      "first_name": null,
+      "last_name": null,
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2020-05-22T23:37:08.299Z",
+      "groups": [],
+      "user_permissions": []
+    }
   }
+
 ]
