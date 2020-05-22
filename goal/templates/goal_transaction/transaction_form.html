@@ -19,7 +19,7 @@
 
         <div class="add-transaction-block">
 
-            <form method="post" class="wallet-form-fields">
+            <form method="post" class="wallet-form-fields" id="add-goal-transaction-form">
                 {% csrf_token %}
                 <div class="row">
 
@@ -91,6 +91,16 @@
 
     </div>
 
+{% endblock %}
+
+{% block delete-modal-block %}
+    {% include 'delete_modal.html' %}
+
+    {% if object %}
+        <script>target_form('#add-goal-transaction-form','Successfully updated Transaction');</script>
+    {% else %}
+        <script>target_form('#add-goal-transaction-form','Successfully created Transaction');</script>
+    {% endif %}
 {% endblock %}
 
 
