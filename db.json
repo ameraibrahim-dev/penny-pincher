@@ -1403,7 +1403,7 @@
     "fields": {
       "name": "Amera",
       "type": "CH",
-      "owner": 4,
+      "owner": 1,
       "balance_currency": "PHP",
       "balance": "20800.00",
       "created": "2020-05-08T05:10:54.908Z",
@@ -1417,7 +1417,7 @@
     "fields": {
       "name": "House",
       "type": "CH",
-      "owner": 4,
+      "owner": 1,
       "balance_currency": "PHP",
       "balance": "3500.00",
       "created": "2020-05-14T08:15:50.517Z",
@@ -1431,7 +1431,7 @@
     "fields": {
       "name": "BDO Card",
       "type": "DC",
-      "owner": 4,
+      "owner": 1,
       "balance_currency": "PHP",
       "balance": "40601.00",
       "created": "2020-05-14T08:16:58.693Z",
@@ -1445,7 +1445,7 @@
     "fields": {
       "name": "G-Cash",
       "type": "EM",
-      "owner": 4,
+      "owner": 1,
       "balance_currency": "PHP",
       "balance": "500.00",
       "created": "2020-05-14T08:17:28.893Z",
@@ -1459,7 +1459,7 @@
     "fields": {
       "name": "PayPal",
       "type": "EM",
-      "owner": 4,
+      "owner": 1,
       "balance_currency": "PHP",
       "balance": "2800.00",
       "created": "2020-05-22T14:24:29.056Z",
@@ -1473,7 +1473,7 @@
     "fields": {
       "name": "BPI Card",
       "type": "DC",
-      "owner": 4,
+      "owner": 1,
       "balance_currency": "PHP",
       "balance": "10000.00",
       "created": "2020-05-22T15:41:50.490Z",
@@ -1506,7 +1506,7 @@
       "balance": "8800.00",
       "target_amount_currency": "PHP",
       "target_amount": "20000.00",
-      "owner": 4,
+      "owner": 1,
       "target_date": "2020-07-06",
       "created": "2020-05-21T16:42:06.660Z",
       "updated": "2020-05-22T16:16:24.296Z",
@@ -1522,7 +1522,7 @@
       "balance": "14450.00",
       "target_amount_currency": "PHP",
       "target_amount": "35000.00",
-      "owner": 4,
+      "owner": 1,
       "target_date": "2020-09-10",
       "created": "2020-05-22T13:51:45.525Z",
       "updated": "2020-05-22T16:16:32.305Z",
@@ -1538,7 +1538,7 @@
       "balance": "8070.00",
       "target_amount_currency": "PHP",
       "target_amount": "40000.00",
-      "owner": 4,
+      "owner": 1,
       "target_date": "2020-10-10",
       "created": "2020-05-22T14:05:07.394Z",
       "updated": "2020-05-22T14:53:15.792Z",
@@ -1550,7 +1550,7 @@
     "pk": 1,
     "fields": {
       "name": "Internship",
-      "owner": 4,
+      "owner": 1,
       "is_custom": true,
       "is_expense": false,
       "icon": "salary.png"
@@ -1583,7 +1583,7 @@
     "pk": 6,
     "fields": {
       "name": "Food & Drinks",
-      "owner": 4,
+      "owner": 1,
       "is_custom": false,
       "is_expense": true,
       "icon": "food.png"
@@ -1594,7 +1594,7 @@
     "pk": 7,
     "fields": {
       "name": "Extra Income",
-      "owner": 4,
+      "owner": 1,
       "is_custom": false,
       "is_expense": false,
       "icon": "extra-income.png"
@@ -1605,7 +1605,7 @@
     "pk": 9,
     "fields": {
       "name": "Groceries",
-      "owner": 4,
+      "owner": 1,
       "is_custom": false,
       "is_expense": true,
       "icon": "groceries.png"
@@ -1616,7 +1616,7 @@
     "pk": 10,
     "fields": {
       "name": "Transport",
-      "owner": 4,
+      "owner": 1,
       "is_custom": false,
       "is_expense": true,
       "icon": "transport.png"
@@ -1627,7 +1627,7 @@
     "pk": 11,
     "fields": {
       "name": "Shopping",
-      "owner": 4,
+      "owner": 1,
       "is_custom": false,
       "is_expense": true,
       "icon": "shopping.png"
@@ -1638,7 +1638,7 @@
     "pk": 14,
     "fields": {
       "name": "Entertainment",
-      "owner": 4,
+      "owner": 1,
       "is_custom": false,
       "is_expense": true,
       "icon": "entertainment.png"
@@ -1649,7 +1649,7 @@
     "pk": 15,
     "fields": {
       "name": "Online Education",
-      "owner": 4,
+      "owner": 1,
       "is_custom": true,
       "is_expense": true,
       "icon": "loan.png"
@@ -1660,7 +1660,7 @@
     "pk": 16,
     "fields": {
       "name": "Bills & Fees",
-      "owner": 4,
+      "owner": 1,
       "is_custom": false,
       "is_expense": true,
       "icon": "bills.png"
@@ -1671,7 +1671,7 @@
     "pk": 17,
     "fields": {
       "name": "Salary",
-      "owner": 4,
+      "owner": 1,
       "is_custom": false,
       "is_expense": false,
       "icon": "salary.png"
@@ -1682,7 +1682,7 @@
     "pk": 18,
     "fields": {
       "name": "Family & Personal",
-      "owner": 4,
+      "owner": 1,
       "is_custom": true,
       "is_expense": true,
       "icon": "home.png"
@@ -1693,7 +1693,7 @@
     "pk": 19,
     "fields": {
       "name": "Donations",
-      "owner": 4,
+      "owner": 1,
       "is_custom": true,
       "is_expense": true,
       "icon": "health.png"
