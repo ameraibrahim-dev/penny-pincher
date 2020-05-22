@@ -1728,11 +1728,11 @@ button {
     text-transform: uppercase;
     margin-left: 12px; }
 
-  .transaction-amount-earning {
-   font-family: 'Nunito',sans-serif;
-   font-weight: bold;
-   font-size: 16px;
-   color: #49BEB7; }
+.transaction-amount-earning {
+  font-family: 'Nunito',sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  color: #49BEB7; }
   .transaction-amount-earning:after {
     content: "PHP";
     text-transform: uppercase;
@@ -1795,7 +1795,7 @@ button {
   text-transform: uppercase;
   box-shadow: 0px 4px 14px -4px rgba(0, 0, 0, 0.28); }
   .add-transaction-cancel-btn:hover {
-    color:#F2f2f2 ;
+    color: #f2f2f2;
     background: red; }
 
 .edit-transaction-block {
@@ -2052,6 +2052,9 @@ button {
   font-weight: bold;
   font-size: 24px;
   color: #35495E; }
+  .main-item-name:hover {
+    color: #EE8572;
+    transition: 0.2s ease; }
 
 .settings-sub-items {
   cursor: pointer;
@@ -2378,7 +2381,7 @@ button {
 
 .modal-card {
   width: 100%;
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   padding: 20px 0px 60px 0px; }
@@ -2388,6 +2391,26 @@ button {
     margin-bottom: 20px; }
   .modal-card > .modal-reminder {
     margin-bottom: 24px; }
+  .modal-card.-active {
+    display: flex; }
+
+.modal-card-confirm {
+  width: 100%;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0px 60px 0px; }
+  .modal-card-confirm > .modal-icon {
+    margin-bottom: 40px;
+    max-width: 80px; }
+  .modal-card-confirm > .modal-message {
+    margin-bottom: 40px; }
+  .modal-card-confirm > .modal-reminder {
+    margin-bottom: 24px; }
+  .modal-card-confirm > .modal-control > .modal-cancel-btn {
+    margin-right: 0px; }
+  .modal-card-confirm.-active {
+    display: flex; }
 
 .modal-icon {
   max-width: 70px; }
@@ -2414,6 +2437,8 @@ button {
     margin-right: 15px; }
   .modal-control > .modal-delete-btn {
     margin-left: 15px; }
+  .modal-control.-hidden {
+    display: none; }
 
 .modal-cancel-btn {
   font-family: 'Nunito',sans-serif;
@@ -2428,13 +2453,13 @@ button {
   box-shadow: 0px 4px 14px -4px rgba(0, 0, 0, 0.28);
   cursor: pointer; }
   .modal-cancel-btn:hover {
-    background: #35495E;
+    background: #707070;
     font-family: 'Nunito',sans-serif;
     font-weight: bold;
     font-size: 12px;
     color: #F2f2f2;
     transform: scale(1.1);
-    transition: 0.2s ease;}
+    transition: 0.2s ease; }
 
 .modal-delete-btn {
   font-family: 'Nunito',sans-serif;
@@ -2450,10 +2475,22 @@ button {
   box-shadow: 0px 4px 14px -4px rgba(0, 0, 0, 0.28);
   cursor: pointer; }
   .modal-delete-btn:hover {
+    font-family: 'Nunito',sans-serif;
+    font-weight: bold;
+    font-size: 12px;
     color: #F2f2f2;
     background: red;
     transform: scale(1.1);
     transition: 0.2s ease; }
+
+.redirect-msg {
+  font-family: 'Nunito',sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  color: #35495E;
+  display: none; }
+  .redirect-msg.-active {
+    display: block; }
 
 html:before {
   display: none;

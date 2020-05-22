@@ -112,7 +112,7 @@
                                                     class="transaction-edit" src="{% static "icons/edit.png" %}"
                                                     alt="edit"></a>
                                             <a href="#" id="delete-btn"
-                                               onclick="delete_modal('{% url 'wallet:wallet_delete_transaction' transaction.pk %}','Are you sure you want to delete this transaction?')">
+                                               onclick="delete_modal('{% url 'wallet:wallet_delete_transaction' transaction.pk %}','Are you sure you want to delete this transaction?','Successfully deleted Transaction.')">
                                                 <img class="transaction-delete" src="{% static "icons/delete.png" %}"
                                                      alt="edit">
                                             </a>
@@ -149,7 +149,6 @@
 {% block delete-modal-block %}
     {% include 'delete_modal.html' %}
 {% endblock %}
-
 
 
 {% block body-javascript-extension %}
