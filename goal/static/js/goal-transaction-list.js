@@ -99,7 +99,7 @@
         if (val.length == '') {
             goalTransactionsList.search();
         } else {
-            goalTransactionsList.search($(SEARCH_FIELD_LOCATOR).val(), ['note', 'amount','name']);
+            goalTransactionsList.search($(SEARCH_FIELD_LOCATOR).val(), ['note', 'amount','name','date']);
         }
         filterFunction();
     });
