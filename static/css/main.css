@@ -1559,8 +1559,10 @@ button {
   padding: 40px; }
   .transaction-wrap > .transaction-header {
     margin-bottom: 20px; }
-  .transaction-wrap.-no-margin > .transaction-header {
-    margin-bottom: 0px; }
+  .transaction-wrap.-no-margin {
+    max-width: 1100px; }
+    .transaction-wrap.-no-margin > .transaction-header {
+      margin-bottom: 0px; }
 
 .transaction-header {
   display: flex;
