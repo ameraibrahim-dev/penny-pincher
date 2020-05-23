@@ -99,7 +99,7 @@
         let start_date = new Date(value.split("-")[0].replace(/\s+/g, ''));
         let end_date = new Date(value.split("-")[1].replace(/\s+/g, ''));
         //display filter range
-        let displayText = moment(start_date).format("MMM") + " " + start_date.getDate() + " - " + end_date.getDate();
+        let displayText = moment(start_date).format("MMM") + " " + start_date.getDate() + " - " + moment(end_date).format("MMM") + " " + end_date.getDate();
         $(".chart-date-range").text(displayText);
         //filter
         transactions = transactions.filter(value => {
@@ -261,7 +261,7 @@
                 if (singleTransact.is_expense) {
                     wallet.initial = wallet.initial - singleTransact.amount.amount;
                 } else {
-                       wallet.initial = wallet.initial + singleTransact.amount.amount;
+                    wallet.initial = wallet.initial + singleTransact.amount.amount;
                 }
             });
             accountBalanceInfo.set(value, getTotalInitialFromAllWallet());
@@ -294,8 +294,7 @@
             if (value.initial == null) {
                 value.initial = value.balance.amount;
             }
-        })
-        console.log(walletList);
+        });
     }
 
     function getDateRange() {
@@ -311,5 +310,6 @@
         date_range.sort((a, b) => new Date(a) - new Date(b));
         return date_range;
     }
+
 }
 
