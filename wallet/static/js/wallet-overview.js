@@ -178,10 +178,10 @@
             data: {
                 datasets: [{
                     label: "Account Balance",
-                    strokeColor: "#49BEB7",
-                    fill: "#49BEB7",
-                    borderColor: "#49BEB7",
-                    backgroundColor: "#49BEB7",
+                    strokeColor: "#0fbe09",
+                    fill: "#0fbe09",
+                    borderColor: "#0fbe09",
+                    backgroundColor: "#0fbe09",
                     data: [32, 22],
 
                 }],
@@ -251,19 +251,19 @@
         walletBalanceCurveChart.data.datasets[0].data = [...accountBalanceInfo.values()];
         walletBalanceCurveChart.data.datasets[1] = {
             label: "Expenses",
-            strokeColor: "#be2e04",
-            fill: "#be2c26",
-            borderColor: "#be2c26",
-            backgroundColor: "#be2c26",
+            strokeColor: "#EE8572",
+            fill: "#EE8572",
+            borderColor: "#EE8572",
+            backgroundColor: "#EE8572",
             data: expense_data,
 
         };
         walletBalanceCurveChart.data.datasets[2] = {
             label: "Earnings",
-            strokeColor: "#0fbe09",
-            fill: "#0fbe09",
-            borderColor: "#0fbe09",
-            backgroundColor: "#0fbe09",
+            strokeColor: "#49BEB7",
+            fill: "#49BEB7",
+            borderColor: "#49BEB7",
+            backgroundColor: "#49BEB7",
             data: earnings_data,
 
         };
