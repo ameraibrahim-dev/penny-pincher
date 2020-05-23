@@ -75,7 +75,6 @@
             }
         ).reverse());
         // generate category options
-        //todo display categories
         categories.forEach((value, key) => {
             let label = document.createElement("label");
             let input = document.createElement("input");
