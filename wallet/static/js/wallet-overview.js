@@ -177,7 +177,7 @@
             type: 'line',
             data: {
                 datasets: [{
-                    label: "Account Balance in PHP",
+                    label: "Account Balance",
                     strokeColor: "#49BEB7",
                     fill: "#49BEB7",
                     borderColor: "#49BEB7",

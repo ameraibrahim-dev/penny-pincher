@@ -22,7 +22,7 @@
         if (val.length == '') {
             transaction_list.search();
         } else {
-            transaction_list.search($(SEARCH_FIELD_LOCATOR).val(), ['note','amount']);
+            transaction_list.search($(SEARCH_FIELD_LOCATOR).val(), ['note','amount','date','name']);
         }
         //update total
         updateTotal(transaction_list.visibleItems);
