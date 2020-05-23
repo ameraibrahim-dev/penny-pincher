@@ -2,7 +2,7 @@
     const GOAL_TRANSACTIONS_API_URL = "/api/v1/user/goal/transactions/list/";
     const DATE_RANGE_FIELD_LOCATOR = "#DateRangeFilter";
     const SEARCH_FIELD_LOCATOR = "#searchField";
-    const GOAL_PK = $("#goaltID").val();
+    const GOAL_PK = $("#goalID").val();
     let transactions = [];
 
     let options = {
