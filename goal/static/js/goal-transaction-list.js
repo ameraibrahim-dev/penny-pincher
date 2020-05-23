@@ -88,21 +88,21 @@
         } else {
             $('input[id="DateRangeFilter"]').daterangepicker({})
         }
-        filterFunction();
+        //event listener
+        $(DATE_RANGE_FIELD_LOCATOR).change(function () {
+            filterFunction();
+        });
+        $(SEARCH_FIELD_LOCATOR).keyup(function () {
+            let val = $(SEARCH_FIELD_LOCATOR).val();
+            if (val.length == '') {
+                goalTransactionsList.search();
+            } else {
+                goalTransactionsList.search($(SEARCH_FIELD_LOCATOR).val(), ['note', 'amount', 'name', 'date']);
+            }
+            filterFunction();
+        });
     });
     let goalTransactionsList = new List('transactions-list', options);
-    $(DATE_RANGE_FIELD_LOCATOR).change(function () {
-        filterFunction();
-    });
-    $(SEARCH_FIELD_LOCATOR).keyup(function () {
-        let val = $(SEARCH_FIELD_LOCATOR).val();
-        if (val.length == '') {
-            goalTransactionsList.search();
-        } else {
-            goalTransactionsList.search($(SEARCH_FIELD_LOCATOR).val(), ['note', 'amount','name','date']);
-        }
-        filterFunction();
-    });
 
     function filterFunction() {
         let value = $(DATE_RANGE_FIELD_LOCATOR).val();
@@ -118,26 +118,26 @@
                 return false;
             }
         });
-        expenseEarningsChart.data.datasets[0].data=[getSum(false),getSum(true)];
+        expenseEarningsChart.data.datasets[0].data = [getSum(false), getSum(true)];
         expenseEarningsChart.update();
 
     }
 
     function getSum(isExpense) {
-        let items=goalTransactionsList.visibleItems;
-        let sum=0;
-        let value=null;
-        let value_isExpense=false;
-        items.forEach(value=>{
-             value=value.values();
-             if(value.name=="Earning"){
-                 value_isExpense=false;
-             }else{
-                 value_isExpense=true;
-             }
-             if(isExpense==value_isExpense){
-                sum+=parseFloat(value.amount.replace(",",""));
-             }
+        let items = goalTransactionsList.visibleItems;
+        let sum = 0;
+        let value = null;
+        let value_isExpense = false;
+        items.forEach(value => {
+            value = value.values();
+            if (value.name == "Earning") {
+                value_isExpense = false;
+            } else {
+                value_isExpense = true;
+            }
+            if (isExpense == value_isExpense) {
+                sum += parseFloat(value.amount.replace(",", ""));
+            }
         });
         return sum;
 
