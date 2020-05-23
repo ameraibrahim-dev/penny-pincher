@@ -71,7 +71,7 @@
                         <div id="transactions-list" class="transactions-list -width-100">
                             <div class="list -transaction-margin">
                                 {% for transaction in object.wallettransaction_set.all|dictsortreversed:"date" %}
-                                    <!--This is one transaction line-->
+                                    
                                     <div class="transaction">
                                         <div class="transaction-type">
 
@@ -119,7 +119,7 @@
                                         </div>
 
                                     </div>
-                                    <!--End of one transaction line-->
+
                                 {% empty %}
 
                                     <div sata-attr-message="No Transactions." class="no-transactions-message">
