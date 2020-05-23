@@ -661,7 +661,7 @@
       "amount": "2500.00",
       "date": "2020-04-30",
       "is_expense": false,
-      "note": "Montly Salary",
+      "note": "Monthly Salary",
       "created": "2020-05-22T14:00:44.849Z",
       "updated": "2020-05-22T14:36:38.785Z",
       "goal": 8
@@ -675,7 +675,7 @@
       "amount": "5000.00",
       "date": "2020-04-15",
       "is_expense": false,
-      "note": "Montly Salary",
+      "note": "Monthly Salary",
       "created": "2020-05-22T14:06:59.197Z",
       "updated": "2020-05-22T14:06:59.197Z",
       "goal": 8
@@ -893,20 +893,6 @@
   },
   {
     "model": "wallet.wallet",
-    "pk": 10,
-    "fields": {
-      "name": "Family",
-      "type": "CH",
-      "owner": 1,
-      "balance_currency": "PHP",
-      "balance": "10000.00",
-      "created": "2020-05-08T05:08:02.201Z",
-      "updated": "2020-05-08T05:08:02.201Z",
-      "opened": null
-    }
-  },
-  {
-    "model": "wallet.wallet",
     "pk": 11,
     "fields": {
       "name": "Amera",
@@ -991,22 +977,6 @@
   },
   {
     "model": "goal.goal",
-    "pk": 1,
-    "fields": {
-      "name": "SF9 Concert",
-      "balance_currency": "PHP",
-      "balance": "2000.00",
-      "target_amount_currency": "PHP",
-      "target_amount": "10000.00",
-      "owner": 1,
-      "target_date": "2020-07-06",
-      "created": "2020-05-08T15:33:41.395Z",
-      "updated": "2020-05-08T16:53:23.463Z",
-      "opened": null
-    }
-  },
-  {
-    "model": "goal.goal",
     "pk": 5,
     "fields": {
       "name": "BTS Concert",
@@ -1062,17 +1032,6 @@
       "is_custom": true,
       "is_expense": false,
       "icon": "salary.png"
-    }
-  },
-  {
-    "model": "category.category",
-    "pk": 5,
-    "fields": {
-      "name": "iACADEMY",
-      "owner": 1,
-      "is_custom": true,
-      "is_expense": true,
-      "icon": "business.png"
     }
   },
   {
