@@ -100,7 +100,7 @@
         let start_date = new Date(value.split("-")[0].replace(/\s+/g, ''));
         let end_date = new Date(value.split("-")[1].replace(/\s+/g, ''));
         //display filter range
-        let displayText = moment(start_date).format("MMM") + " " + start_date.getDate() + " - " + end_date.getDate();
+        let displayText = moment(start_date).format("MMM") + " " + start_date.getDate() + " - " + moment(end_date).format("MMM") + " " + end_date.getDate();
         $(".chart-date-range").text(displayText);
         //filter
         transactions = transactions.filter(value => {
