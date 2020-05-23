@@ -2052,9 +2052,6 @@ button {
   font-weight: bold;
   font-size: 24px;
   color: #35495E; }
-  .main-item-name:hover {
-    color: #EE8572;
-    transition: 0.2s ease; }
 
 .settings-sub-items {
   cursor: pointer;
