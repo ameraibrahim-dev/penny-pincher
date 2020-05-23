@@ -7,7 +7,10 @@ let lineChartOptions={
                 gridLines: {
                     color: "rgba(0, 0, 0, 0)",
                 },
+                ticks: {
 
+                    maxTicksLimit: 5
+                },
 
             }],
             yAxes: [{}]
@@ -37,7 +40,7 @@ var myChart = new Chart(ctx, {
     data: {
         labels: ['March 03,2020', 'March 12,2020', 'March 21,2020', 'March 31,2020'],
         datasets: [{
-            label: "Account Balance in PHP",
+            label: "Account Balance",
             strokeColor: "#49BEB7",
             fill: "#49BEB7",
             borderColor: "#49BEB7",
