@@ -21,7 +21,7 @@
             labels: ['Earnings', 'Expenses'],
             datasets: [{
                 label: '# of Votes',
-                data: [30000, 12000],
+                data: [0, 0],
                 backgroundColor: [
                     '#49BEB7',
                     '#EE8572',
@@ -80,7 +80,7 @@
     $(document).ready(function () {
         getALLTransactionsByGoalID();
 // set date range
-        if (transactions) {
+        if (transactions.length>0) {
             $('input[id="DateRangeFilter"]').daterangepicker({
                 endDate: new Date(transactions[0].date),
                 startDate: new Date(transactions.slice(-1)[0].date),
@@ -88,6 +88,7 @@
         } else {
             $('input[id="DateRangeFilter"]').daterangepicker({})
         }
+        filterFunction();
         //event listener
         $(DATE_RANGE_FIELD_LOCATOR).change(function () {
             filterFunction();
