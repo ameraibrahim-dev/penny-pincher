@@ -15,37 +15,35 @@
             innerWindow: 2,
         }],
     };
+    $(document).ready(function () {
+        $(SEARCH_FIELD_LOCATOR).keyup(function () {
+            let val = $(SEARCH_FIELD_LOCATOR).val();
+            if (val.length == '') {
+                transaction_list.search();
+            } else {
+                transaction_list.search($(SEARCH_FIELD_LOCATOR).val(), ['note', 'amount', 'date', 'name']);
+            }
+            //update total
+            updateTotal(transaction_list.visibleItems);
+        });
+        $(DATE_RANGE_FIELD_LOCATOR).change(function () {
+            filterFunction();
+            //update total
+            updateTotal(transaction_list.visibleItems);
 
+        });
+        $(document).on("click", "input[type='checkbox']", function () {
+            if (categories.includes($(this).attr('id'))) {
+                let index = categories.indexOf($(this).attr('id'));
+                categories.splice(index, 1);
+            }
+            readCategories();
+            filterFunction();
+            updateTotal(transaction_list.visibleItems);
+        });
+    });
     let transaction_list = new List('transactions-list', options);
-    $(SEARCH_FIELD_LOCATOR).keyup(function () {
-        let val = $(SEARCH_FIELD_LOCATOR).val();
-        if (val.length == '') {
-            transaction_list.search();
-        } else {
-            transaction_list.search($(SEARCH_FIELD_LOCATOR).val(), ['note','amount','date','name']);
-        }
-        //update total
-        updateTotal(transaction_list.visibleItems);
 
-
-    });
-    $(DATE_RANGE_FIELD_LOCATOR).change(function () {
-        filterFunction();
-        //update total
-        updateTotal(transaction_list.visibleItems);
-
-    });
-    $(document).on("click", "input[type='checkbox']", function () {
-        if (categories.includes($(this).attr('id'))) {
-
-            let index = categories.indexOf($(this).attr('id'));
-            categories.splice(index, 1);
-
-        }
-        readCategories();
-        filterFunction();
-        updateTotal(transaction_list.visibleItems);
-    });
 
     function filterFunction() {
         readCategories();
