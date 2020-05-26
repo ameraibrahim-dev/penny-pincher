@@ -13,4 +13,4 @@ def NotInPastValidator(value):
 def NotInFutureValidator(value):
     today = datetime.datetime.today().date()
     if value > today:
-        raise ValidationError('date should be over  {}'.format(today))
+        raise ValidationError('date should not be over  {}'.format(today))

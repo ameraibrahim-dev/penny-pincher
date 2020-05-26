@@ -63,13 +63,11 @@
             </div>
         </div>
 
-        <div class="overview-section">
-
-            <span data-attr-section-title="Overview"
-                  class="section-description">Shows a summary report of all status transactions and recent goal savings</span>
+        <div class="overview-section" style="margin-bottom: 64px;">
+             <span data-attr-section-title="Goals" class="section-description">Recent goal savings</span>
 
             <div class="overview-cards-block">
-                {% if goal %}
+                 {% if goal %}
                     <div class="statistic-card">
 
                         <span class="statistic-card-title">Goal - {{ goal.name }}</span>
@@ -97,7 +95,25 @@
                         </div>
 
                     </div>
+                 {% else %}
+                     <div class="wallet-buttons-block ml-3">
+                        <div class="row">
+                            <a class="btn wallet-btn" style="text-decoration: none;width: 85%;"
+                               href="{% url 'goal:create_goal' %}">Add New Goal</a>
+                        </div>
+                    </div>
                 {% endif %}
+            </div>
+
+        </div>
+
+        <div class="overview-section">
+
+            <span data-attr-section-title="Overview"
+                  class="section-description" style="margin-bottom: 5px;">Shows a summary report of all status transactions</span>
+
+            <div class="overview-cards-block">
+
                 <div class="overview-finance-cards">
 
                     <div class="statistic-card">
@@ -130,11 +146,11 @@
 
                 <div class="overview-filter-block">
 
-                    <div class="statistic-card">
+                    <div class="statistic-card -hidden">
                         <span class="statistic-card-title">Filters</span>
-                        <div class="statistics-block -filter">
+                        <div class="statistics-block">
 
-                            <div class="statistic-input-box">
+                            <div class="statistic-input-box -hidden">
                                 <span class="statistic-input-label">Category</span>
                                 <div class="statistics-input-box-style -dropdown" id="category-select-filter"
                                      onclick="showCheckboxes()">
@@ -148,7 +164,7 @@
                                 </div>
                             </div>
 
-                            <div class="statistic-input-box">
+                            <div class="statistic-input-box -hidden">
                                 <span class="statistic-input-label">Note</span>
                                 <div class="statistics-input-box-style">
                                     <input type="text" name="statistic-keyword-filter" id="filterByNoteTextField"
@@ -156,11 +172,11 @@
                                 </div>
                             </div>
 
-                            <div class="statistic-input-box">
+                            <div class="statistic-input-box -align-right -width-32">
                                 <span class="statistic-input-label">Date Range</span>
                                 <div class="statistics-input-box-style">
                                     <input type="text" name="statistic-keyword-filter" id="DateRangeFilter"
-                                           class="statistic-keyword-filter" placeholder="Filter by specific keyword">
+                                           class="statistic-keyword-filter" placeholder="Filter by date">
                                 </div>
                             </div>
 

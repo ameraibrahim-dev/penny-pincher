@@ -120,10 +120,78 @@ button {
         font-weight: 300;
         font-size: 12px;
         color: #35495E; }
+  .access-container.-error {
+    grid-template-columns: 40% 60%; }
 
 .image-registration {
   background: url(../images/sign-up.png) center/cover no-repeat;
   background-position-x: right; }
+
+.error-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 60px;
+  height: 100%;
+  max-height: 500px;
+  max-width: 420px;
+  margin: auto 0; }
+
+.error-box > .error-description {
+  margin-top: 100px;
+  margin-bottom: 40px; }
+
+.error-type {
+  font-family: 'Nunito',sans-serif;
+  font-weight: bold;
+  font-size: 130px;
+  color: #35495E; }
+  .error-type:after {
+    content: attr(data-attr-error-message);
+    font-family: 'Nunito',sans-serif;
+    font-weight: bold;
+    font-size: 40px;
+    color: #35495E;
+    display: block;
+    text-transform: uppercase;
+    margin-top: 12px; }
+
+.error-description {
+  font-family: 'Nunito',sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: #35495E;
+  line-height: 1.3em; }
+
+.back-to-home-btn {
+  font-family: 'Nunito',sans-serif;
+  font-weight: bold;
+  font-size: 24px;
+  color: #F2f2f2;
+  background: #EE8572;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 24px;
+  outline: thick #EE8572;
+  box-shadow: 0px 4px 14px -4px rgba(0, 0, 0, 0.28); }
+  .back-to-home-btn:hover {
+    font-family: 'Nunito',sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    color: #F2f2f2;
+    background: #35495E; }
+
+.error-image-block {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center; }
+
+.error-image {
+  max-width: 920px;
+  max-height: 800px;
+  width: 100%; }
 
 .registration-box-container {
   background: #49BEB7;
@@ -636,6 +704,22 @@ button {
   border-radius: 10px; }
   .statistic-card > .statistics-block {
     margin-top: 12px; }
+  .statistic-card.-hidden {
+    background: transparent;
+    padding: 12px 0px 0px 12px; }
+    .statistic-card.-hidden > .statistic-card-title {
+      display: none; }
+  .statistic-card.-hidden-no-padding-top {
+    background: transparent;
+    padding: 0px 0px 0px 12px; }
+    .statistic-card.-hidden-no-padding-top > .statistic-card-title {
+      display: none; }
+  .statistic-card.-overview-hidden {
+    display: none;
+    background: transparent;
+    padding: 20px 0px 0px 0px; }
+    .statistic-card.-overview-hidden > .statistic-card-title {
+      display: none; }
 
 .statistics-block {
   display: flex;
@@ -654,6 +738,12 @@ button {
     padding: 20px 0px 0px 0px; }
     .statistics-block.-overview-chart > .chart-transactions {
       margin-top: 40px; }
+  .statistics-block.-row-right {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end; }
+    .statistics-block.-row-right > .statistic-input-box:first-of-type {
+      margin-right: 20px; }
   .statistics-block > .transaction:first-of-type {
     margin-top: 12px; }
   .statistics-block > .transaction {
@@ -732,6 +822,19 @@ button {
   margin-top: 8px; }
 .statistic-input-box.-update-wallet {
   width: 100%; }
+.statistic-input-box.-hidden {
+  display: none; }
+.statistic-input-box.-align-right {
+  align-self: flex-end; }
+.statistic-input-box.-width-41 {
+  width: 41%; }
+.statistic-input-box.-width-32 {
+  width: 32%; }
+.statistic-input-box.-width-300px {
+  width: 300px; }
+
+.statistics-input-box-style {
+  background: #FFFFFF; }
 
 .statistic-input-label {
   font-family: 'Nunito',sans-serif;
@@ -897,19 +1000,6 @@ button {
             font-weight: bold;
             font-size: 12px;
             color: #35495E; }
-          .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-finance-cards > .statistic-card > .statistics-block.-finance > .statistic-amount {
-            font-family: 'Nunito',sans-serif;
-            font-weight: bold;
-            font-size: 24px;
-            color: #49BEB7; }
-            .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-finance-cards > .statistic-card > .statistics-block.-finance > .statistic-amount.-expense-red {
-              font-family: 'Nunito',sans-serif;
-              font-weight: bold;
-              font-size: 24px;
-              color: #FF3838; }
-              .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-finance-cards > .statistic-card > .statistics-block.-finance > .statistic-amount.-expense-red:before {
-                text-transform: uppercase;
-                margin-right: 2px; }
         .home-container[data-eq-state$="mobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-filter-block > .statistic-card > .statistic-card-title {
           font-family: 'Nunito',sans-serif;
           font-weight: bold;
@@ -1002,19 +1092,6 @@ button {
           font-weight: bold;
           font-size: 12px;
           color: #35495E; }
-        .home-container[data-eq-state$="preMobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-finance-cards > .statistic-card > .statistics-block.-finance > .statistic-amount {
-          font-family: 'Nunito',sans-serif;
-          font-weight: bold;
-          font-size: 20px;
-          color: #49BEB7; }
-          .home-container[data-eq-state$="preMobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-finance-cards > .statistic-card > .statistics-block.-finance > .statistic-amount.-expense-red {
-            font-family: 'Nunito',sans-serif;
-            font-weight: bold;
-            font-size: 20px;
-            color: #FF3838; }
-            .home-container[data-eq-state$="preMobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-finance-cards > .statistic-card > .statistics-block.-finance > .statistic-amount.-expense-red:before {
-              text-transform: uppercase;
-              margin-right: 2px; }
       .home-container[data-eq-state$="preMobile"] > .main-container-block > .content-block > .main-content-block > .home-wrap > .overview-section > .overview-cards-block > .overview-filter-block > .statistic-card > .statistic-card-title {
         font-family: 'Nunito',sans-serif;
         font-weight: bold;
@@ -1482,6 +1559,10 @@ button {
   padding: 40px; }
   .transaction-wrap > .transaction-header {
     margin-bottom: 20px; }
+  .transaction-wrap.-no-margin {
+    max-width: 1100px; }
+    .transaction-wrap.-no-margin > .transaction-header {
+      margin-bottom: 0px; }
 
 .transaction-header {
   display: flex;
@@ -1494,7 +1575,8 @@ button {
   font-family: 'Nunito',sans-serif;
   font-weight: bold;
   font-size: 28px;
-  color: #35495E; }
+  color: #35495E;
+  margin-top: 28px; }
 
 .add-transaction-btn {
   font-family: 'Nunito',sans-serif;
@@ -1648,6 +1730,16 @@ button {
     text-transform: uppercase;
     margin-left: 12px; }
 
+.transaction-amount-earning {
+  font-family: 'Nunito',sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  color: #49BEB7; }
+  .transaction-amount-earning:after {
+    content: "PHP";
+    text-transform: uppercase;
+    margin-left: 12px; }
+
 .transaction-control {
   display: flex;
   flex-direction: row;
@@ -1705,6 +1797,7 @@ button {
   text-transform: uppercase;
   box-shadow: 0px 4px 14px -4px rgba(0, 0, 0, 0.28); }
   .add-transaction-cancel-btn:hover {
+    color: #f2f2f2;
     background: red; }
 
 .edit-transaction-block {
@@ -1843,6 +1936,14 @@ button {
     content: '-';
     margin-right: 12px; }
 
+.search-div {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 20px; }
+
 .wallet-settings-block {
   display: flex;
   flex-direction: column;
@@ -1860,6 +1961,9 @@ button {
   width: 100%; }
   .update-wallet-form > .wallet-settings-form-control {
     margin-top: 20px; }
+  .update-wallet-form.-goal-settings {
+    width: 70%;
+    margin-left: 120px; }
 
 .update-wallet-input-boxes {
   display: flex;
@@ -1950,9 +2054,6 @@ button {
   font-weight: bold;
   font-size: 24px;
   color: #35495E; }
-  .main-item-name:hover {
-    color: #EE8572;
-    transition: 0.2s ease; }
 
 .settings-sub-items {
   cursor: pointer;
@@ -2279,7 +2380,7 @@ button {
 
 .modal-card {
   width: 100%;
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   padding: 20px 0px 60px 0px; }
@@ -2289,6 +2390,26 @@ button {
     margin-bottom: 20px; }
   .modal-card > .modal-reminder {
     margin-bottom: 24px; }
+  .modal-card.-active {
+    display: flex; }
+
+.modal-card-confirm {
+  width: 100%;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0px 60px 0px; }
+  .modal-card-confirm > .modal-icon {
+    margin-bottom: 40px;
+    max-width: 80px; }
+  .modal-card-confirm > .modal-message {
+    margin-bottom: 40px; }
+  .modal-card-confirm > .modal-reminder {
+    margin-bottom: 24px; }
+  .modal-card-confirm > .modal-control > .modal-cancel-btn {
+    margin-right: 0px; }
+  .modal-card-confirm.-active {
+    display: flex; }
 
 .modal-icon {
   max-width: 70px; }
@@ -2315,6 +2436,8 @@ button {
     margin-right: 15px; }
   .modal-control > .modal-delete-btn {
     margin-left: 15px; }
+  .modal-control.-hidden {
+    display: none; }
 
 .modal-cancel-btn {
   font-family: 'Nunito',sans-serif;
@@ -2329,7 +2452,13 @@ button {
   box-shadow: 0px 4px 14px -4px rgba(0, 0, 0, 0.28);
   cursor: pointer; }
   .modal-cancel-btn:hover {
-    background: #35495E; }
+    background: #707070;
+    font-family: 'Nunito',sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    color: #F2f2f2;
+    transform: scale(1.1);
+    transition: 0.2s ease; }
 
 .modal-delete-btn {
   font-family: 'Nunito',sans-serif;
@@ -2345,9 +2474,22 @@ button {
   box-shadow: 0px 4px 14px -4px rgba(0, 0, 0, 0.28);
   cursor: pointer; }
   .modal-delete-btn:hover {
+    font-family: 'Nunito',sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    color: #F2f2f2;
     background: red;
     transform: scale(1.1);
     transition: 0.2s ease; }
+
+.redirect-msg {
+  font-family: 'Nunito',sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  color: #35495E;
+  display: none; }
+  .redirect-msg.-active {
+    display: block; }
 
 html:before {
   display: none;

@@ -1,4 +1,5 @@
 {% extends 'goal/goal_header.html' %}
+{% block title %}Penny Pincher - Transactions{% endblock %}
 {% load widget_tweaks %}
 {% load i18n %}
 {% load static %}
@@ -19,7 +20,7 @@
 
         <div class="add-transaction-block">
 
-            <form method="post" class="wallet-form-fields">
+            <form method="post" class="wallet-form-fields" id="add-goal-transaction-form">
                 {% csrf_token %}
                 <div class="row">
 
@@ -54,7 +55,8 @@
                                             {{ error }}
                                         </span>
                             {% endfor %}
-                            {% render_field form.date class="form-control input-box" placeholder="08/05/2020" %}
+                            {% now "Y-m-d" as today%}
+                            {% render_field form.date class="form-control input-box" max=today %}
                         </div>
 
 
@@ -90,6 +92,16 @@
 
     </div>
 
+{% endblock %}
+
+{% block delete-modal-block %}
+    {% include 'delete_modal.html' %}
+
+    {% if object %}
+        <script>target_form('#add-goal-transaction-form','Successfully updated Transaction');</script>
+    {% else %}
+        <script>target_form('#add-goal-transaction-form','Successfully created Transaction');</script>
+    {% endif %}
 {% endblock %}
 
 

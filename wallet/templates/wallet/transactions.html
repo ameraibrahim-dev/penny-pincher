@@ -1,4 +1,5 @@
 {% extends 'wallet/wallet_header.html' %}
+{% block title %}Penny Pincher - Wallet Transactions{% endblock %}
 {% load static %}
 {% load widget_tweaks %}
 {% load i18n %}
@@ -41,10 +42,10 @@
 
 
                         <div class="statistic-input-box">
-                            <span class="statistic-input-label">Note</span>
+                            <span class="statistic-input-label">Search</span>
                             <div class="statistics-input-box-style">
                                 <input type="text" name="statistic-keyword-filter"
-                                       id="filterByNoteTextField" class="statistic-keyword-filter"
+                                       id="searchField" class="statistic-keyword-filter"
                                        placeholder="Filter by specific keyword">
                             </div>
                         </div>
@@ -53,43 +54,13 @@
                             <span class="statistic-input-label">Date Range</span>
                             <div class="statistics-input-box-style">
                                 <input type="text" name="statistic-keyword-filter" id="DateRangeFilter"
-                                       class="statistic-keyword-filter" placeholder="Filter by specific keyword">
+                                       class="statistic-keyword-filter" placeholder="Filter by date">
                             </div>
                         </div>
 
                     </div>
                 </div>
 
-            </div>
-
-            <div class="transaction-finance-cards">
-
-                <div class="statistic-card">
-                    <span class="statistic-card-title">Total Balance</span>
-                    <div class="statistics-block -finance">
-
-                        <span class="statistic-amount">{{ object.balance.amount|intcomma }}</span>
-
-                    </div>
-                </div>
-
-                <div class="statistic-card">
-                    <span class="statistic-card-title">Total Period expenses</span>
-                    <div class="statistics-block -finance">
-
-                        <span class="statistic-amount -expense-red" id="total-period-expenses">0.00</span>
-
-                    </div>
-                </div>
-
-                <div class="statistic-card">
-                    <span class="statistic-card-title">Total Period Earnings</span>
-                    <div class="statistics-block -finance">
-
-                        <span class="statistic-amount" id="total-period-earnings">0.00</span>
-
-                    </div>
-                </div>
             </div>
 
             <div class="transaction-display-block">
@@ -99,8 +70,8 @@
 
                         <div id="transactions-list" class="transactions-list -width-100">
                             <div class="list -transaction-margin">
-                                {% for transaction in object.wallettransaction_set.all|dictsort:"date" reversed %}
-                                    <!--This is one transaction line-->
+                                {% for transaction in object.wallettransaction_set.all|dictsortreversed:"date" %}
+                                    
                                     <div class="transaction">
                                         <div class="transaction-type">
 
@@ -109,7 +80,8 @@
                                                  alt="Transaction Icon">
 
                                             <span class="transaction-name name">{{ transaction.category.name }}</span>
-                                            <input type="hidden" class="isExpense" value="{{ transaction.category.is_expense }}">
+                                            <input type="hidden" class="isExpense"
+                                                   value="{{ transaction.category.is_expense }}">
                                         </div>
 
                                         <div class="transaction-notes note">
@@ -128,7 +100,11 @@
                                         </div>
 
                                         <div class="transaction-price">
-                                            <span class="transaction-amount amount">{{ transaction.amount.amount|intcomma}}</span>
+                                            {% if transaction.is_expense %}
+                                                <span class="transaction-amount amount">{{ transaction.amount.amount|intcomma}}</span>
+                                            {% else %}
+                                                <span class="transaction-amount-earning amount">{{ transaction.amount.amount|intcomma}}</span>
+                                            {% endif %}
                                         </div>
 
                                         <div class="transaction-control">
@@ -136,14 +112,14 @@
                                                     class="transaction-edit" src="{% static "icons/edit.png" %}"
                                                     alt="edit"></a>
                                             <a href="#" id="delete-btn"
-                                               onclick="delete_modal('{% url 'wallet:wallet_delete_transaction' transaction.pk %}','Are you sure you want to delete this transaction?')">
+                                               onclick="delete_modal('{% url 'wallet:wallet_delete_transaction' transaction.pk %}','Are you sure you want to delete this transaction?','Successfully deleted Transaction.')">
                                                 <img class="transaction-delete" src="{% static "icons/delete.png" %}"
                                                      alt="edit">
                                             </a>
                                         </div>
 
                                     </div>
-                                    <!--End of one transaction line-->
+
                                 {% empty %}
 
                                     <div sata-attr-message="No Transactions." class="no-transactions-message">
@@ -152,7 +128,7 @@
 
                                 {% endfor %}
                             </div>
-                            <ul class="pagination -pagination-style" ></ul>
+                            <ul class="pagination -pagination-style"></ul>
 
                         </div>
 
@@ -173,7 +149,6 @@
 {% block delete-modal-block %}
     {% include 'delete_modal.html' %}
 {% endblock %}
-
 
 
 {% block body-javascript-extension %}

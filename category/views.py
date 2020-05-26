@@ -46,7 +46,7 @@ class CreateCustomCategoryView(LoginRequiredMixin, CreateView):
         try:
             return super(CreateCustomCategoryView, self).form_valid(form)
         except IntegrityError:
-            form.add_error('name', 'This category is existed')
+            form.add_error('name', 'This category is existing')
             return self.form_invalid(form)
 
 
@@ -71,7 +71,12 @@ class UpdateCustomCategoryView(LoginRequiredMixin, UpdateView):
             if category.name.lower() == name.lower():
                 form.add_error('name', 'This category is predefined')
                 return self.form_invalid(form)
-        return super(UpdateCustomCategoryView, self).form_valid(form)
+        try:
+            return super(UpdateCustomCategoryView, self).form_valid(form)
+        except IntegrityError:
+            form.add_error('name', 'This category is existing')
+            return self.form_invalid(form)
+
 
     def get_queryset(self):
         return Category.objects.filter(owner=self.request.user, is_custom=True)

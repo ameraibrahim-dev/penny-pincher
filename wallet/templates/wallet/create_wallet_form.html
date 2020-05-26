@@ -2,7 +2,7 @@
 {% load widget_tweaks %}
 {% load i18n %}
 {% load static %}
-{% block title %}Penny Pincher - Create Wallet{% endblock %}
+{% block title %}Penny Pincher - Add Wallet{% endblock %}
 
 
 {% block main-content %}
@@ -14,7 +14,7 @@
 
         <div class="add-transaction-block">
 
-            <form method="post" class="wallet-form-fields">
+            <form method="post" class="wallet-form-fields" id="create-wallet-form">
                 {% csrf_token %}
                 <div class="row">
 
@@ -56,6 +56,7 @@
                     <a class="add-transaction-cancel-btn" href="{% url 'wallet:wallet_list' %}"
                        style="text-decoration: none;padding: 8px 24px !important;">cancel</a>
                     <button class="add-transaction-save-btn">save</button>
+
                 </div>
             </form>
         </div>
@@ -63,6 +64,11 @@
 
 
 {% endblock %}
+
+{% block delete-modal-block %}
+    {% include 'delete_modal.html' %}
+{% endblock %}
+
 
 {% block body-javascript-extension %}
 

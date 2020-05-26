@@ -310,6 +310,7 @@ body, html {
     font-size: 14px;
     color: #35495E;
     display: block;
+    margin-bottom: 5px;
 }
 
 .profile-text-field {
@@ -424,4 +425,24 @@ body, html {
     background: #35495E;
 }
 
+.wallets-card {
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 98%;
+    border-radius: 10px;
+}
+
+.wallets-card.-list {
+    min-height: 400px;
+    padding: 40px 20px 20px 20px;
+}
+
 /*WALLET CSS */
+
+/*CSS OVERRIDES */
+.update-goal-form{
+    width: 70%;
+    margin-left:100px;
+}

@@ -1,8 +1,12 @@
 {% extends 'base_navigation_no_footer.html' %}
 {% load static %}
 
-{% block header-extension %}
+{% block head-css-extension %}
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
+{% endblock %}
 
+{% block header-extension %}
+ <input type="hidden" id="goalID" value="{{ goal.pk }}">
     <ul class="header-menu-list -goals">
 
         <li class="header-menu-item" id="header-goal-details">

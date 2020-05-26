@@ -6,7 +6,7 @@ from wallet.models import Wallet, WalletTransaction
 
 
 class WalletCreateForm(ModelForm):
-    balance = MoneyField(label='Initial Balance')
+    balance = MoneyField(label="Initial Balance")
 
     class Meta:
         model = Wallet

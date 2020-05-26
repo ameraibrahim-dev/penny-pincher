@@ -1,1 +1,17 @@
-<h1>403</h1>
+{% extends 'errors/base-error-page.html' %}
+{% load static %}
+
+{% block error-message %}
+    <span data-attr-error-message="Forbidden Error" class="error-type">403</span>
+
+    <p class="error-description">You do not have permission<br>
+    to access this server.</p>
+
+{% endblock %}
+
+
+{% block error-image %}
+
+    <img src="{% static 'images/403-error.png' %}" alt="" class="error-image">
+
+{% endblock %}

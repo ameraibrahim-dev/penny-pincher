@@ -13,7 +13,7 @@
         generateCategoriesHtml();
         computeTotal();
 // set date range
-        if (transactions) {
+        if (transactions.length>0) {
             $('input[id="DateRangeFilter"]').daterangepicker({
                 endDate: new Date(transactions[0].date),
                 startDate: new Date(transactions.slice(-1)[0].date),
@@ -75,7 +75,6 @@
             }
         ).reverse());
         // generate category options
-        //todo display categories
         categories.forEach((value, key) => {
             let label = document.createElement("label");
             let input = document.createElement("input");

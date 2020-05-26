@@ -1,5 +1,5 @@
 {
-    const NOTE_FIELD_LOCATOR = "#filterByNoteTextField";
+    const SEARCH_FIELD_LOCATOR = "#searchField";
     const DATE_RANGE_FIELD_LOCATOR = "#DateRangeFilter";
     const TOTAL_PERIOD_EXPENSES_TEXT_LOCATOR = "#total-period-expenses";
     const TOTAL_PERIOD_EARNINGS_TEXT_LOCATOR = "#total-period-earnings";
@@ -17,12 +17,12 @@
     };
 
     let transaction_list = new List('transactions-list', options);
-    $(NOTE_FIELD_LOCATOR).keyup(function () {
-        let val = $(NOTE_FIELD_LOCATOR).val();
+    $(SEARCH_FIELD_LOCATOR).keyup(function () {
+        let val = $(SEARCH_FIELD_LOCATOR).val();
         if (val.length == '') {
             transaction_list.search();
         } else {
-            transaction_list.search($(NOTE_FIELD_LOCATOR).val(), ['note']);
+            transaction_list.search($(SEARCH_FIELD_LOCATOR).val(), ['note','amount','date','name']);
         }
         //update total
         updateTotal(transaction_list.visibleItems);

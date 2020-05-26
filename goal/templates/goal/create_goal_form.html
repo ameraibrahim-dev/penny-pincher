@@ -12,7 +12,7 @@
         </div>
 
         <div class="add-transaction-block">
-            <form method="post" class="wallet-form-fields">
+            <form method="post" class="wallet-form-fields" id="add-goal-form">
                 {% csrf_token %}
                 <div class="row">
                     <div class="col-xl-6">
@@ -27,13 +27,13 @@
                         </div>
 
                         <div class="form-group statistic-input-box">
-                            <span class="input-text-field-label float-left">Initial Balance</span>
-                            {% for error in form.balance.errors %}
+                            <span class="input-text-field-label float-left">Target Date</span>
+                            {% for error in form.target_date.errors %}
                                 <span class="error-field">
                                     {{ error }}
                                 </span>
                             {% endfor %}
-                            {% render_field form.balance class="form-control input-box" placeholder="0.00 PHP" %}
+                            {% render_field form.target_date class="form-control input-box" %}
                         </div>
                     </div>
 
@@ -47,16 +47,6 @@
                             {% endfor %}
                             {% render_field form.target_amount class="form-control input-box" placeholder="How much do your want to save?" %}
                         </div>
-
-                        <div class="form-group statistic-input-box">
-                            <span class="input-text-field-label float-left">Target Date</span>
-                            {% for error in form.target_date.errors %}
-                                <span class="error-field">
-                                    {{ error }}
-                                </span>
-                            {% endfor %}
-                            {% render_field form.target_date class="form-control input-box" %}
-                        </div>
                     </div>
                 </div>
                 <div class="float-right">
@@ -67,6 +57,10 @@
             </form>
         </div>
     </div>
+{% endblock %}
+
+{% block delete-modal-block %}
+    {% include 'delete_modal.html' %}
 {% endblock %}
 
 {% block body-javascript-extension %}
