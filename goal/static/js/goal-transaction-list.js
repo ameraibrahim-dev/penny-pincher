@@ -80,15 +80,16 @@
     $(document).ready(function () {
         getALLTransactionsByGoalID();
 // set date range
-        if (transactions.length>0) {
+        if (transactions.length > 0) {
             $('input[id="DateRangeFilter"]').daterangepicker({
                 endDate: new Date(transactions[0].date),
                 startDate: new Date(transactions.slice(-1)[0].date),
-            })
+            });
+            filterFunction();
         } else {
             $('input[id="DateRangeFilter"]').daterangepicker({})
         }
-        filterFunction();
+
         //event listener
         $(DATE_RANGE_FIELD_LOCATOR).change(function () {
             filterFunction();
